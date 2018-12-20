@@ -216,7 +216,9 @@ $(document).ready(function(){
                                    <table class="table" id="ad_table" name="ad_table">
                                         <thead>                                                                                   
                                             <tr style="background-color:#D8D8D8" >
-                                                <th><th>
+                                                <th class="seq-checkbox">
+                      <input type="checkbox" name="seq" class="seq-control-input" id="check" value="y">
+                     </th>
                                                 <th>번호</th>
                                                 <th>이름</th>
                                                 <th>내용</th>
@@ -228,11 +230,13 @@ $(document).ready(function(){
                                                 <th>목적</th>
                                                 <th>날짜</th>
                                             </tr>
+                                               
                                         </thead>
                                          <tbody>
                                             <c:forEach var="vo" items="${KEY_LIST}">
                                                 <tr>
-	                                                <td></td>
+	                                              
+                     								<td></td>
 	                                                <td>${vo.pSeq}</td>
 	                                                <td>${vo.pTitle}</td>
 	                                                <td>${vo.pContent}</td> 
