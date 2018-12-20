@@ -1,395 +1,1779 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<!-- header -->
-	<%@ include file="/admin/include/header.jsp" %>
-   
-    <link href="/admin/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
-    <link href="/admin/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
-    <link href="/admin/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
-    <link href="/admin/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
-
+	<title>하루이야기</title>
+<%@ include file="/include/header.jsp" %>
 </head>
-
-<body class="fix-header fix-sidebar card-no-border">
-  
-    <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-    </div>
-    <div id="main-wrapper">
-
-
-<!-- top -->
+<body class="animsition">
 	
-	<header class="topbar">
-            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-              
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            
-                            <!-- Light Logo icon -->
-                            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
-                         
-                         <!-- Light Logo text -->    
-                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
-                </div>
-                
-                <div class="navbar-collapse">
+<%@ include file="/include/top.jsp" %>	
 
-                    <ul class="navbar-nav mr-auto mt-md-0">
-                       
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
-                    </ul>
-                    
-                    <ul class="navbar-nav my-lg-0">
-                        
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="profile-pic m-r-10" />Markarn Doe</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+<%@ include file="/include/left.jsp" %>
 
-<!-- left side -->
-
-	<%@ include file="/admin/include/left.jsp" %>
+	<!-- Slider -->
+	<section class="section-slide">
+		<div class="wrap-slick1 rs1-slick1">
+			<div class="slick1">
+				<div class="item-slick1" style="background-image: url(images/slide-01.jpg);">
+					<div class="container h-full">
+						<div class="flex-col-l-m h-full p-t-100 p-b-30">
+							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
+								<span class="ltext-202 cl2 respon2">
+									Men Collection 2018
+								</span>
+							</div>
+								
+							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
+								<h2 class="ltext-104 cl2 p-t-19 p-b-43 respon1">
+									New arrivals
+								</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 
+	<!-- Banner -->
+	<div class="sec-banner bg0">
+		<div class="flex-w flex-c-m">
+			<div class="size-202 m-lr-auto respon4">
+				<!-- Block1 -->
+				<div class="block1 wrap-pic-w">
+					<img src="images/banner-04.jpg" alt="IMG-BANNER">
+
+					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<div class="block1-txt-child1 flex-col-l">
+							<span class="block1-name ltext-102 trans-04 p-b-8">
+								장소
+							</span>
+
+							<span class="block1-info stext-102 trans-04">
+								Spring 2018
+							</span>
+						</div>
+
+						<div class="block1-txt-child2 p-b-4 trans-05">
+							<div class="block1-link stext-101 cl0 trans-09">
+								바로 찾기
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="size-202 m-lr-auto respon4">
+				<!-- Block1 -->
+				<div class="block1 wrap-pic-w">
+					<img src="images/banner-05.jpg" alt="IMG-BANNER">
+
+					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<div class="block1-txt-child1 flex-col-l">
+							<span class="block1-name ltext-102 trans-04 p-b-8">
+								경로
+							</span>
+
+							<span class="block1-info stext-102 trans-04">
+								Spring 2018
+							</span>
+						</div>
+
+						<div class="block1-txt-child2 p-b-4 trans-05">
+							<div class="block1-link stext-101 cl0 trans-09">
+								바로 찾기
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
-        <div class="page-wrapper">
-            <div class="container-fluid">
-                <div class="row page-titles">
-                    <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor">관리자 메인</h3>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">관리자 메인</li>
-                        </ol>
-                    </div>
-                    <div class="col-md-7 col-4 align-self-center">
-                        <a href="https://themewagon.com/themes/bootstrap-4-responsive-admin-template/" class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down">Download Now</a>
-                    </div>
-                </div>
+	<!-- Product -->
+	<section class="sec-product bg0 p-t-100 p-b-50">
+		<div class="container">
+			<div class="p-b-32">
+				<h3 class="ltext-105 cl5 txt-center respon1">
+					Store Overview
+				</h3>
+			</div>
 
-                <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-8 col-md-7">
-                        <div class="card">
-                            <div class="card-block">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="d-flex flex-wrap">
-                                            <div>
-                                                <h3 class="card-title">Sales Overview</h3>
-                                                <h6 class="card-subtitle">Ample Admin Vs Pixel Admin</h6> </div>
-                                            <div class="ml-auto">
-                                                <ul class="list-inline">
-                                                    <li>
-                                                        <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Ample</h6> </li>
-                                                    <li>
-                                                        <h6 class="text-muted  text-info"><i class="fa fa-circle font-10 m-r-10"></i>Pixel</h6> </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="amp-pxl" style="height: 360px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-5">
-                        <div class="card">
-                            <div class="card-block">
-                                <h3 class="card-title">Our Visitors </h3>
-                                <h6 class="card-subtitle">Different Devices Used to Visit</h6>
-                                <div id="visitor" style="height:290px; width:100%;"></div>
-                            </div>
-                            <div>
-                                <hr class="m-t-0 m-b-0">
-                            </div>
-                            <div class="card-block text-center ">
-                                <ul class="list-inline m-b-0">
-                                    <li>
-                                        <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10 "></i>Mobile</h6> </li>
-                                    <li>
-                                        <h6 class="text-muted  text-primary"><i class="fa fa-circle font-10 m-r-10"></i>Desktop</h6> </li>
-                                    <li>
-                                        <h6 class="text-muted  text-success"><i class="fa fa-circle font-10 m-r-10"></i>Tablet</h6> </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-4 col-xlg-3 col-md-5">
-                        <!-- Column -->
-                        <div class="card">
-                            <img class="card-img-top" src="assets/images/background/profile-bg.jpg" alt="Card image cap">
-                            <div class="card-block little-profile text-center">
-                                <div class="pro-img"><img src="assets/images/users/4.jpg" alt="user" /></div>
-                                <h3 class="m-b-0">Angela Dominic</h3>
-                                <p>Web Designer &amp; Developer</p>
-                                <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded">Follow</a>
-                                <div class="row text-center m-t-20">
-                                    <div class="col-lg-4 col-md-4 m-t-20">
-                                        <h3 class="m-b-0 font-light">1099</h3><small>Articles</small></div>
-                                    <div class="col-lg-4 col-md-4 m-t-20">
-                                        <h3 class="m-b-0 font-light">23,469</h3><small>Followers</small></div>
-                                    <div class="col-lg-4 col-md-4 m-t-20">
-                                        <h3 class="m-b-0 font-light">6035</h3><small>Following</small></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Column -->
-                        <div class="card">
-                            <div class="card-block bg-info">
-                                <h4 class="text-white card-title">My Contacts</h4>
-                                <h6 class="card-subtitle text-white m-b-0 op-5">Checkout my contacts here</h6>
-                            </div>
-                            <div class="card-block">
-                                <div class="message-box contact-box">
-                                    <h2 class="add-ct-btn"><button type="button" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button></h2>
-                                    <div class="message-widget contact-widget">
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">info@wrappixel.com</span></div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Sonu Nigam</h5> <span class="mail-desc">pamela1987@gmail.com</span></div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <span class="round">A</span> <span class="profile-status away pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Arijit Sinh</h5> <span class="mail-desc">cruise1298.fiplip@gmail.com</span></div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">kat@gmail.com</span></div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-xlg-9 col-md-7">
-                        <div class="card">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs profile-tab" role="tablist">
-                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Activity</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a> </li>
-                            </ul>
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="home" role="tabpanel">
-                                    <div class="card-block">
-                                        <div class="profiletimeline">
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> </div>
-                                                <div class="sl-right">
-                                                    <div><a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                        <p>assign a new task <a href="#"> Design weblayout</a></p>
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-6 m-b-20"><img src="assets/images/big/img1.jpg" alt="user" class="img-responsive radius"></div>
-                                                            <div class="col-lg-3 col-md-6 m-b-20"><img src="assets/images/big/img2.jpg" alt="user" class="img-responsive radius"></div>
-                                                            <div class="col-lg-3 col-md-6 m-b-20"><img src="assets/images/big/img3.jpg" alt="user" class="img-responsive radius"></div>
-                                                            <div class="col-lg-3 col-md-6 m-b-20"><img src="assets/images/big/img4.jpg" alt="user" class="img-responsive radius"></div>
-                                                        </div>
-                                                        <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="assets/images/users/2.jpg" alt="user" class="img-circle"> </div>
-                                                <div class="sl-right">
-                                                    <div> <a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                        <div class="m-t-20 row">
-                                                            <div class="col-md-3 col-xs-12"><img src="assets/images/big/img1.jpg" alt="user" class="img-responsive radius"></div>
-                                                            <div class="col-md-9 col-xs-12">
-                                                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p> <a href="#" class="btn btn-success"> Design weblayout</a></div>
-                                                        </div>
-                                                        <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="assets/images/users/3.jpg" alt="user" class="img-circle"> </div>
-                                                <div class="sl-right">
-                                                    <div><a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                        <p class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper </p>
-                                                    </div>
-                                                    <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="assets/images/users/4.jpg" alt="user" class="img-circle"> </div>
-                                                <div class="sl-right">
-                                                    <div><a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                        <blockquote class="m-t-10">
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                                        </blockquote>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--second tab-->
-                                <div class="tab-pane" id="profile" role="tabpanel">
-                                    <div class="card-block">
-                                        <div class="row">
-                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
-                                                <br>
-                                                <p class="text-muted">Johnathan Deo</p>
-                                            </div>
-                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
-                                                <br>
-                                                <p class="text-muted">(123) 456 7890</p>
-                                            </div>
-                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
-                                                <br>
-                                                <p class="text-muted">johnathan@admin.com</p>
-                                            </div>
-                                            <div class="col-md-3 col-xs-6"> <strong>Location</strong>
-                                                <br>
-                                                <p class="text-muted">London</p>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p>
-                                        <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                        <h4 class="font-medium m-t-30">Skill Set</h4>
-                                        <hr>
-                                        <h5 class="m-t-30">Wordpress <span class="pull-right">80%</span></h5>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                        </div>
-                                        <h5 class="m-t-30">HTML 5 <span class="pull-right">90%</span></h5>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                        </div>
-                                        <h5 class="m-t-30">jQuery <span class="pull-right">50%</span></h5>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                        </div>
-                                        <h5 class="m-t-30">Photoshop <span class="pull-right">70%</span></h5>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="settings" role="tabpanel">
-                                    <div class="card-block">
-                                        <form class="form-horizontal form-material">
-                                            <div class="form-group">
-                                                <label class="col-md-12">Full Name</label>
-                                                <div class="col-md-12">
-                                                    <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="example-email" class="col-md-12">Email</label>
-                                                <div class="col-md-12">
-                                                    <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Password</label>
-                                                <div class="col-md-12">
-                                                    <input type="password" value="password" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Phone No</label>
-                                                <div class="col-md-12">
-                                                    <input type="text" placeholder="123 456 7890" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Message</label>
-                                                <div class="col-md-12">
-                                                    <textarea rows="5" class="form-control form-control-line"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-12">Select Country</label>
-                                                <div class="col-sm-12">
-                                                    <select class="form-control form-control-line">
-                                                        <option>London</option>
-                                                        <option>India</option>
-                                                        <option>Usa</option>
-                                                        <option>Canada</option>
-                                                        <option>Thailand</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <button class="btn btn-success">Update Profile</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          
-           
-        
-            <!-- footer -->
-            <%@ include file="/admin/include/footer.jsp" %>
-    
-    
-        </div>
-    </div>
-    
-    <!-- script -->
-     <%@ include file="/admin/include/script.jsp" %>
-   
-   
-   <script src="/admin/js/dashboard1.js"></script>
-    
-    <!-- chartist chart -->
-    <script src="/admin/assets/plugins/chartist-js/dist/chartist.min.js"></script>
-    <script src="/admin/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
-    <!--c3 JavaScript -->
-    <script src="/admin/assets/plugins/d3/d3.min.js"></script>
-    <script src="/admin/assets/plugins/c3-master/c3.min.js"></script>
+			<!-- Tab01 -->
+			<div class="tab01">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item p-b-10">
+						<a class="nav-link active" data-toggle="tab" href="#best-seller" role="tab">Best Seller</a>
+					</li>
+
+					<li class="nav-item p-b-10">
+						<a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a>
+					</li>
+
+					<li class="nav-item p-b-10">
+						<a class="nav-link" data-toggle="tab" href="#sale" role="tab">Sale</a>
+					</li>
+
+					<li class="nav-item p-b-10">
+						<a class="nav-link" data-toggle="tab" href="#top-rate" role="tab">Top Rate</a>
+					</li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content p-t-50">
+					<!-- - -->
+					<div class="tab-pane fade show active" id="best-seller" role="tabpanel">
+						<!-- Slide2 -->
+						<div class="wrap-slick2">
+							<div class="slick2">
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-01.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Esprit Ruffle Shirt
+												</a>
+
+												<span class="stext-105 cl3">
+													$16.64
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-02.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Herschel supply
+												</a>
+
+												<span class="stext-105 cl3">
+													$35.31
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-03.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Only Check Trouser
+												</a>
+
+												<span class="stext-105 cl3">
+													$25.50
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-04.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Classic Trench Coat
+												</a>
+
+												<span class="stext-105 cl3">
+													$75.00
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-05.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Front Pocket Jumper
+												</a>
+
+												<span class="stext-105 cl3">
+													$34.75
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-06.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Vintage Inspired Classic 
+												</a>
+
+												<span class="stext-105 cl3">
+													$93.20
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-07.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Shirt in Stretch Cotton
+												</a>
+
+												<span class="stext-105 cl3">
+													$52.66
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-08.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Pieces Metallic Printed
+												</a>
+
+												<span class="stext-105 cl3">
+													$18.96
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- - -->
+					<div class="tab-pane fade" id="featured" role="tabpanel">
+						<!-- Slide2 -->
+						<div class="wrap-slick2">
+							<div class="slick2">
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-09.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Converse All Star Hi Plimsolls
+												</a>
+
+												<span class="stext-105 cl3">
+													$75.00
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-10.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Femme T-Shirt In Stripe
+												</a>
+
+												<span class="stext-105 cl3">
+													$25.85
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-11.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Herschel supply 
+												</a>
+
+												<span class="stext-105 cl3">
+													$63.16
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-12.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Herschel supply
+												</a>
+
+												<span class="stext-105 cl3">
+													$63.15
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-13.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													T-Shirt with Sleeve
+												</a>
+
+												<span class="stext-105 cl3">
+													$18.49
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-14.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Pretty Little Thing
+												</a>
+
+												<span class="stext-105 cl3">
+													$54.79
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-15.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Mini Silver Mesh Watch
+												</a>
+
+												<span class="stext-105 cl3">
+													$86.85
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-16.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Square Neck Back
+												</a>
+
+												<span class="stext-105 cl3">
+													$29.64
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- - -->
+					<div class="tab-pane fade" id="sale" role="tabpanel">
+						<!-- Slide2 -->
+						<div class="wrap-slick2">
+							<div class="slick2">
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-02.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Herschel supply
+												</a>
+
+												<span class="stext-105 cl3">
+													$35.31
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-04.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Classic Trench Coat
+												</a>
+
+												<span class="stext-105 cl3">
+													$75.00
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-06.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Vintage Inspired Classic 
+												</a>
+
+												<span class="stext-105 cl3">
+													$93.20
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-09.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Converse All Star Hi Plimsolls
+												</a>
+
+												<span class="stext-105 cl3">
+													$75.00
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-11.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Herschel supply 
+												</a>
+
+												<span class="stext-105 cl3">
+													$63.16
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-13.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													T-Shirt with Sleeve
+												</a>
+
+												<span class="stext-105 cl3">
+													$18.49
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-15.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Mini Silver Mesh Watch
+												</a>
+
+												<span class="stext-105 cl3">
+													$86.85
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- - -->
+					<div class="tab-pane fade" id="top-rate" role="tabpanel">
+						<!-- Slide2 -->
+						<div class="wrap-slick2">
+							<div class="slick2">
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-03.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Only Check Trouser
+												</a>
+
+												<span class="stext-105 cl3">
+													$25.50
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-06.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Vintage Inspired Classic 
+												</a>
+
+												<span class="stext-105 cl3">
+													$93.20
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-07.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Shirt in Stretch Cotton
+												</a>
+
+												<span class="stext-105 cl3">
+													$52.66
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-08.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Pieces Metallic Printed
+												</a>
+
+												<span class="stext-105 cl3">
+													$18.96
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-09.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Converse All Star Hi Plimsolls
+												</a>
+
+												<span class="stext-105 cl3">
+													$75.00
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-10.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Femme T-Shirt In Stripe
+												</a>
+
+												<span class="stext-105 cl3">
+													$25.85
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-11.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Herschel supply 
+												</a>
+
+												<span class="stext-105 cl3">
+													$63.16
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-12.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Herschel supply
+												</a>
+
+												<span class="stext-105 cl3">
+													$63.15
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-13.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													T-Shirt with Sleeve
+												</a>
+
+												<span class="stext-105 cl3">
+													$18.49
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+									<!-- Block2 -->
+									<div class="block2">
+										<div class="block2-pic hov-img0">
+											<img src="images/product-16.jpg" alt="IMG-PRODUCT">
+
+											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+												Quick View
+											</a>
+										</div>
+
+										<div class="block2-txt flex-w flex-t p-t-14">
+											<div class="block2-txt-child1 flex-col-l ">
+												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+													Square Neck Back
+												</a>
+
+												<span class="stext-105 cl3">
+													$29.64
+												</span>
+											</div>
+
+											<div class="block2-txt-child2 flex-r p-t-3">
+												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
+													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Blog -->
+	<section class="sec-blog bg0 p-t-60 p-b-90">
+		<div class="container">
+			<div class="p-b-66">
+				<h3 class="ltext-105 cl5 txt-center respon1">
+					Our Blogs
+				</h3>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6 col-md-4 p-b-40">
+					<div class="blog-item">
+						<div class="hov-img0">
+							<a href="blog-detail.html">
+								<img src="images/blog-01.jpg" alt="IMG-BLOG">
+							</a>
+						</div>
+
+						<div class="p-t-15">
+							<div class="stext-107 flex-w p-b-14">
+								<span class="m-r-3">
+									<span class="cl4">
+										By
+									</span>
+
+									<span class="cl5">
+										Nancy Ward
+									</span>
+								</span>
+
+								<span>
+									<span class="cl4">
+										on
+									</span>
+
+									<span class="cl5">
+										July 22, 2017 
+									</span>
+								</span>
+							</div>
+
+							<h4 class="p-b-12">
+								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
+									8 Inspiring Ways to Wear Dresses in the Winter
+								</a>
+							</h4>
+
+							<p class="stext-108 cl6">
+								Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-4 p-b-40">
+					<div class="blog-item">
+						<div class="hov-img0">
+							<a href="blog-detail.html">
+								<img src="images/blog-02.jpg" alt="IMG-BLOG">
+							</a>
+						</div>
+
+						<div class="p-t-15">
+							<div class="stext-107 flex-w p-b-14">
+								<span class="m-r-3">
+									<span class="cl4">
+										By
+									</span>
+
+									<span class="cl5">
+										Nancy Ward
+									</span>
+								</span>
+
+								<span>
+									<span class="cl4">
+										on
+									</span>
+
+									<span class="cl5">
+										July 18, 2017
+									</span>
+								</span>
+							</div>
+
+							<h4 class="p-b-12">
+								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
+									The Great Big List of Menâs Gifts for the Holidays
+								</a>
+							</h4>
+
+							<p class="stext-108 cl6">
+								Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-4 p-b-40">
+					<div class="blog-item">
+						<div class="hov-img0">
+							<a href="blog-detail.html">
+								<img src="images/blog-03.jpg" alt="IMG-BLOG">
+							</a>
+						</div>
+
+						<div class="p-t-15">
+							<div class="stext-107 flex-w p-b-14">
+								<span class="m-r-3">
+									<span class="cl4">
+										By
+									</span>
+
+									<span class="cl5">
+										Nancy Ward
+									</span>
+								</span>
+
+								<span>
+									<span class="cl4">
+										on
+									</span>
+
+									<span class="cl5">
+										July 2, 2017 
+									</span>
+								</span>
+							</div>
+
+							<h4 class="p-b-12">
+								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
+									5 Winter-to-Spring Fashion Trends to Try Now
+								</a>
+							</h4>
+
+							<p class="stext-108 cl6">
+								Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Footer -->
+	<footer class="bg3 p-t-75 p-b-32">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Categories
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Women
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Men
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Shoes
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Watches
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Help
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Track Order
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Returns 
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Shipping
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								FAQs
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						GET IN TOUCH
+					</h4>
+
+					<p class="stext-107 cl7 size-201">
+						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+					</p>
+
+					<div class="p-t-27">
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-facebook"></i>
+						</a>
+
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						</a>
+
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Newsletter
+					</h4>
+
+					<form>
+						<div class="wrap-input1 w-full p-b-4">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+							<div class="focus-input1 trans-04"></div>
+						</div>
+
+						<div class="p-t-18">
+							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+								Subscribe
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="p-t-40">
+				<div class="flex-c-m flex-w p-b-18">
+					<a href="#" class="m-all-1">
+						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+					</a>
+
+					<a href="#" class="m-all-1">
+						<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+					</a>
+
+					<a href="#" class="m-all-1">
+						<img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+					</a>
+
+					<a href="#" class="m-all-1">
+						<img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+					</a>
+
+					<a href="#" class="m-all-1">
+						<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+					</a>
+				</div>
+
+				<p class="stext-107 cl6 txt-center">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+				</p>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+	<!-- Modal1 -->
+	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+		<div class="overlay-modal1 js-hide-modal1"></div>
+
+		<div class="container">
+			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
+					<img src="images/icons/icon-close.png" alt="CLOSE">
+				</button>
+
+				<div class="row">
+					<div class="col-md-6 col-lg-7 p-b-30">
+						<div class="p-l-25 p-r-30 p-lr-0-lg">
+							<div class="wrap-slick3 flex-sb flex-w">
+								<div class="wrap-slick3-dots"></div>
+								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+								<div class="slick3 gallery-lb">
+									<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+										<div class="wrap-pic-w pos-relative">
+											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+												<i class="fa fa-expand"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+										<div class="wrap-pic-w pos-relative">
+											<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
+												<i class="fa fa-expand"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+										<div class="wrap-pic-w pos-relative">
+											<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
+												<i class="fa fa-expand"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-6 col-lg-5 p-b-30">
+						<div class="p-r-50 p-t-5 p-lr-0-lg">
+							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+								Lightweight Jacket
+							</h4>
+
+							<span class="mtext-106 cl2">
+								$58.79
+							</span>
+
+							<p class="stext-102 cl3 p-t-23">
+								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+							</p>
+							
+							<!--  -->
+							<div class="p-t-33">
+								<div class="flex-w flex-r-m p-b-10">
+									<div class="size-203 flex-c-m respon6">
+										Size
+									</div>
+
+									<div class="size-204 respon6-next">
+										<div class="rs1-select2 bor8 bg0">
+											<select class="js-select2" name="time">
+												<option>Choose an option</option>
+												<option>Size S</option>
+												<option>Size M</option>
+												<option>Size L</option>
+												<option>Size XL</option>
+											</select>
+											<div class="dropDownSelect2"></div>
+										</div>
+									</div>
+								</div>
+
+								<div class="flex-w flex-r-m p-b-10">
+									<div class="size-203 flex-c-m respon6">
+										Color
+									</div>
+
+									<div class="size-204 respon6-next">
+										<div class="rs1-select2 bor8 bg0">
+											<select class="js-select2" name="time">
+												<option>Choose an option</option>
+												<option>Red</option>
+												<option>Blue</option>
+												<option>White</option>
+												<option>Grey</option>
+											</select>
+											<div class="dropDownSelect2"></div>
+										</div>
+									</div>
+								</div>
+
+								<div class="flex-w flex-r-m p-b-10">
+									<div class="size-204 flex-w flex-m respon6-next">
+										<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-minus"></i>
+											</div>
+
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+
+											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-plus"></i>
+											</div>
+										</div>
+
+										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+											Add to cart
+										</button>
+									</div>
+								</div>	
+							</div>
+
+							<!--  -->
+							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
+								<div class="flex-m bor9 p-r-10 m-r-11">
+									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+										<i class="zmdi zmdi-favorite"></i>
+									</a>
+								</div>
+
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+									<i class="fa fa-facebook"></i>
+								</a>
+
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+									<i class="fa fa-twitter"></i>
+								</a>
+
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+									<i class="fa fa-google-plus"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/slick/slick.min.js"></script>
+	<script src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/parallax100/parallax100.js"></script>
+	<script>
+        $('.parallax100').parallax100();
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script>
+		$('.gallery-lb').each(function() { // the containers for all your galleries
+			$(this).magnificPopup({
+		        delegate: 'a', // the selector for gallery item
+		        type: 'image',
+		        gallery: {
+		        	enabled:true
+		        },
+		        mainClass: 'mfp-fade'
+		    });
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/sweetalert/sweetalert.min.js"></script>
+	<script>
+		$('.js-addwish-b2').on('click', function(e){
+			e.preventDefault();
+		});
+
+		$('.js-addwish-b2').each(function(){
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-b2');
+				$(this).off('click');
+			});
+		});
+
+		$('.js-addwish-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-detail');
+				$(this).off('click');
+			});
+		});
+
+		/*---------------------------------------------*/
+
+		$('.js-addcart-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
 </body>
-
 </html>
