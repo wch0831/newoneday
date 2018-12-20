@@ -3,6 +3,7 @@ package com.oneday.faq;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
+
 import com.oneday.common.MyBatisFactory;
 
 
@@ -22,5 +23,19 @@ public class FaqDAO {
 		}
 		return list;
 	}
+	
+	public ArrayList<FaqVO> adminQuestionSelect() {
+		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
+		SqlSession conn =null;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("qnaNameSpace.adminQuestionSelect");
+		} finally {
+			conn.close();
+		}
+		return list;
+	}
+	
 	
 }
