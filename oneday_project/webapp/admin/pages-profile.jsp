@@ -50,7 +50,7 @@ $(document).ready(function(){
     <div id="main-wrapper">
         
         
-        <!-- top side -->
+      <!-- top side -->
 
 	<%@ include file="/admin/include/top.jsp" %>
         

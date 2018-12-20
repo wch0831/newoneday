@@ -65,5 +65,21 @@ public class MemberDAO {
 		return vo;
 	}
 	
+	public ArrayList<MemberVO> checkEmail(){
+		SqlSession conn = null;
+		MemberVO mvo = new MemberVO();
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();	
+		try {
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("memberNameSpace.checkEmaile");
+			conn.commit();
+			} catch(Exception e){
+				e.getStackTrace();
+			}finally {
+				conn.close();
+			}
+			return list;
+	}
+	
 	
 }
