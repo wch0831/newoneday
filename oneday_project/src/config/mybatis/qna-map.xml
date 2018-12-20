@@ -16,6 +16,9 @@
       <result property="amSeq" column="am_seq" />
       <result property="aRegdate" column="a_regdate" />
       <result property="aContent" column="a_content" />
+      <result property="mEmail" column="m_email" />
+      <result property="mNick" column="m_nick" />
+      <result property="Check" column="oxcheck" />
       
 	</resultMap>
 <!--  <resultMap id="sp_11" type="com.jang.order.orderVO" extends="orderMap">
@@ -40,5 +43,13 @@
       select q_seq, q_gubun, q_title, q_regdate, q_content, qm_seq
       from question   
 	</select>
+	
+	<select id="adminQuestionSelect" parameterType="com.oneday.faq.FaqVO" resultMap="qnaMap">
+      select q.q_seq, m.m_email, m.m_nick, q.q_gubun, q.q_title, q.q_regdate, nvl2(q.a_seq,'O','X') as oxcheck
+	  from question q, member m
+	  where q.qm_seq = m.m_seq
+      order by q.q_seq desc
+	</select>
+	
    
 </mapper>   
