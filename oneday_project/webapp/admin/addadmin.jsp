@@ -225,6 +225,7 @@ $(document).ready(function(){
     <!-- All Jquery -->
     <!-- ============================================================== -->
   <%@ include file="/admin/include/script.jsp" %>
+  
     <!-- google maps api -->
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyCUBL-6KdclGJ2a_UpmB2LXvq7VOcPT7K4&sensor=true"></script>
     <script src="assets/plugins/gmaps/gmaps.min.js"></script>
