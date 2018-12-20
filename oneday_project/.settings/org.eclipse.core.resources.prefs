@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//webapp/user/index.jsp=UTF-8
+=======
+encoding//webapp/user/include/header.jsp=UTF-8
+encoding//webapp/user/register.jsp=UTF-8
+>>>>>>> branch 'master' of https://github.com/wch0831/newoneday
