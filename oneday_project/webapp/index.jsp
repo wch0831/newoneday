@@ -6,6 +6,38 @@
 <head>
 	<title>하루이야기</title>
 <%@ include file="/include/header.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){	
+	var htmlStr="";
+	$.ajax({ 
+			url:"/pop",
+			type:"post",
+			success:function(res){
+					console.log(res);
+		 				htmlStr += "<section class='get'>";
+		 			$.each(res, function(index, vv){
+		 				htmlStr += "<div class='row'>";
+		 				htmlStr += "<div class='col-md-12'>";
+		 				htmlStr += "<h2 class='h4 mt-0'>문의 합니다.</a></h2>";
+		 				htmlStr += "<div class='d-flex flex-wrap justify-content-between text-xs'>";
+		 				htmlStr += "<p class='author-category'>Nickname <a href='#'>" + vv.mNickname + "</a></p>";
+		 				htmlStr += "<p class='date-comments'><a href='/question.jsp'> " + vv.qRegdate + " </a></p>";
+		 				htmlStr += "</div>";
+		 				htmlStr += "<div>";
+		 				htmlStr += "<p class='intro'>" + vv.qText + "</p>";
+		 				htmlStr += "<td><a href='/questionDetail?mSeq="+ vv.mSeq +"' class='btn btn-template-outlined btn-sm'>상세보기</a></td>"
+		 				htmlStr += "</div>";
+		 				htmlStr += "</div>";
+		 				htmlStr += "</div>";
+			  	});
+		 				htmlStr += "</section>";
+			}
+ 			$(".question").html(htmlStr);
+		});
+});    
+</script>
+
 </head>
 <body class="animsition">
 	
@@ -102,11 +134,11 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
 					<li class="nav-item p-b-10">
-						<a class="nav-link active" data-toggle="tab" href="#best-seller" role="tab">테마별</a>
+						<a class="nav-link active" data-toggle="tab" href="/pop?pgubun=theme" role="tab">테마별</a>
 					</li>
 
 					<li class="nav-item p-b-10">
-						<a class="nav-link" data-toggle="tab" href="#featured" role="tab">지역별</a>
+						<a class="nav-link" data-toggle="tab" href="/pop?pgubun=area" role="tab">지역별</a>
 					</li>
 				</ul>
 

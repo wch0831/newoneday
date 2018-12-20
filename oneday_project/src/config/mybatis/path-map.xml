@@ -15,7 +15,7 @@
        <collection property="plist" resultMap="shopPicMap"></collection>
    </resultMap> -->
     
-	<resultMap id="pathMap" type="com.oneday.member.MemberVO">
+	<resultMap id="pathMap" type="com.oneday.path.OnePathVO">
 		<id property="oSeq" column="o_seq" />
 		<result property="oTitle" column="o_title" />
 		<result property="oContent" column="o_content" />
@@ -33,23 +33,73 @@
 <!-- 경로  -->
 <!-- 경로검색/조회  -->
     <select id="pathSelect"
-    	parameterType="com.oneday.place.OnePathVO"
+    	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
     	    select o_title, o_content, o_see, o_tmapimg from onepath
 			where o_theme=#{oTheme} and o_area=#{oArea} and o_del='n'
     </select>
 
 <!-- 인기리스트조회/평점순 정렬  -->
-	<select id="popSelect"
-    	parameterType="com.oneday.place.OnePathVO"
+	<select id="popThemeSelect"
+    	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
-    	    select o_title, o_content, o_see, o_tmapimg from onepath
-			where o_theme=#{oTheme} and o_del='n'
-			order by o_see desc
+    	    select o_title, o_content, o_tmapimg from onepath 
+			where o_seq=(select o_seq from onepath where o_see= 
+              (select max(o_see) from onepath where o_theme='여행')
+              and o_theme='여행' and o_del='n' and rownum=1)
+			union
+			select o_title, o_content, o_tmapimg from onepath 
+			where o_seq=(select o_seq from onepath where o_see= 
+			 (select max(o_see) from onepath where o_theme='데이트')
+			 and o_theme='데이트' and o_del='n' and rownum=1)
+			union
+			select o_title, o_content, o_tmapimg from onepath 
+			where o_seq=(select o_seq from onepath where o_see=
+			 (select max(o_see) from onepath where o_theme='산책') 
+			 and o_theme='산책' and o_del='n' and rownum=1)			
     </select>
-	
+    
+    <select id="popAreaSelect"
+    	parameterType="com.oneday.path.OnePathVO"
+    	resultMap="pathMap">
+    	    select o_title, o_content, o_tmapimg from onepath 
+			where o_seq=(select o_seq from onepath where o_see= 
+              (select max(o_see) from onepath where o_area='서울')
+              and o_area='서울' and o_del='n' and rownum=1)
+			union
+			select o_title, o_content, o_tmapimg from onepath 
+			where o_seq=(select o_seq from onepath where o_see=
+			  (select max(o_see) from onepath where o_area='경기도')
+			  and o_area='경기도' and o_del='n' and rownum=1)
+			union
+			select o_title, o_content, o_tmapimg from onepath 
+			where o_seq=(select o_seq from onepath where o_see=
+			  (select max(o_see) from onepath where o_area='강원도') 
+			  and o_area='강원도' and o_del='n' and rownum=1)
+			union
+			select o_title, o_content, o_tmapimg from onepath 
+			where o_seq=(select o_seq from onepath where o_see=
+			  (select max(o_see) from onepath where o_area='충청도') 
+			  and o_area='충청도' and o_del='n' and rownum=1)
+			union
+			select o_title, o_content, o_tmapimg from onepath 
+			where o_seq=(select o_seq from onepath where o_see= 
+			  (select max(o_see) from onepath where o_area='전라도') 
+			  and o_area='전라도' and o_del='n' and rownum=1)
+			union
+			select o_title, o_content, o_tmapimg from onepath 
+			where o_seq=(select o_seq from onepath where o_see= 
+			  (select max(o_see) from onepath where o_area='경상도') 
+			  and o_area='경상도' and o_del='n' and rownum=1)
+			union
+			select o_title, o_content, o_tmapimg from onepath 
+			where o_seq=(select o_seq from onepath where o_see= 
+			  (select max(o_see) from onepath where o_area='제주도') 
+			  and o_area='제주도' and o_del='n' and rownum=1)
+    </select>
+    
 	<select id="seeSort"
-    	parameterType="com.oneday.place.OnePathVO"
+    	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
     	    select o_title, o_content, o_see, o_tmapimg from onepath
 			where o_theme=#{oTheme} and o_area=#{oArea} and o_del='n'
@@ -58,7 +108,7 @@
 
 <!-- 최신순 정렬  -->
 	<select id="dateSort"
-    	parameterType="com.oneday.place.OnePathVO"
+    	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
     	    select o_title, o_content, o_see, o_tmapimg from onepath
 			where o_theme=#{oTheme} and o_area=#{oArea} and o_del='n'
@@ -67,7 +117,7 @@
 
 <!-- 목록내 제목 검색  -->
 	<select id="titleSelect"
-    	parameterType="com.oneday.place.OnePathVO"
+    	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
     	    select * from (select o_title, o_content, o_see, o_tmapimg from onepath
 			where o_theme=#{oTheme} and o_area=#{oArea}) b where b.o_title like '%#{oTitle}%'
@@ -75,7 +125,7 @@
 
 <!-- 마이페이지-경로조회  -->
 	<select id="mySelect"
-    	parameterType="com.oneday.place.OnePathVO"
+    	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
 			select o_title, o_content, o_see, o_tmapimg from onepath
 			where m_seq=#{mseq}
@@ -83,7 +133,7 @@
 
 <!-- 관리자페이지-경로조회  -->
 	<select id="adminSelect"
-    	parameterType="com.oneday.place.OnePathVO"
+    	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
 			select o_title, o_content, o_see, o_tmapimg from onepath
 			where o_theme=#{oTheme}
@@ -91,7 +141,7 @@
 
 <!-- 경로상세페이지-상세 조회  -->
 	<select id="detailSelect"
-    	parameterType="com.oneday.place.OnePathVO"
+    	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
 			select o.o_seq, o.o_title, o.o_content , o.o_tmapimg, m.m_nick, o.o_regdate, p.p_lat, p.p_lng 
 			from onepath o, member m, onepath_place op, place p
@@ -99,24 +149,24 @@
     </select>
 
 <!-- 경로상세페이지-게시글신고  -->
-	<insert id="pathReport" parameterType="com.oneday.place.OnePathVO">
+	<insert id="pathReport" parameterType="com.oneday.path.OnePathVO">
 		insert into onepath_report(m_seq, o_seq) values (#{mSeq},#{oSeq})
 	</insert>
 
 
 <!-- 마이페이지-경로삭제  -->
-	<update id="pathDelete" parameterType="com.oneday.place.OnePathVO">
+	<update id="pathDelete" parameterType="com.oneday.path.OnePathVO">
 		update onepath set o_del='y', o_deldate=sysdate
 		where o_seq=#{oSeq} and m_seq=#{mSeq}	
 	</update>
 
 <!-- 관리자페이지-경로삭제  -->
-	<update id="adminPathDelete" parameterType="com.oneday.place.OnePathVO">
+	<update id="adminPathDelete" parameterType="com.oneday.path.OnePathVO">
 		update onepath set o_del='y', o_deldate=sysdate where o_seq=#{oSeq}
 	</update>
 
 <!-- 마이페이지-경로수정  -->
-	<update id="pathUpdate" parameterType="com.oneday.place.OnePathVO">
+	<update id="pathUpdate" parameterType="com.oneday.path.OnePathVO">
 		update onepath set o_title=#{oTitle}, o_content=#{oContent} where o_seq=#{oSeq} and m_seq=#{mSeq}
 	</update>
 	

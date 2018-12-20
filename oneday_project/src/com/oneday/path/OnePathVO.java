@@ -1,4 +1,4 @@
-package com.oneday.place;
+package com.oneday.path;
 
 public class OnePathVO {
 	private int oSeq;
