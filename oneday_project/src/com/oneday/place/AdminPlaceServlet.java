@@ -21,17 +21,14 @@ public class AdminPlaceServlet extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("assafds");
+		System.out.println("adminplaceservlet 들어옴");
 		AdminPlaceDAO dao = new AdminPlaceDAO();
 		ArrayList<PlaceVO> list = new ArrayList<PlaceVO>();
-		PlaceVO pvo = new PlaceVO();
-		
 		list = dao.selectPlace();
-		
 		
 		request.setAttribute("KEY_LIST", list);
 		
-		request.getRequestDispatcher("/place-list.jsp").forward(request, response);
+		request.getRequestDispatcher("/admin/place-list.jsp").forward(request, response);
 		
 	}
 
