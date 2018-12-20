@@ -48,7 +48,7 @@
     <!-- 회원가입 -->
     <insert id="member_register" parameterType="com.oneday.member.MemberVO">
     	insert into member (m_seq, m_email, m_pw, m_name, m_nick, m_resnum, m_gubun, m_regdate, m_del, m_deldate)
-    	values (8, #{mEmail}, #{mPw}, #{mName}, #{mNick}, #{mResnum}, 'u', sysdate, 'n', null)
+    	values (member_seq.nextval, #{mEmail}, #{mPw}, #{mName}, #{mNick}, #{mResnum}, 'u', sysdate, 'n', null)
     </insert>
     
     <!-- 관리자 회원정보 -->
@@ -76,18 +76,25 @@
     <update id="randomPassword" parameterType="com.oneday.member.MemberVO">
     	update member
     	set m_pw=#{mPw}
-    	where m_email=#{eMail}
+    	where m_email=#{mEmail}
     </update>
     
      <!-- 비밀번호 변경 -->
     <update id="changePassword" parameterType="com.oneday.member.MemberVO">
     	update member
     	set m_pw=#{mPw}
-    	where m_email=#{eMail}
+    	where m_email=#{mEmail}
     </update>
     
-    <select id="check" parameterType="String">
-    	select m_email, m_nick
+    <!-- Email중복확인 -->
+    <select id="checkEmaile" parameterType="String">
+    	select m_email
+    	from member
+    </select>
+    
+    <!-- Nick중복확인 -->
+    <select id="checkNick" parameterType="String">
+    	select m_nick
     	from member
     </select>
     
