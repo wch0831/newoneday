@@ -58,7 +58,7 @@
     <delete id="admin_Review_del"
     	parameterType="com.oneday.review.ReviewVO">   	
     		delete from reply
-			where r_seq=2	
+			where r_seq=#{rSeq}	
    	</delete>
   
     

@@ -15,48 +15,40 @@
     <link href="/admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/admin/css/style.css" rel="stylesheet">
     <link href="/admin/css/colors/blue.css" id="theme" rel="stylesheet">
-    <script src="/admin/assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="/admin/assets/plugins/bootstrap/js/tether.min.js"></script>
-    <script src="/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="/admin/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="/admin/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="/admin/js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="/admin/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="/admin/js/custom.min.js"></script>
     
     <script>
    $(document).ready(function(){
 	   // 에이잭스
-	   $(document).on("click",".adRseq",function(){
-	   var seq = $(this).attr("name");
-		alert(name);	
-	   var sendData = {"rSeq":seq};
 	   
+	   var names  =${.class}.attr("class");
+       var arr = names.split("^^^");
+	   var rSeq = ${"replybtn"+${vo.rSeq}}.val();
+	   var sendData = {"rSeq":arr[1]};
+	   
+ 
+	$("delBtn").click(function(){
+			
 			$.ajax({ 	
-			url:"/ad_review",
+			url:"/ad_review",   
 			type:"post",
-			contentType: "application/json; charset=UTF-8",
-			data:JSON.stringify(sendData),
-			success:function(gsonStr){
-					console.log(gsonStr);		//객체
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			data: json.stringfy(sendData),
+			resultType:"json",
+			
+			success:function(resObject){
+					console.log(resObject);		//객체
 					var topListStr = "";
 					var listStr = "";
-		 			$.map(gsonStr, function(vv, idx){				 					 	            			 	            
+		 			$.map(resObject, function(vv, idx){				 					 	            			 	            
 		 	            	listStr += "<tr>";
 		 	            	listStr += "<td>"+vv.oSeq+"</td>";
 		 	            	listStr += "<td>"+vv.rSeq+"</td>";
 		 	            	listStr += "<td>"+vv.oTitle+"</td>";
 		 	            	listStr += "<td>"+vv.mNick+"</td>";
 		 	            	listStr += "<td>"+vv.rContent+"</td>";
-		 	            	listStr += "<td>"+vv.rRegdate+"</td>";            
-		 	            	listStr += "<td><input type='button' name='"+vv.rSeq+"' id='delBtn' class='adRseq' value='삭제'></td>"
-		 	            	listStr += "</tr>";                               	 	            	 	            	
+		 	            	listStr += "<td>"+vv.rRegdate+"</td>";
+		 	            	listStr +="<td><input type='button' name='delButton' id='" + vv.rSeq + "' value='삭제'></td>";
+		 	            	listStr += "</tr>"                               	 	            	 	            	
 		 	  	});
 		 			
 		 			$("#contents").empty();
@@ -66,13 +58,7 @@
 		});  	
 		
    });
-	   
-});
-   
-   function Btnfun(){
-	//var idval = document.getElementById("delBtn${vo.rSeq}").id;
-	alert(document.getElementById(test.getAttribute('id')).getAttribute('id'));
-   }
+   });
  
 </script>
 
@@ -247,8 +233,7 @@
 	                                                <td>${vo.mNick}</td>
 	                                                <td>${vo.rContent}</td>
 	                                                <td>${vo.rRegdate}</td> 
-	                                                <td><input type="button" name="${vo.rSeq}" id="delBtn" class="adRseq" value="삭제">
-	                                                </td>
+	                                                <td><input type="button" class="nnnn^^^${vo.rSeq}" id="delBtn"${vo.rSeq}" value="삭제"></td>
                                                 </tr>		
                                             </c:forEach> 
                                          </tbody>
@@ -285,6 +270,20 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script src="/admin/assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/admin/assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="/admin/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="/admin/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/admin/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="/admin/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/admin/js/custom.min.js"></script>
 </body>
 
 </html>
