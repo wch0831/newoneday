@@ -190,7 +190,6 @@ $(document).ready(function(){
 						<button id="gumbtn">검색</button>
 						</div>
 						</div>
-   						
                    
                 </div>
                 <!-- ============================================================== -->
@@ -206,83 +205,106 @@ $(document).ready(function(){
                             <div class="card-block">
                               
                                 <div class="table-responsive">
-                                   <table class="table" id="ad_table" name="ad_table">
-                                        <thead>                                                                                   
-                                            <tr style="background-color:#D8D8D8" >
-                                                <th><th>
-                                                <th>번호</th>
-                                                <th>이름</th>
-                                                <th>내용</th>
-                                                <th>위도</th>
-                                                <th>경도</th>
-                                                <th>지역</th>
-                                                <th>비용</th>
-                                                <th>실내/외</th>
-                                                <th>목적</th>
-                                                <th>날짜</th>
-                                            </tr>
-                                        </thead>
-                                         <tbody>
-                                            <c:forEach var="vo" items="${KEY_LIST}">
-                                                <tr>
-	                                                <td></td>
-	                                                <td>${vo.pSeq}</td>
-	                                                <td>${vo.pTitle}</td>
-	                                                <td>${vo.pContent}</td> 
-	                                                <td>${vo.pLat}</td>
-	                                                <td>${vo.pLng}</td>
-	                                                <td>${vo.pArea}</td>
-	                                                <td>${vo.pCost}</td>
-	                                                <td>${vo.pInout}</td>
-	                                                <td>${vo.pPurpose}</td>
-	                                                <td>${vo.pRegdate}</td>
-                                                </tr>		
-                                            </c:forEach> 
-                                         </tbody>       
-                             <!--           <tbody>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Deshmukh</td>
-                                                <td>Gaylord</td>
-                                                <td>@Ritesh</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sanghani</td>
-                                                <td>Gusikowski</td>
-                                                <td>@Govinda</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Roshan</td>
-                                                <td>Rogahn</td>
-                                                <td>@Hritik</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Joshi</td>
-                                                <td>Hickle</td>
-                                                <td>@Maruti</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>s
-                                                <td>Nigam</td>
-                                                <td>Eichmann</td>
-                                                <td>@Sonu</td>
-                                            </tr>  
-                                         </tbody>  -->
-                                    </table>
+                                        <form id="regForm" method="POST" action="/register" class="needs-validation"
+                enctype="multipart/form-data">
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="frist_name">이름</label>
+                      <input id="user_id" type="text" 
+                      class="form-control" name="user_id" autofocus 
+                       required>
+                     
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="last_name">목적</label>
+                      <input id="user_name" type="text" class="form-control" 
+                      name="user_name">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">주소</label>
+                    <input id="user_email" type="email" class="form-control" name="user_email">
+                    <div class="invalid-feedback">
+                    		
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="password" class="d-block">위도</label>
+                      <input id="user_pw" type="password" class="form-control" name="user_pw">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="password2" class="d-block">경도</label>
+                      <input id="user_pw2" type="password" class="form-control" name="user_pw2">
+                    </div>
+                  </div>
+									
+									<div class="row">
+											<div class="form-group col-6">
+		                    <label for="pname">지역</label>
+		                    <input id="pname" type="file" class="form-control" name="pname"> <!--  multiple -->
+		                    <div class="invalid-feedback">
+		                    		
+		                    </div>
+		                  </div>
+		                  <div id="prev-img-div" class="form-group col-6">
+		                   		<!-- <img id="prev-img" style="height:100px;width:100px;"> -->
+		                  </div>
+									</div>
+									
+                 
+                  <div class="form-group">
+                  	<div class="graybox" style="line-height:220%">
+									    <div id="ex2_postcodify" class="postcodify_search_form postcode_search_form">	
+									   <!--  <div class="postcodify_search_controls postcode_search_controls">
+									    	<label for="postcodify_15420024258697316" style="display: none;">검색 키워드</label>
+									    	<input type="text" class="keyword" value="" id="postcodify_15420024258697316" style="width: 343px;">
+									    	<button type="button" class="search_button" id="postcodify_15420024258697316_button">검색</button>
+									    </div>
+									    <div class="too_short postcodify_search_status postcode_search_status">검색어는 3글자 이상 입력해 주십시오.</div>
+									     -->
+									    </div>
+									    
+									    <label for="ex2_input1">날짜</label>
+									    <input type="text" id="addr"  class="form-control" value="" style="width: 343px;">
+									    <br>
+									    <label for="ex2_input2">상세주소</label>
+									    <input type="text" id="addr_detail" class="form-control" value="" style="width: 343px;">
+									    <br>
+									    <label for="ex2_input3">참고항목</label>
+									    <input type="text" id="addr_etc" class="form-control" value="" style="width: 343px;">
+									    <br>
+									    <label for="ex2_input4">지번주소</label>
+									    <input type="text" id="addr_jibun" class="form-control" value="" style="width: 343px;">
+									    <br>
+									    <label for="ex2_input5">영문주소</label>
+									    <input type="text" id="addr_eng" class="form-control" value="" style="width: 343px;">
+									    <br>
+									</div>
+                </div>
+                  
+
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" name="agree" class="custom-control-input" id="agree" value="y">
+                      <label class="custom-control-label" for="agree">약관동의</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">	
+                    <button type="button" id="regButton" class="btn btn-primary btn-block">
+                      Register
+                    </button>
+                  </div>
+                </form>
                                 </div>
                                 </div>
                              
                                 
                             </div>
-                            <div id="buttonall">
-                            <p align="right" >
-                            <input onclick="location='map-google.jsp'" id="addbutton" type = "button" value="등록"/> 
-                             </p>
-                            
-                            </div>
+                          
                         </div>
                     </div>
                 </div>
