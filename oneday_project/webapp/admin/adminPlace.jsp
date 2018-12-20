@@ -1,57 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <title>Material Pro Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <!-- You can change the theme colors from here -->
-    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-<script>
-$(document).ready(function(){
-	$("#gumbtn").click(function(){
-		var search = $("#search").val();
-		console.log(search);
-		var gum = $("#gum").val();
-		console.log(gum);
-	});
-	$("#deletebutton").click(function(){
-		var result = confirm("정말로 삭제하시겠습니까?");
-		if(result){
-			alert("삭제되었습니다.");
-		}else{
-			alert("취소되었습니다.");
-		}
-	})
-	
-});
-		
-
-</script>
+    <link href="/admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/admin/css/style.css" rel="stylesheet">
+    <link href="/admin/css/colors/blue.css" id="theme" rel="stylesheet">
 
 </head>
-
 
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -78,15 +43,15 @@ $(document).ready(function(){
                     <a class="navbar-brand" href="index.jsp">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            
+                           
                             <!-- Light Logo icon -->
-                            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            <img src="/admin/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text --><span>
-                        
+                         
                          <!-- Light Logo text -->    
-                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                         <img src="/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -177,28 +142,15 @@ $(document).ready(function(){
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">관리자 장소 리스트</h3>
+                        <h3 class="text-themecolor m-b-0 m-t-0">Table</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Placelist</li>
+                            <li class="breadcrumb-item active">Table</li>
                         </ol>
                     </div>
-                         <div  class="col col-xs-6 text-right">
-						
-						<div  class="col col-xs-6 text-right">
-						<select id="search" name="search">
-   						<option value="">search</option>
-    					<option value="주소">주소</option>
-    					<option value="목적">목적</option>
-    					<option value="실내/실외">실내/실외</option>
-						</select>
-						
-						<input type = "text" id="gum" placeholder="검색어">
-						<button id="gumbtn">검색</button>
-						</div>
-						</div>
-   						
-                   
+                    <div class="col-md-7 col-4 align-self-center">
+                        <a href="https://themewagon.com/themes/material-bootstrap-4-free-admin-template/" class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down">Download Now</a>
+                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
@@ -206,101 +158,45 @@ $(document).ready(function(){
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-             	               <div class="row">
+                <div class="row">
                     <!-- column -->
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-block">
-                              
+                                <h4 class="card-title">Basic Table</h4>
+                                <h6 class="card-subtitle">Add class <code>.table</code></h6>
                                 <div class="table-responsive">
                                    <table class="table" id="ad_table" name="ad_table">
                                         <thead>                                                                                   
-                                            <tr style="background-color:#D8D8D8" >
-                                                <th class="seq-checkbox">
-                      <input type="checkbox" name="seq" class="seq-control-input" id="check" value="y">
-                     </th>
-                                                <th>번호</th>
-                                                <th>이름</th>
-                                                <th>내용</th>
-                                                <th>위도</th>
-                                                <th>경도</th>
-                                                <th>지역</th>
-                                                <th>비용</th>
-                                                <th>실내/외</th>
-                                                <th>목적</th>
-                                                <th>날짜</th>
+                                            <tr>
+                                            	<th>체크</th>
+                                                <th><b>게시글번호</th>
+                                                <th><b>댓글번호</th>
+                                                <th><b>게시글제목</th>
+                                                <th><b>닉네임</th>
+                                                <th><b>댓글내용</th>
+                                                <th><b>등록일자</th>
                                             </tr>
-                                               
                                         </thead>
                                          <tbody>
                                             <c:forEach var="vo" items="${KEY_LIST}">
                                                 <tr>
-	                                              
-                     								<td></td>
-	                                                <td>${vo.pSeq}</td>
-	                                                <td>${vo.pTitle}</td>
-	                                                <td>${vo.pContent}</td> 
-	                                                <td>${vo.pLat}</td>
-	                                                <td>${vo.pLng}</td>
-	                                                <td>${vo.pArea}</td>
-	                                                <td>${vo.pCost}</td>
-	                                                <td>${vo.pInout}</td>
-	                                                <td>${vo.pPurpose}</td>
-	                                                <td>${vo.pRegdate}</td>
+	                                                <td><input type="checkbox"></td>
+	                                                <td>${vo.oSeq}</td>
+	                                                <td>${vo.rSeq}</td>
+	                                                <td>${vo.oTitle}</td>
+	                                                <td>${vo.mNick}</td>
+	                                                <td>${vo.rContent}</td>
+	                                                <td>${vo.rRegdate}</td> 
                                                 </tr>		
                                             </c:forEach> 
-                                         </tbody>       
-                             <!--           <tbody>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Deshmukh</td>
-                                                <td>Gaylord</td>
-                                                <td>@Ritesh</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sanghani</td>
-                                                <td>Gusikowski</td>
-                                                <td>@Govinda</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Roshan</td>
-                                                <td>Rogahn</td>
-                                                <td>@Hritik</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Joshi</td>
-                                                <td>Hickle</td>
-                                                <td>@Maruti</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>s
-                                                <td>Nigam</td>
-                                                <td>Eichmann</td>
-                                                <td>@Sonu</td>
-                                            </tr>  
-                                         </tbody>  -->
+                                         </tbody>
                                     </table>
                                 </div>
-                                </div>
-                             
-                                
                             </div>
-                            <div id="buttonall">
-                            <p align="right" >
-                            <input onclick="location='addadmin.jsp'" id="insertbutton" type = "button" value="추가"/> 
-                          	<input onclick="location='updateadmin.jsp'" id="updatebutton" type = "button" value="수정"/> 
-                          	<input id="deletebutton" type = "button" value="삭제"/> 
-                             </p>
-                             
-                               </div>
                         </div>
                     </div>
                 </div>
-                                
-                                
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -328,24 +224,20 @@ $(document).ready(function(){
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="/admin/assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/plugins/bootstrap/js/tether.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="js/jquery.slimscroll.js"></script>
+    <script src="/admin/js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
-    <script src="js/waves.js"></script>
+    <script src="/admin/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="js/sidebarmenu.js"></script>
+    <script src="/admin/js/sidebarmenu.js"></script>
     <!--stickey kit -->
-    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="/admin/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <!--Custom JavaScript -->
-    <script src="js/custom.min.js"></script>
-    <!-- google maps api -->
-    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCUBL-6KdclGJ2a_UpmB2LXvq7VOcPT7K4&sensor=true"></script>
-    <script src="assets/plugins/gmaps/gmaps.min.js"></script>
-    <script src="assets/plugins/gmaps/jquery.gmaps.js"></script>
+    <script src="/admin/js/custom.min.js"></script>
 </body>
 
 </html>

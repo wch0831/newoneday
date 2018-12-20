@@ -36,8 +36,7 @@ $(document).ready(function(){
 		var gum = $("#gum").val();
 		console.log(gum);
 	});
-	
-	
+
 });
 		
 
@@ -133,7 +132,7 @@ $(document).ready(function(){
                         </li>
                         <li> <a class="waves-effect waves-dark" href="icon-material.jsp" aria-expanded="false"><i class="mdi mdi-emoticon"></i><span class="hide-menu">Icons</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="map-google.jsp" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Google Map</span></a>
+                        <li> <a class="waves-effect waves-dark" href="place-list.jsp" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Place List</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="pages-blank.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank Page</span></a>
                         </li>
@@ -192,12 +191,9 @@ $(document).ready(function(){
 						</div>
                    
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
+               
+               <!---------------------- 폼작성 ----------------------->
+               
              	               <div class="row">
                     <!-- column -->
                     <div class="col-lg-12">
@@ -205,26 +201,26 @@ $(document).ready(function(){
                             <div class="card-block">
                               
                                 <div class="table-responsive">
-                                        <form id="regForm" method="POST" action="/register" class="needs-validation"
+                                        <form id="regForm" method="POST" action="/place-list" class="needs-validation"
                 enctype="multipart/form-data">
                   <div class="row">
                     <div class="form-group col-6">
-                      <label for="frist_name">이름</label>
-                      <input id="user_id" type="text" 
-                      class="form-control" name="user_id" autofocus 
+                      <label for="name">이름</label>
+                      <input id="p_title" type="text" 
+                      class="form-control" name="p_title" autofocus 
                        required>
                      
                     </div>
                     <div class="form-group col-6">
-                      <label for="last_name">목적</label>
-                      <input id="user_name" type="text" class="form-control" 
-                      name="user_name">
+                      <label for="purpose">목적</label>
+                      <input id="p_purpose" type="text" class="form-control" 
+                      name="p_purpose">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="email">주소</label>
-                    <input id="user_email" type="email" class="form-control" name="user_email">
+                    <label for="content">주소</label>
+                    <input id="p_content" type="text" class="form-control" name="p_content">
                     <div class="invalid-feedback">
                     		
                     </div>
@@ -232,27 +228,14 @@ $(document).ready(function(){
 
                   <div class="row">
                     <div class="form-group col-6">
-                      <label for="password" class="d-block">위도</label>
-                      <input id="user_pw" type="password" class="form-control" name="user_pw">
+                      <label for="lat" class="d-block">위도</label>
+                      <input id="p_lat" type="text" class="form-control" name="p_lat">
                     </div>
                     <div class="form-group col-6">
-                      <label for="password2" class="d-block">경도</label>
-                      <input id="user_pw2" type="password" class="form-control" name="user_pw2">
+                      <label for="lng" class="d-block">경도</label>
+                      <input id="p_lng" type="text" class="form-control" name="p_lng">
                     </div>
                   </div>
-									
-									<div class="row">
-											<div class="form-group col-6">
-		                    <label for="pname">지역</label>
-		                    <input id="pname" type="file" class="form-control" name="pname"> <!--  multiple -->
-		                    <div class="invalid-feedback">
-		                    		
-		                    </div>
-		                  </div>
-		                  <div id="prev-img-div" class="form-group col-6">
-		                   		<!-- <img id="prev-img" style="height:100px;width:100px;"> -->
-		                  </div>
-									</div>
 									
                  
                   <div class="form-group">
@@ -266,41 +249,34 @@ $(document).ready(function(){
 									    <div class="too_short postcodify_search_status postcode_search_status">검색어는 3글자 이상 입력해 주십시오.</div>
 									     -->
 									    </div>
+									    <label for="area">지역  </label>
+									    <input type="text" id="p_area" class="form-control" value="" style="width: 343px;">
+									    <br>
+									    <label for="cost">비용  </label>
+									    <input type="text" id="p_cost" class="form-control" value="" style="width: 343px;">
+									    <br>
+									    <label for="inout">실내/실외</label>
+									    <input type="text" id="p_inout" class="form-control" value="" style="width: 305px;">
+									    <br>
+									    <label for="regdate">날짜  </label>
+									    <input type="text" id="p_regdate" class="form-control" value="" style="width: 343px;">
+									    <br>
 									    
-									    <label for="ex2_input1">날짜</label>
-									    <input type="text" id="addr"  class="form-control" value="" style="width: 343px;">
-									    <br>
-									    <label for="ex2_input2">상세주소</label>
-									    <input type="text" id="addr_detail" class="form-control" value="" style="width: 343px;">
-									    <br>
-									    <label for="ex2_input3">참고항목</label>
-									    <input type="text" id="addr_etc" class="form-control" value="" style="width: 343px;">
-									    <br>
-									    <label for="ex2_input4">지번주소</label>
-									    <input type="text" id="addr_jibun" class="form-control" value="" style="width: 343px;">
-									    <br>
-									    <label for="ex2_input5">영문주소</label>
-									    <input type="text" id="addr_eng" class="form-control" value="" style="width: 343px;">
-									    <br>
+									    
 									</div>
                 </div>
                   
 
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="agree" class="custom-control-input" id="agree" value="y">
-                      <label class="custom-control-label" for="agree">약관동의</label>
-                    </div>
-                  </div>
-
                   <div class="form-group">	
-                    <button type="button" id="regButton" class="btn btn-primary btn-block">
+                    <button onclick="location='place-list.jsp'" type="button" id="regButton" class="btn btn-primary btn-block">
                       Register
                     </button>
                   </div>
                 </form>
                                 </div>
                                 </div>
+
+                  
                              
                                 
                             </div>
@@ -323,7 +299,7 @@ $(document).ready(function(){
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                Â© 2017 Material Pro Admin by wrappixel.com
+                Â© 2018 Pro Admin 
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
