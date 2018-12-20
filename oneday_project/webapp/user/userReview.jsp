@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <!--
 * CoreUI - Free Bootstrap Admin Template
 * @version v2.1.10
 * @link https://coreui.io
-* Copyright (c) 2018 creativeLabs Łukasz Holeczek
+* Copyright (c) 2018 creativeLabs Åukasz Holeczek
 * Licensed under MIT (https://coreui.io/license)
 -->
 
@@ -14,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
-    <meta name="author" content="Łukasz Holeczek">
+    <meta name="author" content="Åukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <title>CoreUI Free Bootstrap Admin Template</title>
     <!-- Icons-->
@@ -23,8 +25,8 @@
     <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
     <!-- Main styles for this application-->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+    <link href="/user/css/style.css" rel="stylesheet">
+    <link href="/user/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
     <script>
@@ -353,151 +355,35 @@
                 <i class="icon-speech"></i>
               </a>
               <a class="btn" href="./">
-                <i class="icon-graph"></i>  Dashboard</a>
+                <i class="icon-graph"></i> Â Dashboard</a>
               <a class="btn" href="#">
-                <i class="icon-settings"></i>  Settings</a>
+                <i class="icon-settings"></i> Â Settings</a>
             </div>
           </li>
         </ol>
         <div class="container-fluid">
-          <div class="animated fadeIn">
-            <div class="card">
-              <div class="card-header">
-                <i class="icon-drop"></i> Theme colors</div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-primary theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Brand Primary Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-secondary theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Brand Secondary Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-success theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Brand Success Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-danger theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Brand Danger Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-warning theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Brand Warning Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-info theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Brand Info Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-light theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Brand Light Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-dark theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Brand Dark Color</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <i class="icon-drop"></i> Grays</div>
-              <div class="card-body">
-                <div class="row mb-3">
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-gray-100 theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Gray 100 Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-gray-200 theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Gray 200 Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-gray-300 theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Gray 300 Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-gray-400 theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Gray 400 Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-gray-500 theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Gray 500 Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-gray-600 theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Gray 600 Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-gray-700 theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Gray 700 Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-gray-800 theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Gray 800 Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="bg-gray-900 theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Gray 900 Color</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <i class="icon-drop"></i> Additional colors</div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-blue theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Blue Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-light-blue theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Light Blue Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-indigo theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Indigo Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-purple theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Purple Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-pink theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Pink Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-red theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Red Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-orange theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Orange Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-yellow theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Yellow Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-green theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Green Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-teal theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Teal Color</h6>
-                  </div>
-                  <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                    <div class="mb-3 bg-cyan theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                    <h6>Cyan Color</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <table class="table table-responsive-sm table-hover table-outline mb-0">
+                      <thead class="text-center">
+                        <tr>
+                       	<th>게시글번호</th>
+                       	<th>댓글번호</th>
+                       	<th>댓글내용</th>
+                       	<th>등록일자</th>
+                       	<th>삭제</th>
+                       	
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-center">${KEY_RVO.oSeq}</td>
+                          <td class="text-center">${KEY_RVO.rSeq}</td>
+                          <td class="text-center">${KEY_RVO.rContent}</td>
+                          <td class="text-center">${KEY_RVO.rRegdate}</td>
+                          <td class="text-center"><input type="Button" value="삭제"></td>
+                         
+                        </tr> 
+                      </tbody>
+                    </table>
         </div>
       </main>
       <aside class="aside-menu">
@@ -531,9 +417,9 @@
                   <strong>Lucas</strong>
                 </div>
                 <small class="text-muted mr-3">
-                  <i class="icon-calendar"></i>  1 - 3pm</small>
+                  <i class="icon-calendar"></i>Â  1 - 3pm</small>
                 <small class="text-muted">
-                  <i class="icon-location-pin"></i>  Palo Alto, CA</small>
+                  <i class="icon-location-pin"></i>Â  Palo Alto, CA</small>
               </div>
               <div class="list-group-item list-group-item-accent-info">
                 <div class="avatar float-right">
@@ -543,9 +429,9 @@
                   <strong>Megan</strong>
                 </div>
                 <small class="text-muted mr-3">
-                  <i class="icon-calendar"></i>  4 - 5pm</small>
+                  <i class="icon-calendar"></i>Â  4 - 5pm</small>
                 <small class="text-muted">
-                  <i class="icon-social-skype"></i>  On-line</small>
+                  <i class="icon-social-skype"></i>Â  On-line</small>
               </div>
               <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Tomorrow</div>
               <div class="list-group-item list-group-item-accent-danger list-group-item-divider">
@@ -553,9 +439,9 @@
                   <strong>deadline</strong>
                 </div>
                 <small class="text-muted mr-3">
-                  <i class="icon-calendar"></i>  10 - 11pm</small>
+                  <i class="icon-calendar"></i>Â  10 - 11pm</small>
                 <small class="text-muted">
-                  <i class="icon-home"></i>  creativeLabs HQ</small>
+                  <i class="icon-home"></i>Â  creativeLabs HQ</small>
                 <div class="avatars-stack mt-2">
                   <div class="avatar avatar-xs">
                     <img class="img-avatar" src="img/avatars/2.jpg" alt="admin@bootstrapmaster.com">
@@ -578,18 +464,18 @@
                 <div>
                   <strong>#10 Startups.Garden</strong> Meetup</div>
                 <small class="text-muted mr-3">
-                  <i class="icon-calendar"></i>  1 - 3pm</small>
+                  <i class="icon-calendar"></i>Â  1 - 3pm</small>
                 <small class="text-muted">
-                  <i class="icon-location-pin"></i>  Palo Alto, CA</small>
+                  <i class="icon-location-pin"></i>Â  Palo Alto, CA</small>
               </div>
               <div class="list-group-item list-group-item-accent-primary list-group-item-divider">
                 <div>
                   <strong>Team meeting</strong>
                 </div>
                 <small class="text-muted mr-3">
-                  <i class="icon-calendar"></i>  4 - 6pm</small>
+                  <i class="icon-calendar"></i>Â  4 - 6pm</small>
                 <small class="text-muted">
-                  <i class="icon-home"></i>  creativeLabs HQ</small>
+                  <i class="icon-home"></i>Â  creativeLabs HQ</small>
                 <div class="avatars-stack mt-2">
                   <div class="avatar avatar-xs">
                     <img class="img-avatar" src="img/avatars/2.jpg" alt="admin@bootstrapmaster.com">
