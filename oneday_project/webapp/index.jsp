@@ -9,33 +9,35 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){	
-	var htmlStr="";
+	console.log("12346");
 	$.ajax({ 
 			url:"/pop",
 			type:"post",
 			success:function(res){
+					alert("12346");
 					console.log(res);
-		 				htmlStr += "<section class='get'>";
+					var htmlStr="";
 		 			$.each(res, function(index, vv){
-		 				htmlStr += "<div class='row'>";
-		 				htmlStr += "<div class='col-md-12'>";
-		 				htmlStr += "<h2 class='h4 mt-0'>문의 합니다.</a></h2>";
-		 				htmlStr += "<div class='d-flex flex-wrap justify-content-between text-xs'>";
-		 				htmlStr += "<p class='author-category'>Nickname <a href='#'>" + vv.mNickname + "</a></p>";
-		 				htmlStr += "<p class='date-comments'><a href='/question.jsp'> " + vv.qRegdate + " </a></p>";
+			 			htmlStr += "<div class='item-slick2 p-l-15 p-r-15 p-t-15 p-b-15'>";
+		 				htmlStr += "<div class='block2'>";
+		 				htmlStr += "<div class='block2-pic hov-img0'>";
+		 				htmlStr += "<img src=" +vv.oTmapImg+ " alt='IMG-PRODUCT'></div>";
+		 				htmlStr += "<div class='block2-txt flex-w flex-t p-t-14'>";
+		 				htmlStr += "<div class='block2-txt-child1 flex-col-l '>";
+		 				htmlStr += "<a href='/pathdetail?"+vv.oSeq+"' class='stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6'>"+vv.oTitle+"</a>";
 		 				htmlStr += "</div>";
-		 				htmlStr += "<div>";
-		 				htmlStr += "<p class='intro'>" + vv.qText + "</p>";
-		 				htmlStr += "<td><a href='/questionDetail?mSeq="+ vv.mSeq +"' class='btn btn-template-outlined btn-sm'>상세보기</a></td>"
-		 				htmlStr += "</div>";
-		 				htmlStr += "</div>";
-		 				htmlStr += "</div>";
+		 				htmlStr += "<div class='block2-txt-child2 flex-r p-t-3'>";
+		 				htmlStr += "<a href='#' class='btn-addwish-b2 dis-block pos-relative js-addwish-b2'>";
+		 				htmlStr += "<img class='icon-heart1 dis-block trans-04' src='images/icons/icon-heart-01.png' alt='ICON'>";
+		 				htmlStr += "<img class='icon-heart2 dis-block trans-04 ab-t-l' src='images/icons/icon-heart-02.png' alt='ICON'>";
+		 				htmlStr += "</a></div></div></div></div>";
 			  	});
-		 				htmlStr += "</section>";
 			}
- 			$(".question").html(htmlStr);
+			$(".slick2").empty();
+ 			$(".slick2").html(htmlStr);
 		});
-});    
+});
+
 </script>
 
 </head>
@@ -145,81 +147,11 @@ $(document).ready(function(){
 				<!-- Tab panes -->
 				<div class="tab-content p-t-50">
 					<!-- - -->
-					<div class="tab-pane fade show active" id="best-seller" role="tabpanel">
+					<div class="tab-pane fade show active" id="theme" role="tabpanel">
 						<!-- Slide2 -->
 						<div class="wrap-slick2">
 							<div class="slick2">
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Esprit Ruffle Shirt
-												</a>
-
-												<span class="stext-105 cl3">
-													$16.64
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- - -->
-					<div class="tab-pane fade" id="featured" role="tabpanel">
-						<!-- Slide2 -->
-						<div class="wrap-slick2">
-							<div class="slick2">
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Esprit Ruffle Shirt
-												</a>
-
-												<span class="stext-105 cl3">
-													$16.64
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</div>
 					</div>

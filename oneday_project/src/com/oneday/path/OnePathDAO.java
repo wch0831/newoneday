@@ -16,15 +16,13 @@ public class OnePathDAO {
 		try {
 			System.out.println("연결");
 			conn = MyBatisFactory.getFactory().openSession();
-			list = (ArrayList)conn.selectList("memberNameSpace.member_info");
-			System.out.println("연결");
+			list = (ArrayList)conn.selectList("pathNameSpace.popThemeSelect");
 			conn.commit();
 		} catch(Exception e) {
 			e.printStackTrace();	
 		} finally {
 			conn.close();
 		}
-		
 		return list;
 	}
 }
