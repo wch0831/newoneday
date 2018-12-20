@@ -12,6 +12,29 @@ public class FaqVO {
 	private int amSeq;
 	private String aRegdate;
 	private String aContent;
+	private String mEmail;
+	private String mNick;
+	private String Check;
+	
+	
+	public String getCheck() {
+		return Check;
+	}
+	public void setCheck(String check) {
+		Check = check;
+	}
+	public String getmEmail() {
+		return mEmail;
+	}
+	public void setmEmail(String mEmail) {
+		this.mEmail = mEmail;
+	}
+	public String getmNick() {
+		return mNick;
+	}
+	public void setmNick(String mNick) {
+		this.mNick = mNick;
+	}
 	public int getqSeq() {
 		return qSeq;
 	}

@@ -23,7 +23,7 @@
                         
                         <li> <a class="waves-effect waves-dark" href="map-google.jsp" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">장소관리</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="pages-blank.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">문의관리</span></a>
+                        <li> <a class="waves-effect waves-dark" href="pages-qna.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">문의관리</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="pages-error-404.jsp" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">에러페이지</span></a>
                         </li>
