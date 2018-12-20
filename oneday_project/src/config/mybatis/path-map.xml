@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  
+<mapper namespace="userNameSpace">
+<mapper namespace="com.biz.mapper">
+ -->
+
+<mapper namespace="pathNameSpace">  
+<!--  <resultMap id="sp_11" type="com.jang.order.orderVO" extends="orderMap">
+      <association property="plist" resultMap="shopPicMap"></association>
+   </resultMap>
+   
+    <resultMap id="sp_1n" type="com.jang.order.orderVO" extends="orderMap">
+       <collection property="plist" resultMap="shopPicMap"></collection>
+   </resultMap> -->
+    
+	<resultMap id="pathMap" type="com.oneday.member.MemberVO">
+		<id property="oSeq" column="o_seq" />
+		<result property="oTitle" column="o_title" />
+		<result property="oContent" column="o_content" />
+		<result property="oTmapImg" column="o_tmapimg" />
+		<result property="oTheme" column="o_theme" />
+		<result property="oArea" column="o_area" />
+		<result property="mSeq" column="m_seq" />
+		<result property="oSee" column="o_see" />
+		<result property="oRegdate" column="o_regdate" />
+		<result property="oDel" column="o_del" />
+		<result property="oDeldate" column="o_deldate" />
+	</resultMap>
+    
+
+<!-- 경로  -->
+<!-- 경로검색/조회  -->
+    <select id="pathSelect"
+    	parameterType="com.oneday.place.OnePathVO"
+    	resultMap="pathMap">
+    	    select o_title, o_content, o_see, o_tmapimg from onepath
+			where o_theme=#{oTheme} and o_area=#{oArea} and o_del='n'
+    </select>
+
+<!-- 인기리스트조회/평점순 정렬  -->
+	<select id="popSelect"
+    	parameterType="com.oneday.place.OnePathVO"
+    	resultMap="pathMap">
+    	    select o_title, o_content, o_see, o_tmapimg from onepath
+			where o_theme=#{oTheme} and o_del='n'
+			order by o_see desc
+    </select>
+	
+	<select id="seeSort"
+    	parameterType="com.oneday.place.OnePathVO"
+    	resultMap="pathMap">
+    	    select o_title, o_content, o_see, o_tmapimg from onepath
+			where o_theme=#{oTheme} and o_area=#{oArea} and o_del='n'
+			order by o_see desc
+    </select>
+
+<!-- 최신순 정렬  -->
+	<select id="dateSort"
+    	parameterType="com.oneday.place.OnePathVO"
+    	resultMap="pathMap">
+    	    select o_title, o_content, o_see, o_tmapimg from onepath
+			where o_theme=#{oTheme} and o_area=#{oArea} and o_del='n'
+			order by o_regdate desc
+    </select>
+
+<!-- 목록내 제목 검색  -->
+	<select id="titleSelect"
+    	parameterType="com.oneday.place.OnePathVO"
+    	resultMap="pathMap">
+    	    select * from (select o_title, o_content, o_see, o_tmapimg from onepath
+			where o_theme=#{oTheme} and o_area=#{oArea}) b where b.o_title like '%#{oTitle}%'
+    </select>
+
+<!-- 마이페이지-경로조회  -->
+	<select id="mySelect"
+    	parameterType="com.oneday.place.OnePathVO"
+    	resultMap="pathMap">
+			select o_title, o_content, o_see, o_tmapimg from onepath
+			where m_seq=#{mseq}
+    </select>
+
+<!-- 관리자페이지-경로조회  -->
+	<select id="adminSelect"
+    	parameterType="com.oneday.place.OnePathVO"
+    	resultMap="pathMap">
+			select o_title, o_content, o_see, o_tmapimg from onepath
+			where o_theme=#{oTheme}
+    </select>
+
+<!-- 경로상세페이지-상세 조회  -->
+	<select id="detailSelect"
+    	parameterType="com.oneday.place.OnePathVO"
+    	resultMap="pathMap">
+			select o.o_seq, o.o_title, o.o_content , o.o_tmapimg, m.m_nick, o.o_regdate, p.p_lat, p.p_lng 
+			from onepath o, member m, onepath_place op, place p
+			where o.o_seq=#{oSeq} and o.o_del='n' and op.o_seq=o.o_seq and p.p_seq=op.p_seq and o.m_seq=m.m_seq;
+    </select>
+
+<!-- 경로상세페이지-게시글신고  -->
+	<insert id="pathReport" parameterType="com.oneday.place.OnePathVO">
+		insert into onepath_report(m_seq, o_seq) values (#{mSeq},#{oSeq})
+	</insert>
+
+
+<!-- 마이페이지-경로삭제  -->
+	<update id="pathDelete" parameterType="com.oneday.place.OnePathVO">
+		update onepath set o_del='y', o_deldate=sysdate
+		where o_seq=#{oSeq} and m_seq=#{mSeq}	
+	</update>
+
+<!-- 관리자페이지-경로삭제  -->
+	<update id="adminPathDelete" parameterType="com.oneday.place.OnePathVO">
+		update onepath set o_del='y', o_deldate=sysdate where o_seq=#{oSeq}
+	</update>
+
+<!-- 마이페이지-경로수정  -->
+	<update id="pathUpdate" parameterType="com.oneday.place.OnePathVO">
+		update onepath set o_title=#{oTitle}, o_content=#{oContent} where o_seq=#{oSeq} and m_seq=#{mSeq}
+	</update>
+	
+<!-- 경로  -->
+</mapper>   

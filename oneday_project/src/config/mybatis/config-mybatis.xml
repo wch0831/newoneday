@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>	
+	
+	<properties resource="config/mybatis/oracle.properties" />
+		 
+		 
+	<settings>
+        <setting name="cacheEnabled" value="false" />
+        <setting name="jdbcTypeForNull" value="NULL" />
+    </settings>
+	
+	<typeAliases>
+		<!-- 예시용 문경이네
+		<typeAlias alias="orderVO" type="com.jang.order.orderVO"  /> -->
+	</typeAliases>
+		
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${id}" />
+				<property name="password" value="${pw}" />
+			</dataSource>
+		</environment>
+	</environments>
+		
+	<mappers>
+		<mapper resource="config/mybatis/member-map.xml" />
+		<mapper resource="config/mybatis/path-map.xml" />
+		<mapper resource="config/mybatis/place-map.xml" />
+		<mapper resource="config/mybatis/qna-map.xml" />
+		<mapper resource="config/mybatis/review-map.xml" />	
+	</mappers>
+	
+
+</configuration>

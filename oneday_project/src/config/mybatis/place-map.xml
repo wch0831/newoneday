@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  
+<mapper namespace="userNameSpace">
+<mapper namespace="com.biz.mapper">
+ -->
+<mapper namespace="placeNameSpace">
+
+<!--  <resultMap id="sp_11" type="com.jang.order.orderVO" extends="orderMap">
+      <association property="plist" resultMap="shopPicMap"></association>
+   </resultMap>
+   
+    <resultMap id="sp_1n" type="com.jang.order.orderVO" extends="orderMap">
+       <collection property="plist" resultMap="shopPicMap"></collection>
+   </resultMap>
+   
+    
+   
+    <resultMap id="spr_1nn" type="com.biz.shop.ShopVO" extends="shopMap">
+      <collection property="plist" resultMap="shopPicMap"></collection>
+      <collection property="rlist" resultMap="shopReplyMap"></collection>
+   </resultMap> -->
+ 
+
+   <resultMap id="placeMap" type="com.oneday.place.PlaceVO">
+      <id property="pSeq" column="p_seq" />
+      <result property="pTitle" column="p_title" />
+      <result property="pContent" column="p_content" />
+      <result property="pLat" column="p_lat" />
+      <result property="pLng" column="p_lng" />
+      <result property="pArea" column="p_area" />
+      <result property="pCost" column="p_cost" />
+      <result property="pInout" column="p_inout" />
+      <result property="pPurpose" column="p_purpose" />
+      <result property="mSeq" column="m_seq" />
+      <result property="pRegdate" column="p_regdate" />
+      <result property="pPpath" column="p_ppath" />
+      <result property="pPname" column="p_pname" />
+      <result property="pSysname" column="p_sysname" />
+      <result property="pDel" column="p_del" />
+   </resultMap>
+ 
+ 
+    <resultMap id="placeHoldMap" type="com.oneday.place.PlaceHoldVO">
+      <id property="hSeq" column="h_seq" />
+      <result property="hTitle" column="h_title" />
+      <result property="hTmapImg" column="h_tmapimg" />
+      <result property="mSeq" column="m_seq" />
+      <result property="hRegdate" column="h_regdate" />
+      <result property="hDel" column="h_del" />
+   </resultMap>
+   
+   
+    <!-- <sql id="commonSelect">user_name, user_gubun</sql> -->
+    
+    <!-- 목적만 -->
+    <select id="selectPlacep" parameterType="com.oneday.place.PlaceVO" resultMap="placeMap">
+    	select * from place 
+		where p_purpose = #{pPurpose};
+    </select>
+
+    <!-- 목적과 지역만 -->
+     <select id="selectPlacepa" parameterType="com.oneday.place.PlaceVO" resultMap="placeMap">
+	     select * from place 
+		 where p_purpose=#{pPurpose} and p_area =#{pArea} ;
+    </select>
+    
+    <!--목적과 지역과 장소  -->
+     <select id="selectPlacepai" parameterType="com.oneday.place.PlaceVO" resultMap="placeMap">
+	    select * from place
+		where p_purpose=#{pPurpose} and p_area = #{pArea} and p_inout = #{pInout};
+    </select>
+    
+
+    <!-- 장소담기  -->
+    <insert id="insertPlaceHold" parameterType="com.oneday.place.PlaceHoldVO">
+	    insert into place_hold (h_seq,h_title,h_tmapimg
+	    ,m_seq,h_regdate,h_del) values(h_seq.nextval,#{hTitle}
+	    ,#{hTmapImg},#{mSeq},sysdate,'n')
+    </insert>
+    
+    <!--장소담기 삭제  -->
+    <update id="deletePlaceHold" parameterType="String">   
+    	update place_hold set h_del = 'y' where h_seq=#{value}   
+    </update>
+    
+    <!--관리자 장소 입력  -->
+    <insert id="adminInsert" parameterType="com.oneday.place.PlaceVO">
+		 insert into place(p_seq,p_title,p_content,p_lat,p_lng,p_area,p_cost,
+		 p_inout,p_purpose,m_seq,p_regdate,p_ppath,p_pname,p_sysname,p_del) 
+		 values(p_seq.nextval,#{pTitle},#{pContent},#{pLat},
+		#{pLng},#{pArea},#{pCost},#{pInout},#{pPurpose},#{mSeq},sysdate,#{pPpath},#{pPname},#{pSysname},'n');
+	 </insert>
+	 
+	 <!--관리자 장소 수정  -->
+	 <update id="adminUpdate" parameterType="com.oneday.place.PlaceVO">   
+    	update place set p_title=#{pTitle}, p_content=#{pContent}
+		,p_lat=#{pLat} ,p_lng=#{pLng} , p_area=#{pArea} , p_cost=#{pCost}
+		,p_inout = #{pInout} , p_purpose = #{pPurpose} , sysdate 
+		,p_ppath = #{pPpath},p_pname=#{pPname}, p_sysname=#{pSysname}  where p_seq=#{pSeq} ;  
+    </update>
+    
+    <!--관리자 장소 삭제  -->
+     <update id="adminDelete" parameterType="String">   
+		 update place set p_del = 'y' where p_seq=#{value} 
+    </update>
+
+   
+    
+ 			
+   </mapper> 

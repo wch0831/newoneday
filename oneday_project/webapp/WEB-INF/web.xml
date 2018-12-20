@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>oneday_project</display-name>
+  <context-param>
+    <param-name>COMMON</param-name>
+    <param-value>200ok</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>mybatisFactory</servlet-name>
+    <servlet-class>com.oneday.common.MyBatisFactory</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <jsp-config>
+    <taglib>
+      <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+      <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+    </taglib>
+    <taglib>
+      <taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+      <taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/404.jsp</location>
+  </error-page>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
