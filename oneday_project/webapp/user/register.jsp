@@ -12,26 +12,27 @@
       
     <script> 
 	$(document).ready(function(){
+		var check = 0;
+		var checke = 0;
 		
 	//이메일 중복확인 -----------------------------------------//
      
      $("#mailCheck").click(function(){
-		$.ajax({
-			url:"/registerServlet",
+    	 check = 0;
+		 var email = $("#mEmail").val();
+    	 $.ajax({
+			url:"/mailCheckServlet",
 			tpye:"GET",
-			success:function(res){
-				console.log(res);
-				var html = "";
-				$.each(res, function(index, vv){
-					if(res == 1){
-						alert("중복된 이메일이 존재합니다. 다시 시도해 주세요.")
+			data: "EMAIL="+email,
+			success:function(res){		
+					if(res == 0){
+						alert("사용가능한 이메일이주소 입니다.");
+						check = 1;
 						return false;
 					} else {
-						alert("중복되는 이메일이 존재하지 않습니다.");
+						alert("중복된 이메일이 존재합니다. 다시 시도해 주세요.");
 						return false;
 					}
-				})
-				$("#mEmail").html(html);
 			}
 		});
 		   
@@ -40,27 +41,26 @@
 	
 	//닉네임 중복확인 -----------------------------------------------//
 	
-     $("#mailCheck").click(function(){
- 		$.ajax({
- 			url:"/registerServlet",
- 			tpye:"GET",
- 			success:function(res){
- 				console.log(res);
- 				var html = "";
- 				$.each(res, function(index, vv){
- 					if(res == 1){
- 						alert("중복된 이메일이 존재합니다. 다시 시도해 주세요.")
- 						return false;
- 					} else {
- 						alert("중복되는 이메일이 존재하지 않습니다.");
- 						return false;
- 					}
- 				})
- 				$("#mEmail").html(html);
- 			}
- 		});
- 		   
- 	   });
+    $("#nickCheck").click(function(){
+    	checke = 0;
+		 var nick = $("#mNick").val();
+    	 $.ajax({
+			url:"/nickCheckServlet",
+			tpye:"GET",
+			data: "NICK="+nick,
+			success:function(res){		
+					if(res == 0){
+						alert("사용가능한 닉네임 입니다.")
+						checke = 1;
+						return false;
+					} else {
+						alert("중복된 닉네임이 존재합니다. 다시 시도해 주세요.");
+						return false;
+					}
+			}
+		});
+		   
+	   });
 	
     
 
@@ -96,6 +96,12 @@
       		alert("비밀번호가 다릅니다.");
       		$('#Password').focus();
       		return false;
+   		} else if (check == 0 ){
+   			alert("이메일 중복체크를 해주세요");
+   			return false;
+   		} else if (checke == 0){
+   			alert("닉네임 중복체크를 해주세요");
+   			return false;
    		} else {
 	   		alert("회원가입성공");
     		$('#regForm').submit();
@@ -115,7 +121,7 @@
         <div class="col-md-6">
           <div class="card mx-4">
             <div class="card-body p-4">
-              <h1>회원가입</h1>
+              <h1>Sing-in</h1>
               <p class="text-muted">아래의 정보들을 모두 입력해 주시기 바랍니다.</p>
               <form id="regForm" method="post" action="/registerServlet">
              
@@ -125,33 +131,33 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">　이메일　　</span>
                 </div>
-                <input class="form-control" type="text" id="mEmail" name="mEmail" placeholder="">
+                <input class="form-control" type="text" id="mEmail" name="mEmail">
                 <input type="button" id="mailCheck" value="중복확인">
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text">　이　름　　</span>
                 </div>
-                <input class="form-control" type="text" id="mName" name="mName" placeholder="">
+                <input class="form-control" type="text" id="mName" name="mName">
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text">　닉네임　　</span>
                 </div>
-                <input class="form-control" type="text" id="mNick" name="mNick" placeholder="">
-                <input type="button" value="중복확인">
+                <input class="form-control" type="text" id="mNick" name="mNick">
+                <input type="button" id="nickCheck" value="중복확인">
               </div>
               <div class="input-group mb-4">
                 <div class="input-group-prepend">
                   <span class="input-group-text">　비밀번호　</span>
                 </div>
-                <input class="form-control" type="password" id="mPw" name="mPw" placeholder="">
+                <input class="form-control" type="password" id="mPw" name="mPw">
               </div>
               <div class="input-group mb-4">
                 <div class="input-group-prepend">
                   <span class="input-group-text">비밀번호확인</span>
                 </div>
-                <input class="form-control" type="password" id="mPw2" name="mPw2" placeholder="">
+                <input class="form-control" type="password" id="mPw2" name="mPw2">
               </div>
               <div class="input-group mb-4">
                 <div class="input-group-prepend">
