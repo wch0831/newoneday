@@ -1,38 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 
 
 <html lang="en">
   <head>
-    <base href="./">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
-    <meta name="author" content="Łukasz Holeczek">
-    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>CoreUI Free Bootstrap Admin Template</title>
-    <!-- Icons-->
-    <link href="/user/node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
-    <link href="/user/node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
-    <link href="/user/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/user/node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-    <!-- Main styles for this application-->
-    <link href="/user/css/style.css" rel="stylesheet">
-    <link href="/user/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
-    <!-- Global site tag (gtag.js) - Google Analytics-->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      // Shared ID
-      gtag('config', 'UA-118965717-3');
-      // Bootstrap ID
-      gtag('config', 'UA-118965717-5');
-    </script>
+  <!-- header -->
+  	<%@ include file="./include/header.jsp" %>
+  	
   </head>
   <body class="app flex-row align-items-center">
     <div class="container">
@@ -42,29 +18,25 @@
             <div class="card p-4">
               <div class="card-body">
                 <h1>Login</h1>
-                <p class="text-muted">Sign In to your account</p>
+                <p class="text-muted">로그인 정보를 입력해 주세요.</p>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="icon-user"></i>
-                    </span>
+                    <span class="input-group-text"> 이메일　 </span>
                   </div>
-                  <input class="form-control" type="text" placeholder="Username">
+                  <input class="form-control" type="text">
                 </div>
                 <div class="input-group mb-4">
                   <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="icon-lock"></i>
-                    </span>
+                    <span class="input-group-text"> 패스워드 </span>
                   </div>
-                  <input class="form-control" type="password" placeholder="Password">
+                  <input class="form-control" type="password">
                 </div>
                 <div class="row">
                   <div class="col-6">
                     <button class="btn btn-primary px-4" type="button">Login</button>
                   </div>
                   <div class="col-6 text-right">
-                    <button class="btn btn-link px-0" type="button">Forgot password?</button>
+                    <button class="btn btn-link px-0" type="button">PW찾기</button>
                   </div>
                 </div>
               </div>
@@ -73,8 +45,8 @@
               <div class="card-body text-center">
                 <div>
                   <h2>Sign up</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <button class="btn btn-primary active mt-3" type="button">Register Now!</button>
+                  <p>Oneday의 모든 서비스를 이용하려면 <br> 먼저 회원가입하여 주시기 바랍니다.</p>
+                  <button class="btn btn-primary active mt-3" type="button" href="register.jsp">회원가입</button>
                 </div>
               </div>
             </div>
@@ -84,6 +56,7 @@
     </div>
     <!-- CoreUI and necessary plugins-->
     
+    <!-- script -->
     <%@ include file="./include/script.jsp" %>
     
   </body>

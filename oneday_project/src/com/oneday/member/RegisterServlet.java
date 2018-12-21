@@ -20,42 +20,10 @@ public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String email = (String) request.getAttribute("mEmail");
-		MemberDAO dao = new MemberDAO();
-		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
-		
-		list = dao.checkEmail();
-		
-		int res = 0;
-		for(MemberVO mvo : list) {
-			if(mvo.getmEmail().equals(email)) {
-				res += 1;
-			} 
-		} 
+	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		
-//		for(int i=0;i<list.size();i++) {
-//			MemberVO mvo = list.get(i);
-//				res += 1;
-//			}
-//		}
-		
-		
-		Gson gson = new Gson();
-		
-		response.setContentType("application/json; encoding=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
-		String checkMail = gson.toJson(res);
-		
-		out.println(checkMail);
-		
-		
-		
-	}
+	}*/
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
