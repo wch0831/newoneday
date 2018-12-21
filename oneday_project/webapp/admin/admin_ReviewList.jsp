@@ -227,7 +227,17 @@
                             </div>
                         </div>
                     </div>
+                                   
                 </div>
+                <div align="right" id=search>
+          		   <form name="rSearch" method="post" action="/admin_search">
+               			 <select name="searchCom" id="searchCom" >
+                 			   <option value="rContent">내용                     		
+               			 </select>
+              			  <input type="textarea" id="searchTxt" name="searchTxt">
+             		     <input type="submit" id="searchBtn" value="검색">
+           		  </form>                   
+     </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -255,6 +265,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+   
 </body>
 
 </html>

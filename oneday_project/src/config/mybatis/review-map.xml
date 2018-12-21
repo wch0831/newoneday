@@ -52,7 +52,19 @@
 			 where r.m_seq = m.m_seq and o.o_seq = r.o_seq
             and m.m_seq = #{mSeq}
     </select>
-
+    
+    <!-- 관리자 페이지 검색 조회 -->
+     <select id="adminReviewSearchList"
+    	parameterType="String"
+    	resultMap="reviewMap">
+    	     select o.o_seq, r.r_seq, o.o_title, m.m_nick, r.r_content, r.r_regdate from member m, reply r, onepath o
+			 where r.m_seq = m.m_seq and o.o_seq = r.o_seq 
+			 and r.r_content like '%#{value}%'
+			 order by o.o_seq, r.r_seq 
+			<!-- select r_seq, r_content from reply -->
+    </select>
+    
+    
     <!-- 관리자페이지 삭제  -->
     <delete id="admin_Review_del"
     	parameterType="com.oneday.review.ReviewVO">   	

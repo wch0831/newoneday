@@ -24,6 +24,22 @@ public class ReviewDAO {
 		return list;
 	}
 	
+	public ArrayList<ReviewVO> adminReviewSearchList(String rContent) {
+		SqlSession conn = null;
+		
+		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
+		try {
+			System.out.println("in");
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("reviewNameSpace.adminReviewSearchList",rContent);
+		}catch(Exception e) {
+			System.out.println("fail");
+			e.printStackTrace();
+			conn.close();
+		}
+		return list;
+	}
+	
 	
 	
 	public int admin_reviewDel(ReviewVO rvo) {
