@@ -27,8 +27,9 @@ public class AdminPlaceServlet extends HttpServlet {
 		list = dao.selectPlace();
 		
 		request.setAttribute("KEY_LIST", list);
-		
 		request.getRequestDispatcher("/admin/place-list.jsp").forward(request, response);
+		
+		
 		
 	}
 

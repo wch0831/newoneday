@@ -25,7 +25,7 @@ public class AdminPlaceDAO {
 		int res = 0;
 		try { 
 			conn = MyBatisFactory.getFactory().openSession();
-			res = conn.insert("placeMap.adminInsert", pvo);
+			res = conn.insert("placeNameSpace.adminInsert", pvo);
 			conn.commit();
 		} finally {
 			conn.close();

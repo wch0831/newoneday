@@ -17,14 +17,7 @@ $(document).ready(function(){
 		var gum = $("#gum").val();
 		console.log(gum);
 	});
-	$("#deletebutton").click(function(){
-		var result = confirm("정말로 삭제하시겠습니까?");
-		if(result){
-			alert("삭제되었습니다.");
-		}else{
-			alert("취소되었습니다.");
-		}
-	})
+	
 	
 });
 		
@@ -107,16 +100,17 @@ $(document).ready(function(){
                                                 <th class="seq-checkbox">
                       <input type="checkbox" name="seq" class="seq-control-input" id="check" value="y">
                      </th>
-                                                <th><h6>번호</h6></th>
-                                                <th><h6>이름</h6></th>
-                                                <th><h6>주소</h6></th>
-                                                <th><h6>위도</h6></th>
-                                                <th><h6>경도</h6></th>
-                                                <th><h6>지역</h6></th>
-                                                <th><h6>비용</h6></th>
-                                                <th><h6>실내/외</h6></th>
-                                                <th><h6>목적</h6></th>
-                                                <th><h6>날짜</h6></th>
+                     							
+                                               
+                                                <th><h6 style=text-align:center>이름</h6></th>
+                                                <th><h6 style=text-align:center>주소</h6></th>
+                                                <th><h6 style=text-align:center>위도</h6></th>
+                                                <th><h6 style=text-align:center>경도</h6></th>
+                                                <th><h6 style=text-align:center>지역</h6></th>
+                                                <th><h6 style=text-align:center>비용</h6></th>
+                                                <th><h6 style=text-align:center>실내/외</h6></th>
+                                                <th><h6 style=text-align:center>목적</h6></th>
+                                                <th><h6 style=text-align:center>날짜</h6></th>
                                             </tr>
                                                
                                         </thead>
@@ -125,16 +119,16 @@ $(document).ready(function(){
                                                 <tr>
 	                                              
                      								
-	                                                <td><h6>${vo.pSeq}</h6></td>
-	                                                <td><h6>${vo.pTitle}</h6></td>
-	                                                <td><h6>${vo.pContent}</h6></td> 
-	                                                <td><h6>${vo.pLat}</h6></td>
-	                                                <td><h6>${vo.pLng}</h6></td>
-	                                                <td><h6>${vo.pArea}</h6></td>
-	                                                <td><h6>${vo.pCost}</h6></td>
-	                                                <td><h6>${vo.pInout}</h6></td>
-	                                                <td><h6>${vo.pPurpose}</h6></td>
-	                                                <td><h6>${vo.pRegdate}</h6></td>
+	                                                <td><h6 style=text-align:center>${vo.pSeq}</h6></td>
+	                                                <td><h6 style=text-align:center>${vo.pTitle}</h6></td>
+	                                                <td><h6 style=text-align:center>${vo.pContent}</h6></td> 
+	                                                <td><h6 style=text-align:center>${vo.pLat}</h6></td>
+	                                                <td><h6 style=text-align:center>${vo.pLng}</h6></td>
+	                                                <td><h6 style=text-align:center>${vo.pArea}</h6></td>
+	                                                <td><h6 style=text-align:center>${vo.pCost}</h6></td>
+	                                                <td><h6 style=text-align:center>${vo.pInout}</h6></td>
+	                                                <td><h6 style=text-align:center>${vo.pPurpose}</h6></td>
+	                                                <td><h6 style=text-align:center>${vo.pRegdate}</h6></td>
                                                 </tr>		
                                             </c:forEach> 
                                          </tbody>       
@@ -180,7 +174,7 @@ $(document).ready(function(){
                             <p align="right" >
                             <input onclick="location='/admin/addadmin.jsp'" id="insertbutton" type = "button" value="추가"/> 
                           	<input onclick="location='/admin/updateadmin.jsp'" id="updatebutton" type = "button" value="수정"/> 
-                          	<input id="deletebutton" type = "button" value="삭제"/> 
+                          	
                              </p>
                              
                                </div>

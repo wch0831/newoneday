@@ -22,6 +22,11 @@ $(document).ready(function(){
 		var gum = $("#gum").val();
 		console.log(gum);
 	});
+	
+	$("#regButton").click(function(){
+		$("#adminForm").submit();
+	});
+	
 
 });
 		
@@ -110,8 +115,8 @@ $(document).ready(function(){
                             <div class="card-block">
                               
                                 <div class="table-responsive">
-                                        <form id="regForm" method="POST" action="/place-list" class="needs-validation"
-                enctype="multipart/form-data">
+                                        
+    <form id="adminForm" method="POST" action="/AddAdmin" class="needs-validation" enctype="multipart/form-data">
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="name">이름</label>
@@ -134,7 +139,18 @@ $(document).ready(function(){
                     		
                     </div>
                   </div>
-
+						<div class="row">
+					  					<div class="form-group col-6">
+		                    			<label for="email">path 사진</label>
+		                    			<input id="pname" type="file" class="form-control" name="pname">
+		                    			<div class="invalid-feedback">
+		                    	 사진을 업로드하세요.
+		                   			 </div>
+		                  			</div>
+		               				 <div id="prev-img-div" class="form-group col-6">
+		                   		<!-- <img id="prev-img" style="height:100px;width:100px;"> -->
+		             				</div>
+									</div>
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="lat" class="d-block">위도</label>
@@ -158,26 +174,31 @@ $(document).ready(function(){
 									    <div class="too_short postcodify_search_status postcode_search_status">검색어는 3글자 이상 입력해 주십시오.</div>
 									     -->
 									    </div>
+									   
 									    <label for="area">지역  </label>
-									    <input type="text" id="p_area" class="form-control" value="" style="width: 343px;">
-									    <br>
+									    <input type="text" id="p_area" class="form-control" value="" name="p_area" style="width: 343px;">
+									    
 									    <label for="cost">비용  </label>
-									    <input type="text" id="p_cost" class="form-control" value="" style="width: 343px;">
+									    <input type="text" id="p_cost" class="form-control" value="" name="p_cost" style="width: 343px;">
 									    <br>
+									   
 									    <label for="inout">실내/실외</label>
-									    <input type="text" id="p_inout" class="form-control" value="" style="width: 305px;">
-									    <br>
+									    <input type="text" id="p_inout" class="form-control" value="" name="p_inout" style="width: 305px;">
+									    
 									    <label for="regdate">날짜  </label>
-									    <input type="text" id="p_regdate" class="form-control" value="" style="width: 343px;">
+									    <input type="text" id="p_regdate" class="form-control" value="" name="p_regdate" style="width: 343px;">
 									    <br>
 									    
 									    
+									   
+									  
+									
 									</div>
-                </div>
+                					</div>
                   
 
                   <div class="form-group">	
-                    <button onclick="location='place-list.jsp'" type="button" id="regButton" class="btn btn-primary btn-block">
+                    <button type="button" id="regButton" class="btn btn-primary btn-block">
                       Register
                     </button>
                   </div>
@@ -225,8 +246,8 @@ $(document).ready(function(){
     <!-- All Jquery -->
     <!-- ============================================================== -->
   <%@ include file="/admin/include/script.jsp" %>
-  
-    <!-- google maps api -->
+   <!-- google maps api -->
+    
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyCUBL-6KdclGJ2a_UpmB2LXvq7VOcPT7K4&sensor=true"></script>
     <script src="assets/plugins/gmaps/gmaps.min.js"></script>
     <script src="assets/plugins/gmaps/jquery.gmaps.js"></script>
