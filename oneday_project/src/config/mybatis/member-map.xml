@@ -87,13 +87,13 @@
     </update>
     
     <!-- Email중복확인 -->
-    <select id="checkEmaile" parameterType="String">
+    <select id="checkEmail" resultMap="memberMap">
     	select m_email
     	from member
     </select>
     
     <!-- Nick중복확인 -->
-    <select id="checkNick" parameterType="String">
+    <select id="checkNick" resultMap="memberMap">
     	select m_nick
     	from member
     </select>

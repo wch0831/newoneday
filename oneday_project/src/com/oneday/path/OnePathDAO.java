@@ -9,7 +9,7 @@ import com.oneday.member.MemberVO;
 
 public class OnePathDAO {
 
-	public ArrayList<OnePathVO> popSelect() {
+	public ArrayList<OnePathVO> popThemeSelect() {
 		SqlSession conn = null;
 		OnePathVO ovo = new OnePathVO();
 		ArrayList<OnePathVO> list = new ArrayList<OnePathVO>();
@@ -24,5 +24,36 @@ public class OnePathDAO {
 			conn.close();
 		}
 		return list;
+	}	
+	public ArrayList<OnePathVO> popAreaSelect() {
+		SqlSession conn = null;
+		OnePathVO ovo = new OnePathVO();
+		ArrayList<OnePathVO> list = new ArrayList<OnePathVO>();
+		try {
+			System.out.println("연결");
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("pathNameSpace.popAreaSelect");
+			conn.commit();
+		} catch(Exception e) {
+			e.printStackTrace();	
+		} finally {
+			conn.close();
+		}
+		return list;
+	}
+	public OnePathVO pathDetailSelect(OnePathVO vo) {
+		SqlSession conn = null;
+		OnePathVO ovo = new OnePathVO();
+		try {
+			System.out.println("연결");
+			conn = MyBatisFactory.getFactory().openSession();
+			ovo = conn.selectOne("pathNameSpace.pathDetailSelect", vo.getoSeq());
+			conn.commit();
+		} catch(Exception e) {
+			e.printStackTrace();	
+		} finally {
+			conn.close();
+		}
+		return ovo;
 	}
 }
