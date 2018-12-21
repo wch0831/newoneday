@@ -112,7 +112,7 @@
 								Your email address will not be published. Required fields are marked *
 							</p>
 
-							<form>
+							<form name="reviewIns" method="get" action="/reviewinsert">
 								<div class="bor19 m-b-20">
 									<textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comment..."></textarea>
 								</div>
@@ -129,9 +129,9 @@
 									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="web" placeholder="Website">
 								</div>
 
-								<button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
-									Post Comment
-								</button>
+								<input type="button" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" name="" id="" value="작성" >
+									
+								
 							</form>
 						</div>
 					</div>

@@ -33,7 +33,7 @@ public class Admin_reviewServlet extends HttpServlet {
 		
 		request.setAttribute("KEY_LIST", list);
 		
-		request.getRequestDispatcher("admin/table-basic.jsp").forward(request, response);
+		request.getRequestDispatcher("admin/admin_ReviewList.jsp").forward(request, response);
 //		response.sendRedirect("admin/table-basic.jsp");
 	
 	}

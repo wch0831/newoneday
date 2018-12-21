@@ -28,11 +28,15 @@
     <script>
    $(document).ready(function(){
 	   // 에이잭스
+			
+		   
 	   $(document).on("click",".adRseq",function(){
 	   var seq = $(this).attr("name");
-		alert(name);	
+		alert("삭제되었습니다");	
 	   var sendData = {"rSeq":seq};
 	   
+	   
+		   
 			$.ajax({ 	
 			url:"/ad_review",
 			type:"post",
@@ -50,7 +54,8 @@
 		 	            	listStr += "<td>"+vv.mNick+"</td>";
 		 	            	listStr += "<td>"+vv.rContent+"</td>";
 		 	            	listStr += "<td>"+vv.rRegdate+"</td>";            
-		 	            	listStr += "<td><input type='button' name='"+vv.rSeq+"' id='delBtn' class='adRseq' value='삭제'></td>"
+		 	            	//listStr += "<td><input type='button' name='"+vv.rSeq+"' id='delBtn' class='adRseq' value='삭제'></td>";
+		 	            	listStr += "<td><img src='/admin/img/del.jpg' onclick='#' name='"+vv.rSeq+"' class='adRseq' width='35' height='35'></td>";
 		 	            	listStr += "</tr>";                               	 	            	 	            	
 		 	  	});
 		 			
@@ -60,15 +65,11 @@
 			} //end of success
 		});  	
 		
-   });
 	   
+   });
 });
    
-   function Btnfun(){
-	//var idval = document.getElementById("delBtn${vo.rSeq}").id;
-	alert(document.getElementById(test.getAttribute('id')).getAttribute('id'));
-   }
- 
+
 </script>
 
 </head>
@@ -200,7 +201,9 @@
                                                 <th><b>닉네임</th>
                                                 <th><b>댓글내용</th>
                                                 <th><b>등록일자</th>
-                                            	<th>체크</th>
+                                            	<!-- <th>체크</th> -->
+                                            	<th>삭제</th>
+                                           
                                             </tr>
                                         </thead>
                                          <tbody id="contents">
@@ -212,8 +215,10 @@
 	                                                <td>${vo.mNick}</td>
 	                                                <td>${vo.rContent}</td>
 	                                                <td>${vo.rRegdate}</td> 
-	                                                <td><input type="button" name="${vo.rSeq}" id="delBtn" class="adRseq" value="삭제">
-	                                                </td>
+	                                                <%-- <td><input type="button" name="${vo.rSeq}" id="delBtn" class="adRse" value="삭제"></td> --%>	                                               
+	                                                <td><img src="/admin/img/del.jpg" onclick="#" name="${vo.rSeq}" class="adRseq" width="35" height="35"></td>
+
+	                                                
                                                 </tr>		
                                             </c:forEach> 
                                          </tbody>
@@ -222,7 +227,17 @@
                             </div>
                         </div>
                     </div>
+                                   
                 </div>
+                <div align="right" id=search>
+          		   <form name="rSearch" method="post">
+               			 <select name="searchCom" id="searchCom" >
+                 			   <option value="rContent">내용                     		
+               			 </select>
+              			  <input type="textarea" id="searchTxt" name="searchTxt">
+             		     <input type="submit" id="searchBtn" value="검색">
+           		  </form>                   
+     </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -250,6 +265,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+   
 </body>
 
 </html>

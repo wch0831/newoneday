@@ -24,6 +24,24 @@ public class ReviewDAO {
 		return list;
 	}
 	
+	public ArrayList<ReviewVO> adminReviewSearchList(ReviewVO rvo) {
+		SqlSession conn = null;
+		
+		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
+		try {
+			System.out.println("in");
+			System.out.println(rvo.getrContent()+"13");
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("reviewNameSpace.adminReviewSearchList",rvo);
+			conn.commit();
+		}catch(Exception e) {
+			System.out.println("fail");
+			e.printStackTrace();
+			conn.close();
+		}
+		return list;
+	}
+	
 	
 	
 	public int admin_reviewDel(ReviewVO rvo) {
@@ -40,20 +58,37 @@ public class ReviewDAO {
 	}
 	
 	
-	public ReviewVO my_reviewList(ReviewVO rvo) {
+	public ArrayList<ReviewVO> my_reviewList(ReviewVO rvo) {
 		SqlSession conn = null;
-		
+		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
 		try {
 			conn = MyBatisFactory.getFactory().openSession();
-			rvo = conn.selectOne("reviewNameSpace.my_Review_List",rvo);
+			list = (ArrayList)conn.selectList("reviewNameSpace.my_Review_List",rvo);
 			conn.commit();
 		}catch(Exception e) {
 			System.out.println("fail");
 			e.printStackTrace();
 			conn.close();
 		}
-		return rvo;
+		return list;
 	}
+	
+	public ArrayList<ReviewVO> myReviewSearch(ReviewVO rvo) {
+		SqlSession conn = null;
+		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
+		try {
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("reviewNameSpace.myReviewSearch",rvo);
+			conn.commit();
+		}catch(Exception e) {
+			System.out.println("fail");
+			e.printStackTrace();
+			conn.close();
+		}
+		return list;
+	}
+	
+	
 	
 	
 	public int my_reviewDel(ReviewVO rvo) {
