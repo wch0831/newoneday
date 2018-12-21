@@ -8,38 +8,35 @@
 <%@ include file="/include/header.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){	
+$(document).ready(function(){
 	console.log("12346");
 	$.ajax({ 
-			url:"/pop",
-			type:"post",
-			success:function(res){
-					alert("12346");
-					console.log(res);
-					var htmlStr="";
-		 			$.each(res, function(index, vv){
-			 			htmlStr += "<div class='item-slick2 p-l-15 p-r-15 p-t-15 p-b-15'>";
-		 				htmlStr += "<div class='block2'>";
-		 				htmlStr += "<div class='block2-pic hov-img0'>";
-		 				htmlStr += "<img src=" +vv.oTmapImg+ " alt='IMG-PRODUCT'></div>";
-		 				htmlStr += "<div class='block2-txt flex-w flex-t p-t-14'>";
-		 				htmlStr += "<div class='block2-txt-child1 flex-col-l '>";
-		 				htmlStr += "<a href='/pathdetail?"+vv.oSeq+"' class='stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6'>"+vv.oTitle+"</a>";
-		 				htmlStr += "</div>";
-		 				htmlStr += "<div class='block2-txt-child2 flex-r p-t-3'>";
-		 				htmlStr += "<a href='#' class='btn-addwish-b2 dis-block pos-relative js-addwish-b2'>";
-		 				htmlStr += "<img class='icon-heart1 dis-block trans-04' src='images/icons/icon-heart-01.png' alt='ICON'>";
-		 				htmlStr += "<img class='icon-heart2 dis-block trans-04 ab-t-l' src='images/icons/icon-heart-02.png' alt='ICON'>";
-		 				htmlStr += "</a></div></div></div></div>";
-			  	});
-			}
-			$(".slick2").empty();
- 			$(".slick2").html(htmlStr);
-		});
+		url:"/pop",
+		type:"post",
+		success:function(res){
+				alert("12346");
+				console.log(res);
+				var htmlStr="";
+	 			$.each(res, function(index, vv){
+		 			htmlStr += "<div class='item-slick2 p-l-15 p-r-15 p-t-15 p-b-15'>";
+	 				htmlStr += "<div class='block2'>";
+	 				htmlStr += "<div class='block2-pic hov-img0'>";
+	 				htmlStr += "<img src=" +vv.oTmapImg+ " alt='IMG-PRODUCT'></div>";
+	 				htmlStr += "<div class='block2-txt flex-w flex-t p-t-14'>";
+	 				htmlStr += "<div class='block2-txt-child1 flex-col-l '>";
+	 				htmlStr += "<a href='/pathdetail?"+vv.oSeq+"' class='stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6'>"+vv.oTitle+"</a>";
+	 				htmlStr += "</div>";
+	 				htmlStr += "<div class='block2-txt-child2 flex-r p-t-3'>";
+	 				htmlStr += "<a href='#' class='btn-addwish-b2 dis-block pos-relative js-addwish-b2'>";
+	 				htmlStr += "<img class='icon-heart1 dis-block trans-04' src='images/icons/icon-heart-01.png' alt='ICON'>";
+	 				htmlStr += "<img class='icon-heart2 dis-block trans-04 ab-t-l' src='images/icons/icon-heart-02.png' alt='ICON'>";
+	 				htmlStr += "</a></div></div></div></div>";
+		  	});
+		}
+		$(".slick2").html(htmlStr);
+	});
 });
-
 </script>
-
 </head>
 <body class="animsition">
 	
