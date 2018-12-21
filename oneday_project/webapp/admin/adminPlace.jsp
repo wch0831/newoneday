@@ -5,71 +5,16 @@
 <html lang="en">
 
 <head>
-    
-    
-    <%@ include file="/admin/include/header.jsp" %>
-    
-    
-    <script src="/admin/assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="/admin/assets/plugins/bootstrap/js/tether.min.js"></script>
-    <script src="/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="/admin/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="/admin/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="/admin/js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="/admin/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="/admin/js/custom.min.js"></script>
-    
-    <script>
-   $(document).ready(function(){
-	   // 에이잭스
-	   $(document).on("click",".adRseq",function(){
-	   var seq = $(this).attr("name");
-		alert(name);	
-	   var sendData = {"rSeq":seq};
-	   
-			$.ajax({ 	
-			url:"/ad_review",
-			type:"post",
-			contentType: "application/json; charset=UTF-8",
-			data:JSON.stringify(sendData),
-			success:function(gsonStr){
-					console.log(gsonStr);		//객체
-					var topListStr = "";
-					var listStr = "";
-		 			$.map(gsonStr, function(vv, idx){				 					 	            			 	            
-		 	            	listStr += "<tr>";
-		 	            	listStr += "<td>"+vv.oSeq+"</td>";
-		 	            	listStr += "<td>"+vv.rSeq+"</td>";
-		 	            	listStr += "<td>"+vv.oTitle+"</td>";
-		 	            	listStr += "<td>"+vv.mNick+"</td>";
-		 	            	listStr += "<td>"+vv.rContent+"</td>";
-		 	            	listStr += "<td>"+vv.rRegdate+"</td>";            
-		 	            	listStr += "<td><input type='button' name='"+vv.rSeq+"' id='delBtn' class='adRseq' value='삭제'></td>"
-		 	            	listStr += "</tr>";                               	 	            	 	            	
-		 	  	});
-		 			
-		 			$("#contents").empty();
-		 			$("#contents").html(listStr);	 			
-		 			
-			} //end of success
-		});  	
-		
-   });
-	   
-});
-   
-   function Btnfun(){
-	//var idval = document.getElementById("delBtn${vo.rSeq}").id;
-	alert(document.getElementById(test.getAttribute('id')).getAttribute('id'));
-   }
- 
-</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Material Pro Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <link href="/admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/admin/css/style.css" rel="stylesheet">
+    <link href="/admin/css/colors/blue.css" id="theme" rel="stylesheet">
 
 </head>
 
@@ -146,11 +91,41 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        
-        
-        <%@ include file="/admin/include/left.jsp" %>
-        
-        
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li> <a class="waves-effect waves-dark" href="index.jsp" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="pages-profile.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="table-basic.jsp" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Basic Table</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="icon-material.jsp" aria-expanded="false"><i class="mdi mdi-emoticon"></i><span class="hide-menu">Icons</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="map-google.jsp" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Google Map</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="pages-blank.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank Page</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="pages-error-404.jsp" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">Error 404</span></a>
+                        </li>
+                    </ul>
+                    <div class="text-center m-t-30">
+                        <a href="https://themewagon.com/themes/material-bootstrap-4-free-admin-template/" class="btn waves-effect waves-light btn-warning hidden-md-down">Download Now</a>
+                    </div>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+            <!-- Bottom points-->
+            <div class="sidebar-footer">
+                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
+            <!-- End Bottom points-->
+        </aside>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -194,26 +169,25 @@
                                    <table class="table" id="ad_table" name="ad_table">
                                         <thead>                                                                                   
                                             <tr>
+                                            	<th>체크</th>
                                                 <th><b>게시글번호</th>
                                                 <th><b>댓글번호</th>
                                                 <th><b>게시글제목</th>
                                                 <th><b>닉네임</th>
                                                 <th><b>댓글내용</th>
                                                 <th><b>등록일자</th>
-                                            	<th>체크</th>
                                             </tr>
                                         </thead>
-                                         <tbody id="contents">
+                                         <tbody>
                                             <c:forEach var="vo" items="${KEY_LIST}">
                                                 <tr>
+	                                                <td><input type="checkbox"></td>
 	                                                <td>${vo.oSeq}</td>
 	                                                <td>${vo.rSeq}</td>
 	                                                <td>${vo.oTitle}</td>
 	                                                <td>${vo.mNick}</td>
 	                                                <td>${vo.rContent}</td>
 	                                                <td>${vo.rRegdate}</td> 
-	                                                <td><input type="button" name="${vo.rSeq}" id="delBtn" class="adRseq" value="삭제">
-	                                                </td>
                                                 </tr>		
                                             </c:forEach> 
                                          </tbody>
@@ -250,6 +224,20 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script src="/admin/assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/admin/assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="/admin/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="/admin/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/admin/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="/admin/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/admin/js/custom.min.js"></script>
 </body>
 
 </html>

@@ -8,7 +8,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="index.jsp" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">관리자 메인</span></a>
+                        <li> <a class="waves-effect waves-dark" href="/admin/index.jsp" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">관리자 메인</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="pages-profile.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">회원관리</span></a>
                         </li>
@@ -21,7 +21,7 @@
                        
                         
                         
-                        <li> <a class="waves-effect waves-dark" href="map-google.jsp" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">장소관리</span></a>
+                        <li> <a class="waves-effect waves-dark" href="/adplace" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">장소관리</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="pages-qna.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">문의관리</span></a>
                         </li>

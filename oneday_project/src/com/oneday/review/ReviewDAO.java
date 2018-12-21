@@ -47,7 +47,9 @@ public class ReviewDAO {
 			conn = MyBatisFactory.getFactory().openSession();
 			rvo = conn.selectOne("reviewNameSpace.my_Review_List",rvo);
 			conn.commit();
-		}finally {
+		}catch(Exception e) {
+			System.out.println("fail");
+			e.printStackTrace();
 			conn.close();
 		}
 		return rvo;

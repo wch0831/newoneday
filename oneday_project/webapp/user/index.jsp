@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <!--
 * CoreUI - Free Bootstrap Admin Template
 * @version v2.1.10
 * @link https://coreui.io
-* Copyright (c) 2018 creativeLabs Łukasz Holeczek
+* Copyright (c) 2018 creativeLabs Åukasz Holeczek
 * Licensed under MIT (https://coreui.io/license)
 -->
 
@@ -1072,4 +1074,5 @@
     <script src="js/main.js"></script>
     
   </body>
+
 </html>

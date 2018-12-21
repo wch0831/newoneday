@@ -6,21 +6,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Material Pro Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <!-- You can change the theme colors from here -->
-    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <%@ include file="/admin/include/header.jsp" %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,8 +22,7 @@ $(document).ready(function(){
 		var gum = $("#gum").val();
 		console.log(gum);
 	});
-	
-	
+
 });
 		
 
@@ -62,98 +47,21 @@ $(document).ready(function(){
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            
-                            <!-- Light Logo icon -->
-                            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
+       
+                      
                         
-                         <!-- Light Logo text -->    
-                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav mr-auto mt-md-0">
-                        <!-- This is  -->
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav my-lg-0">
-                        <!-- ============================================================== -->
-                        <!-- Profile -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="profile-pic m-r-10" />Markarn Doe</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+                
+                
+           <%@ include file="/admin/include/top.jsp" %>           
+                   
+                      
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="index.jsp" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="pages-profile.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="table-basic.jsp" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Basic Table</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="icon-material.jsp" aria-expanded="false"><i class="mdi mdi-emoticon"></i><span class="hide-menu">Icons</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="map-google.jsp" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Google Map</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="pages-blank.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank Page</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="pages-error-404.jsp" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">Error 404</span></a>
-                        </li>
-                    </ul>
-                    <div class="text-center m-t-30">
-                        <a href="https://themewagon.com/themes/material-bootstrap-4-free-admin-template/" class="btn waves-effect waves-light btn-warning hidden-md-down">Download Now</a>
-                    </div>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-            <!-- Bottom points-->
-            <div class="sidebar-footer">
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
-            <!-- End Bottom points-->
-        </aside>
+       <%@ include file="/admin/include/left.jsp" %>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -192,12 +100,9 @@ $(document).ready(function(){
 						</div>
                    
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
+               
+               <!---------------------- 폼작성 ----------------------->
+               
              	               <div class="row">
                     <!-- column -->
                     <div class="col-lg-12">
@@ -205,26 +110,26 @@ $(document).ready(function(){
                             <div class="card-block">
                               
                                 <div class="table-responsive">
-                                        <form id="regForm" method="POST" action="/register" class="needs-validation"
+                                        <form id="regForm" method="POST" action="/place-list" class="needs-validation"
                 enctype="multipart/form-data">
                   <div class="row">
                     <div class="form-group col-6">
-                      <label for="frist_name">이름</label>
-                      <input id="user_id" type="text" 
-                      class="form-control" name="user_id" autofocus 
+                      <label for="name">이름</label>
+                      <input id="p_title" type="text" 
+                      class="form-control" name="p_title" autofocus 
                        required>
                      
                     </div>
                     <div class="form-group col-6">
-                      <label for="last_name">목적</label>
-                      <input id="user_name" type="text" class="form-control" 
-                      name="user_name">
+                      <label for="purpose">목적</label>
+                      <input id="p_purpose" type="text" class="form-control" 
+                      name="p_purpose">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="email">주소</label>
-                    <input id="user_email" type="email" class="form-control" name="user_email">
+                    <label for="content">주소</label>
+                    <input id="p_content" type="text" class="form-control" name="p_content">
                     <div class="invalid-feedback">
                     		
                     </div>
@@ -232,27 +137,14 @@ $(document).ready(function(){
 
                   <div class="row">
                     <div class="form-group col-6">
-                      <label for="password" class="d-block">위도</label>
-                      <input id="user_pw" type="password" class="form-control" name="user_pw">
+                      <label for="lat" class="d-block">위도</label>
+                      <input id="p_lat" type="text" class="form-control" name="p_lat">
                     </div>
                     <div class="form-group col-6">
-                      <label for="password2" class="d-block">경도</label>
-                      <input id="user_pw2" type="password" class="form-control" name="user_pw2">
+                      <label for="lng" class="d-block">경도</label>
+                      <input id="p_lng" type="text" class="form-control" name="p_lng">
                     </div>
                   </div>
-									
-									<div class="row">
-											<div class="form-group col-6">
-		                    <label for="pname">지역</label>
-		                    <input id="pname" type="file" class="form-control" name="pname"> <!--  multiple -->
-		                    <div class="invalid-feedback">
-		                    		
-		                    </div>
-		                  </div>
-		                  <div id="prev-img-div" class="form-group col-6">
-		                   		<!-- <img id="prev-img" style="height:100px;width:100px;"> -->
-		                  </div>
-									</div>
 									
                  
                   <div class="form-group">
@@ -266,41 +158,34 @@ $(document).ready(function(){
 									    <div class="too_short postcodify_search_status postcode_search_status">검색어는 3글자 이상 입력해 주십시오.</div>
 									     -->
 									    </div>
+									    <label for="area">지역  </label>
+									    <input type="text" id="p_area" class="form-control" value="" style="width: 343px;">
+									    <br>
+									    <label for="cost">비용  </label>
+									    <input type="text" id="p_cost" class="form-control" value="" style="width: 343px;">
+									    <br>
+									    <label for="inout">실내/실외</label>
+									    <input type="text" id="p_inout" class="form-control" value="" style="width: 305px;">
+									    <br>
+									    <label for="regdate">날짜  </label>
+									    <input type="text" id="p_regdate" class="form-control" value="" style="width: 343px;">
+									    <br>
 									    
-									    <label for="ex2_input1">날짜</label>
-									    <input type="text" id="addr"  class="form-control" value="" style="width: 343px;">
-									    <br>
-									    <label for="ex2_input2">상세주소</label>
-									    <input type="text" id="addr_detail" class="form-control" value="" style="width: 343px;">
-									    <br>
-									    <label for="ex2_input3">참고항목</label>
-									    <input type="text" id="addr_etc" class="form-control" value="" style="width: 343px;">
-									    <br>
-									    <label for="ex2_input4">지번주소</label>
-									    <input type="text" id="addr_jibun" class="form-control" value="" style="width: 343px;">
-									    <br>
-									    <label for="ex2_input5">영문주소</label>
-									    <input type="text" id="addr_eng" class="form-control" value="" style="width: 343px;">
-									    <br>
+									    
 									</div>
                 </div>
                   
 
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="agree" class="custom-control-input" id="agree" value="y">
-                      <label class="custom-control-label" for="agree">약관동의</label>
-                    </div>
-                  </div>
-
                   <div class="form-group">	
-                    <button type="button" id="regButton" class="btn btn-primary btn-block">
+                    <button onclick="location='place-list.jsp'" type="button" id="regButton" class="btn btn-primary btn-block">
                       Register
                     </button>
                   </div>
                 </form>
                                 </div>
                                 </div>
+
+                  
                              
                                 
                             </div>
@@ -323,7 +208,7 @@ $(document).ready(function(){
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                Â© 2017 Material Pro Admin by wrappixel.com
+                Â© 2018 Pro Admin 
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -339,20 +224,7 @@ $(document).ready(function(){
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/plugins/bootstrap/js/tether.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="js/custom.min.js"></script>
+  <%@ include file="/admin/include/script.jsp" %>
     <!-- google maps api -->
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyCUBL-6KdclGJ2a_UpmB2LXvq7VOcPT7K4&sensor=true"></script>
     <script src="assets/plugins/gmaps/gmaps.min.js"></script>

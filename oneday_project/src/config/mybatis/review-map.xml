@@ -48,17 +48,16 @@
     <select id="my_Review_List"
     	parameterType="com.oneday.review.ReviewVO"
     	resultMap="reviewMap">
-    		select o.o_seq, r.r_seq, r.r_content, r.r_regdate from reply r, onepath o, member m
-			where o.o_seq = r.o_seq
-			and m.m_seq = r.r_seq
-			and m.m_seq = 2
+    		select o.o_seq, r.r_seq, o.o_title, r.r_content, r.r_regdate from member m, reply r, onepath o
+			 where r.m_seq = m.m_seq and o.o_seq = r.o_seq
+            and m.m_seq = #{mSeq}
     </select>
 
     <!-- 관리자페이지 삭제  -->
     <delete id="admin_Review_del"
     	parameterType="com.oneday.review.ReviewVO">   	
     		delete from reply
-			where r_seq=2	
+			where r_seq=#{rSeq}	
    	</delete>
   
     

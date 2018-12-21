@@ -36,9 +36,7 @@ $(document).ready(function(){
 		var gum = $("#gum").val();
 		console.log(gum);
 	});
-	$("#deletebutton").click(function(){
-		alert("삭제하시겠습니까?");
-	})
+	
 	
 });
 		
@@ -135,7 +133,7 @@ $(document).ready(function(){
                         </li>
                         <li> <a class="waves-effect waves-dark" href="icon-material.jsp" aria-expanded="false"><i class="mdi mdi-emoticon"></i><span class="hide-menu">Icons</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="map-google.jsp" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Google Map</span></a>
+                        <li> <a class="waves-effect waves-dark" href="place-list.jsp" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Place List</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="pages-blank.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank Page</span></a>
                         </li>
@@ -192,15 +190,11 @@ $(document).ready(function(){
 						<button id="gumbtn">검색</button>
 						</div>
 						</div>
-   						
                    
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
+               
+               <!---------------------- 폼작성 ----------------------->
+               
              	               <div class="row">
                     <!-- column -->
                     <div class="col-lg-12">
@@ -208,87 +202,91 @@ $(document).ready(function(){
                             <div class="card-block">
                               
                                 <div class="table-responsive">
-                                   <table class="table" id="ad_table" name="ad_table">
-                                        <thead>                                                                                   
-                                            <tr style="background-color:#D8D8D8" >
-                                                <th><th>
-                                                <th>번호</th>
-                                                <th>이름</th>
-                                                <th>내용</th>
-                                                <th>위도</th>
-                                                <th>경도</th>
-                                                <th>지역</th>
-                                                <th>비용</th>
-                                                <th>실내/외</th>
-                                                <th>목적</th>
-                                                <th>날짜</th>
-                                            </tr>
-                                        </thead>
-                                         <tbody>
-                                            <c:forEach var="vo" items="${KEY_LIST}">
-                                                <tr>
-	                                                <td></td>
-	                                                <td>${vo.pSeq}</td>
-	                                                <td>${vo.pTitle}</td>
-	                                                <td>${vo.pContent}</td> 
-	                                                <td>${vo.pLat}</td>
-	                                                <td>${vo.pLng}</td>
-	                                                <td>${vo.pArea}</td>
-	                                                <td>${vo.pCost}</td>
-	                                                <td>${vo.pInout}</td>
-	                                                <td>${vo.pPurpose}</td>
-	                                                <td>${vo.pRegdate}</td>
-                                                </tr>		
-                                            </c:forEach> 
-                                         </tbody>       
-                             <!--           <tbody>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Deshmukh</td>
-                                                <td>Gaylord</td>
-                                                <td>@Ritesh</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sanghani</td>
-                                                <td>Gusikowski</td>
-                                                <td>@Govinda</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Roshan</td>
-                                                <td>Rogahn</td>
-                                                <td>@Hritik</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Joshi</td>
-                                                <td>Hickle</td>
-                                                <td>@Maruti</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>s
-                                                <td>Nigam</td>
-                                                <td>Eichmann</td>
-                                                <td>@Sonu</td>
-                                            </tr>  
-                                         </tbody>  -->
-                                    </table>
+                                        <form id="regForm" method="POST" action="/register" class="needs-validation"
+                enctype="multipart/form-data">
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="name">이름</label>
+                      <input id="p_title" type="text" 
+                      class="form-control" name="p_title" autofocus 
+                       required>
+                     
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="purpose">목적</label>
+                      <input id="p_purpose" type="text" class="form-control" 
+                      name="p_purpose">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="content">주소</label>
+                    <input id="p_content" type="email" class="form-control" name="p_content">
+                    <div class="invalid-feedback">
+                    		
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="password" class="d-block">위도</label>
+                      <input id="user_pw" type="password" class="form-control" name="user_pw">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="password2" class="d-block">경도</label>
+                      <input id="user_pw2" type="password" class="form-control" name="user_pw2">
+                    </div>
+                  </div>
+									
+                 
+                  <div class="form-group">
+                  	<div class="graybox" style="line-height:220%">
+									    <div id="ex2_postcodify" class="postcodify_search_form postcode_search_form">	
+									   <!--  <div class="postcodify_search_controls postcode_search_controls">
+									    	<label for="postcodify_15420024258697316" style="display: none;">검색 키워드</label>
+									    	<input type="text" class="keyword" value="" id="postcodify_15420024258697316" style="width: 343px;">
+									    	<button type="button" class="search_button" id="postcodify_15420024258697316_button">검색</button>
+									    </div>
+									    <div class="too_short postcodify_search_status postcode_search_status">검색어는 3글자 이상 입력해 주십시오.</div>
+									     -->
+									    </div>
+									     <label for="ex2_input1">지역  </label>
+									    <input type="text" id="addr_jibun" class="form-control" value="" style="width: 343px;">
+									    <br>
+									    <label for="ex2_input2">비용  </label>
+									    <input type="text" id="addr_detail" class="form-control" value="" style="width: 343px;">
+									    <br>
+									    <label for="ex2_input3">실내/실외</label>
+									    <input type="text" id="addr_etc" class="form-control" value="" style="width: 305px;">
+									    <br>
+									    <label for="ex2_input4">날짜  </label>
+									    <input type="text" id="addr_jibun" class="form-control" value="" style="width: 343px;">
+									    <br>
+									    
+									    
+									</div>
+                </div>
+                  
+
+                  <div class="form-group">	
+                    <button onclick="location='place-list.jsp'" type="button" id="regButton" class="btn btn-primary btn-block">
+                      Register
+                    </button>
+                  </div>
+                </form>
                                 </div>
                                 </div>
+
+                  
                              
                                 
                             </div>
-                            <div id="buttonall">
-                            <p align="right" >
-                            <input onclick="location='map-google.jsp'" id="addsbutton" type = "button" value="등록"/> 
-                             </p>
-                          	
-                             
-                               </div>
+                          
                         </div>
                     </div>
                 </div>
+                          	
+                             
                                 
                                 
                 <!-- ============================================================== -->
@@ -302,7 +300,7 @@ $(document).ready(function(){
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                Â© 2017 Material Pro Admin by wrappixel.com
+                Â© 2018 Pro Admin 
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
