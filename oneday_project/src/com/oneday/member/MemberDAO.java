@@ -19,8 +19,7 @@ public class MemberDAO {
 		conn.commit();
 		} catch(Exception e){
 			e.getStackTrace();
-		}finally {
-			
+		}finally {			
 			conn.close();
 		}
 		
@@ -71,7 +70,23 @@ public class MemberDAO {
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();	
 		try {
 			conn = MyBatisFactory.getFactory().openSession();
-			list = (ArrayList)conn.selectList("memberNameSpace.checkEmaile");
+			list = (ArrayList)conn.selectList("memberNameSpace.checkEmail");
+			} catch(Exception e){
+				e.getStackTrace();
+			}finally {
+				conn.close();
+			}
+			return list;
+	}
+	
+	
+	public ArrayList<MemberVO> checkNick(){
+		SqlSession conn = null;
+		MemberVO mvo = new MemberVO();
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();	
+		try {
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("memberNameSpace.checkNick");
 			conn.commit();
 			} catch(Exception e){
 				e.getStackTrace();
@@ -80,6 +95,7 @@ public class MemberDAO {
 			}
 			return list;
 	}
+	
 	
 	
 }
