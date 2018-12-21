@@ -17,7 +17,7 @@ $(document).ready(function(){
 				console.log(res);
 				var htmlStr="";
 				$.each(res, function(index, vv){
-	 				htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women'>";
+					htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-40 isotope-item women'>";
 		 			htmlStr += "<div class='block2'>";
 	 				htmlStr += "<div class='block2-pic hov-img0'>";
 	 				htmlStr += "<img src=" +vv.oTmapImg+ " alt='IMG-PRODUCT'></div>";
@@ -31,7 +31,7 @@ $(document).ready(function(){
 	 				htmlStr += "<img class='icon-heart2 dis-block trans-04 ab-t-l' src='images/icons/icon-heart-02.png' alt='ICON'>";
 	 				htmlStr += "</a></div></div></div></div>";
 		  	});
-		$("#sibaloma").html(htmlStr);
+		$("#poppath").html(htmlStr);
 		}
 	});
 	
@@ -42,7 +42,8 @@ $(document).ready(function(){
 		data:"mykey=theme",
 		success:function(res){
 				console.log(res);
-				var htmlStr="";			
+				var htmlStr="";
+				
 	 			$.each(res, function(index, vv){
 	 				htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-40 isotope-item women'>";
 		 			htmlStr += "<div class='block2'>";

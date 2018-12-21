@@ -39,6 +39,10 @@
 			where o_theme=#{oTheme} and o_area=#{oArea} and o_del='n'
     </select>
 
+	<select id="pathDetailSelect" parameterType="int" resultMap="pathMap">
+    	    select * from onepath
+			where o_seq=#{oSeq} and o_del='n'
+    </select>
 <!-- 인기리스트조회/평점순 정렬  -->
 	<select id="popThemeSelect"
     	parameterType="com.oneday.path.OnePathVO"
