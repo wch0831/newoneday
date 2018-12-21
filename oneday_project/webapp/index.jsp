@@ -9,22 +9,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-	console.log("12346");
 	$.ajax({ 
 		url:"/pop",
-		type:"post",
+		type:"POST",
+		data:"mykey=theme",		
 		success:function(res){
-				alert("12346");
 				console.log(res);
 				var htmlStr="";
-	 			$.each(res, function(index, vv){
-		 			htmlStr += "<div class='item-slick2 p-l-15 p-r-15 p-t-15 p-b-15'>";
-	 				htmlStr += "<div class='block2'>";
+				$.each(res, function(index, vv){
+	 				htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women'>";
+		 			htmlStr += "<div class='block2'>";
 	 				htmlStr += "<div class='block2-pic hov-img0'>";
 	 				htmlStr += "<img src=" +vv.oTmapImg+ " alt='IMG-PRODUCT'></div>";
 	 				htmlStr += "<div class='block2-txt flex-w flex-t p-t-14'>";
 	 				htmlStr += "<div class='block2-txt-child1 flex-col-l '>";
-	 				htmlStr += "<a href='/pathdetail?"+vv.oSeq+"' class='stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6'>"+vv.oTitle+"</a>";
+	 				htmlStr += "<a href='/pathdetail?oseq="+vv.oSeq+"' class='stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6'>"+vv.oTitle+"</a>";
 	 				htmlStr += "</div>";
 	 				htmlStr += "<div class='block2-txt-child2 flex-r p-t-3'>";
 	 				htmlStr += "<a href='#' class='btn-addwish-b2 dis-block pos-relative js-addwish-b2'>";
@@ -32,9 +31,66 @@ $(document).ready(function(){
 	 				htmlStr += "<img class='icon-heart2 dis-block trans-04 ab-t-l' src='images/icons/icon-heart-02.png' alt='ICON'>";
 	 				htmlStr += "</a></div></div></div></div>";
 		  	});
+		$("#sibaloma").html(htmlStr);
 		}
-		$(".slick2").html(htmlStr);
 	});
+	
+ 	$("#themeBtn").click(function name() {
+		$.ajax({ 
+		url:"/pop",
+		type:"POST",
+		data:"mykey=theme",
+		success:function(res){
+				console.log(res);
+				var htmlStr="";			
+	 			$.each(res, function(index, vv){
+	 				htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-40 isotope-item women'>";
+		 			htmlStr += "<div class='block2'>";
+	 				htmlStr += "<div class='block2-pic hov-img0'>";
+	 				htmlStr += "<img src=" +vv.oTmapImg+ " alt='IMG-PRODUCT'></div>";
+	 				htmlStr += "<div class='block2-txt flex-w flex-t p-t-14'>";
+	 				htmlStr += "<div class='block2-txt-child1 flex-col-l '>";
+	 				htmlStr += "<a href='/pathdetail?oseq="+vv.oSeq+"' class='stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6'>"+vv.oTitle+"</a>";
+	 				htmlStr += "</div>";
+	 				htmlStr += "<div class='block2-txt-child2 flex-r p-t-3'>";
+	 				htmlStr += "<a href='#' class='btn-addwish-b2 dis-block pos-relative js-addwish-b2'>";
+	 				htmlStr += "<img class='icon-heart1 dis-block trans-04' src='images/icons/icon-heart-01.png' alt='ICON'>";
+	 				htmlStr += "<img class='icon-heart2 dis-block trans-04 ab-t-l' src='images/icons/icon-heart-02.png' alt='ICON'>";
+	 				htmlStr += "</a></div></div></div></div>";
+
+		  		});
+				$("#poppath").html(htmlStr);
+			}
+		});
+ 	});
+ 	$("#areaBtn").click(function name() {
+		$.ajax({ 
+		url:"/pop",
+		type:"POST",
+		data:"mykey=area",
+		success:function(res){
+				console.log(res);
+				var htmlStr="";
+			
+	 			$.each(res, function(index, vv){
+	 				htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-40 isotope-item women'>";
+		 			htmlStr += "<div class='block2'>";
+	 				htmlStr += "<div class='block2-pic hov-img0'>";
+	 				htmlStr += "<img src=" +vv.oTmapImg+ " alt='IMG-PRODUCT'></div>";
+	 				htmlStr += "<div class='block2-txt flex-w flex-t p-t-14'>";
+	 				htmlStr += "<div class='block2-txt-child1 flex-col-l '>";
+	 				htmlStr += "<a href='/pathdetail?oseq="+vv.oSeq+"' class='stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6'>"+vv.oTitle+"</a>";
+	 				htmlStr += "</div>";
+	 				htmlStr += "<div class='block2-txt-child2 flex-r p-t-3'>";
+	 				htmlStr += "<a href='#' class='btn-addwish-b2 dis-block pos-relative js-addwish-b2'>";
+	 				htmlStr += "<img class='icon-heart1 dis-block trans-04' src='images/icons/icon-heart-01.png' alt='ICON'>";
+	 				htmlStr += "<img class='icon-heart2 dis-block trans-04 ab-t-l' src='images/icons/icon-heart-02.png' alt='ICON'>";
+	 				htmlStr += "</a></div></div></div></div>";
+		  		});
+				$("#poppath").html(htmlStr);
+			}
+		});
+ 	});	
 });
 </script>
 </head>
@@ -120,41 +176,32 @@ $(document).ready(function(){
 
 
 	<!-- Product -->
-	<section class="sec-product bg0 p-t-100 p-b-50">
+	<section class="bg0 p-t-23 p-b-140">
 		<div class="container">
-			<div class="p-b-32">
-				<h3 class="ltext-105 cl5 txt-center respon1">
+			<div class="p-b-10" align="center">
+				<h3 class="ltext-103 cl5">
 					Best 경로
 				</h3>
 			</div>
 
-			<!-- Tab01 -->
-			<div class="tab01">
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist">
-					<li class="nav-item p-b-10">
-						<a class="nav-link active" data-toggle="tab" href="/pop?pgubun=theme" role="tab">테마별</a>
-					</li>
+			<div class="flex-w flex-sb-m p-b-52">
+				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" id="themeBtn">
+						테마별
+					</button>
 
-					<li class="nav-item p-b-10">
-						<a class="nav-link" data-toggle="tab" href="/pop?pgubun=area" role="tab">지역별</a>
-					</li>
-				</ul>
-
-				<!-- Tab panes -->
-				<div class="tab-content p-t-50">
-					<!-- - -->
-					<div class="tab-pane fade show active" id="theme" role="tabpanel">
-						<!-- Slide2 -->
-						<div class="wrap-slick2">
-							<div class="slick2">
-								
-							</div>
-						</div>
-					</div>
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="areaBtn">
+						지역별
+					</button>
 				</div>
-			</div>
+				</div>
+				
+			<div class="row isotope-grid" id=poppath>
+				
 		</div>
+
+		</div>
+		
 	</section>
 
 <%@ include file="/include/footer.jsp" %>

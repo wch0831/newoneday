@@ -43,59 +43,17 @@
 	<select id="popThemeSelect"
     	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
-    	    select o_title, o_content, o_tmapimg from onepath 
-			where o_seq=(select o_seq from onepath where o_see= 
-              (select max(o_see) from onepath where o_theme='여행')
-              and o_theme='여행' and o_del='n' and rownum=1)
-			union
-			select o_title, o_content, o_tmapimg from onepath 
-			where o_seq=(select o_seq from onepath where o_see= 
-			 (select max(o_see) from onepath where o_theme='데이트')
-			 and o_theme='데이트' and o_del='n' and rownum=1)
-			union
-			select o_title, o_content, o_tmapimg from onepath 
-			where o_seq=(select o_seq from onepath where o_see=
-			 (select max(o_see) from onepath where o_theme='산책') 
-			 and o_theme='산책' and o_del='n' and rownum=1)			
+    	   select * from onepath where
+    	   (o_theme,o_see) in (select o_theme,max(o_see)
+    	   from onepath group by o_theme) and o_del='n'			
     </select>
     
     <select id="popAreaSelect"
     	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
-    	    select o_title, o_content, o_tmapimg from onepath 
-			where o_seq=(select o_seq from onepath where o_see= 
-              (select max(o_see) from onepath where o_area='서울')
-              and o_area='서울' and o_del='n' and rownum=1)
-			union
-			select o_title, o_content, o_tmapimg from onepath 
-			where o_seq=(select o_seq from onepath where o_see=
-			  (select max(o_see) from onepath where o_area='경기도')
-			  and o_area='경기도' and o_del='n' and rownum=1)
-			union
-			select o_title, o_content, o_tmapimg from onepath 
-			where o_seq=(select o_seq from onepath where o_see=
-			  (select max(o_see) from onepath where o_area='강원도') 
-			  and o_area='강원도' and o_del='n' and rownum=1)
-			union
-			select o_title, o_content, o_tmapimg from onepath 
-			where o_seq=(select o_seq from onepath where o_see=
-			  (select max(o_see) from onepath where o_area='충청도') 
-			  and o_area='충청도' and o_del='n' and rownum=1)
-			union
-			select o_title, o_content, o_tmapimg from onepath 
-			where o_seq=(select o_seq from onepath where o_see= 
-			  (select max(o_see) from onepath where o_area='전라도') 
-			  and o_area='전라도' and o_del='n' and rownum=1)
-			union
-			select o_title, o_content, o_tmapimg from onepath 
-			where o_seq=(select o_seq from onepath where o_see= 
-			  (select max(o_see) from onepath where o_area='경상도') 
-			  and o_area='경상도' and o_del='n' and rownum=1)
-			union
-			select o_title, o_content, o_tmapimg from onepath 
-			where o_seq=(select o_seq from onepath where o_see= 
-			  (select max(o_see) from onepath where o_area='제주도') 
-			  and o_area='제주도' and o_del='n' and rownum=1)
+    	    select * from onepath where
+    	   (o_area,o_see) in (select o_area,max(o_see)
+    	   from onepath group by o_area) and o_del='n'
     </select>
     
 	<select id="seeSort"
