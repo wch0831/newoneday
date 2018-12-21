@@ -35,7 +35,7 @@ public class userReviewServlet extends HttpServlet {
 		
 		System.out.println("get in");
 		
-	    rvo.setmSeq(2);
+	    rvo.setmSeq(3);
 		 
 	    int res = rvo.getmSeq();
 	    System.out.println(res);
@@ -59,7 +59,7 @@ public class userReviewServlet extends HttpServlet {
 	      
 	      System.out.println("post");
 	      int res = dao.admin_reviewDel(rvo);
-	      rvo.setmSeq(2);
+	      rvo.setmSeq(3);
 	      list = dao.my_reviewList(rvo);
 	        String gsonStr = gson.toJson(list);
 	         System.out.println(gsonStr);

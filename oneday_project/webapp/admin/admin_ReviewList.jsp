@@ -237,7 +237,7 @@
               			  <input type="textarea" id="searchTxt" name="searchTxt">
              		     <input type="submit" id="searchBtn" value="검색">
            		  </form>                   
-     </div>
+     			</div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

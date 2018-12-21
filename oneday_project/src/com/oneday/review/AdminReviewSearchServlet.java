@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class UserReviewSearchServlet
  */
 @WebServlet("/admin_search")
-public class UserReviewSearchServlet extends HttpServlet {
+public class AdminReviewSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
  
@@ -38,10 +38,10 @@ public class UserReviewSearchServlet extends HttpServlet {
 		ReviewVO rvo = new ReviewVO();
 		
 		System.out.println(searchText);
+		rvo.setrContent(searchText);
 		
 		
-		
-		list = dao.adminReviewSearchList(searchText);
+		list = dao.adminReviewSearchList(rvo);
 		
 		
 		request.setAttribute("KEY_LIST", list);

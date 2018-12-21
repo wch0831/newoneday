@@ -213,7 +213,7 @@
 	                                                <td>${vo.rSeq}</td>
 	                                                <td>${vo.oTitle}</td>
 	                                                <td>${vo.mNick}</td>
-	                                                <td>dd</td>
+	                                                <td>${vo.rContent}</td>
 	                                                <td>${vo.rRegdate}</td> 
 	                                                <%-- <td><input type="button" name="${vo.rSeq}" id="delBtn" class="adRse" value="삭제"></td> --%>	                                               
 	                                                <td><img src="/admin/img/del.jpg" onclick="#" name="${vo.rSeq}" class="adRseq" width="35" height="35"></td>
