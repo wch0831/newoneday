@@ -113,7 +113,7 @@ public class AddAdminServlet extends HttpServlet {
 		}
 
 		
-		response.sendRedirect("login.jsp");
+		//response.sendRedirect("login.jsp");
 
 		
 		

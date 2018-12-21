@@ -101,7 +101,7 @@ $(document).ready(function(){
                       <input type="checkbox" name="seq" class="seq-control-input" id="check" value="y">
                      </th>
                      							
-                                               
+                                           
                                                 <th><h6 style=text-align:center>이름</h6></th>
                                                 <th><h6 style=text-align:center>주소</h6></th>
                                                 <th><h6 style=text-align:center>위도</h6></th>

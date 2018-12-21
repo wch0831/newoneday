@@ -92,7 +92,7 @@
     <!--관리자 장소 입력  -->
     <insert id="adminInsert" parameterType="com.oneday.place.PlaceVO">
 		 insert into place(p_seq, p_title, p_content, p_lat, p_lng, p_area, p_cost,p_inout,p_purpose,p_regdate,p_ppath,p_pname,p_sysname) 
-		 values(p_seq.nextval, #{pTitle}, #{pContent}, #{pLat}, #{pLng},#{pArea},#{pCost},#{pInout},#{pPurpose},sysdate,#{pPpath},#{pPname},#{pSysname})
+		 values(place_seq.nextval, #{pTitle}, #{pContent}, #{pLat}, #{pLng},#{pArea},#{pCost},#{pInout},#{pPurpose},sysdate,#{pPpath},#{pPname},#{pSysname})
 	 </insert>
 	 
 	 
