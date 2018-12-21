@@ -35,12 +35,13 @@ public class userReviewServlet extends HttpServlet {
 		
 		System.out.println("get in");
 		
-	    rvo.setmSeq(1);
+	    rvo.setmSeq(2);
+		 
+	    int res = rvo.getmSeq();
+	    System.out.println(res);
+		list=dao.my_reviewList(rvo);
 		
-		rvo = dao.my_reviewList(rvo);
-		
-		System.out.println(rvo.getmSeq());
-		request.setAttribute("KEY_RVO", rvo);
+		request.setAttribute("KEY_LIST", list);
 		
 		request.getRequestDispatcher("user/userReview.jsp").forward(request, response);
 	}
@@ -58,9 +59,9 @@ public class userReviewServlet extends HttpServlet {
 	      
 	      System.out.println("post");
 	      int res = dao.admin_reviewDel(rvo);
-	      
-	      rvo = dao.my_reviewList(rvo);
-	        String gsonStr = gson.toJson(rvo);
+	      rvo.setmSeq(2);
+	      list = dao.my_reviewList(rvo);
+	        String gsonStr = gson.toJson(list);
 	         System.out.println(gsonStr);
 	         
 	         response.setContentType("application/json; charset=UTF-8"); //응답 데이터 타입:JSON

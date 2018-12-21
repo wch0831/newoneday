@@ -40,19 +40,19 @@ public class ReviewDAO {
 	}
 	
 	
-	public ReviewVO my_reviewList(ReviewVO rvo) {
+	public ArrayList<ReviewVO> my_reviewList(ReviewVO rvo) {
 		SqlSession conn = null;
-		
+		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
 		try {
 			conn = MyBatisFactory.getFactory().openSession();
-			rvo = conn.selectOne("reviewNameSpace.my_Review_List",rvo);
+			list = (ArrayList)conn.selectList("reviewNameSpace.my_Review_List",rvo);
 			conn.commit();
 		}catch(Exception e) {
 			System.out.println("fail");
 			e.printStackTrace();
 			conn.close();
 		}
-		return rvo;
+		return list;
 	}
 	
 	

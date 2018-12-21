@@ -34,11 +34,11 @@
 					var listStr = "";
 		 			$.map(gsonStr, function(vv, idx){				 					 	            			 	            
 		 	            	listStr += "<tr>";
-		 	            	listStr += "<td>"+vv.oSeq+"</td>";
-		 	            	listStr += "<td>"+vv.rSeq+"</td>";		 	            			 	            
-		 	            	listStr += "<td>"+vv.rContent+"</td>";
-		 	            	listStr += "<td>"+vv.rRegdate+"</td>";            
-		 	            	listStr += "<td><input type='button' name='"+vv.rSeq+"' id='delBtn' class='myRseq' value='삭제'></td>"
+		 	            	listStr += "<td class='text-center'>"+vv.oSeq+"</td>";
+		 	            	listStr += "<td class='text-center'>"+vv.rSeq+"</td>";		 	            			 	            
+		 	            	listStr += "<td class='text-center'>"+vv.rContent+"</td>";
+		 	            	listStr += "<td class='text-center'>"+vv.rRegdate+"</td>";            
+		 	            	listStr += "<td class='text-center'><img src='/admin/img/del.jpg' onclick='#' name='"+vv.rSeq+"' class='adRseq' width='35' height='35'></td>";
 		 	            	listStr += "</tr>";                               	 	            	 	            	
 		 	  	});
 		 			
@@ -95,14 +95,17 @@
                         </tr>
                       </thead>
                       <tbody id="contents">
+                       <c:forEach var="vo" items="${KEY_LIST}">
                         <tr>
-                          <td class="text-center">${KEY_RVO.oSeq}</td>
-                          <td class="text-center">${KEY_RVO.rSeq}</td>
-                          <td class="text-center">${KEY_RVO.rContent}</td>
-                          <td class="text-center">${KEY_RVO.rRegdate}</td>
-                          <td class="text-center"><td><input type="button" name="${KEY_RVO.rSeq}" id="delBtn" class="myRseq" value="삭제"></td>
+                        
+                          <td class="text-center">${vo.oSeq}</td>
+                          <td class="text-center">${vo.rSeq}</td>
+                          <td class="text-center">${vo.rContent}</td>
+                          <td class="text-center">${vo.rRegdate}</td>
+                          <td class="text-center"><img src="/admin/img/del.jpg" onclick="#" name="${vo.rSeq}" class="myRseq" width="35" height="35"></td>
                          
                         </tr> 
+                        </c:forEach>
                       </tbody>
                     </table>
         </div>
