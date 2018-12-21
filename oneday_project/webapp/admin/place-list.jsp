@@ -97,11 +97,9 @@ $(document).ready(function(){
                                    <table class="table" id="ad_table" name="ad_table">
                                         <thead>                                                                                   
                                             <tr style="background-color:#D8D8D8" >
-                                                <th class="seq-checkbox">
-                      <input type="checkbox" name="seq" class="seq-control-input" id="check" value="y">
-                     </th>
+                                               
                      							
-                                           
+                                           		<th><h6 style=text-align:center>번호</h6></th>	
                                                 <th><h6 style=text-align:center>이름</h6></th>
                                                 <th><h6 style=text-align:center>주소</h6></th>
                                                 <th><h6 style=text-align:center>위도</h6></th>
@@ -110,7 +108,7 @@ $(document).ready(function(){
                                                 <th><h6 style=text-align:center>비용</h6></th>
                                                 <th><h6 style=text-align:center>실내/외</h6></th>
                                                 <th><h6 style=text-align:center>목적</h6></th>
-                                                <th><h6 style=text-align:center>날짜</h6></th>
+                                                <th><h6 style=text-align:center>수정</h6></th>
                                             </tr>
                                                
                                         </thead>
@@ -128,7 +126,8 @@ $(document).ready(function(){
 	                                                <td><h6 style=text-align:center>${vo.pCost}</h6></td>
 	                                                <td><h6 style=text-align:center>${vo.pInout}</h6></td>
 	                                                <td><h6 style=text-align:center>${vo.pPurpose}</h6></td>
-	                                                <td><h6 style=text-align:center>${vo.pRegdate}</h6></td>
+	                                                <td><h6> <input onclick="location='/admin/updateadmin.jsp'" id="updatebutton" type = "button" value="수정" name="${vo.pSeq}" width="35" height="35"></h6></td>
+	                                                
                                                 </tr>		
                                             </c:forEach> 
                                          </tbody>       
@@ -173,7 +172,7 @@ $(document).ready(function(){
                             <div id="buttonall">
                             <p align="right" >
                             <input onclick="location='/admin/addadmin.jsp'" id="insertbutton" type = "button" value="추가"/> 
-                          	<input onclick="location='/admin/updateadmin.jsp'" id="updatebutton" type = "button" value="수정"/> 
+                          	 
                           	
                              </p>
                              

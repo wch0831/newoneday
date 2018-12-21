@@ -44,7 +44,7 @@ public class AddAdminServlet extends HttpServlet {
 		String p_area = mrequest.getParameter("p_area");
 		int p_cost = Integer.parseInt(mrequest.getParameter("p_cost")); // String을 int 로바꿈
 		String p_inout = mrequest.getParameter("p_inout");
-		String p_regdate = mrequest.getParameter("p_regdate");
+		
 		
 		System.out.println(p_title);
 		System.out.println(p_content);
@@ -65,7 +65,7 @@ public class AddAdminServlet extends HttpServlet {
 		pvo.setpArea(p_area);
 		pvo.setpCost(p_cost);
 		pvo.setpInout(p_inout);
-		pvo.setpRegdate(p_regdate);
+		
 		pvo.setpPpath(saveDirectory);
 		
 

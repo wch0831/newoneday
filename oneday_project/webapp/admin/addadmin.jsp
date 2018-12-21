@@ -180,14 +180,12 @@ $(document).ready(function(){
 									    
 									    <label for="cost">비용  </label>
 									    <input type="text" id="p_cost" class="form-control" value="" name="p_cost" style="width: 343px;">
-									    <br>
+									    
 									   
 									    <label for="inout">실내/실외</label>
 									    <input type="text" id="p_inout" class="form-control" value="" name="p_inout" style="width: 305px;">
 									    
-									    <label for="regdate">날짜  </label>
-									    <input type="text" id="p_regdate" class="form-control" value="" name="p_regdate" style="width: 343px;">
-									    <br>
+									   
 									    
 									    
 									   
