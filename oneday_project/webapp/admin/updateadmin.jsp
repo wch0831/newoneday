@@ -22,9 +22,11 @@ $(document).ready(function(){
 		var gum = $("#gum").val();
 		console.log(gum);
 	});
-
+	$("#editButton").click(function(){
+		$("#updateForm").submit();
+	});
 });
-		
+		//인서트나 업데이트할때는 폼하고 버튼을 만든다음 submit 해줘야한다d
 
 </script>
 
@@ -80,7 +82,7 @@ $(document).ready(function(){
                     <div class="col-md-5 col-8 align-self-center">
                         <h3 class="text-themecolor m-b-0 m-t-0">관리자 수정 리스트</h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/index.jsp">Home</a></li>
                             <li class="breadcrumb-item active">Updateplace</li>
                         </ol>
                     </div>
@@ -88,7 +90,7 @@ $(document).ready(function(){
 						
 						<div  class="col col-xs-6 text-right">
 						<select id="search" name="search">
-   						<option value="">search</option>
+   						<option>search</option>
     					<option value="주소">주소</option>
     					<option value="목적">목적</option>
     					<option value="실내/실외">실내/실외</option>
@@ -110,50 +112,58 @@ $(document).ready(function(){
                             <div class="card-block">
                               
                                 <div class="table-responsive">
-                                        <form id="regForm" method="POST" action="/place-list" class="needs-validation"
+          <form id="updateForm" method="POST" action="/UpdateAdmin?pSeq=${param.pSeq}" class="needs-validation"
                 enctype="multipart/form-data">
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="name">이름</label>
                       <input id="p_title" type="text" 
-                      class="form-control" name="p_title" autofocus 
+                      class="form-control" name="p_title" value="${PVO.pTitle}" autofocus 
                        required>
                      
                     </div>
                     <div class="form-group col-6">
                       <label for="purpose">목적</label>
-                      <input id="p_purpose" type="text" class="form-control" 
+                      <input id="p_purpose" type="text" class="form-control" value="${PVO.pPurpose}"
                       name="p_purpose">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="content">주소</label>
-                    <input id="p_content" type="text" class="form-control" name="p_content">
+                    <input id="p_content" type="text" class="form-control" name="p_content" value="${PVO.pContent}">
                     <div class="invalid-feedback">
                     		
                     </div>
                   </div>
+                  
+                  
+                  
+                  <!-- ================================================사진 -->
 						<div class="row">
 					  					<div class="form-group col-6">
 		                    			<label for="email">path 사진</label>
 		                    			<input id="pname" type="file" class="form-control" name="pname">
 		                    			<div class="invalid-feedback">
-		                    	 사진을 업로드하세요.
+		                    	 사진을 업로드하세요. 	${PVO.pSysname}
 		                   			 </div>
 		                  			</div>
 		               				 <div id="prev-img-div" class="form-group col-6">
 		                   		<!-- <img id="prev-img" style="height:100px;width:100px;"> -->
 		             				</div>
 									</div>
+				<!-- ======================================================사진 -->					
+									
+									
+									
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="lat" class="d-block">위도</label>
-                      <input id="p_lat" type="text" class="form-control" name="p_lat">
+                      <input id="p_lat" type="text" class="form-control" name="p_lat" value="${PVO.pLat}">
                     </div>
                     <div class="form-group col-6">
                       <label for="lng" class="d-block">경도</label>
-                      <input id="p_lng" type="text" class="form-control" name="p_lng">
+                      <input id="p_lng" type="text" class="form-control" name="p_lng" value="${PVO.pLng}">
                     </div>
                   </div>
 									
@@ -170,20 +180,21 @@ $(document).ready(function(){
 									     -->
 									    </div>
 									   
-									    <label for="area">지역  </label>
-									    <input type="text" id="p_area" class="form-control" value="" style="width: 343px;">
+									   <label for="area">지역</label>
+									    <input type="text" id="p_area" class="form-control" value="${PVO.pArea}" name="p_area" style="width: 250px;">
 									    
-									    <label for="cost">비용  </label>
-									    <input type="text" id="p_cost" class="form-control" value="" style="width: 343px;">
-									    <br>
+									    <label for="cost">비용</label>
+									    <input type="text" id="p_cost" class="form-control" value="${PVO.pCost}" name="p_cost" style="width: 250px;">
+									    
 									   
 									    <label for="inout">실내/실외</label>
-									    <input type="text" id="p_inout" class="form-control" value="" style="width: 305px;">
+									    <input type="text" id="p_inout" class="form-control" value="${PVO.pInout}" name="p_inout" style="width: 250px;">
 									    
-									    <label for="regdate">날짜  </label>
-									    <input type="text" id="p_regdate" class="form-control" value="" style="width: 343px;">
-									    <br>
 									    
+									    
+									    
+									    
+									    <input type="hidden" id="originPic" name="originPic" value="${PVO.pSysname}"/>
 									    
 									   
 									  
@@ -193,8 +204,8 @@ $(document).ready(function(){
                   
 
                   <div class="form-group">	
-                    <button onclick="location='place-list.jsp'" type="button" id="regButton" class="btn btn-primary btn-block">
-                      Register
+                    <button type="button" id="editButton" class="btn btn-primary btn-block">
+                      Edit
                     </button>
                   </div>
                 </form>
@@ -208,6 +219,13 @@ $(document).ready(function(){
                           
                         </div>
                     </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>
                           	
                              

@@ -14,7 +14,7 @@ import com.oneday.review.ReviewVO;
 
 
 @WebServlet("/adplace")
-public class AdminPlaceServlet extends HttpServlet {
+public class AdminListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    

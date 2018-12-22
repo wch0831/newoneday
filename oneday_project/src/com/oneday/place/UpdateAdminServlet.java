@@ -1,10 +1,8 @@
 package com.oneday.place;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,22 +10,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.oreilly.servlet.multipart.FileRenamePolicy;
 
-/**
- * Servlet implementation class RegisterServlet
- */
-@WebServlet("/AddAdmin")
-public class AddAdminServlet extends HttpServlet {
+
+@WebServlet("/UpdateAdmin")
+public class UpdateAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
- 
+   
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int pseq = Integer.parseInt(request.getParameter("pSeq"));
+		System.out.println(pseq);
+		
+		AdminPlaceDAO dao = new AdminPlaceDAO();
+		PlaceVO pvo = dao.adminSelectUpdate(pseq);
+		//dao 만들기
+		//pseq를 가지고 dao update를 실행
+		//PlaceVO pvo = dao.adminUpdate(pseq);
+
+		request.setAttribute("PVO", pvo);
+		request.getRequestDispatcher("/admin/updateadmin.jsp").forward(request, response);
+		
+		
+	}	
+
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("33333333333333333333333333");
+		int pseq = Integer.parseInt(request.getParameter("pSeq"));
+		
+		System.out.println("관리자수정에서 셀렉트한걸 다시 인설트할래");
 		String saveDirectory = "C:/uploads/place";  
 		int maxPostSize = 1024 * 1024 * 10; //10M
 		String encoding = "UTF-8";
@@ -46,9 +60,7 @@ public class AddAdminServlet extends HttpServlet {
 		String p_inout = mrequest.getParameter("p_inout");
 		
 		
-		System.out.println(p_title);
-		System.out.println(p_content);
-		System.out.println(p_cost);
+		System.out.println(p_title+":::");
 		
 		
 		
@@ -56,8 +68,8 @@ public class AddAdminServlet extends HttpServlet {
 		//getParameter 값을 placeVO 에 담아야한다.
 		
 		PlaceVO pvo = new PlaceVO();
-		
-		//insert할떄는 seq번호가 필요가없다.
+		//update할떄는 seq번호가 필요하다 수정할 번호가 필요하기때문
+		pvo.setpSeq(pseq);
 		pvo.setpTitle(p_title);
 		pvo.setpPurpose(p_purpose);
 		pvo.setpContent(p_content);
@@ -67,6 +79,7 @@ public class AddAdminServlet extends HttpServlet {
 		pvo.setpCost(p_cost);
 		pvo.setpInout(p_inout);
 		pvo.setpPpath(saveDirectory);
+		
 		
 		
 
@@ -102,22 +115,17 @@ public class AddAdminServlet extends HttpServlet {
 			//response.sendRedirect("shop_form.jsp");
 		}
 		
-		int res = dao.adminInsert(pvo);
-		
+		int res = dao.adminUpdate(pvo);
+		System.out.println(res+"건 수정");
 		
 		if(res > 0) {
 			response.sendRedirect("/adplace");
-			System.out.println("담기성공");
+			System.out.println("수정완료");
 		} else {
 			response.sendRedirect("404.jsp");
 			System.out.println("실패");
 		}
 
-		
-		//response.sendRedirect("login.jsp");
-
-		
-		
 	}
 
 }

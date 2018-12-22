@@ -85,7 +85,7 @@ $(document).ready(function(){
                     <div class="col-md-5 col-8 align-self-center">
                         <h3 class="text-themecolor m-b-0 m-t-0">관리자 추가 리스트</h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/index.jsp">Home</a></li>
                             <li class="breadcrumb-item active">Addplace</li>
                         </ol>
                     </div>
@@ -175,15 +175,15 @@ $(document).ready(function(){
 									     -->
 									    </div>
 									   
-									    <label for="area">지역  </label>
-									    <input type="text" id="p_area" class="form-control" value="" name="p_area" style="width: 343px;">
+									    <label for="area">지역</label>
+									    <input type="text" id="p_area" class="form-control" value="" name="p_area" style="width: 250px;">
 									    
-									    <label for="cost">비용  </label>
-									    <input type="text" id="p_cost" class="form-control" value="" name="p_cost" style="width: 343px;">
+									    <label for="cost">비용</label>
+									    <input type="text" id="p_cost" class="form-control" value="" name="p_cost" style="width: 250px;">
 									    
 									   
 									    <label for="inout">실내/실외</label>
-									    <input type="text" id="p_inout" class="form-control" value="" name="p_inout" style="width: 305px;">
+									    <input type="text" id="p_inout" class="form-control" value="" name="p_inout" style="width: 250px;">
 									    
 									   
 									    
