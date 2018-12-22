@@ -23,23 +23,12 @@ public class FaqServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("get");
-		FaqDAO dao = new FaqDAO();
-		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
-		
-		list = dao.questionSelect();
-		
-		request.setAttribute("KEY_LIST", list);
-		
-		request.getRequestDispatcher("faq.jsp").forward(request, response);
-//		response.sendRedirect("admin/table-basic.jsp");
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*System.out.println("하이염");
+		System.out.println("하이염");
 	  	FaqDAO dao = new FaqDAO();
     	ArrayList<FaqVO> list = new ArrayList<FaqVO>();
     	
@@ -52,10 +41,7 @@ public class FaqServlet extends HttpServlet {
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out  = response.getWriter();
 		out.println(jsonStr);
-		
-		//request.setAttribute("KEY_LIST", list);	
-		
-		//request.getRequestDispatcher("faqs.jsp").forward(request, response);
-*/	}
+
+	}
 
 }
