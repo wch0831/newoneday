@@ -11,17 +11,7 @@
 
 
 $(document).ready(function(){
-	$(function(){
-		$("#accordian h1").click(function(){
-			$("#accordian ul ul").slideUp();
-			$('.ico_ar').css('transform','none');
-			if(!$(this).next().is(":visible"))
-			{
-				$(this).next().slideDown();
-				$(this).find('.ico_ar:eq(0)').css('transform','rotate(180deg)');
-			}
-		})
-	})
+
 	qnalist();
 	
 	
