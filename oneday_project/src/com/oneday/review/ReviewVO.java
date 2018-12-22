@@ -9,7 +9,15 @@ public class ReviewVO {
 	private String rRegdate;
 	private String oTitle;
 	private String mNick;
+	private String mEmail;
 	
+	
+	public String getmEmail() {
+		return mEmail;
+	}
+	public void setmEmail(String mEmail) {
+		this.mEmail = mEmail;
+	}
 	public int getrSeq() {
 		return rSeq;
 	}

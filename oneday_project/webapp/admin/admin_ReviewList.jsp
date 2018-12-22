@@ -53,7 +53,7 @@
 		 	            	listStr += "<td>"+vv.oTitle+"</td>";
 		 	            	listStr += "<td>"+vv.mNick+"</td>";
 		 	            	listStr += "<td>"+vv.rContent+"</td>";
-		 	            	listStr += "<td>"+vv.rRegdate+"</td>";            
+		 	            	listStr += "<td>"+vv.rRegdate+"</td>";          
 		 	            	//listStr += "<td><input type='button' name='"+vv.rSeq+"' id='delBtn' class='adRseq' value='삭제'></td>";
 		 	            	listStr += "<td><img src='/admin/img/del.jpg' onclick='#' name='"+vv.rSeq+"' class='adRseq' width='35' height='35'></td>";
 		 	            	listStr += "</tr>";                               	 	            	 	            	

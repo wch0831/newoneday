@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.oneday.common.MyBatisFactory;
 
 public class ReviewDAO {
+	
 	public ArrayList<ReviewVO> admin_reviewList() {
 		SqlSession conn = null;
 		ReviewVO rvo = new ReviewVO();
@@ -115,6 +116,36 @@ public class ReviewDAO {
 			conn.close();
 		}
 		return rvo;
+	}
+	
+	
+	public int mainReviewInsert(ReviewVO rvo) {
+		int res = 0;
+		SqlSession conn =null;
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.insert("reviewNameSpace.reply_insert", rvo);
+			conn.commit();
+		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
+	public ArrayList<ReviewVO> mainReviewSelect(ReviewVO rvo) {
+		SqlSession conn = null;
+		
+		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
+		try {
+			System.out.println("in");
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("reviewNameSpace.mainReplySelect",rvo);
+		}catch(Exception e) {
+			System.out.println("fail");
+			e.printStackTrace();
+			conn.close();
+		}
+		return list;
 	}
 	
 	
