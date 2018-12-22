@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.oneday.review.ReviewDAO;
-import com.oneday.review.ReviewVO;
 
 /**
  * Servlet implementation class FaqServlet
