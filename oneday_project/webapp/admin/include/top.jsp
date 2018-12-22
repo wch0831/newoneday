@@ -6,20 +6,18 @@
             <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
               
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp">
+                    <a class="navbar-brand" href="./index.jsp">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            
+                           
                             <!-- Light Logo icon -->
-                            
-                            <img src="admin/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                            
+                            <img src="/admin/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text --><span>
                          
                          <!-- Light Logo text -->    
-                         <img src="admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                         <img src="/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
                 </div>
                 
                 <div class="navbar-collapse">
