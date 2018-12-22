@@ -18,9 +18,15 @@
     .f_answer1.on{display: block;}
     .f_question1>ul>li:nth-child(1){width: 7%;text-align: center;}
     .f_answer1>ul>li:nth-child(1){width: 7%;text-align: center;}
-    .f_question1>ul>li:nth-child(2){width: 13%;text-align: center;}
-    .f_question1>ul>li:nth-child(3){width:75%; }
-    .f_question1>ul>li:nth-child(4){width:5%; }
+    .f_answer1>ul>li:nth-child(2){width: 93%;}
+    .f_answer1>ul>li:nth-child(3){width: 7%;text-align: center;}
+    .f_answer1>ul>li:nth-child(4){width: 93%;}
+    .f_answer1>ul>li:nth-child(5){width: 33%;text-align: center;}
+    .f_question1>ul>li:nth-child(2){width: 20%;text-align: center;}
+    .f_question1>ul>li:nth-child(3){width:35%; }
+    .f_question1>ul>li:nth-child(4){width:17%;text-align: center;}
+    .f_question1>ul>li:nth-child(5){width:15%; 	}
+    .f_question1>ul>li:nth-child(6){width:5%; }
     .f_q_link{width: 100%;height: 100%;position:absolute;top: 0;left: 0;}
 </style>
     
@@ -34,7 +40,7 @@ $(document).ready(function(){
 });
 
 
-<!-- 아코디언 -->
+/* <!-- 아코디언 --> */
 $(function(){
 	  var className =""  //변수를 선언한다.
 	     
@@ -115,21 +121,27 @@ $(function(){
 	<!-- 뿌려지는 영역 -->
 	<h1>Q&A</h1>
 		<ul class="fnq">
+		<c:forEach var="vo" items="${KEY_LIST}">
 			<li class="f_question1">
 				<ul class="clearfix">
-					<li>문의번호</li>
-					<li>카테고리1</li>
-					<li>아코디언 메뉴는 어떻게 만드나요?</li>
-					<li><i class="fa fa-angle-double-up"></i></li>
+					<li>${vo.qSeq}</li>
+					<li>${vo.qGubun}</li>
+					<li>${vo.qTitle}</li>
+					<li>${vo.mNick}</li>
+					<li>${vo.qRegdate}</li>
+					<li><i class="fa fa-angle-double-down"></i></li>
 				</ul> <a class="f_q_link"></a>
 			</li>
 			<li class="f_answer1">
 				<ul class="clearfix">
-					<li>A</li>
-					<li>답변</li>
-					<li>답변 날짜</li>
+					<li>Q</li>
+					<li>${vo.qContent}</li>
+					<li><font color="#00FF00">A</font></li>
+					<li>${vo.aContent}</li>
+					<li><font color="#00FF00">(등록일 : ${vo.aRegdate})</font></li>
 				</ul>
 			</li>
+		</c:forEach> 
 		</ul>
 
 
