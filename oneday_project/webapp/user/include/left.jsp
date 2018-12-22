@@ -6,7 +6,7 @@
          
             
             <li class="nav-item">
-              <a class="nav-link" href="colors.html">
+              <a class="nav-link" href="myInfo.jsp">
                 <i class="nav-icon icon-drop"></i> 내 정보</a>
             </li>
             
