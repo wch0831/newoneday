@@ -160,8 +160,8 @@ $(document).ready(function(){
 													</span>
 
 													<span class="fs-18 cl11">
-														<a class="waves-effect waves-dark" href="/ad_review" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">수정</span></a>
-														<a class="waves-effect waves-dark" href="/ad_review" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">삭제</span></a>
+														<a class="waves-effect waves-dark" href="/ad_review" aria-expanded="false"><i class="mdi mdi-table"></i><span name="mainReUpdate" id="mainReUpdate" class="hide-menu">수정</span></a>
+														<a class="waves-effect waves-dark" href="/ad_review" aria-expanded="false"><i class="mdi mdi-table"></i><span name="mainReDel" id="mainReDel" class="hide-menu">삭제</span></a>
 													</span>
 												</div>
 
