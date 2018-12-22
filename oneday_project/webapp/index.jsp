@@ -101,6 +101,14 @@ $(document).ready(function(){
 
 <%@ include file="/include/left.jsp" %>
 
+<form name="rSearch" method="get" action="/reviewServlet">
+               			 <select name="searchCom" id="searchCom" >
+                 			   <option value="rContent">내용                     		
+               			 </select>
+              			  <input type="textarea" id="searchTxt" name="searchTxt">
+             		     <input type="submit" id="reviewInsBtn" value="검색">
+           		  </form> 
+
 	<!-- Slider -->
 	<section class="section-slide">
 		<div class="wrap-slick1 rs1-slick1">
@@ -193,7 +201,9 @@ $(document).ready(function(){
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="areaBtn">
 						지역별
+						
 					</button>
+					     
 				</div>
 				</div>
 				

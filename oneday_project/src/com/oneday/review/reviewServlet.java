@@ -3,6 +3,7 @@ package com.oneday.review;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,36 +28,43 @@ public class reviewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("get");
+		ReviewDAO dao = new ReviewDAO();
+		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
+		ReviewVO rvo = new ReviewVO();
+		
+		list = dao.mainReviewList(rvo);
+		
+		
+		request.setAttribute("KEY_LIST", list);
+		
+		request.getRequestDispatcher("path-detail.jsp").forward(request, response);
+//		response.sendRedirect("admin/table-basic.jsp");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String reply = request.getParameter("reply");
-		String oseqStr = request.getParameter("oseq");
-		int oseq = Integer.parseInt(oseqStr);
-		
-		String sess_email = session.getAttribute("SESS_EMAIL").toString();
-		//String session_id = request.getSession().getAttribute("SESS_ID").toString();
-		
-		
-		
-		ReviewVO rvo = new ReviewVO();
-		rvo.setrContent(reply);
-		rvo.setoSeq(oseq);
-		rvo.setmEmail(sess_email);
-		ReviewDAO dao = new ReviewDAO();
-		int res = dao.mainReviewInsert(rvo);
-		
-		ArrayList<ReviewVO> rlist = new ArrayList<ReviewVO>();
-		rlist = dao.mainReviewSelect(rvo);
 		Gson gson = new Gson();
+		  String jsonStr = request.getReader().lines().collect(Collectors.joining());   //전달된  Json데이터
+	      System.out.println(jsonStr);
+	      ReviewVO rvo = gson.fromJson(jsonStr, ReviewVO.class);
+		  ReviewDAO dao = new ReviewDAO();
+	     
+		
+		
+		//String session_id = request.getSession().getAttribute("SESS_ID").toString();
+
+		int res = dao.mainReviewInsert(rvo);
+		System.out.println(res + " 건 댓글 입력");
+		
+		ArrayList<ReviewVO> rlist = dao.mainReviewList(rvo);
+		System.out.println(rlist.size() + " 개의 댓글 select");
+		
 		String gsonStr = gson.toJson(rlist);
 		
-		response.setContentType("application/json");
+		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println(gsonStr);
 	}

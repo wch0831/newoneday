@@ -64,12 +64,14 @@ public class userReviewServlet extends HttpServlet {
 	      System.out.println(jsonStr);
 	      ReviewVO rvo = gson.fromJson(jsonStr, ReviewVO.class);
 		  ReviewDAO dao = new ReviewDAO();
-	      ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
+		  System.out.println(rvo.getrSeq());
 	      
 	      System.out.println("post");
+	      ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
 	      int res = dao.admin_reviewDel(rvo);
 	      rvo.setmEmail(sess_email);
 	      list = dao.my_reviewList(rvo);
+	     
 	        String gsonStr = gson.toJson(list);
 	         System.out.println(gsonStr);
 	         

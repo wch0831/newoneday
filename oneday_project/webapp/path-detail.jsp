@@ -1,50 +1,132 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Blog Detail</title>
 <%@ include file="/include/header.jsp" %>
+
 <script>
+
 $(document).ready(function(){
 	
-		//댓글 입력버튼 이벤트
-	  $("#replybtn").click(function(){
-		  		console.log("reply="+$("#reply").val()+"&oseq=${KEY_VO.oseq}");
+
+	//"수정버튼" 클릭시 text로 활성화
+    $(document).on("click",".reUpdate",function(){ //글쓰기 버튼 --> 눌렀을 때 기존의 있는 내용을 불러오고 text로 활성화 된다.
+       var names = $(this).attr("name");
+        var arr = names.split("^^^");
+        alert(arr[0] +""+arr[1]+"1111");
+		//alert("ㅅㅂ");
+        //alert(arr[0] +","+arr[1]);
+       //입력된 글이 들어와야한다..!!!
+       var htmlStr = "<input type='hidden' id='updateReplySeq' value='"+arr[0]+"'>";
+       htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'> ";   
+       htmlStr += "<span onClick=\"replyEditSubmit(this)\" class='replyEditSubmit' name=''>글쓰기</span>";
+       
+       $(".readContent").empty();
+       $(".readContent").html(htmlStr);
+    });
+	
+	
+    $(document).on("click",".reDel",function(){
+       alert("ㅅㅄㅄㅄㅄㅂ");
+     });
+	
+	
+	//"수정 확인 버튼 " 클릭시  rseq와 rContent를 가지고 ajax태움.
+    function replyEditSubmit() {
+		alert("!!!");		
+    	var rseq = $("#updateReplySeq").val();
+    	var rcontent = $("#updateReplyContent").val();
+    	var sendData = {"rseq":rseq, "rcontent":rcontent};
+    	
+    	  /* $.ajax({ 
+    		  		 
+    	 
+				url:"/reviewUpdate",
+				type:"post",
+				//contentType: "application/json; charset=UTF-8", 
+				data:JSON.stringify(sendData),   
+				success:function(gsonStr){
+						console.log(gsonStr);		
+						var htmlStr = "<ul>";
+			 			$.map(gsonStr, function(vv, idx){
+				  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
+				  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
+					    htmlStr += "</div>";
+						htmlStr += "<div class='size-207'>";
+						htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
+						htmlStr += "<span class='mtext-107 cl2 p-r-20'>"+vv.mNick+"</span>";																				
+						htmlStr += "<p class='reUpDel'>";
+						htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+$vv.rSeq^^^$vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
+						htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+$vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'>";
+						htmlStr += "</p>";																
+						htmlStr += "</span>";
+						htmlStr += "</div>";
+						htmlStr += "<div class='readContent'>";
+						htmlStr += "<input type='textarea' border='0'  value='"+vv.rContent+"' readonly>";
+						htmlStr += "</div>";
+						htmlStr += "</div>";
+				  	});
+				  	//htmlStr += "</ul>";
+				  	
+				  	//div는 남겨두고 기존 댓글 내용만 지우기
+				  	$("#replyform").empty();
+				  	$("#replyform").html(htmlStr);
+				}
+	}); //end of ajax  */ 
+    	
+    }
+	
+	
+	
+		// ${KEY_VO.oseq}를 가지고 댓글 insert와 select
+		$(document).on("click",".btn",function(){	  
 		  		
-				  $.ajax({ 
+		  		var reply = $("#dmt").val();
+		  		//var oseq = ${KEY_VO.oseq};
+		  		var oseq = 4;
+		  		alert(reply+" "+oseq);
+		  		var sendData = {"rContent":reply , "oSeq":"4", "mSeq":${sessionScope.SESS_SEQ} };
+		  		
+				     $.ajax({ 
 							url:"/reviewServlet",
 							type:"post",
-							//contentType: "application/json; charset=UTF-8", 
-							data:"reply="+$("#reply").val()+"&oseq=${KEY_VO.oseq}",   
+							contentType: "application/json; charset=UTF-8", 
+							data:JSON.stringify(sendData),   
 							success:function(gsonStr){
 									console.log(gsonStr);		//[{"empno
-									var htmlStr = "<ul>";
+									var htmlStr = "";
 						 			$.map(gsonStr, function(vv, idx){
 							  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
 							  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
 								    htmlStr += "</div>";
 									htmlStr += "<div class='size-207'>";
 									htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
-									htmlStr += "<span class='mtext-107 cl2 p-r-20'>"+vv.mNick+"</span>";																				
-									htmlStr += "<span class='fs-18 cl11'>";
-									htmlStr += "<img src=''/images/reviewUp.png' nclick='#' name='"+${vo.rSeq}+"' class='reUpdate' width='20' height='20'>";
-									htmlStr += "<img src=''/images/reviewDel.png' onclick='#' name='"+${vo.rSeq}+"' class='reDel' width='20' height='20'>";								
-									htmlStr += "</span>";
+									htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
+									htmlStr += "<br>";
+									htmlStr += "<p class='reUpDel'>";
+									htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
+									htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
+									htmlStr += "</p>";								
 									htmlStr += "</div>";
 									htmlStr += "<div class='readContent'>";
-									htmlStr += "<input type='textarea' border='0'  value='"+vv.rContent+"' readonly>";
+									htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
+									htmlStr += "<br>";
 									htmlStr += "</div>";
 									htmlStr += "</div>";
+									
 							  	});
-							  	//htmlStr += "</ul>";
-							  	
+						 			
 							  	//div는 남겨두고 기존 댓글 내용만 지우기
-							  	$("#replyform").empty();
-							  	$("#replyform").html(htmlStr);
+							  	$(".replyform").empty();
+							  	$(".replyform").html(htmlStr);
 							}
-				}); //end of ajax 
+				}); //end of ajax    
     });
 	  
 		
@@ -82,6 +164,8 @@ $(document).ready(function(){
 	  
 	  
 });    
+	
+	
 </script>
 </head>
 <body class="animsition">
@@ -182,33 +266,37 @@ $(document).ready(function(){
 					
 					<!-- 댓글폼  -->
 					<div class="replyform">	
-					
+						<c:forEach var="vo" items="${KEY_LIST}">
 						<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
 												<img src="images/avatar-01.jpg" alt="AVATAR">
-											</div>
+						</div>
 						<div class="size-207">
+											
 												<div class="flex-w flex-sb-m p-b-17">
 													
 													<span class="mtext-107 cl2 p-r-20">														
-														닉네임
+														<b>${vo.mNick}<b>
 													</span>
-												 
-													<p class="updel">
-														<img src="/images/reviewUp.png" onclick="javascript:location.href='/reviewUpdate';" class="reUpdate" width="20" height="20">
-														<img src="/images/reviewDel.png" name="${vo.rSeq}" class="reDel" width="20" height="20">
 													
-													</p>
+												 
+													   <p class="reUpDel">
+														<span class="replyUp_span"><img src="/images/reviewUp.png"  name="${vo.rSeq}^^^${vo.rContent}"  class="reUpdate" width="20" height="20"></span>
+														<span class="replyDel_span"><img src="/images/reviewDel.png"  name="${vo.rSeq}" class="reDel" id="reDel" width="20" height="20"></span>
+													   </p>
+																					
 												</div>
 
 												<div class="readContent">
-													<input type="textarea" border="0"  value="댓글내용입니다" readonly>
+													<input type="textarea" border="0" id="reply"  value="${vo.rContent}" readonly>
+													<br>
 												</div>
 												
 												
 												
 												
 					   </div>
-											
+							</c:forEach>	
+							<br>			
 						</div>					
 					
 						<!--  -->
@@ -229,6 +317,7 @@ $(document).ready(function(){
 								</div>
 
 								<input type="button" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" name="replybtn" id="replybtn" value="작성" >
+								<input type="button" class="btn" value="작성2">
 									
 								
 							
@@ -480,7 +569,7 @@ $(document).ready(function(){
 		
 <%@ include file="/include/footer.jsp" %>
 	
-
+<%@ include file="/include/script.jsp" %>
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
@@ -489,7 +578,7 @@ $(document).ready(function(){
 		</span>
 	</div>
 
-<%@ include file="/include/script.jsp" %>
+
 
 </body>
 </html>
