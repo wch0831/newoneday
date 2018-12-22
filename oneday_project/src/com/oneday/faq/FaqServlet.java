@@ -26,9 +26,7 @@ public class FaqServlet extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("하이염");
 	  	FaqDAO dao = new FaqDAO();
@@ -43,10 +41,7 @@ public class FaqServlet extends HttpServlet {
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out  = response.getWriter();
 		out.println(jsonStr);
-		
-		//request.setAttribute("KEY_LIST", list);	
-		
-		//request.getRequestDispatcher("faqs.jsp").forward(request, response);
+
 	}
 
 }

@@ -6,6 +6,49 @@
 <head>
 	<title>Blog Detail</title>
 <%@ include file="/include/header.jsp" %>
+<script>
+$(document).ready(function(){
+	
+		//댓글 입력버튼 이벤트
+	  $("#replybtn").click(function(){
+		  		console.log("reply="+$("#reply").val()+"&oseq=${KEY_VO.oseq}");
+		  		
+				  $.ajax({ 
+							url:"/reviewServlet",
+							type:"post",
+							//contentType: "application/json; charset=UTF-8", 
+							data:"reply="+$("#reply").val()+"&oseq=${KEY_VO.oseq}",   
+							success:function(gsonStr){
+									console.log(gsonStr);		//[{"empno
+									var htmlStr = "<ul>";
+						 			$.map(gsonStr, function(vv, idx){
+							  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
+							  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
+								    htmlStr += "</div>";
+									htmlStr += "<div class='size-207'>";
+									htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
+									htmlStr += "<span class='mtext-107 cl2 p-r-20'>"+vv.mNick+"</span>";																				
+									htmlStr += "<span class='fs-18 cl11'>";
+									htmlStr += "<a class='waves-effect waves-dark' href='/ad_review' aria-expanded='false'><i class='mdi mdi-table'></i><span class='hide-menu'>수정</span></a>";
+									htmlStr += "<a class='waves-effect waves-dark' href='/ad_review' aria-expanded='false'><i class='mdi mdi-table'></i><span class='hide-menu'>삭제</span></a>";
+									htmlStr += "</span>";
+									htmlStr += "</div>";
+									htmlStr += "<p class='stext-102 cl6'>"+vv.rContent+"</p>";
+									htmlStr += "</div>";
+							  	});
+							  	//htmlStr += "</ul>";
+							  	
+							  	//div는 남겨두고 기존 댓글 내용만 지우기
+							  	$("#replyform").empty();
+							  	$("#replyform").html(htmlStr);
+							}
+				}); //end of ajax 
+    });
+	  
+	  
+	  
+});    
+</script>
 </head>
 <body class="animsition">
 	
@@ -100,8 +143,38 @@
 									Crafts
 								</a>
 							</div>
+							
 						</div>
+					
+					<!-- 댓글폼  -->
+					<div class="replyform">	
+					
+						<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+												<img src="images/avatar-01.jpg" alt="AVATAR">
+											</div>
+						<div class="size-207">
+												<div class="flex-w flex-sb-m p-b-17">
+													
+													<span class="mtext-107 cl2 p-r-20">														
+														닉네임
+													</span>
 
+													<span class="fs-18 cl11">
+														<a class="waves-effect waves-dark" href="/ad_review" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">수정</span></a>
+														<a class="waves-effect waves-dark" href="/ad_review" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">삭제</span></a>
+													</span>
+												</div>
+
+												<p class="stext-102 cl6" id="reply" name="reply">
+													댓글내용
+												</p>
+												
+												
+												
+											</div>
+											
+						</div>					
+					
 						<!--  -->
 						<div class="p-t-40">
 							<h5 class="mtext-113 cl2 p-b-12">
@@ -112,27 +185,17 @@
 								Your email address will not be published. Required fields are marked *
 							</p>
 
-							<form name="reviewIns" method="get" action="/reviewinsert">
+							
 								<div class="bor19 m-b-20">
-									<textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comment..."></textarea>
+									<textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" id="dmt" name="cmt" placeholder="Comment..."></textarea>
 								</div>
 
-								<div class="bor19 size-218 m-b-20">
-									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="name" placeholder="Name *">
 								</div>
 
-								<div class="bor19 size-218 m-b-20">
-									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="email" placeholder="Email *">
-								</div>
-
-								<div class="bor19 size-218 m-b-30">
-									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="web" placeholder="Website">
-								</div>
-
-								<input type="button" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" name="" id="" value="작성" >
+								<input type="button" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" name="replybtn" id="replybtn" value="작성" >
 									
 								
-							</form>
+							
 						</div>
 					</div>
 				</div>

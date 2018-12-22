@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -28,17 +29,21 @@ public class userReviewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//String sess_id = session.getAttribute("SESS_ID").toString();
 		
+		Gson gson = new Gson();
+		HttpSession session = request.getSession();
+				
+		String sess_email = session.getAttribute("SESS_EMAIL").toString();
 		ReviewVO rvo = new ReviewVO();
 		ReviewDAO dao = new ReviewDAO();
 		
 		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
 		
+		System.out.println(sess_email+"세션값");
 		System.out.println("get in");
 		
-	    rvo.setmSeq(3);
+	    rvo.setmEmail(sess_email);
 		 
-	    int res = rvo.getmSeq();
-	    System.out.println(res);
+	
 		list=dao.my_reviewList(rvo);
 		
 		request.setAttribute("KEY_LIST", list);
@@ -51,6 +56,10 @@ public class userReviewServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Gson gson = new Gson();
+		HttpSession session = request.getSession();
+				
+		String sess_email = session.getAttribute("SESS_EMAIL").toString();
+		
 		  String jsonStr = request.getReader().lines().collect(Collectors.joining());   //전달된  Json데이터
 	      System.out.println(jsonStr);
 	      ReviewVO rvo = gson.fromJson(jsonStr, ReviewVO.class);
@@ -59,7 +68,7 @@ public class userReviewServlet extends HttpServlet {
 	      
 	      System.out.println("post");
 	      int res = dao.admin_reviewDel(rvo);
-	      rvo.setmSeq(3);
+	      rvo.setmEmail(sess_email);
 	      list = dao.my_reviewList(rvo);
 	        String gsonStr = gson.toJson(list);
 	         System.out.println(gsonStr);
