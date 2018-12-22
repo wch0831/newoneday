@@ -15,8 +15,22 @@ public class FaqVO {
 	private String mEmail;
 	private String mNick;
 	private String Check;
+	private String conCheck;
+	private String dateCheck;
 	
 	
+	public String getConCheck() {
+		return conCheck;
+	}
+	public void setConCheck(String conCheck) {
+		this.conCheck = conCheck;
+	}
+	public String getDateCheck() {
+		return dateCheck;
+	}
+	public void setDateCheck(String dateCheck) {
+		this.dateCheck = dateCheck;
+	}
 	public String getCheck() {
 		return Check;
 	}

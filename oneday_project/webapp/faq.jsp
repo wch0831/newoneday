@@ -161,8 +161,8 @@ function qnalist() {
 	 				listStr += "<li>Q</li>";
 	 				listStr += "<li>" + vv.qContent + "</li>";
 	 				listStr += "<li><font color='#00FF00'>A</font></li>";
-	 				listStr += "<li>" + vv.aContent + "</li>";
-	 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.aRegdate + ")</font></li>";
+	 				listStr += "<li>" + vv.conCheck + "</li>";
+	 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
 	 				listStr += "</ul>";
 	 				listStr += "</li>";
 
