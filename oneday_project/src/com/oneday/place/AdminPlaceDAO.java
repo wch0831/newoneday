@@ -69,5 +69,31 @@ public class AdminPlaceDAO {
 		return res;
 	}
 	
+	//검색결과 리슽트
+	public ArrayList<PlaceVO> selectSearch(String search) {
+		ArrayList<PlaceVO> pvoList = new ArrayList<PlaceVO>(); 
+		SqlSession conn =null;
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			pvoList = (ArrayList)conn.selectList("placeNameSpace.adminSearchSelect", search);
+		} finally {
+			conn.close();
+		}
+		return pvoList;
+	}
+	
+	
+	public ArrayList<PlaceVO> selectPlacearea(String search) {
+		ArrayList<PlaceVO> pvoList = new ArrayList<PlaceVO>(); 
+		SqlSession conn =null;
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			pvoList = (ArrayList)conn.selectList("placeNameSpace.selectPlacearea", search);
+		} finally {
+			conn.close();
+		}
+		return pvoList;
+	}
+	
 	
 }

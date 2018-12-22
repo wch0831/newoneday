@@ -12,13 +12,45 @@
 <script>
 $(document).ready(function(){
 	$("#gumbtn").click(function(){
-		var search = $("#search").val();
-		console.log(search);
+		console.log("hahahah");
 		var gum = $("#gum").val();
 		console.log(gum);
+		
+		$.ajax({ 
+			url:"/search",
+			type:"post",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			data:"gum="+gum,
+			resultType:"json",
+			success:function(resJson){
+				console.log(resJson);
+				makeHtml(resJson);
+				
+			}
+		}); 
+		
+		
 	});
 	
-	
+	function makeHtml(obj) {
+		var htmlStr = "";
+  	$.map(obj, function(vv, idx){
+  		htmlStr += "<tr>";
+  		htmlStr += "<td><h6 style=text-align:center>"+vv.pSeq+"</h6></td>";
+  		htmlStr += "<td><h6 style=text-align:center>"+vv.pTitle+"</h6></td>";
+  		htmlStr += "<td><h6 style=text-align:center>"+vv.pContent+"</h6></td> ";
+  		htmlStr += "<td><h6 style=text-align:center>"+vv.pLat+"</h6></td>";
+  		htmlStr += "<td><h6 style=text-align:center>"+vv.pLng+"</h6></td>";
+  		htmlStr += "<td><h6 style=text-align:center>"+vv.pArea+"</h6></td>";
+  		htmlStr += "<td><h6 style=text-align:center>"+vv.pCost+"</h6></td>";
+  		htmlStr += "<td><h6 style=text-align:center>"+vv.pInout+"</h6></td>";
+  		htmlStr += "<td><h6 style=text-align:center>"+vv.pPurpose+"</h6></td>";
+  		htmlStr += "<td><h6> <input onclick=\"location='/UpdateAdmin?pSeq="+vv.pSeq+"'\" id='updatebutton' type = 'button' value='수정' name='"+vv.pSeq+"' width='35' height='35'></h6></td>";
+  		htmlStr += "</tr>";			
+  	});
+  	$("#hotbody").empty();
+  	$("#hotbody").html(htmlStr);
+	}
 });
 		
 
@@ -111,7 +143,7 @@ $(document).ready(function(){
                                             </tr>
                                                
                                         </thead>
-                                         <tbody>
+                                         <tbody id="hotbody">
                                             <c:forEach var="vo" items="${KEY_LIST}">
                                                 <tr>
 	                                              

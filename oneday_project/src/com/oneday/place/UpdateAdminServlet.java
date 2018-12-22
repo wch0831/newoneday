@@ -58,7 +58,8 @@ public class UpdateAdminServlet extends HttpServlet {
 		String p_area = mrequest.getParameter("p_area");
 		int p_cost = Integer.parseInt(mrequest.getParameter("p_cost")); // String을 int 로바꿈
 		String p_inout = mrequest.getParameter("p_inout");
-		
+		String oldPname = mrequest.getParameter("originPic");
+		String oldSysname = mrequest.getParameter("pSysname");
 		
 		System.out.println(p_title+":::");
 		
@@ -82,17 +83,24 @@ public class UpdateAdminServlet extends HttpServlet {
 		
 		
 		
-
+		
 		//-----------------------------------------------		
 		// * shop_pic : cos.jar 를 이용한 단일 파일 업로드 처리 
 		//-----------------------------------------------
 		String origPname = mrequest.getOriginalFileName("pname");
-		pvo.setpPname(origPname);	
+		if(origPname == null) {
+			pvo.setpPname(oldPname);
+		} else {
+			pvo.setpPname(origPname);	
+		}
 				
 		//중복 시 리네임된 파일명
 		String sysPname = mrequest.getFilesystemName("pname");
-		pvo.setpSysname(sysPname);
-		
+		if(sysPname == null) {
+			pvo.setpSysname(oldSysname);
+		} else {
+			pvo.setpSysname(sysPname);	
+		}
 		//파일크기
 		//long attachFileSize = pfile.length();		
 		
@@ -101,8 +109,8 @@ public class UpdateAdminServlet extends HttpServlet {
 		
 		//파일 확장자 처리
 		String attachFileExt = "jpg";
-		if(origPname.lastIndexOf(".") != -1) {
-			attachFileExt = origPname.substring(origPname.lastIndexOf(".")+1);
+		if(pvo.getpPname().lastIndexOf(".") != -1) {
+			attachFileExt = pvo.getpPname().substring(pvo.getpPname().lastIndexOf(".")+1);
 		}
 		if(!attachFileExt.toUpperCase().equals("JPG") &&
 				!attachFileExt.toUpperCase().equals("JPEG") &&

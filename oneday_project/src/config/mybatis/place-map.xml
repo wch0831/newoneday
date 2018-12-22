@@ -41,7 +41,6 @@
       <result property="pDel" column="p_del" />
    </resultMap>
  
- 
     <resultMap id="placeHoldMap" type="com.oneday.place.PlaceHoldVO">
       <id property="hSeq" column="h_seq" />
       <result property="hTitle" column="h_title" />
@@ -120,7 +119,14 @@
 		 update place set p_del = 'y' where p_seq=#{value} 
     </update>
 	 
+	 <!--관리자 수정 select -->
+	 <select id="adminSearchSelect" parameterType="String" resultMap="placeMap">
+	 	select p_seq, p_title, p_content, p_lat, p_lng, p_area, p_cost, p_inout, p_purpose
+		from place
+		where p_title like '%'|| #{value} || '%'
+	 </select>
 	 
+
    </mapper> 
 
    

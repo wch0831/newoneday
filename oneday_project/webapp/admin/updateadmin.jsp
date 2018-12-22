@@ -181,8 +181,8 @@ $(document).ready(function(){
 									    
 									    
 									    
-									    <input type="hidden" id="originPic" name="originPic" value="${PVO.pSysname}"/>
-									    
+									    <input type="hidden" id="pSysname" name="pSysname" value="${PVO.pSysname}"/>
+									    <input type="hidden" id="originPic" name="originPic" value="${PVO.pPname}"/>
 									   
 									  
 									
