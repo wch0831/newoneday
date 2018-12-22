@@ -55,7 +55,7 @@
 		 	            	listStr += "<td>"+vv.rContent+"</td>";
 		 	            	listStr += "<td>"+vv.rRegdate+"</td>";          
 		 	            	//listStr += "<td><input type='button' name='"+vv.rSeq+"' id='delBtn' class='adRseq' value='삭제'></td>";
-		 	            	listStr += "<td><img src='/admin/img/del.jpg' onclick='#' name='"+vv.rSeq+"' class='adRseq' width='35' height='35'></td>";
+		 	            	listStr += "<td><img src='/admin/img/del.jpg' name='"+vv.rSeq+"' class='adRseq' width='35' height='35'></td>";
 		 	            	listStr += "</tr>";                               	 	            	 	            	
 		 	  	});
 		 			
@@ -216,7 +216,7 @@
 	                                                <td>${vo.rContent}</td>
 	                                                <td>${vo.rRegdate}</td> 
 	                                                <%-- <td><input type="button" name="${vo.rSeq}" id="delBtn" class="adRse" value="삭제"></td> --%>	                                               
-	                                                <td><img src="/admin/img/del.jpg" onclick="#" name="${vo.rSeq}" class="adRseq" width="35" height="35"></td>
+	                                                <td><img src="/admin/img/del.jpg" name="${vo.rSeq}" class="adRseq" width="35" height="35"></td>
 
 	                                                
                                                 </tr>		

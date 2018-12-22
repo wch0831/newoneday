@@ -38,7 +38,7 @@
 		 	            	listStr += "<td class='text-center'>"+vv.rSeq+"</td>";		 	            			 	            
 		 	            	listStr += "<td class='text-center'>"+vv.rContent+"</td>";
 		 	            	listStr += "<td class='text-center'>"+vv.rRegdate+"</td>";            
-		 	            	listStr += "<td class='text-center'><img src='/admin/img/del.jpg' onclick='#' name='"+vv.rSeq+"' class='adRseq' width='35' height='35'></td>";
+		 	            	listStr += "<td class='text-center'><img src='/admin/img/del.jpg' onclick='#' name='"+vv.rSeq+"' class='myRseq' width='35' height='35'></td>";
 		 	            	listStr += "</tr>";                               	 	            	 	            	
 		 	  	});
 		 			
@@ -49,6 +49,11 @@
 		});  	
 		
    });
+	   
+	  
+	   
+	   
+	   
 	   
 });
  </script>

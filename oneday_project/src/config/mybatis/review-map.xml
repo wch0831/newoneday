@@ -52,7 +52,7 @@
     		select o.o_seq, r.r_seq, o.o_title, r.r_content, r.r_regdate from member m, reply r, onepath o
 			 where r.m_seq = m.m_seq and o.o_seq = r.o_seq
             and m.m_email = #{mEmail}
-            order by r.r_seq asc
+            
     </select>
     
     <!-- 마이페이지 댓글 검색 조회 -->
@@ -97,7 +97,7 @@
 	 <!-- 메인 댓글 삽입  -->
 	 <insert id="reply_insert" parameterType="com.oneday.review.ReviewVO">
 		insert into reply values(reply_seq.nextval,#{oSeq},
-		(select m_seq from member where m_email=#{mEmail}),#{rContent},sysdate);
+		#{mSeq},#{rContent},sysdate)
 	</insert>
 
 	
@@ -105,9 +105,10 @@
 	 <select id="mainReplySelect"
     	parameterType="com.oneday.review.ReviewVO"
     	resultMap="reviewMap">
-    		select o.o_seq, r.r_seq, o.o_title, m.m_nick, r.r_content, r.r_regdate from member m, reply r, onepath o
+    		select o.o_seq, r.r_seq, o.o_title, m.m_nick, r.r_content, r.r_regdate 
+    		from member m, reply r, onepath o
 			where r.m_seq = m.m_seq and o.o_seq = r.o_seq 
-			and o.o_seq = 2;
+			and o.o_seq = 4
     </select>
 	
 	 

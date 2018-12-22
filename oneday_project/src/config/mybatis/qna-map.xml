@@ -55,5 +55,12 @@
       order by q.q_seq desc
 	</select>
 	
+	<select id="myQuestionSelect" parameterType="String" resultType="com.oneday.faq.FaqVO" resultMap="qnaMap">
+      select q.q_seq, q.q_gubun, q.q_title, q.q_regdate, q.q_content, q.qm_seq, q.a_seq, m.m_email, nvl2(q.a_regdate, q.a_regdate, sysdate) as datecheck, nvl2(a.a_content, a.a_content, '답변 대기중입니다.') as concheck, m.m_nick
+      from question q, answer a, member m
+      where q.a_seq = a.a_seq(+) and q.qm_seq = m.m_seq and m.m_email = #{mEmail}
+      order by q.q_seq desc
+	</select>
+	
    
 </mapper>   

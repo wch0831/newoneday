@@ -132,12 +132,12 @@ public class ReviewDAO {
 		return res;
 	}
 	
-	public ArrayList<ReviewVO> mainReviewSelect(ReviewVO rvo) {
+	public ArrayList<ReviewVO> mainReviewList(ReviewVO rvo) {
 		SqlSession conn = null;
 		
 		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
 		try {
-			System.out.println("in");
+			System.out.println("insert");
 			conn = MyBatisFactory.getFactory().openSession();
 			list = (ArrayList)conn.selectList("reviewNameSpace.mainReplySelect",rvo);
 		}catch(Exception e) {
