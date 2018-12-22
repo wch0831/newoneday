@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 		
 		//System.out.println(mvo.getmEmail());
 		
-		if(mvo.getmGubun().equals("null")){
+		if(mvo.getmGubun() == null){
 			response.sendRedirect("error404.jsp");
 			
 		}else {

@@ -59,6 +59,7 @@ public class MemberDAO {
 			return list;
 	}
 	
+	//관리자 > 회원관리
 	public ArrayList<MemberVO> userSelect() {
 		SqlSession conn = null;
 		MemberVO mvo = new MemberVO();
@@ -75,6 +76,24 @@ public class MemberDAO {
 		}
 		
 		return list;
+	}
+	
+	//마이페이지 > 내정보
+	public MemberVO myInfo(int seq) {
+		SqlSession conn = null;
+		MemberVO mvo = new MemberVO();
+		
+		try {
+		conn = MyBatisFactory.getFactory().openSession();
+		mvo = conn.selectOne("memberNameSpace.my_info", seq);
+		conn.commit();
+		} catch(Exception e) {
+			e.printStackTrace();	
+		} finally {
+			conn.close();
+		}
+		
+		return mvo;
 	}
 	
 	

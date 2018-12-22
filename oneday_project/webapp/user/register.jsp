@@ -131,7 +131,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">　이메일　　</span>
                 </div>
-                <input class="form-control" type="text" id="mEmail" name="mEmail">
+                <input class="form-control" type="text" id="mEmail" name="mEmail">&emsp;
                 <input type="button" id="mailCheck" value="중복확인">
               </div>
               <div class="input-group mb-3">
@@ -144,7 +144,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">　닉네임　　</span>
                 </div>
-                <input class="form-control" type="text" id="mNick" name="mNick">
+                <input class="form-control" type="text" id="mNick" name="mNick">&emsp;
                 <input type="button" id="nickCheck" value="중복확인">
               </div>
               <div class="input-group mb-4">

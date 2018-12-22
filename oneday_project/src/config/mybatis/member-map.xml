@@ -44,6 +44,7 @@
       select * from member
       where m_email=#{mEmail} and m_pw=#{mPw}
     </select>
+    
     <!-- 아이디 비밀번호 체크 -->
     <select id="member_check" resultMap="memberMap">
       select nvl(m_email, "null"), nvl(m_pw, "null") from member
@@ -55,7 +56,7 @@
     	values (member_seq.nextval, #{mEmail}, #{mPw}, #{mName}, #{mNick}, #{mResnum}, 'u', sysdate, 'n', null)
     </insert>
     
-    <!-- 관리자 회원정보 -->
+    <!-- 회원정보 -->
     <select id="member_info" parameterType="com.oneday.member.MemberVO" resultMap="memberMap">
       select * 
       from member
@@ -63,10 +64,10 @@
     </select> 
     
     <!-- mylist 회원정보 -->
-    <select id="my_info" parameterType="String" resultMap="memberMap">
+    <select id="my_info" parameterType="int" resultMap="memberMap">
     	select *
     	from member
-    	where m_email=#{mEmail}
+    	where m_seq=#{value}
     </select>
     
     <!-- 회원탈퇴 -->
