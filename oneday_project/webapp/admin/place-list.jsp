@@ -69,9 +69,8 @@ $(document).ready(function(){
 						<div  class="col col-xs-6 text-right">
 						<select id="search" name="search">
    						<option value="">search</option>
-    					<option value="주소">주소</option>
-    					<option value="목적">목적</option>
-    					<option value="실내/실외">실내/실외</option>
+    					<option value="이름">이름</option>
+    				
 						</select>
 						
 						<input type = "text" id="gum" placeholder="검색어">
