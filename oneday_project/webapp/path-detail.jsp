@@ -29,11 +29,13 @@ $(document).ready(function(){
 									htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
 									htmlStr += "<span class='mtext-107 cl2 p-r-20'>"+vv.mNick+"</span>";																				
 									htmlStr += "<span class='fs-18 cl11'>";
-									htmlStr += "<a class='waves-effect waves-dark' href='/ad_review' aria-expanded='false'><i class='mdi mdi-table'></i><span class='hide-menu'>수정</span></a>";
-									htmlStr += "<a class='waves-effect waves-dark' href='/ad_review' aria-expanded='false'><i class='mdi mdi-table'></i><span class='hide-menu'>삭제</span></a>";
+									htmlStr += "<img src=''/images/reviewUp.png' nclick='#' name='"+${vo.rSeq}+"' class='reUpdate' width='20' height='20'>";
+									htmlStr += "<img src=''/images/reviewDel.png' onclick='#' name='"+${vo.rSeq}+"' class='reDel' width='20' height='20'>";								
 									htmlStr += "</span>";
 									htmlStr += "</div>";
-									htmlStr += "<p class='stext-102 cl6'>"+vv.rContent+"</p>";
+									htmlStr += "<div class='readContent'>";
+									htmlStr += "<input type='textarea' border='0'  value='"+vv.rContent+"' readonly>";
+									htmlStr += "</div>";
 									htmlStr += "</div>";
 							  	});
 							  	//htmlStr += "</ul>";
@@ -45,6 +47,38 @@ $(document).ready(function(){
 				}); //end of ajax 
     });
 	  
+		
+/* 	  $(document).on("click",".reUpdate",function(){
+		   var seq = $(this).attr("name");
+			alert(name);	
+		   var sendData = {"rSeq":seq};
+		   
+				$.ajax({ 	
+				url:"/userReview",
+				type:"post",
+				contentType: "application/json; charset=UTF-8",
+				data:JSON.stringify(sendData),
+				success:function(gsonStr){
+						console.log(gsonStr);		//객체
+						var topListStr = "";
+						var listStr = "";
+			 			$.map(gsonStr, function(vv, idx){				 					 	            			 	            
+			 	            	listStr += "<tr>";
+			 	            	listStr += "<td class='text-center'>"+vv.oSeq+"</td>";
+			 	            	listStr += "<td class='text-center'>"+vv.rSeq+"</td>";		 	            			 	            
+			 	            	listStr += "<td class='text-center'>"+vv.rContent+"</td>";
+			 	            	listStr += "<td class='text-center'>"+vv.rRegdate+"</td>";            
+			 	            	listStr += "<td class='text-center'><img src='/admin/img/del.jpg' onclick='#' name='"+vv.rSeq+"' class='adRseq' width='35' height='35'></td>";
+			 	            	listStr += "</tr>";                               	 	            	 	            	
+			 	  	});
+			 			
+			 			$("#contents").empty();
+			 			$("#contents").html(listStr);	 			
+			 			
+				} //end of success
+			});  	
+			
+	   }); */
 	  
 	  
 });    
@@ -158,20 +192,22 @@ $(document).ready(function(){
 													<span class="mtext-107 cl2 p-r-20">														
 														닉네임
 													</span>
-
-													<span class="fs-18 cl11">
-														<a class="waves-effect waves-dark" href="/ad_review" aria-expanded="false"><i class="mdi mdi-table"></i><span name="mainReUpdate" id="mainReUpdate" class="hide-menu">수정</span></a>
-														<a class="waves-effect waves-dark" href="/ad_review" aria-expanded="false"><i class="mdi mdi-table"></i><span name="mainReDel" id="mainReDel" class="hide-menu">삭제</span></a>
-													</span>
+												 
+													<p class="updel">
+														<img src="/images/reviewUp.png" onclick="javascript:location.href='/reviewUpdate';" class="reUpdate" width="20" height="20">
+														<img src="/images/reviewDel.png" name="${vo.rSeq}" class="reDel" width="20" height="20">
+													
+													</p>
 												</div>
 
-												<p class="stext-102 cl6" id="reply" name="reply">
-													댓글내용
-												</p>
+												<div class="readContent">
+													<input type="textarea" border="0"  value="댓글내용입니다" readonly>
+												</div>
 												
 												
 												
-											</div>
+												
+					   </div>
 											
 						</div>					
 					
