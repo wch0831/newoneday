@@ -101,7 +101,7 @@
 								</a>
 							</div>
 						</div>
-
+						
 						<!--  -->
 						<div class="p-t-40">
 							<h5 class="mtext-113 cl2 p-b-12">
@@ -112,27 +112,17 @@
 								Your email address will not be published. Required fields are marked *
 							</p>
 
-							<form name="reviewIns" method="get" action="/reviewinsert">
+							
 								<div class="bor19 m-b-20">
-									<textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comment..."></textarea>
+									<textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" id="dmt" name="cmt" placeholder="Comment..."></textarea>
 								</div>
 
-								<div class="bor19 size-218 m-b-20">
-									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="name" placeholder="Name *">
-								</div>
-
-								<div class="bor19 size-218 m-b-20">
-									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="email" placeholder="Email *">
-								</div>
-
-								<div class="bor19 size-218 m-b-30">
-									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="web" placeholder="Website">
 								</div>
 
 								<input type="button" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" name="" id="" value="작성" >
 									
 								
-							</form>
+							
 						</div>
 					</div>
 				</div>
