@@ -4,8 +4,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Contact</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+    *{padding:0;margin: 0;}
+    ul li{list-style: none;}
+    .clearfix:after{content: "";display: block;clear: both;}
+    h1{text-align: center;padding: 20px 0;}
+    .f_question1>ul>li,.f_answer1>ul>li{float: left;}
+    .fnq{width: 70%;line-height:300%;margin: 0 auto;}
+    .f_question1{position: relative}
+    .f_answer1{background: #eee;display: none;}
+    .f_answer1.on{display: block;}
+    .f_question1>ul>li:nth-child(1){width: 7%;text-align: center;}
+    .f_answer1>ul>li:nth-child(1){width: 7%;text-align: center;}
+    .f_question1>ul>li:nth-child(2){width: 13%;text-align: center;}
+    .f_question1>ul>li:nth-child(3){width:75%; }
+    .f_question1>ul>li:nth-child(4){width:5%; }
+    .f_q_link{width: 100%;height: 100%;position:absolute;top: 0;left: 0;}
+</style>
+    
+	<title>FAQ</title>
 	<%@ include file="/include/header.jsp" %>
+
+<script>
+$(document).ready(function(){	
+	
+	
+});
+
+
+<!-- 아코디언 -->
+$(function(){
+	  var className =""  //변수를 선언한다.
+	     
+	   $('.f_q_link').on({    //버튼을
+	 
+	       click: function(){  //클릭했을때 
+	 
+	            className=$(this).parent().next().attr('class').slice(-2); 
+	            //보여줄 li의 class이름을 뒤에서 두자리(on)를 변수에 담는다.
+	 
+	           if(className=='on'){  //만약 클래스명이 'on'이면
+	 
+	               $(this).parent().next().removeClass('on'); //class'on' 삭제
+	 
+	              $(this).prev().children().eq(3).children()
+	              .css({transform:'rotate(0deg)',transition:'all 0.4s',color:'#000'});
+	               //화살표 아이콘의 원래 css로 돌리기
+	           }
+	           else if(className!='on'){  //만약 클래스명이 'on'이 아니면
+	 
+	               $(this).parent().next().addClass('on');  //class'on' 추가
+	 
+	              $(this).prev().children().eq(3).children()
+	             .css({transform:'rotate(180deg)',transition:'all 0.4s',color:'#7070ea'});  
+	              // 화살표 아이콘 css 수정
+	           }
+	             
+	        }
+	        
+	    });
+	     
+	});
+	
+</script>
+
 </head>
 <body class="animsition">
 	
@@ -25,10 +89,10 @@
 
 	<!-- Content page -->
 	<section class="bg0 p-t-104 p-b-116">
-		<div class="container">
-			<div class="flex-w flex-tr">
-				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-					<form>
+
+
+				<!-- 작성 폼으로 떼서 쓸 부분 -->
+<!--  					<form>
 						<h4 class="mtext-105 cl2 txt-center p-b-30">
 							Send Us A Message
 						</h4>
@@ -45,67 +109,33 @@
 						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
 							Submit
 						</button>
-					</form>
-				</div>
+					</form> -->
+				
+				
+	<!-- 뿌려지는 영역 -->
+	<h1>Q&A</h1>
+		<ul class="fnq">
+			<li class="f_question1">
+				<ul class="clearfix">
+					<li>문의번호</li>
+					<li>카테고리1</li>
+					<li>아코디언 메뉴는 어떻게 만드나요?</li>
+					<li><i class="fa fa-angle-double-up"></i></li>
+				</ul> <a class="f_q_link"></a>
+			</li>
+			<li class="f_answer1">
+				<ul class="clearfix">
+					<li>A</li>
+					<li>답변</li>
+					<li>답변 날짜</li>
+				</ul>
+			</li>
+		</ul>
 
-				<div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
-					<div class="flex-w w-full p-b-42">
-						<span class="fs-18 cl5 txt-center size-211">
-							<span class="lnr lnr-map-marker"></span>
-						</span>
 
-						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
-								Address
-							</span>
 
-							<p class="stext-115 cl6 size-213 p-t-18">
-								Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
-							</p>
-						</div>
-					</div>
-
-					<div class="flex-w w-full p-b-42">
-						<span class="fs-18 cl5 txt-center size-211">
-							<span class="lnr lnr-phone-handset"></span>
-						</span>
-
-						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
-								Lets Talk
-							</span>
-
-							<p class="stext-115 cl1 size-213 p-t-18">
-								+1 800 1236879
-							</p>
-						</div>
-					</div>
-
-					<div class="flex-w w-full">
-						<span class="fs-18 cl5 txt-center size-211">
-							<span class="lnr lnr-envelope"></span>
-						</span>
-
-						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
-								Sale Support
-							</span>
-
-							<p class="stext-115 cl1 size-213 p-t-18">
-								contact@example.com
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>	
+	</section>
 	
-	
-	<!-- Map -->
-	<div class="map">
-		<div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
-	</div>
 
 
 

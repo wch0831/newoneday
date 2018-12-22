@@ -5,16 +5,23 @@
 <html lang="en">
 
 <head>
-<style>
-
-</style>
 <%@ include file="/admin/include/header.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 
 
 $(document).ready(function(){
-	
+	$(function(){
+		$("#accordian h1").click(function(){
+			$("#accordian ul ul").slideUp();
+			$('.ico_ar').css('transform','none');
+			if(!$(this).next().is(":visible"))
+			{
+				$(this).next().slideDown();
+				$(this).find('.ico_ar:eq(0)').css('transform','rotate(180deg)');
+			}
+		})
+	})
 	qnalist();
 	
 	
@@ -132,6 +139,10 @@ $(document).ready(function(){
                    
                 </div>
                 
+                
+                
+             
+
                 
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
