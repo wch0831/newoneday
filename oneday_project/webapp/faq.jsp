@@ -130,7 +130,102 @@ button.snip0059.yellow {
 $(document).ready(function(){	
 		
 	qnalist();
+	
+	$("#qus").click(function name() {
+		window.open('/contact/index.jsp','문의하기','width=800,height=700,location=no,status=no');
+	});
+	
+	
+	$("#myqus").click(function name() {
+		$.ajax({ 	
+			url:"/faq",   
+			type:"get",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			data: "nothing", 
+			resultType:"json",
+			success:function(resObject){
+					console.log(resObject);		//객체
+					var listStr = "";
+					listStr += "<hr>";
+	 				listStr += "<li class='f_question1'>";
+	 				listStr += "<ul class='clearfix'>";
+	 				listStr += "<li>번호</li>";
+	 				listStr += "<li>구분</li>";
+	 				listStr += "<li align='center'>제목</li>";
+	 				listStr += "<li>닉네임</li>";
+	 				listStr += "<li align='center'>등록일</li>";
+	 				listStr += "<li><i></i></li>";
+	 				listStr += "</ul>";
+	 				listStr += "</li>";
+	 				listStr += "<hr>";
+	 					
+		 			$.map(resObject, function(vv, idx){			
+		 				
+		 				listStr += "<li class='f_question1'>";
+		 				listStr += "<ul class='clearfix'>";
+		 				listStr += "<li>" + vv.qSeq + "</li>";
+		 				listStr += "<li>" + vv.qGubun + "</li>";
+		 				listStr += "<li>" + vv.qTitle + "</li>";
+		 				listStr += "<li>" + vv.mNick + "</li>";
+		 				listStr += "<li>" + vv.qRegdate + "</li>";
+		 				listStr += "<li><i class='fa fa-angle-double-down'></i></li>";
+		 				listStr += "</ul><a class='f_q_link'></a>";
+		 				listStr += "</li>";
+		 				listStr += "<li class='f_answer1'>";
+		 				listStr += "<ul class='clearfix'>";
+		 				listStr += "<li>Q</li>";
+		 				listStr += "<li>" + vv.qContent + "</li>";
+		 				listStr += "<li><font color='#00FF00'>A</font></li>";
+		 				listStr += "<li>" + vv.conCheck + "</li>";
+		 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
+		 				listStr += "</ul>";
+		 				listStr += "</li>";
 
+		 			});
+		 			$("#qlist").empty();
+		 			$("#qlist").html(listStr);
+		 			
+		 			
+		 			/* <!-- 아코디언 --> */
+		 			$(function(){
+		 				  var className =""  //변수를 선언한다.
+		 				     
+		 				   $('.f_q_link').on({    //버튼을
+		 				 
+		 				       click: function(){  //클릭했을때 
+		 				 
+		 				            className=$(this).parent().next().attr('class').slice(-2); 
+		 				            //보여줄 li의 class이름을 뒤에서 두자리(on)를 변수에 담는다.
+		 				 
+		 				           if(className=='on'){  //만약 클래스명이 'on'이면
+		 				 
+		 				               $(this).parent().next().removeClass('on'); //class'on' 삭제
+		 				 
+		 				              $(this).prev().children().eq(3).children()
+		 				              .css({transform:'rotate(0deg)',transition:'all 0.4s',color:'#000'});
+		 				               //화살표 아이콘의 원래 css로 돌리기
+		 				           }
+		 				           else if(className!='on'){  //만약 클래스명이 'on'이 아니면
+		 				 
+		 				               $(this).parent().next().addClass('on');  //class'on' 추가
+		 				 
+		 				              $(this).prev().children().eq(3).children()
+		 				             .css({transform:'rotate(180deg)',transition:'all 0.4s',color:'#7070ea'});  
+		 				              // 화살표 아이콘 css 수정
+		 				           }
+		 				             
+		 				        }
+		 				        
+		 				    });
+		 				     
+		 				});
+				}
+			});
+	});
+	
+	$("#allqus").click(function name() {
+		qnalist();
+	});
 });
 
 
@@ -143,7 +238,20 @@ function qnalist() {
 		resultType:"json",
 		success:function(resObject){
 				console.log(resObject);		//객체
-				var listStr = "<link rel='stylesheet' href='test.css'>";
+				var listStr = "";
+				listStr += "<hr>";
+ 				listStr += "<li class='f_question1'>";
+ 				listStr += "<ul class='clearfix'>";
+ 				listStr += "<li>번호</li>";
+ 				listStr += "<li>구분</li>";
+ 				listStr += "<li align='center'>제목</li>";
+ 				listStr += "<li>닉네임</li>";
+ 				listStr += "<li align='center'>등록일</li>";
+ 				listStr += "<li><i></i></li>";
+ 				listStr += "</ul>";
+ 				listStr += "</li>";
+ 				listStr += "<hr>";
+ 					
 	 			$.map(resObject, function(vv, idx){			
 	 				
 	 				listStr += "<li class='f_question1'>";
@@ -161,12 +269,13 @@ function qnalist() {
 	 				listStr += "<li>Q</li>";
 	 				listStr += "<li>" + vv.qContent + "</li>";
 	 				listStr += "<li><font color='#00FF00'>A</font></li>";
-	 				listStr += "<li>" + vv.aContent + "</li>";
-	 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.aRegdate + ")</font></li>";
+	 				listStr += "<li>" + vv.conCheck + "</li>";
+	 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
 	 				listStr += "</ul>";
 	 				listStr += "</li>";
 
 	 			});
+	 			$("#qlist").empty();
 	 			$("#qlist").html(listStr);
 	 			
 	 			
@@ -228,53 +337,28 @@ function qnalist() {
 
 	<!-- Content page -->
 	<section class="bg0 p-t-104 p-b-116">
-
-
-				<!-- 작성 폼으로 떼서 쓸 부분 -->
-<!--  					<form>
-						<h4 class="mtext-105 cl2 txt-center p-b-30">
-							Send Us A Message
-						</h4>
-
-						<div class="bor8 m-b-20 how-pos4-parent">
-							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Your Email Address">
-							<img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="ICON">
-						</div>
-
-						<div class="bor8 m-b-30">
-							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="How Can We Help?"></textarea>
-						</div>
-
-						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-							Submit
-						</button>
-					</form> -->
-				
-				
+			
 	
 	<h1>Q&A</h1>
 	<!-- 버튼 -->
 	
 	<div id="bt">
-	<button class="snip0059 yellow">문의하기</button>
-	<button class="snip0059 yellow">내 문의보기</button>
-	<button class="snip0059 yellow">전체 문의보기</button>
+	<button class="snip0059 yellow" id="qus">문의하기</button>
+	<button class="snip0059 yellow" id="myqus">내 문의보기</button>
+	<button class="snip0059 yellow" id="allqus">전체 문의보기</button>
     </div>
     
     <br><br>
     
-    <hr>
-
     	<!-- 뿌려지는 영역 -->
 		<ul class="fnq" id="qlist">
-
+ 	
 		</ul>
 	<hr>
 
 
 
 	</section>
-	
 
 
 
