@@ -40,9 +40,10 @@
     
 
     <select id="questionSelect" parameterType="com.oneday.faq.FaqVO" resultMap="qnaMap">
-      select q.q_seq, q.q_gubun, q.q_title, q.q_regdate, q.q_content, q.qm_seq, q.a_seq, q.a_regdate, a.a_content
-      from question q, answer a
-      where q.a_seq = a.a_seq(+)
+      select q.q_seq, q.q_gubun, q.q_title, q.q_regdate, q.q_content, q.qm_seq, q.a_seq, q.a_regdate, a.a_content, m.m_nick
+      from question q, answer a, member m
+      where q.a_seq = a.a_seq(+) and q.qm_seq = m.m_seq
+      order by q.q_seq desc
 	</select>
 	
 	<select id="adminQuestionSelect" parameterType="com.oneday.faq.FaqVO" resultMap="qnaMap">
