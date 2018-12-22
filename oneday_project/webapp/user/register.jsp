@@ -121,7 +121,7 @@
         <div class="col-md-6">
           <div class="card mx-4">
             <div class="card-body p-4">
-              <h1>Sing-in</h1>
+              <h1>Sign up</h1>
               <p class="text-muted">아래의 정보들을 모두 입력해 주시기 바랍니다.</p>
               <form id="regForm" method="post" action="/registerServlet">
              
