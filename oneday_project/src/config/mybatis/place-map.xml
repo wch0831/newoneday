@@ -80,6 +80,7 @@
 	    ,#{hTmapImg},#{mSeq},sysdate,'n')
     </insert>
     
+    
     <!--장소담기 삭제  -->
     <update id="deletePlaceHold" parameterType="String">   
     	update place_hold set h_del = 'y' where h_seq=#{value}   
@@ -119,7 +120,9 @@
 		 update place set p_del = 'y' where p_seq=#{value} 
     </update>
 	 
-	 <!--관리자 수정 select -->
+	 
+	 <!--검색창 열기 -->
+	 
 	 <select id="adminSearchSelect" parameterType="String" resultMap="placeMap">
 	 	select p_seq, p_title, p_content, p_lat, p_lng, p_area, p_cost, p_inout, p_purpose
 		from place
