@@ -9005,6 +9005,9 @@ a.text-dark:hover, a.text-dark:focus {
   .container {
     min-width: 992px !important;
   }
+  
+  
+ 
   .navbar {
     display: none;
   }
@@ -14167,4 +14170,26 @@ body {
   breakpoint-lg: 992px;
   breakpoint-xl: 1200px;
 }
+
+.warpper{
+	width: 1000px;
+	margin: 0 auto;
+	border: 1px solid #000;
+	text-aling: center;
+}
+
+.inner{
+	display: inline-block;
+	
+}
+
+ .container-inner {
+    width: 992px;
+    margin: 0px auto;
+    padding: 20px;
+    border: 1px solid #bcbcbc;
+    background-color: #ffffff;
+  }
+  
+  
 /*# sourceMappingURL=style.css.map */

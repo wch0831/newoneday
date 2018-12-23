@@ -26,7 +26,8 @@ public class MemberDAO {
 		
 		return res;
 	}
-
+	
+	//메일체크
 	public ArrayList<MemberVO> checkEmail(){
 		SqlSession conn = null;
 		MemberVO mvo = new MemberVO();
@@ -42,7 +43,7 @@ public class MemberDAO {
 			return list;
 	}
 	
-	
+	//닉네임체크
 	public ArrayList<MemberVO> checkNick(){
 		SqlSession conn = null;
 		MemberVO mvo = new MemberVO();
@@ -97,6 +98,55 @@ public class MemberDAO {
 	}
 	
 	
+	//마이페이지 > 정보수정
+	
+	
+	
+	//마이페이지 > 탈퇴
+	public int memberDel(int seq) {
+		SqlSession conn = null;
+		MemberVO mvo = new MemberVO();
+		int res = 0;
+		System.out.println(seq);
+		
+		try {
+		conn = MyBatisFactory.getFactory().openSession();
+		res = conn.update("memberNameSpace.member_del", seq);
+		conn.commit();
+		System.out.println(res);
+		} catch(Exception e) {
+			e.printStackTrace();	
+		} finally {
+			conn.close();
+		}
+		
+		return res;
+	}
+	
+	
+	//비밀번호 찾기
+	public int randomPassword(MemberVO mvo) {
+		SqlSession conn = null;
+		int res = 0;
+	
+		System.out.println(mvo);
+		
+		try {
+		conn = MyBatisFactory.getFactory().openSession();
+		res = conn.update("memberNameSpace.randomPassword", mvo);
+
+		System.out.println(mvo);
+		
+		} catch(Exception e) {
+			e.printStackTrace();	
+		} finally {
+			conn.close();
+		}
+		
+		return res;
+	}
+	
+	
 	//로그인 관련-------------------------------------------------------------
 	
 	public MemberVO loginselect(MemberVO mvo) {
@@ -117,6 +167,7 @@ public class MemberDAO {
 		return vo;
 	}
 	
+	//아이디,비번체크
 	public ArrayList<MemberVO> loginCheck() {
 		SqlSession conn = null;
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
