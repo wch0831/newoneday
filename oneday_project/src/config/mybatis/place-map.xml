@@ -72,6 +72,13 @@
 		where p_purpose=#{pPurpose} and p_area = #{pArea} and p_inout = #{pInout}
     </select>
     
+    
+   <!--  메인페이지 select -->
+    <select id="mainSelect" parameterType="com.oneday.place.PlaceVO" resultMap="placeMap">
+		select p_title, p_content, p_area, p_cost, p_ppath, p_pname, p_sysname from place
+	 	</select>
+
+
 
     <!-- 장소담기  -->
     <insert id="insertPlaceHold" parameterType="com.oneday.place.PlaceHoldVO">
@@ -85,6 +92,8 @@
     <update id="deletePlaceHold" parameterType="String">   
     	update place_hold set h_del = 'y' where h_seq=#{value}   
     </update>
+    
+    
     
     <!--관리자 리스트뽑기 -->
     <select id="selectPlaceAll" parameterType="com.oneday.place.PlaceVO" resultMap="placeMap">
