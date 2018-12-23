@@ -19,16 +19,23 @@ $(document).ready(function(){
     $(document).on("click",".reUpdate",function(){ //글쓰기 버튼 --> 눌렀을 때 기존의 있는 내용을 불러오고 text로 활성화 된다.
        var names = $(this).attr("name");
         var arr = names.split("^^^");
-        alert(arr[0] +""+arr[1]+"1111");
+        alert(arr[0] +""+arr[1]);
 		//alert("ㅅㅂ");
         //alert(arr[0] +","+arr[1]);
        //입력된 글이 들어와야한다..!!!
+       //일단은 근데 seq랑 content를 제대로 가져오는건 맞으니까.  reUpdate버튼은 서블릿을 타는게 아니라서. 걍 단순히 그 값 가지고 html 그려주는거니까.
+       //나 화장실좀.
        var htmlStr = "<input type='hidden' id='updateReplySeq' value='"+arr[0]+"'>";
-       htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'> ";   
-       htmlStr += "<span onClick=\"replyEditSubmit(this)\" class='replyEditSubmit' name=''>글쓰기</span>";
+           htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";   
+           htmlStr += "<span onClick=\"replyEditSubmit(this)\" class='replyEditSubmit' name=''>글쓰기</span>";  
        
-       $(".readContent").empty();
-       $(".readContent").html(htmlStr);
+       $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   1.톱니버튼을 클릭하면 버튼의 name값 seq와 content를 가져온다.
+       $("#readContent"+arr[0]).html(htmlStr);  //<< 여기서 다시 그려줌.   2.그걸 통해서 댓글내용 부분에 html을 다시 뿌려준다.   이거인거같은데 여기서
+       														  //    3.다른 톱니버튼을 클릭한다??? -->content를 이상한걸 가져옴.
+      															//  4. 다른 톱니버튼을 누르면  1번부터 다시 시작되는건데. 그럼 왜 틀린거지 
+      															 // 5.아 글고 하나더   $("#readContent"+arr[0]).html(htmlStr); 이게 안먹힌다.
+      															 // 6. 5번이 먹히면 왠지 위에 문제는 해결될수도잇을거같은데  5번이 안먹힌다.
+      															 // 7. arr[0]을 id값에 붙여줘야  내가 선택한 댓글만 다시 생기는거니까.  ㅇㅇ
     });
 	
 	
@@ -62,8 +69,8 @@ $(document).ready(function(){
 						htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
 						htmlStr += "<span class='mtext-107 cl2 p-r-20'>"+vv.mNick+"</span>";																				
 						htmlStr += "<p class='reUpDel'>";
-						htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+$vv.rSeq^^^$vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
-						htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+$vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'>";
+						htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq^^^$vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
+						htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'>";
 						htmlStr += "</p>";																
 						htmlStr += "</span>";
 						htmlStr += "</div>";
@@ -91,9 +98,9 @@ $(document).ready(function(){
 		  		//var oseq = ${KEY_VO.oseq};
 		  		var oseq = 4;
 		  		alert(reply+" "+oseq);
-		  		var sendData = {"rContent":reply , "oSeq":"4", "mSeq":${sessionScope.SESS_SEQ} };
+		  		var sendData = {"rContent":reply , "oSeq":"4", "mSeq":${sessionScope.SESS_SEQ}};
 		  		
-				     $.ajax({ 
+				      $.ajax({ 
 							url:"/reviewServlet",
 							type:"post",
 							contentType: "application/json; charset=UTF-8", 
@@ -126,7 +133,7 @@ $(document).ready(function(){
 							  	$(".replyform").empty();
 							  	$(".replyform").html(htmlStr);
 							}
-				}); //end of ajax    
+				}); //end of ajax   
     });
 	  
 		
@@ -286,10 +293,10 @@ $(document).ready(function(){
 																					
 												</div>
 
-												<div class="readContent">
-													<input type="textarea" border="0" id="reply"  value="${vo.rContent}" readonly>
+												<div id="readContent"${vo.rSeq}>
+													<input type="text" border="0" id="reply"  value="${vo.rContent}" readonly></span>
 													<br>
-												</div>
+												</div>  <!-- 여기에 다시 그려줌 여기를 비우고나서. //div로 아이디를 가져오면 안되는건가???
 												
 												
 												

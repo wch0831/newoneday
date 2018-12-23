@@ -28,7 +28,7 @@ public class reviewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("get");
+		System.out.println("getㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
 		ReviewDAO dao = new ReviewDAO();
 		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
 		ReviewVO rvo = new ReviewVO();
