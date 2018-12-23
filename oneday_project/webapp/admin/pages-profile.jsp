@@ -76,6 +76,20 @@ $(document).ready(function(){
                             <li class="breadcrumb-item active">회원관리</li>
                         </ol>
                     </div>
+                    
+                    <div  class="col col-xs-6 text-right">
+						
+						<div  class="col col-xs-6 text-right">
+						<select id="search" name="search">
+   						<option value="">search</option>
+    					<option value="닉네임">닉네임</option>
+    				
+						</select>
+						
+						<input type = "text" id="gum" placeholder="검색어">
+						<button id="gumbtn">검색</button>
+						</div>
+						</div>
                    
                 </div>
                 

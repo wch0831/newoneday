@@ -10,6 +10,11 @@
                 <i class="nav-icon icon-drop"></i> 내 정보</a>
             </li>
             
+            <li class="nav-item">
+              <a class="nav-link" href="myInfo.jsp">
+                <i class="nav-icon icon-drop"></i> 비밀번호변경</a>
+            </li>
+            
              <li class="nav-item">
               <a class="nav-link" href="colors.html">
                 <i class="nav-icon icon-drop"></i> 내가 작성한 목록</a>
