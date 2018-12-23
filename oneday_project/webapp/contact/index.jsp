@@ -118,7 +118,7 @@ $(document).ready(function(){
 
 				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "수정/삭제 비밀번호 입력">
 					<span class="label-input100">작성 비밀번호 *</span>
-					<input class="input100" type="text" name="password" placeholder="비밀번호를 입력하세요" id="password">
+					<input class="input100" type="password" name="password" placeholder="비밀번호를 입력하세요" id="password">
 				</div>
 
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "문의 내용을 입력하세요">
