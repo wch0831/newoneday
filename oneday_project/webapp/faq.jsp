@@ -147,7 +147,6 @@ $(document).ready(function(){
 			data: "nothing", 
 			resultType:"json",
 			success:function(resObject){
-					console.log(resObject);		//객체
 					var listStr = "";
 					listStr += "<hr>";
 	 				listStr += "<li class='f_question1'>";
@@ -204,7 +203,6 @@ function qnalist() {
 		data: "nothing", 
 		resultType:"json",
 		success:function(resObject){
-				console.log(resObject);		//객체
 				var listStr = "";
 				listStr += "<hr>";
  				listStr += "<li class='f_question1'>";

@@ -23,7 +23,6 @@ public class FaqQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("문의하이염");
 
 		HttpSession session = request.getSession();
 		FaqDAO dao = new FaqDAO();
@@ -44,7 +43,6 @@ public class FaqQuestionServlet extends HttpServlet {
 
 		Gson gson = new Gson();
 		String jsonStr = gson.toJson(list);
-		System.out.println(jsonStr);
 
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out  = response.getWriter();
@@ -52,8 +50,47 @@ public class FaqQuestionServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		FaqVO fvo = new FaqVO();
+		FaqDAO dao = new FaqDAO();
 		
+		String service = request.getParameter("service");
+		String title = request.getParameter("title");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password"); //수정/삭제 비밀번호
+		String message = request.getParameter("message");
+		String secret = request.getParameter("cc"); //on or null
+		
+		int qmseq = dao.myInfoSelect2(email);
+		
+		fvo.setQmSeq(qmseq);
+		fvo.setqGubun(service);
+		fvo.setqTitle(title);
+		fvo.setqContent(message);
+		if(secret == null) {
+			fvo.setqSecret("n");
 		}
+		else if(secret.equals("on")) {
+			fvo.setqSecret("y");
+		}
+		
+		int res = dao.questionInsert(fvo);
+		
+		if(res > 0) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('문의글 작성완료'); self.close();</script>");	 
+			out.flush();
+		} else {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('문의글 작성실패'); self.close();</script>");	 
+			out.flush();
+		}
+		
+	}
 	
 
 }

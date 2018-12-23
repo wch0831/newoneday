@@ -63,9 +63,19 @@
 	</select>
 	
 	<select id="myInfoSelect" parameterType="String" resultType="com.oneday.faq.FaqVO" resultMap="qnaMap">
-   	  select m_nick, m_email from member
+   	  select m_seq, m_nick, m_email from member
 	  where m_email = #{mEmail}
 	</select>
+	
+	<select id="myInfoSelect2" parameterType="String" resultType="int">
+   	  select m_seq from member
+	  where m_email = #{mEmail}
+	</select>
+	
+	<insert id="questionInsert" parameterType="com.oneday.faq.FaqVO">			
+	  insert into question (q_seq, qm_seq, q_gubun, q_title, q_content, q_secret, q_regdate)
+	  values (question_seq.nextval, #{qmSeq}, #{qGubun}, #{qTitle}, #{qContent}, #{qSecret}, sysdate)
+ 	</insert>
 	
    
 </mapper>   
