@@ -75,6 +75,8 @@
 			 where r.m_seq = m.m_seq and o.o_seq = r.o_seq
 			 and r.r_content like '%'|| #{rContent} || '%'
 			 
+		
+			 
 			<!-- select r_seq, r_content from reply -->
     </select>
     

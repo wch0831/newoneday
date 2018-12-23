@@ -24,13 +24,17 @@ $(document).ready(function(){
         //alert(arr[0] +","+arr[1]);
        //입력된 글이 들어와야한다..!!!
        //일단은 근데 seq랑 content를 제대로 가져오는건 맞으니까.  reUpdate버튼은 서블릿을 타는게 아니라서. 걍 단순히 그 값 가지고 html 그려주는거니까.
-       //나 화장실좀.
+       //
        var htmlStr = "<input type='hidden' id='updateReplySeq' value='"+arr[0]+"'>";
            htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";   
            htmlStr += "<span onClick=\"replyEditSubmit(this)\" class='replyEditSubmit' name=''>글쓰기</span>";  
        
        $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   1.톱니버튼을 클릭하면 버튼의 name값 seq와 content를 가져온다.
-       $("#readContent"+arr[0]).html(htmlStr);  //<< 여기서 다시 그려줌.   2.그걸 통해서 댓글내용 부분에 html을 다시 뿌려준다.   이거인거같은데 여기서
+       
+       debugger;
+        
+       $("#readContent"+arr[0]).html(htmlStr);
+       /* $("#"+arr[0]).html(htmlStr); */  //<< 여기서 다시 그려줌.   2.그걸 통해서 댓글내용 부분에 html을 다시 뿌려준다.   이거인거같은데 여기서
        														  //    3.다른 톱니버튼을 클릭한다??? -->content를 이상한걸 가져옴.
       															//  4. 다른 톱니버튼을 누르면  1번부터 다시 시작되는건데. 그럼 왜 틀린거지 
       															 // 5.아 글고 하나더   $("#readContent"+arr[0]).html(htmlStr); 이게 안먹힌다.
@@ -293,20 +297,21 @@ $(document).ready(function(){
 																					
 												</div>
 
-												<div id="readContent"${vo.rSeq}>
+												<div id="readContent${vo.rSeq}"> 
 													<input type="text" border="0" id="reply"  value="${vo.rContent}" readonly></span>
 													<br>
-												</div>  <!-- 여기에 다시 그려줌 여기를 비우고나서. //div로 아이디를 가져오면 안되는건가???
-												
-												
-												
-												
+												</div> <!-- 여기에 다시 그려줌 여기를 비우고나서. //div로 아이디를 가져오면 안되는건가??? 다른사람도 이런식으로 한거 잇길래 봣는데 그사람은 <li>로 하더라고 --> 			
+										
+										<%-- <div id="${vo.rSeq}"> 
+													<input type="text" border="0" id="reply"  value="${vo.rContent}" readonly></span>
+													<br>
+												</div>	 --%>	
 					   </div>
 							</c:forEach>	
 							<br>			
 						</div>					
 					
-						<!--  -->
+
 						<div class="p-t-40">
 							<h5 class="mtext-113 cl2 p-b-12">
 								Leave a Comment
