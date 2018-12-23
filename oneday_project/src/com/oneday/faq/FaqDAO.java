@@ -52,4 +52,19 @@ public class FaqDAO {
 	}
 	
 	
+	public ArrayList<FaqVO> myInfoSelect(String id) {
+		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
+		SqlSession conn =null;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			System.out.println(id);
+			list = (ArrayList)conn.selectList("qnaNameSpace.myInfoSelect",id);
+		} finally {
+			conn.close();
+		}
+		return list;
+	}
+	
+	
 }

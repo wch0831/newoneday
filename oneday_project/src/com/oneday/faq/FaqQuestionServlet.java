@@ -2,6 +2,7 @@ package com.oneday.faq;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,25 +19,40 @@ import com.google.gson.Gson;
  */
 @WebServlet("/qus")
 public class FaqQuestionServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-       
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("문의하이염");
-			
-		
+
 		HttpSession session = request.getSession();
-		
+		FaqDAO dao = new FaqDAO();
+		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
+
+
 		/*		if(session.getAttribute("SESS_ID") == null) {
 		response.sendRedirect("/user/login.jsp");
 		} else {*/
+
+		String sess_id = "wch@naver.com"; //session.getAttribute("SESS_ID").toString();
+		//request.getSession().getAttribute("SESS_ID").toString();
+
+		/*session.setAttribute("SESS_ID", sess_id); //test용 */	    	
+
+
+		list = dao.myInfoSelect(sess_id);
+
+		Gson gson = new Gson();
+		String jsonStr = gson.toJson(list);
+		System.out.println(jsonStr);
+
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter out  = response.getWriter();
+		out.println(jsonStr);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-			String sess_id = "wch@naver.com"; //session.getAttribute("SESS_ID").toString();
-									  		  //request.getSession().getAttribute("SESS_ID").toString();
-			
-			session.setAttribute("SESS_ID", sess_id); //test용
-						
-			response.setContentType("application/json; charset=UTF-8");
 		}
 	
 

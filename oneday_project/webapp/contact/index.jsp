@@ -59,16 +59,25 @@ input[type="checkbox"]:checked + label span {
 
 <script>
 $(document).ready(function(){	
+	
+	
 	$.ajax({ 	
 		url:"/qus",   
-		type:"post",
+		type:"get",
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		data: "nothing", 
 		resultType:"json",
 		success:function(resObject){
-			console.log("성공");
+			var listStr = "";
+			listStr += "<span class='label-input100'>아이디</span>"
+			$.map(resObject, function(vv, idx){
+				listStr += "<input class='input100' type='text' name='email' value='" + vv.mEmail + "' readonly>";
+			});
+			$("#idemail").html(listStr);
 		}
 	});
+	
+	
 });
 
 </script>
@@ -102,9 +111,8 @@ $(document).ready(function(){
 					<input class="input100" type="text" name="name" placeholder="제목 입력">
 				</div>
 
-				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
-					<span class="label-input100">아이디</span>
-					<input class="input100" type="text" name="email" value="${sessionScope.SESS_ID}" readonly>
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" id="idemail">
+					<!-- 이메일 기본적으로 출력되는 영역 -->
 				</div>
 
 				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "수정/삭제 비밀번호 입력">

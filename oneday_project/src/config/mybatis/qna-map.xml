@@ -62,5 +62,10 @@
       order by q.q_seq desc
 	</select>
 	
+	<select id="myInfoSelect" parameterType="String" resultType="com.oneday.faq.FaqVO" resultMap="qnaMap">
+   	  select m_nick, m_email from member
+	  where m_email = #{mEmail}
+	</select>
+	
    
 </mapper>   
