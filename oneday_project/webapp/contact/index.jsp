@@ -60,7 +60,6 @@ input[type="checkbox"]:checked + label span {
 <script>
 $(document).ready(function(){	
 	
-	
 	$.ajax({ 	
 		url:"/qus",   
 		type:"get",
@@ -71,13 +70,15 @@ $(document).ready(function(){
 			var listStr = "";
 			listStr += "<span class='label-input100'>아이디</span>"
 			$.map(resObject, function(vv, idx){
-				listStr += "<input class='input100' type='text' name='email' value='" + vv.mEmail + "' readonly>";
+				listStr += "<input class='input100' type='text' name='email' id='email' value='" + vv.mEmail + "' readonly>";
 			});
 			$("#idemail").html(listStr);
 		}
 	});
 	
-	
+	$("#qusBtn").click(function(){
+		$("#qusForm").submit();
+	});
 });
 
 </script>
@@ -87,7 +88,7 @@ $(document).ready(function(){
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form class="contact100-form validate-form" method="POST" action="/qus" id="qusForm">
 				<span class="contact100-form-title">
 					문의하기
 				</span>
@@ -96,7 +97,7 @@ $(document).ready(function(){
 				<div class="wrap-input100 input100-select bg1">
 					<span class="label-input100">문의 구분 *</span>
 					<div>
-						<select class="js-select2" name="service">
+						<select class="js-select2" name="service" id="service">
 							<option>가입/탈퇴</option>
 							<option>경로/장소</option>
 							<option>정보확인/수정</option>
@@ -108,7 +109,7 @@ $(document).ready(function(){
 
 				<div class="wrap-input100 validate-input bg1" data-validate="제목을 입력하세요">
 					<span class="label-input100">제목 *</span>
-					<input class="input100" type="text" name="name" placeholder="제목 입력">
+					<input class="input100" type="text" name="title" placeholder="제목 입력" id="title">
 				</div>
 
 				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" id="idemail">
@@ -117,19 +118,19 @@ $(document).ready(function(){
 
 				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "수정/삭제 비밀번호 입력">
 					<span class="label-input100">작성 비밀번호 *</span>
-					<input class="input100" type="text" name="email" placeholder="비밀번호를 입력하세요">
+					<input class="input100" type="text" name="password" placeholder="비밀번호를 입력하세요" id="password">
 				</div>
 
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "문의 내용을 입력하세요">
 					<span class="label-input100">내용</span>
-					<textarea class="input100" name="message" placeholder="내용 입력"></textarea>
+					<textarea class="input100" name="message" placeholder="내용 입력" id="message"></textarea>
 				</div>
 				<input type="checkbox" id="c1" name="cc" />
     			<label for="c1"><span></span>비밀글로 문의하기 (본인만 확인 가능합니다.)</label>
    				<p>
 	
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
+					<button class="contact100-form-btn" id="qusBtn">
 						<span>
 							작성완료
 							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>

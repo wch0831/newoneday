@@ -43,7 +43,6 @@ public class FaqDAO {
 		
 		try { 
 			conn = MyBatisFactory.getFactory().openSession();
-			System.out.println(id);
 			list = (ArrayList)conn.selectList("qnaNameSpace.myQuestionSelect",id);
 		} finally {
 			conn.close();
@@ -58,12 +57,39 @@ public class FaqDAO {
 		
 		try { 
 			conn = MyBatisFactory.getFactory().openSession();
-			System.out.println(id);
 			list = (ArrayList)conn.selectList("qnaNameSpace.myInfoSelect",id);
 		} finally {
 			conn.close();
 		}
 		return list;
+	}
+	
+	public int myInfoSelect2(String id) {
+		int res = 0;
+		SqlSession conn =null;
+		try { 
+			System.out.println(id);
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.selectOne("qnaNameSpace.myInfoSelect2",id);
+		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
+	
+	public int questionInsert(FaqVO fvo) {
+		SqlSession conn =null;
+		int res = 0;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.insert("qnaNameSpace.questionInsert",fvo);
+			conn.commit();
+		} finally {
+			conn.close();
+		}
+		return res;
 	}
 	
 	
