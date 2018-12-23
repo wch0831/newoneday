@@ -129,13 +129,13 @@ public class MemberDAO {
 		SqlSession conn = null;
 		int res = 0;
 	
-		System.out.println(mvo);
+		System.out.println(mvo.getmEmail()+","+mvo.getmResnum()+","+mvo.getmPw()+"찍어봅시다");
 		
 		try {
 		conn = MyBatisFactory.getFactory().openSession();
 		res = conn.update("memberNameSpace.randomPassword", mvo);
 
-		System.out.println(mvo);
+		System.out.println(res+"건 update");
 		
 		} catch(Exception e) {
 			e.printStackTrace();	

@@ -10,7 +10,7 @@
                     <ul id="sidebarnav">
                         <li> <a class="waves-effect waves-dark" href="/admin/index.jsp" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">관리자 메인</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="pages-profile.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">회원관리</span></a>
+                        <li> <a class="waves-effect waves-dark" href="/admin/pages-profile.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">회원관리</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="/ad_review" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">댓글관리</span></a>
                         </li>
@@ -23,7 +23,7 @@
                         
                         <li> <a class="waves-effect waves-dark" href="/adplace" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">장소관리</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="pages-qna.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">문의관리</span></a>
+                        <li> <a class="waves-effect waves-dark" href="/admin/pages-qna.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">문의관리</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="pages-error-404.jsp" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">에러페이지</span></a>
                         </li>

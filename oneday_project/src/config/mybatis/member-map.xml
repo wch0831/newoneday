@@ -81,7 +81,7 @@
     <update id="randomPassword" parameterType="com.oneday.member.MemberVO" >
     	update member
     	set m_pw=#{mPw}
-    	where m_email=#{mEmail} and m_nick=#{mNick}
+    	where m_email=#{mEmail} and m_resnum=#{mResnum}
     </update>
     
      <!-- 비밀번호 변경 -->

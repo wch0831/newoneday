@@ -100,8 +100,8 @@ $(document).ready(function(){
 						
 						<div  class="col col-xs-6 text-right">
 						<select id="search" name="search">
-   						<option value="">search</option>
     					<option value="이름">이름</option>
+   						
     				
 						</select>
 						
