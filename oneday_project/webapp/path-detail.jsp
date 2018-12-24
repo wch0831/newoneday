@@ -29,17 +29,12 @@ $(document).ready(function(){
            htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";   
            htmlStr += "<span onClick=\"replyEditSubmit(this)\" class='replyEditSubmit' name=''>글쓰기</span>";  
        
-       $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   1.톱니버튼을 클릭하면 버튼의 name값 seq와 content를 가져온다.
+       $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
        
        debugger;
         
        $("#readContent"+arr[0]).html(htmlStr);
-       /* $("#"+arr[0]).html(htmlStr); */  //<< 여기서 다시 그려줌.   2.그걸 통해서 댓글내용 부분에 html을 다시 뿌려준다.   이거인거같은데 여기서
-       														  //    3.다른 톱니버튼을 클릭한다??? -->content를 이상한걸 가져옴.
-      															//  4. 다른 톱니버튼을 누르면  1번부터 다시 시작되는건데. 그럼 왜 틀린거지 
-      															 // 5.아 글고 하나더   $("#readContent"+arr[0]).html(htmlStr); 이게 안먹힌다.
-      															 // 6. 5번이 먹히면 왠지 위에 문제는 해결될수도잇을거같은데  5번이 안먹힌다.
-      															 // 7. arr[0]을 id값에 붙여줘야  내가 선택한 댓글만 다시 생기는거니까.  ㅇㅇ
+       /* $("#"+arr[0]).html(htmlStr); */  //<< 여기서 다시 그려줌.   
     });
 	
 	
@@ -300,7 +295,7 @@ $(document).ready(function(){
 												<div id="readContent${vo.rSeq}"> 
 													<input type="text" border="0" id="reply"  value="${vo.rContent}" readonly></span>
 													<br>
-												</div> <!-- 여기에 다시 그려줌 여기를 비우고나서. //div로 아이디를 가져오면 안되는건가??? 다른사람도 이런식으로 한거 잇길래 봣는데 그사람은 <li>로 하더라고 --> 			
+												</div> 			
 										
 										<%-- <div id="${vo.rSeq}"> 
 													<input type="text" border="0" id="reply"  value="${vo.rContent}" readonly></span>
