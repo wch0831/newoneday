@@ -20,5 +20,17 @@ public class PlaceMainDAO {
 	}
 	
 	
+	public ArrayList<PlaceVO> mainpurpose(String purpose) {
+		ArrayList<PlaceVO> mainList = new ArrayList<PlaceVO>(); 
+		SqlSession conn =null;
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			mainList = (ArrayList)conn.selectList("placeNameSpace.mainPurpose", purpose);
+		} finally {
+			conn.close();
+		}
+		return mainList;
+	}
+	
 	
 }
