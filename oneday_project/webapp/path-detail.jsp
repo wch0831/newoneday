@@ -376,7 +376,6 @@ $(document).ready(function(){
 		
 <%@ include file="/include/footer.jsp" %>
 	
-<%@ include file="/include/script.jsp" %>
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
@@ -385,6 +384,7 @@ $(document).ready(function(){
 		</span>
 	</div>
 
+<%@ include file="/include/script.jsp" %>
 
 
 </body>
