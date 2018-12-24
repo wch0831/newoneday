@@ -68,12 +68,12 @@ public class LoginServlet extends HttpServlet {
 			// update member set m_del='y', m_deldate=sysdate where m_seq= ? and m_del='n';
 			
 			if(mvo.getmGubun().equals("u")){
-				response.sendRedirect("./user/index.jsp");
+				response.sendRedirect("/index.jsp");
 //				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 			else{	
 				if(mvo.getmGubun().equals("a")){
-					response.sendRedirect("./admin/index.jsp");
+					response.sendRedirect("/admin/index.jsp");
 //					request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
 				}
 			}
