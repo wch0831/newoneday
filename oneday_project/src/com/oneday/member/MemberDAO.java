@@ -173,7 +173,7 @@ public class MemberDAO {
 		try {
 		conn = MyBatisFactory.getFactory().openSession();
 		res = conn.update("memberNameSpace.randomPassword", mvo);
-
+		conn.commit();
 		System.out.println(res+"건 update");
 		
 		} catch(Exception e) {
@@ -223,7 +223,25 @@ public class MemberDAO {
 		return list;
 	}
 	
-	
+	//비밀번호 변경 > 분실 시 --------------------------------------------------
+	public int changePw(MemberVO mvo) {
+		SqlSession conn = null;
+		int res = 0;
+		
+		System.out.println(mvo.getmEmail()+mvo.getmPw()+"/////");
+		
+		try {
+		conn = MyBatisFactory.getFactory().openSession();
+		res = conn.update("memberNameSpace.changePassword", mvo);
+		conn.commit();
+		System.out.println(res+"건 업데이트");
+		} catch(Exception e){
+			e.getStackTrace();
+		}finally {
+			conn.close();
+		}
+		return res;
+	}
 	
 	
 }

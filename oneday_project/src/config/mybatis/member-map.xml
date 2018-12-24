@@ -99,11 +99,18 @@
     	where m_email=#{mEmail} and m_resnum=#{mResnum}
     </update>
     
-     <!-- 비밀번호 변경 -->
+     <!-- 비밀번호 변경 > 분실 시 -->
     <update id="changePassword" parameterType="com.oneday.member.MemberVO">
     	update member
     	set m_pw=#{mPw}
     	where m_email=#{mEmail}
+    </update>
+    
+      <!-- 비밀번호 변경 > MYPAGE에서 -->
+    <update id="MLchangePassword" parameterType="int">
+    	update member
+    	set m_pw=#{mPw}
+    	where m_seq=#{value}
     </update>
     
     <!-- Email중복확인 -->
