@@ -11,7 +11,10 @@
   	
   	
     <script>
+    
     $(document).ready(function(){
+    	var checke = 0;
+    	
     	$.ajax({
 				url:"/MyInfoServlet",
 				type:"POST",
@@ -25,18 +28,48 @@
 				}
 			});
     	
-    	//업데이트 서블릿 만들고 갔다오는것 해야함. 
-    	$("#updateButton").click(function(){
-    		var arr = $("#regForm").serializeArray();
-    		$.ajax({
-				url:"/updateServlet",
-				type:"POST",
-				data:"LIST="+JSON.stringify(arr),
-				success:function(res){
-					alert("수정완료!!");
-				}
-			});
+    	//닉네임 확인--------------------------
+    	$("#nickCheck").click(function(){
+        	checke = 0;
+    		 var nick = $("#mNick").val();
+        	 $.ajax({
+    			url:"/nickCheckServlet",
+    			tpye:"GET",
+    			data: "NICK="+nick,
+    			success:function(res){		
+    					if(res == 0){
+    						alert("사용가능한 닉네임 입니다.")
+    						checke = 1;
+    						return false;
+    					} else {
+    						alert("중복된 닉네임이 존재합니다. 다시 시도해 주세요.");
+    						return false;
+    					}
+    			}
+    		});
+    		   
+    	   });
+    	
+    	
+    	//업데이트 서블릿 만들고 갔다오는것 해야함. seq랑 pw 받아야함.
+     	$("#updateButton").click(function(){
+    		var nick = $("#mNick").val();
+    		var pw1 = $("#mPw").val();
+    		var pw2 = $("#mPw2").val();
+			if(pw1 == ""){
+				alert("비밀번호를 입력해 주세요.");
+				return false;
+			} else if(pw2 == ""){
+				alert("확인 비밀번호를 입력해 주세요.");
+				return false;
+			} else if(pw1 != pw2){
+				alert("입력된 비밀번호와 확인 비밀번호가 일치하지 않습니다.");
+				return false;
+			} else {
+				$('#regForm').submit();
+			}
     	});
+    	 
     	
     	//서블릿 -> session에서 seq받아서 삭제하고 돌아와서 alert띄움 
     	$("#delButton").click(function(){
@@ -46,7 +79,6 @@
 				url:"/delInfoServlet",
 				type:"POST",
 				success:function(res){
-					console.log(res);
 					alert("회원탈퇴가 완료되었습니다. 이용해 주셔서 감사합니다.");
 				}
 			});
@@ -85,7 +117,7 @@
 							<p class="text-muted">수정 또는 탈퇴가 가능합니다.</p>
 
 							<form id="regForm" name="regForm" method="post"
-								action="/registerServlet">
+								action="/updateServlet">
 
 
 								<!-- 회원정보 받기 -->
@@ -107,7 +139,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"> 닉네임 </span>
 									</div>
-									<input class="form-control" type="text" id="mNick" name="mNick"
+									<input class="form-control" type="text" id="mNick" name="NICK"
 										value="">&emsp; <input type="button" id="nickCheck"
 										value="중복확인">
 								</div>

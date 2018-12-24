@@ -12,13 +12,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 
+
+
 $(document).ready(function(){
 	var arr = null;
 
 	//"수정버튼" 클릭시 text로 활성화
     $(document).on("click",".reUpdate",function(){ //글쓰기 버튼  눌렀을 때 기존의 있는 내용을 불러오고 text로 활성화 된다.
 
-    	if(arr==null){
+    	//if(arr==null){
     		var names = $(this).attr("name");
             arr = names.split("^^^");
             alert(arr[0] +""+arr[1]);
@@ -29,15 +31,14 @@ $(document).ready(function(){
            //
 
            var htmlStr = "<input type='hidden' id='updateReplySeq' value='"+arr[0]+"'>";
-               htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";   
-               htmlStr += "<span onClick=\"replyEditSubmit(this)\" class='replyEditSubmit' name=''>글쓰기</span>";  
-           
+               htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";  
+               htmlStr += "<span onClick='replyEditSubmit()' class='replyEditButton' id='replyEditButton' name=''>글쓰기</span>";   
+           		
            $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
-           
-            
            $("#readContent"+arr[0]).html(htmlStr);
-    	}else{
-	    	var htmlStr = "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"' readonly>";     
+           
+    	//}else{
+	    	/* var htmlStr = "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"' readonly>";     
 	        
 	        $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
 	        
@@ -55,68 +56,76 @@ $(document).ready(function(){
 
 	       var htmlStr = "<input type='hidden' id='updateReplySeq' value='"+arr[0]+"'>";
 	           htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";   
-	           htmlStr += "<span onClick=\"replyEditSubmit(this)\" class='replyEditSubmit' name=''>글쓰기</span>";  
+
+	           htmlStr += "<span onclick='replyEditSubmit()' class='replyEditButton' id='replyEditButton' name=''>글쓰기</span>";    */
+
+	           //htmlStr += "<span onclick='replyEditSubmit()' class='replyEditButton' id='replyEditButton' name=''>글쓰기</span>";   
+
+	      /*   htmlStr += "<input type='button' onclick=\"replyEditSubmit()\" class='replyEditButton' value='글쓰기'>"; */
 	       
-	       $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
+	      /*  $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
 	       
 	        
 	       $("#readContent"+arr[0]).html(htmlStr);
 	       
-    	}
+    	} */
     	
        /* $("#"+arr[0]).html(htmlStr); */  //<< 여기서 다시 그려줌.   
     });
 	
 	
     $(document).on("click",".reDel",function(){
-       alert("ㅅㅄㅄㅄㅄㅂ");
-     });
+
+      
+       
+       var names = $(this).attr("name");
+       var ooseq = ${KEY_VO.oSeq};
+ 		alert(names);
+ 		var sendData = {"rSeq":names, "oSeq":ooseq};
+ 		$.ajax({ 
+			url:"/reviewDel",
+			type:"post",
+			contentType: "application/json; charset=UTF-8", 
+			data:JSON.stringify(sendData),   
+			success:function(gsonStr){
+					console.log(gsonStr);		//[{"empno
+					var htmlStr = "";
+		 			$.map(gsonStr, function(vv, idx){
+			  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
+			  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
+				    htmlStr += "</div>";
+					htmlStr += "<div class='size-207'>";
+					htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
+					htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
+					htmlStr += "<br>";		
+					
+					if(sessmSeq == vv.mSeq){										
+					htmlStr += "<p class='reUpDel'>";	
+					htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
+					htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
+					htmlStr += "</p>";	
+					}			
+					
+					htmlStr += "</div>";
+					htmlStr += "<div id='readContent"+vv.rSeq+"'>";
+					htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
+					htmlStr += "<br>";
+					htmlStr += "</div>";
+					htmlStr += "</div>";
+					
+			  	});
+		 			
+			  	//div는 남겨두고 기존 댓글 내용만 지우기
+			  	$(".replyform").empty();
+			  	$(".replyform").html(htmlStr);
+			  	
+			}
+}); //end of ajax   
+});
 	
 	
 	//"수정 확인 버튼 " 클릭시  rseq와 rContent를 가지고 ajax태움.
-    function replyEditSubmit() {
-		alert("!!!");		
-    	var rseq = $("#updateReplySeq").val();
-    	var rcontent = $("#updateReplyContent").val();
-    	var sendData = {"rseq":rseq, "rcontent":rcontent};
-    	
-    	  /* $.ajax({ 
-    		  		 
-    	 
-				url:"/reviewUpdate",
-				type:"post",
-				//contentType: "application/json; charset=UTF-8", 
-				data:JSON.stringify(sendData),   
-				success:function(gsonStr){
-						console.log(gsonStr);		
-						var htmlStr = "<ul>";
-			 			$.map(gsonStr, function(vv, idx){
-				  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
-				  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
-					    htmlStr += "</div>";
-						htmlStr += "<div class='size-207'>";
-						htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
-						htmlStr += "<span class='mtext-107 cl2 p-r-20'>"+vv.mNick+"</span>";																				
-						htmlStr += "<p class='reUpDel'>";
-						htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq^^^$vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
-						htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'>";
-						htmlStr += "</p>";																
-						htmlStr += "</span>";
-						htmlStr += "</div>";
-						htmlStr += "<div class='readContent'>";
-						htmlStr += "<input type='textarea' border='0'  value='"+vv.rContent+"' readonly>";
-						htmlStr += "</div>";
-						htmlStr += "</div>";
-				  	});
-				  	//htmlStr += "</ul>";
-				  	
-				  	//div는 남겨두고 기존 댓글 내용만 지우기
-				  	$("#replyform").empty();
-				  	$("#replyform").html(htmlStr);
-				}
-	}); //end of ajax  */ 
-    	
-    }
+     
 	
 
 		$(document).on("click",".btn",function(){	  
@@ -124,6 +133,8 @@ $(document).ready(function(){
 		  		var reply = $("#dmt").val();
 		  		var ooseq = ${KEY_VO.oSeq};
 		  		var sessmSeq = ${sessionScope.SESS_SEQ};
+		  		
+		  		
 		  		
 		  		alert(reply+" "+ooseq);
 		  		var sendData = {"rContent":reply , "oSeq":ooseq, "mSeq":${sessionScope.SESS_SEQ}};
@@ -142,15 +153,17 @@ $(document).ready(function(){
 									htmlStr += "<div class='size-207'>";
 									htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
 									htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
-									htmlStr += "<br>";				
+									htmlStr += "<br>";		
+									
 									if(sessmSeq == vv.mSeq){										
 									htmlStr += "<p class='reUpDel'>";	
 									htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
 									htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
 									htmlStr += "</p>";	
-									}						
+									}			
+									
 									htmlStr += "</div>";
-									htmlStr += "<div class='readContent'>";
+									htmlStr += "<div id='readContent"+vv.rSeq+"'>";
 									htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
 									htmlStr += "<br>";
 									htmlStr += "</div>";
@@ -165,7 +178,7 @@ $(document).ready(function(){
 							}
 				}); //end of ajax   
     });
-
+		});
 		
 /* 	  $(document).on("click",".reUpdate",function(){
 		   var seq = $(this).attr("name");
@@ -200,13 +213,66 @@ $(document).ready(function(){
 	   }); */
 	  
 	  
-});    
+/* });  */   
+
+function replyEditSubmit() { 
+	
+	
+
+	var sessmSeq = ${sessionScope.SESS_SEQ};
+	var rseq = $("#updateReplySeq").val();
+	var rcontent = $("#updateReplyContent").val();
+	var ooseq = ${KEY_VO.oSeq};
+	var sendData = {"rSeq":rseq, "rContent":rcontent, "oSeq":ooseq}; 
+	
+	alert(rseq+""+rcontent+""+ooseq);
+	
+	 $.ajax({ 
+			url:"/reviewUpdate",
+			type:"post",
+			contentType: "application/json; charset=UTF-8", 
+			data:JSON.stringify(sendData),   
+			success:function(gsonStr){
+					console.log(gsonStr);		//[{"empno
+					var htmlStr = "";
+		 			$.map(gsonStr, function(vv, idx){
+			  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
+			  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
+				    htmlStr += "</div>";
+					htmlStr += "<div class='size-207'>";
+					htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
+					htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
+					htmlStr += "<br>";		
+					
+					if(sessmSeq == vv.mSeq){										
+					htmlStr += "<p class='reUpDel'>";	
+					htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
+					htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
+					htmlStr += "</p>";	
+					}			
+					
+					htmlStr += "</div>";
+					htmlStr += "<div id='readContent"+vv.rSeq+"'>";
+					htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
+					htmlStr += "<br>";
+					htmlStr += "</div>";
+					htmlStr += "</div>";
+					
+			  	});
+		 			
+			  	//div는 남겨두고 기존 댓글 내용만 지우기
+			  	$(".replyform").empty();
+			  	$(".replyform").html(htmlStr);
+			  	$("#dmt").val("");
+			}
+}); //end of ajax   
+	   	
+};
 
 	
 </script>
 </head>
 <body class="animsition">
-	
 <%@ include file="/include/top.jsp" %>	
 
 	
@@ -302,7 +368,7 @@ $(document).ready(function(){
 						</div>
 					
 					<!-- 댓글폼  -->
-					<div class="replyform">	
+					<div class="replyform" id="replyformid">	
 						<c:forEach var="vo" items="${KEY_LIST}">
 						<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
 												<img src="images/avatar-01.jpg" alt="AVATAR">

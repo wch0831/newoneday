@@ -127,7 +127,7 @@ button.snip0059.yellow {
   
 </style>
     
-<title>비밀번호 찾기</title>
+<title>개인정보 동의페이지</title>
   	
     <script>
     
@@ -179,14 +179,30 @@ button.snip0059.yellow {
   <!-- Content page -->
 	<section class="bg0 p-t-104 p-b-116">
 			
-	
+	<div align="center">
+	<div style="width:1400px;">
 	<h1>개인정보 동의</h1>
 	
-		
-		<div><input type="checkbox" id="agree1" name="agree1" value="y">개인정보 수집 및 활용동의<div>
-			
-			<div class="bor8 m-b-30">
-				<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" >
+	
+	<!-- 개인정보 -->
+					<div align="center">
+						<div align="left">
+							<div style="width: 1400px;">
+								<div>
+									<table>
+										<tr>
+											<th><input type="checkbox" id="agree1" name="agree1" value="y"></th>
+											<th>개인정보 활용 및 수집동의</th>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+						
+						
+							<div align="center">
+								<div class="bor8 m-b-30">
+									<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25">
 정보통신망법 규정에 따라 당일치기에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
 
 1. 수집하는 개인정보
@@ -232,16 +248,23 @@ NAVER 내의 개별 서비스 이용, 이벤트 응모 및 경품 신청 과정�
 - 통신비밀보호법 
 로그인 기록: 3개월
 				 </textarea>
+								</div>
+							</div>
+						</div>
+				
+
+
+		<div align="left">
+		<div style="width:1400px;">
+				<table>
+					<tr>
+						<th><input type="checkbox" id="agree2" name="agree2" value="y"></th>
+						<th>홈페이지 이용동의</th>
+					</tr>
+				</table>
 			</div>
-			
-			
-			
-			
-			
-			
-			
-			<div><input type="checkbox" id="agree2" name="agree2" value="y">홈페이지 이용동의</div>
-			
+		</div>
+		<div align="center">
 			<div class="bor8 m-b-30">
 				<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25">
 제1조(목적) 
@@ -455,22 +478,25 @@ NAVER 내의 개별 서비스 이용, 이벤트 응모 및 경품 신청 과정�
 				
 				</textarea>
 			</div>
-	
-	
-	<!-- 버튼 -->	
-	<div id="bt">
-	<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" id="enter"> 다음으로 </button>
-	
-    </div>
+	</div>
+</div>
+
+</div>
+
+	<!-- 버튼 -->
+		
+				<div style="width: 1400px;">
+					<div id="bt">
+						<button
+							class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
+							id="enter">다음으로</button>
+					</div>
+				</div>
+		
+
+			<br><br>
     
-    <br><br>
-    
-    	<!-- 뿌려지는 영역 -->
-		<ul class="fnq" id="qlist">
- 	
-		</ul>
-	<hr>
-	
+ 
 	
 	</section>
 	</form>		 
