@@ -169,12 +169,124 @@ button.snip0059.yellow {
 	
 <script>
 $(document).ready(function(){	
-		
+	var checkswitch=0;	
 	qnalist();
 	
 	/* 검색 */
 	$("#searchButton").click(function name() {	
-		
+			var sendData = $("#searchForm").serialize();
+			
+			if(checkswitch == 0) {
+				console.log('all');
+			  	$.ajax({ 
+					url:"/faqsearch",
+					type:"post",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					data:sendData,  //"searchColumn="+gubun+"&searchStr="+str,
+					resultType:"json",
+					success:function(resObject){
+						var listStr = "";
+						listStr += "<hr>";
+		 				listStr += "<li class='f_question1'>";
+		 				listStr += "<ul class='clearfix'>";
+		 				listStr += "<li>번호</li>";
+		 				listStr += "<li>구분</li>";
+		 				listStr += "<li align='center'>제목</li>";
+		 				listStr += "<li>닉네임</li>";
+		 				listStr += "<li align='center'>등록일</li>";
+		 				listStr += "<li><i></i></li>";
+		 				listStr += "</ul>";
+		 				listStr += "</li>";
+		 				listStr += "<hr>";
+		 					
+			 			$.map(resObject, function(vv, idx){			
+			 				
+			 				listStr += "<li class='f_question1'>";
+			 				listStr += "<ul class='clearfix'>";
+			 				listStr += "<li>" + vv.qSeq + "</li>";
+			 				listStr += "<li>" + vv.qGubun + "</li>";
+			 				listStr += "<li>" + vv.qTitle + "</li>";
+			 				listStr += "<li>" + vv.mNick + "</li>";
+			 				listStr += "<li>" + vv.qRegdate + "</li>";
+			 				listStr += "<li><i class='fa fa-angle-double-down'></i></li>";
+			 				listStr += "</ul><a class='f_q_link'></a>";
+			 				listStr += "</li>";
+			 				listStr += "<li class='f_answer1'>";
+			 				listStr += "<ul class='clearfix'>";
+			 				listStr += "<li>Q</li>";
+			 				listStr += "<li>" + vv.qContent + "</li>";
+			 				listStr += "<li><font color='#00FF00'>A</font></li>";
+			 				listStr += "<li>" + vv.conCheck + "</li>";
+			 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
+			 				listStr += "</ul>";
+			 				listStr += "</li>";
+
+			 			});
+			 			$("#qlist").empty();
+			 			$("#qlist").html(listStr);
+			 			/* <!-- 아코디언 --> */
+			 			accordion();
+					}
+			});
+				
+			} else if(checkswitch == 1) {
+				console.log('my');
+				$.ajax({ 
+					url:"/faqsearch",
+					type:"get",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					data:sendData,  //"searchColumn="+gubun+"&searchStr="+str,
+					resultType:"json",
+					success:function(resObject){
+						var listStr = "";
+						listStr += "<hr>";
+		 				listStr += "<li class='f_question1'>";
+		 				listStr += "<ul class='clearfix'>";
+		 				listStr += "<li>번호</li>";
+		 				listStr += "<li>구분</li>";
+		 				listStr += "<li align='center'>제목</li>";
+		 				listStr += "<li>닉네임</li>";
+		 				listStr += "<li align='center'>등록일</li>";
+		 				listStr += "<li><i></i></li>";
+		 				listStr += "</ul>";
+		 				listStr += "</li>";
+		 				listStr += "<hr>";
+		 					
+			 			$.map(resObject, function(vv, idx){			
+			 				
+			 				listStr += "<li class='f_question1'>";
+			 				listStr += "<ul class='clearfix'>";
+			 				listStr += "<li>" + vv.qSeq + "</li>";
+			 				listStr += "<li>" + vv.qGubun + "</li>";
+			 				listStr += "<li>" + vv.qTitle + "</li>";
+			 				listStr += "<li>" + vv.mNick + "</li>";
+			 				listStr += "<li>" + vv.qRegdate + "</li>";
+			 				listStr += "<li><i class='fa fa-angle-double-down'></i></li>";
+			 				listStr += "</ul><a class='f_q_link'></a>";
+			 				listStr += "</li>";
+			 				listStr += "<li class='f_answer1'>";
+			 				listStr += "<ul class='clearfix'>";
+			 				listStr += "<li>Q</li>";
+			 				listStr += "<li>" + vv.qContent + "</li>";
+			 				listStr += "<li><font color='#00FF00'>A</font></li>";
+			 				listStr += "<li>" + vv.conCheck + "</li>";
+			 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
+			 				listStr += "</ul>";
+			 				listStr += "</li>";
+
+			 			});
+			 			$("#qlist").empty();
+			 			$("#qlist").html(listStr);
+			 			/* <!-- 아코디언 --> */
+			 			accordion();
+					}
+				});
+			} else {
+				console.log('실패');	
+			}
+			
+			
+
 	});
 	
 	/* 문의하기 */
@@ -184,11 +296,15 @@ $(document).ready(function(){
 	
 	/* 전체 문의보기 */
 	$("#allQuestionButton").click(function name() {
-		qnalist();
+		checkswitch = 0;
+		console.log(checkswitch);
+		qnalist();		
 	});
 	
 	/* 내 문의보기 */
 	$("#myQuestionButton").click(function name() {
+		checkswitch = 1;
+		console.log(checkswitch);
 		$.ajax({ 	
 			url:"/faq",   
 			type:"get",
@@ -362,13 +478,14 @@ function qnalist() {
 		<h1>Q&A</h1>
 
 		<!-- 검색 -->
-		<div class="wrap">
-			<input type="text" class="searchTerm" placeholder="검색할 제목을 입력하세요">
-			<button type="button" class="searchButton" id="searchButton">
-				<i class="fa fa-search"></i>
-			</button>
-		</div>
-
+		<form id="searchForm">
+			<div class="wrap">
+				<input type="text" class="searchTerm" placeholder="검색할 제목을 입력하세요" id="searchText" name="searchText">
+				<button type="button" class="searchButton" id="searchButton">
+					<i class="fa fa-search"></i>
+				</button>
+			</div>
+		</form>
 
 		<!-- 버튼 -->
 		<div id="bt">

@@ -68,7 +68,6 @@ public class FaqDAO {
 		int res = 0;
 		SqlSession conn =null;
 		try { 
-			System.out.println(id);
 			conn = MyBatisFactory.getFactory().openSession();
 			res = conn.selectOne("qnaNameSpace.myInfoSelect2",id);
 		} finally {
@@ -90,6 +89,33 @@ public class FaqDAO {
 			conn.close();
 		}
 		return res;
+	}
+	
+	
+	public ArrayList<FaqVO> searchQuestionSelect(FaqVO fvo) {
+		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
+		SqlSession conn =null;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("qnaNameSpace.searchQuestionSelect",fvo);
+		} finally {
+			conn.close();
+		}
+		return list;
+	}
+	
+	public ArrayList<FaqVO> searchMyQuestionSelect(FaqVO fvo) {
+		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
+		SqlSession conn =null;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("qnaNameSpace.searchMyQuestionSelect",fvo);
+		} finally {
+			conn.close();
+		}
+		return list;
 	}
 	
 	
