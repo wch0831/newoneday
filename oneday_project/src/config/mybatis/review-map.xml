@@ -113,6 +113,13 @@
 			and o.o_seq = #{oSeq}
     </select>
 	
+	
+	 <update id="mainReplyUpdate"
+    	parameterType="com.oneday.review.ReviewVO"
+    	>
+    		update reply 
+    		set r_content = #{rContent} where r_seq = #{rSeq}
+    </update>
 	 
 	 
 	   

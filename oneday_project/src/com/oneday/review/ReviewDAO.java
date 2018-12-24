@@ -148,5 +148,18 @@ public class ReviewDAO {
 		return list;
 	}
 	
+	public int mainReviewUpdate(ReviewVO rvo) {
+		int res = 0;
+		SqlSession conn =null;
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.update("reviewNameSpace.mainReplyUpdate", rvo);
+			conn.commit();
+		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
 	
 }
