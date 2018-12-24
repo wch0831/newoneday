@@ -25,22 +25,11 @@ public class OnePathDetailServlet extends HttpServlet {
 		System.out.println(ovo.getoSeq());
 		ovo = dao.pathDetailSelect(ovo);
 		request.setAttribute("KEY_VO", ovo);
-		request.getRequestDispatcher("/blog-detail.jsp").forward(request, response);
+		request.getRequestDispatcher("/path-detail.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.setContentType("application/json;");
-		response.setCharacterEncoding("UTF-8");
-		request.setCharacterEncoding("UTF-8");
-		System.out.println("servlet iiiiiiiiiiiiiin");
-		OnePathVO ovo = new OnePathVO();
-		OnePathDAO dao = new OnePathDAO();
-		ovo.setoSeq(Integer.parseInt(request.getParameter("oseq")));
-		System.out.println(ovo.getoSeq());
-		ovo = dao.pathDetailSelect(ovo);
-		request.setAttribute("KEY_VO", ovo);
-		request.getRequestDispatcher("/blog-detail.jsp").forward(request, response);
+		
 	}
 
 }

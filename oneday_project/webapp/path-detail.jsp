@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
 <!DOCTYPE html>
 <html>
 <head>
 
-	<title>Blog Detail</title>
+	<title>하루이야기</title>
 <%@ include file="/include/header.jsp" %>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-
+/* 
 $(document).ready(function(){
 	
 
 	//"수정버튼" 클릭시 text로 활성화
-    $(document).on("click",".reUpdate",function(){ //글쓰기 버튼 --> 눌렀을 때 기존의 있는 내용을 불러오고 text로 활성화 된다.
+    $(document).on("click",".reUpdate",function(){ //글쓰기 버튼  눌렀을 때 기존의 있는 내용을 불러오고 text로 활성화 된다.
        var names = $(this).attr("name");
         var arr = names.split("^^^");
         alert(arr[0] +""+arr[1]);
@@ -95,10 +95,9 @@ $(document).ready(function(){
 		  		
 		  		var reply = $("#dmt").val();
 		  		//var oseq = ${KEY_VO.oseq};
-		  		var oseq = 4;
+		  		var oseq = ${KEY_VO.oSeq};
 		  		alert(reply+" "+oseq);
-		  		var sendData = {"rContent":reply , "oSeq":"4", "mSeq":${sessionScope.SESS_SEQ}};
-		  		
+		  		var sendData = {"rContent":reply , "oSeq":oseq, "mSeq":${sessionScope.SESS_SEQ}};
 				      $.ajax({ 
 							url:"/reviewServlet",
 							type:"post",
@@ -134,7 +133,7 @@ $(document).ready(function(){
 							}
 				}); //end of ajax   
     });
-	  
+
 		
 /* 	  $(document).on("click",".reUpdate",function(){
 		   var seq = $(this).attr("name");
@@ -170,7 +169,7 @@ $(document).ready(function(){
 	  
 	  
 });    
-	
+ */
 	
 </script>
 </head>
