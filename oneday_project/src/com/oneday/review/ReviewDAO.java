@@ -148,6 +148,9 @@ public class ReviewDAO {
 		return list;
 	}
 	
+	
+	
+	
 	public int mainReviewUpdate(ReviewVO rvo) {
 		int res = 0;
 		SqlSession conn =null;
@@ -156,6 +159,19 @@ public class ReviewDAO {
 			res = conn.update("reviewNameSpace.mainReplyUpdate", rvo);
 			conn.commit();
 		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
+	public int mainReviewDel(ReviewVO rvo) {
+		SqlSession conn = null;
+		int res = 0;
+		try {
+			conn = MyBatisFactory.getFactory().openSession();			
+			res = conn.delete("reviewNameSpace.mainReviewDel",rvo);
+			conn.commit();
+		}finally {
 			conn.close();
 		}
 		return res;
