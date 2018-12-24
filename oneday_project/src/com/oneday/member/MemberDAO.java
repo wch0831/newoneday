@@ -99,6 +99,45 @@ public class MemberDAO {
 	
 	
 	//마이페이지 > 정보수정
+	public int updateMyinfo(MemberVO mvo) {
+		
+		SqlSession conn = null;
+		MemberVO vo = new MemberVO();
+		int res = 0;
+		System.out.println(mvo);
+		
+		try {
+		conn = MyBatisFactory.getFactory().openSession();
+		res = conn.update("memberNameSpace.member_update", mvo);
+		conn.commit();
+		System.out.println(res);
+		} catch(Exception e) {
+			e.printStackTrace();	
+		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
+	
+	//마이페이지 > 정보수정 > 패스워드확인
+	public String pwCheck(int seq) {
+		SqlSession conn = null;
+		String res = "";
+		
+		System.out.println(seq+"5번");
+		
+		try {
+		conn = MyBatisFactory.getFactory().openSession();
+		res = conn.selectOne("memberNameSpace.pwCheck", seq);
+		System.out.println(res);
+		} catch(Exception e){
+			e.getStackTrace();
+		}finally {
+			conn.close();
+		}
+		return res;
+	}
 	
 	
 	
@@ -107,13 +146,13 @@ public class MemberDAO {
 		SqlSession conn = null;
 		MemberVO mvo = new MemberVO();
 		int res = 0;
-		System.out.println(seq);
+		System.out.println(seq+"------");
 		
 		try {
 		conn = MyBatisFactory.getFactory().openSession();
 		res = conn.update("memberNameSpace.member_del", seq);
 		conn.commit();
-		System.out.println(res);
+		System.out.println(res+"//////");
 		} catch(Exception e) {
 			e.printStackTrace();	
 		} finally {
@@ -158,6 +197,7 @@ public class MemberDAO {
 		try {
 		conn = MyBatisFactory.getFactory().openSession();
 		vo = conn.selectOne("memberNameSpace.member_login", mvo);
+		
 		System.out.println(vo.getmEmail()+vo.getmPw()+"6번");
 		} catch(Exception e){
 			e.getStackTrace();

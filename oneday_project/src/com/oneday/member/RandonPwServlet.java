@@ -64,7 +64,7 @@ public class RandonPwServlet extends HttpServlet {
 			buffer.append("<table width='200'>");
 			buffer.append("<tr><td><img src='http://www.ikosmo.co.kr/userfile/main_list/1523413562121866.jpg'></td></tr>");         
 			buffer.append("<tr><td> 아래의 URL을 통하여 비밀번호를 변경하여 주시기 바랍니다. </td></tr>");
-			buffer.append("<tr><td> ///////////////// </td></tr>");
+			buffer.append("<tr><td> location.href='/user/pwChange.jsp'; </td></tr>");
 			buffer.append("</table>");
 			buffer.append("</body>");
 			buffer.append("</html>");

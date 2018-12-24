@@ -70,6 +70,21 @@
     	where m_seq=#{value}
     </select>
     
+    <!-- 회원정보 수정 -->
+    <update id="member_update" parameterType="com.oneday.member.MemberVO">
+    	update member
+    	set m_nick=#{mNick}
+    	where m_seq=#{mSeq} and m_pw=#{mPw} 
+    </update>
+    
+    <!-- 회원정보 수정 > 비밀번호 비교하기 -->
+    <select id="pwCheck" parameterType="int" resultType="String">
+    	select m_pw
+    	from member
+    	where m_seq=#{value}
+    </select>
+    
+    
     <!-- 회원탈퇴 -->
     <update id="member_del" parameterType="int">
     	update member

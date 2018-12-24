@@ -220,52 +220,6 @@ button.snip0059.yellow {
 	
 	</form>
   
-  
-	<!-- <div class="app-body" align="center">
-
-
-		<div class="container">
-			<div class="card">
-              <div class="warpper">
-                <div class="row"> <br><br>
-                  <div class="col-sm-10" align="left">
-                    <h4 class="card-title mb-0">&nbsp;비밀번호 찾기</h4>
-                    <div class="small text-muted">&nbsp;&nbsp;아래의 정보를 입력해주세요.</div> <br><br>
-                  </div>
-          
-          
-         				
-								
-								<div class="container" >
-			         				<div calss="card" >
-								<div class="input-group mb-4" align="center">
-									<div class="input-group-prepend">
-										&nbsp;<span class="input-group-text"> 　이메일　　 </span>
-									</div>
-									&nbsp;<input class="col-sm-12" type="text" id="mEmail" name="mEmail" value="">
-								</div>
-						
-								<div class="input-group mb-4">
-									<div class="input-group-prepend">
-										&nbsp;<span class="input-group-text"> 주민등록번호 </span>
-									</div>
-									<input class="col-sm-12" type="password" id="mResnum" name="mResnum" placeholder="뒤 1자리까지표시">
-								</div>
-						
-	
-								<div align="center">
-									<input class="col-md-2" type="button" id="updateButton" value="찾기">
-								</div>
-								
-							</div>
-								</div>
-							</form>					
-          
-                </div>
-              </div>
-            </div>
-        </div>
-		 -->
 		 
 		 
 	<%@ include file="/include/footer.jsp" %>

@@ -33,6 +33,7 @@
 		  	  						} else {
 		  	  							alert("로그인 되었습니다.");
 		  	  	  	   					$('#regForm').submit();
+		  	  	  	   					
 		  	  						}
 		  	  					}
 		  			});
@@ -83,9 +84,9 @@
               <div class="card-body text-center">
                 <div>
                   <h2>Sign up</h2>
-                  <p>Oneday의 모든 서비스를 이용하려면 <br> 먼저 회원가입하여 주시기 바랍니다.</p>
+                  <p>Oneday의 모든 서비스를 이용하기 위해서 <br> 먼저 회원가입하여 주시기 바랍니다.</p>
                   <button class="btn btn-primary active mt-3" type="button">
-                  <span><a href="register.jsp">회원가입</a></span></button>
+                  <span><a href="../agreepage.jsp">회원가입</a></span></button>
                 </div>
               </div>
             </div>

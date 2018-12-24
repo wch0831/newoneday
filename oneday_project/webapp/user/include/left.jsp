@@ -11,7 +11,7 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="myInfo.jsp">
+              <a class="nav-link" href="pwChange.jsp">
                 <i class="nav-icon icon-drop"></i> 비밀번호변경</a>
             </li>
             
