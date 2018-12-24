@@ -175,8 +175,9 @@ button.snip0059.yellow {
 			
 	
 	<h1>비밀번호 찾기 </h1>
-	
-			<div>
+			
+			<div align="center">
+			<div style="width:600px;">
 				<div>
 					<span class="mtext-110 cl2">이메일</span>
 					<p class="stext-115 cl6 size-213 p-t-18">
@@ -185,8 +186,9 @@ button.snip0059.yellow {
 							type="text" id="mEmail" name="mEmail" placeholder="Your Email Address">
 					</div></p>
 				</div>
+			</div>
 	
-	
+			<div style="width:600px;" >
 				<div>
 					<span class="mtext-110 cl2">주민등록번호</span>
 					<p class="stext-115 cl6 size-213 p-t-18">
@@ -196,7 +198,8 @@ button.snip0059.yellow {
 					</div></p>
 				</div>
 			</div>
-	
+			
+		</div>
 	
 	<!-- 버튼 -->	
 	<div id="bt">

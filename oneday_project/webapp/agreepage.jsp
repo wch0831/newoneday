@@ -186,7 +186,7 @@ button.snip0059.yellow {
 		<div><input type="checkbox" id="agree1" name="agree1" value="y">개인정보 수집 및 활용동의<div>
 			
 			<div class="bor8 m-b-30">
-				<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg">
+				<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" >
 정보통신망법 규정에 따라 당일치기에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
 
 1. 수집하는 개인정보
@@ -243,7 +243,7 @@ NAVER 내의 개별 서비스 이용, 이벤트 응모 및 경품 신청 과정�
 			<div><input type="checkbox" id="agree2" name="agree2" value="y">홈페이지 이용동의</div>
 			
 			<div class="bor8 m-b-30">
-				<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg">
+				<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25">
 제1조(목적) 
 이 약관은 농업회사법인 주식회사 (주)당일치기가 운영하는 홈페이지(이하 "홈페이지"라 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 사이버홈페이지과 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다. 
 ※ 「PC통신 등을 이용하는 전자거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다」 

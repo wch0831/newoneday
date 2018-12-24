@@ -76,33 +76,6 @@ public class SendMail
          message.setSubject(subject); //제목
          
          
-         
-         //pw 랜덤설정----------------------------
-         //0~9까지 생성 *10
-//         int rnum1 = (int)(Math.random() *10);
-//         int rnum2 = (int)(Math.random() *10);
-//         int rnum3 = (int)(Math.random() *10);
-//         int rnum4 = (int)(Math.random() *10);
-//         
-//         String newPw = "!@"+rnum1+rnum2+rnum3+rnum4;
-//         System.out.println(newPw);
-         
-         //DB Pw변경----------------------------
-         //update member
-         
-         
-//         StringBuffer buffer = new StringBuffer();
-//         buffer.append("<html>");
-//         buffer.append("<head>");
-//         buffer.append("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
-//         buffer.append("<title>Insert title here</title>");
-//         buffer.append("</head>");
-//         buffer.append("<body>");
-//         buffer.append("<table width='200'>");
-//         buffer.append("<tr><td><img src='http://www.ikosmo.co.kr/userfile/main_list/1523413562121866.jpg'></td></tr>")         <tr><td>비밀번호 확인</td></tr>
-//         buffer.append("</table>");
-//         buffer.append("</body>");
-//         buffer.append("</html>");
 
          String htmlStr = "<font color='blue'> 비밀번호가 변경되었습니다. </font>"; //내용
          message.setContent(htmlStr, "text/html"); //html 형식으로 보내기

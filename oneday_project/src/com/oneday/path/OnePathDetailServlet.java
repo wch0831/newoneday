@@ -25,7 +25,7 @@ public class OnePathDetailServlet extends HttpServlet {
 		System.out.println(ovo.getoSeq());
 		ovo = dao.pathDetailSelect(ovo);
 		request.setAttribute("KEY_VO", ovo);
-		request.getRequestDispatcher("/blog-detail.jsp").forward(request, response);
+		request.getRequestDispatcher("/path-detail.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
