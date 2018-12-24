@@ -55,4 +55,18 @@ public class OnePathDAO {
 		}
 		return ovo;
 	}
+	public ArrayList<OnePathVO> pathListSelect() {
+		SqlSession conn = null;
+		ArrayList<OnePathVO> list = null;
+		try {
+			System.out.println("연결");
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("pathNameSpace.SelectList");
+		} catch(Exception e) {
+			e.printStackTrace();	
+		} finally {
+			conn.close();
+		}
+		return list;
+	}
 }
