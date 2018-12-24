@@ -48,7 +48,6 @@ public class OnePathDAO {
 			System.out.println("연결");
 			conn = MyBatisFactory.getFactory().openSession();
 			ovo = conn.selectOne("pathNameSpace.pathDetailSelect", vo.getoSeq());
-			conn.commit();
 		} catch(Exception e) {
 			e.printStackTrace();	
 		} finally {

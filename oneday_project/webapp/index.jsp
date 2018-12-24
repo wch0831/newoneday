@@ -101,14 +101,6 @@ $(document).ready(function(){
 
 <%@ include file="/include/left.jsp" %>
 
-<form name="rSearch" method="get" action="/reviewServlet">
-               			 <select name="searchCom" id="searchCom" >
-                 			   <option value="rContent">내용                     		
-               			 </select>
-              			  <input type="textarea" id="searchTxt" name="searchTxt">
-             		     <input type="submit" id="reviewInsBtn" value="검색">
-           		  </form> 
-
 	<!-- Slider -->
 	<section class="section-slide">
 		<div class="wrap-slick1 rs1-slick1">
