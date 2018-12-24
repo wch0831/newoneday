@@ -33,7 +33,7 @@ public class FaqQuestionServlet extends HttpServlet {
 		response.sendRedirect("/user/login.jsp");
 		} else {*/
 
-		String sess_id = "wch@naver.com"; //session.getAttribute("SESS_ID").toString();
+		String sess_id = "kimtaku@naver.com"; //session.getAttribute("SESS_ID").toString();
 		//request.getSession().getAttribute("SESS_ID").toString();
 
 		/*session.setAttribute("SESS_ID", sess_id); //test용 */	    	
@@ -43,7 +43,7 @@ public class FaqQuestionServlet extends HttpServlet {
 
 		Gson gson = new Gson();
 		String jsonStr = gson.toJson(list);
-
+		
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out  = response.getWriter();
 		out.println(jsonStr);
@@ -59,7 +59,6 @@ public class FaqQuestionServlet extends HttpServlet {
 		String service = request.getParameter("service");
 		String title = request.getParameter("title");
 		String email = request.getParameter("email");
-		String password = request.getParameter("password"); //수정/삭제 비밀번호
 		String message = request.getParameter("message");
 		String secret = request.getParameter("cc"); //on or null
 		

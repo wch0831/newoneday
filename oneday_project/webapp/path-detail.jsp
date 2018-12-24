@@ -13,27 +13,57 @@
 <script>
 
 $(document).ready(function(){
-	
+	var arr = null;
 
 	//"수정버튼" 클릭시 text로 활성화
     $(document).on("click",".reUpdate",function(){ //글쓰기 버튼  눌렀을 때 기존의 있는 내용을 불러오고 text로 활성화 된다.
-       var names = $(this).attr("name");
-        var arr = names.split("^^^");
-        alert(arr[0] +""+arr[1]);
-		//alert("ㅅㅂ");
-        //alert(arr[0] +","+arr[1]);
-       //입력된 글이 들어와야한다..!!!
-       //일단은 근데 seq랑 content를 제대로 가져오는건 맞으니까.  reUpdate버튼은 서블릿을 타는게 아니라서. 걍 단순히 그 값 가지고 html 그려주는거니까.
-       //
-       var htmlStr = "<input type='hidden' id='updateReplySeq' value='"+arr[0]+"'>";
-           htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";   
-           htmlStr += "<span onClick=\"replyEditSubmit(this)\" class='replyEditSubmit' name=''>글쓰기</span>";  
-       
-       $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
-       
-       debugger;
-        
-       $("#readContent"+arr[0]).html(htmlStr);
+
+    	if(arr==null){
+    		var names = $(this).attr("name");
+            arr = names.split("^^^");
+            alert(arr[0] +""+arr[1]);
+    		//alert("ㅅㅂ");
+            //alert(arr[0] +","+arr[1]);
+           //입력된 글이 들어와야한다..!!!
+           //일단은 근데 seq랑 content를 제대로 가져오는건 맞으니까.  reUpdate버튼은 서블릿을 타는게 아니라서. 걍 단순히 그 값 가지고 html 그려주는거니까.
+           //
+
+           var htmlStr = "<input type='hidden' id='updateReplySeq' value='"+arr[0]+"'>";
+               htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";   
+               htmlStr += "<span onClick=\"replyEditSubmit(this)\" class='replyEditSubmit' name=''>글쓰기</span>";  
+           
+           $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
+           
+            
+           $("#readContent"+arr[0]).html(htmlStr);
+    	}else{
+	    	var htmlStr = "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"' readonly>";     
+	        
+	        $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
+	        
+	         
+	        $("#readContent"+arr[0]).html(htmlStr);
+	        
+	        var names = $(this).attr("name");
+	        arr = names.split("^^^");
+	        alert(arr[0] +""+arr[1]);
+			//alert("ㅅㅂ");
+	        //alert(arr[0] +","+arr[1]);
+	       //입력된 글이 들어와야한다..!!!
+	       //일단은 근데 seq랑 content를 제대로 가져오는건 맞으니까.  reUpdate버튼은 서블릿을 타는게 아니라서. 걍 단순히 그 값 가지고 html 그려주는거니까.
+	       //
+
+	       var htmlStr = "<input type='hidden' id='updateReplySeq' value='"+arr[0]+"'>";
+	           htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";   
+	           htmlStr += "<span onClick=\"replyEditSubmit(this)\" class='replyEditSubmit' name=''>글쓰기</span>";  
+	       
+	       $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
+	       
+	        
+	       $("#readContent"+arr[0]).html(htmlStr);
+	       
+    	}
+    	
        /* $("#"+arr[0]).html(htmlStr); */  //<< 여기서 다시 그려줌.   
     });
 	
@@ -93,8 +123,10 @@ $(document).ready(function(){
 		  		
 		  		var reply = $("#dmt").val();
 		  		var ooseq = ${KEY_VO.oSeq};
+		  		var sessmSeq = ${sessionScope.SESS_SEQ};
+		  		
 		  		alert(reply+" "+ooseq);
-		  		var sendData = {"rContent":reply , "oSeq":ooseq, "mSeq":$(sessionScope.SESS_SEQ)};
+		  		var sendData = {"rContent":reply , "oSeq":ooseq, "mSeq":${sessionScope.SESS_SEQ}};
 				      $.ajax({ 
 							url:"/reviewServlet",
 							type:"post",
@@ -110,11 +142,13 @@ $(document).ready(function(){
 									htmlStr += "<div class='size-207'>";
 									htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
 									htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
-									htmlStr += "<br>";
-									htmlStr += "<p class='reUpDel'>";
+									htmlStr += "<br>";				
+									if(sessmSeq == vv.mSeq){										
+									htmlStr += "<p class='reUpDel'>";	
 									htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
 									htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
-									htmlStr += "</p>";								
+									htmlStr += "</p>";	
+									}						
 									htmlStr += "</div>";
 									htmlStr += "<div class='readContent'>";
 									htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
@@ -127,6 +161,7 @@ $(document).ready(function(){
 							  	//div는 남겨두고 기존 댓글 내용만 지우기
 							  	$(".replyform").empty();
 							  	$(".replyform").html(htmlStr);
+							  	$("#dmt").val("");
 							}
 				}); //end of ajax   
     });
@@ -280,11 +315,14 @@ $(document).ready(function(){
 														<b>${vo.mNick}<b>
 													</span>
 													
-												 
-													   <p class="reUpDel">
+												 	<c:if test="${sessionScope.SESS_SEQ eq vo.mSeq}">
+  														 <%-- 적용 스타일 --%>
+  														<p class="reUpDel">
 														<span class="replyUp_span"><img src="/images/reviewUp.png"  name="${vo.rSeq}^^^${vo.rContent}"  class="reUpdate" width="20" height="20"></span>
 														<span class="replyDel_span"><img src="/images/reviewDel.png"  name="${vo.rSeq}" class="reDel" id="reDel" width="20" height="20"></span>
 													   </p>
+													</c:if>	
+													  
 																					
 												</div>
 

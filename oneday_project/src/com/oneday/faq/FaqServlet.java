@@ -24,7 +24,6 @@ public class FaqServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("get하이염");
 		
 		HttpSession session = request.getSession();
 		
@@ -33,7 +32,7 @@ public class FaqServlet extends HttpServlet {
 			response.sendRedirect("/user/login.jsp");
 		} else {*/
 			
-		String sess_id = "wch@naver.com"; //session.getAttribute("SESS_ID").toString();
+		String sess_id = "kimtaku@naver.com"; //session.getAttribute("SESS_ID").toString();
 										  //request.getSession().getAttribute("SESS_ID").toString();
 			
 	  	FaqDAO dao = new FaqDAO();
@@ -43,7 +42,6 @@ public class FaqServlet extends HttpServlet {
     	
 		Gson gson = new Gson();
 		String jsonStr = gson.toJson(list);
-		System.out.println(jsonStr);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out  = response.getWriter();
@@ -54,7 +52,7 @@ public class FaqServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("post하이염");
+
 	  	FaqDAO dao = new FaqDAO();
     	ArrayList<FaqVO> list = new ArrayList<FaqVO>();
     	
@@ -62,7 +60,7 @@ public class FaqServlet extends HttpServlet {
     	
 		Gson gson = new Gson();
 		String jsonStr = gson.toJson(list);
-		System.out.println(jsonStr);
+
 		
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out  = response.getWriter();
