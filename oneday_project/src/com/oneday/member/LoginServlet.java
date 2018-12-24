@@ -73,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 			}
 			else{	
 				if(mvo.getmGubun().equals("a")){
-					response.sendRedirect("./admin/index.jsp");
+					response.sendRedirect("/admin/index.jsp");
 //					request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
 				}
 			}
