@@ -36,7 +36,9 @@
     	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
     	    select o_title, o_content, o_see, o_tmapimg from onepath
-			where o_theme=#{oTheme} and o_area=#{oArea} and o_del='n'
+			where o_title like '%'||#{oTitle}||'%' and o_del='n' 
+			<if test="!oTheme.equals('')"> and o_theme=#{oTheme}</if>
+			<if test="!oArea.equals('')"> and o_area=#{oArea}</if>
     </select>
 
 	<select id="pathDetailSelect" parameterType="int" resultMap="pathMap">
@@ -82,7 +84,7 @@
     	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
     	    select * from (select o_title, o_content, o_see, o_tmapimg from onepath
-			where o_theme=#{oTheme} and o_area=#{oArea}) b where b.o_title like '%#{oTitle}%'
+			where o_theme=#{oTheme} and o_area=#{oArea}) b where b.o_title like '%'||#{oTitle}||'%'
     </select>
 
 <!-- 마이페이지-경로조회  -->
