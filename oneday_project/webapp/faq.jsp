@@ -30,11 +30,11 @@
     .f_question1>ul>li:nth-child(6){width:5%; }
     .f_q_link{width: 100%;height: 100%;position:absolute;top: 0;left: 0;}
     
-    #bt {position:absolute; right:245px;}
     
     
+    #bt {position:absolute; right:200px;}
     
- @import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
 button.snip0059 {
   font-family: 'Raleway', Arial, sans-serif;
   border: none;
@@ -42,9 +42,9 @@ button.snip0059 {
   border-radius: 5px;
   color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 8px 20px;
   display: inline-block;
-  margin: 0px 0px;
+  margin: 12px 0px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 500;
@@ -90,14 +90,8 @@ button.snip0059:active:before {
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
-button.snip0059.blue {
-  background-color: #1e5d87;
-}
-button.snip0059.red {
-  background-color: #8e2a20;
-}
 button.snip0059.yellow {
-  background-color: #1e5d87;
+  background-color: #00B4CC;
 }
 @-webkit-keyframes flashText {
   0% {
@@ -122,6 +116,53 @@ button.snip0059.yellow {
   }
 }
   
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+.search {
+  width: 100%;
+  position: relative
+}
+
+.searchTerm {
+  position: absolute;
+  bottom: -50px;
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  position: absolute;  
+  right: -50px;
+  bottom: -50px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 20%;
+  position: relative;
+  bottom: 75%;
+  left: 13%;
+  /* transform: translate(-50%, -50%); */
+}  
 </style>
     
 <title>FAQ</title>
@@ -131,15 +172,23 @@ $(document).ready(function(){
 		
 	qnalist();
 	
-	$("#qus").click(function name() {	
+	/* 검색 */
+	$("#searchButton").click(function name() {	
+		
+	});
+	
+	/* 문의하기 */
+	$("#questionButton").click(function name() {	
 		window.open('/contact/index.jsp','문의하기','width=800,height=700,location=no,status=no');
 	});
 	
-	$("#allqus").click(function name() {
+	/* 전체 문의보기 */
+	$("#allQuestionButton").click(function name() {
 		qnalist();
 	});
 	
-	$("#myqus").click(function name() {
+	/* 내 문의보기 */
+	$("#myQuestionButton").click(function name() {
 		$.ajax({ 	
 			url:"/faq",   
 			type:"get",
@@ -292,42 +341,50 @@ function qnalist() {
 </head>
 
 <body class="animsition">
-	
-	
-	<!-- Header -->
-	<%@ include file="/include/top.jsp" %>
 
-	<%@ include file="/include/left.jsp" %>
+
+	<!-- Header -->
+	<%@ include file="/include/top.jsp"%>
+
+	<%@ include file="/include/left.jsp"%>
 
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
-		<h2 class="ltext-105 cl0 txt-center">
-			문의하기
-		</h2>
-	</section>	
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92"
+		style="background-image: url('images/bg-01.jpg');">
+		<h2 class="ltext-105 cl0 txt-center">문의하기</h2>
+	</section>
 
 
 	<!-- Content page -->
 	<section class="bg0 p-t-104 p-b-116">
-			
-	
-	<h1>Q&A</h1>
-	<!-- 버튼 -->
-	
-	<div id="bt">
-	<button class="snip0059 yellow" id="qus">문의하기</button>
-	<button class="snip0059 yellow" id="myqus">내 문의보기</button>
-	<button class="snip0059 yellow" id="allqus">전체 문의보기</button>
-    </div>
-    
-    <br><br>
-    
-    	<!-- 뿌려지는 영역 -->
+
+		<h1>Q&A</h1>
+
+		<!-- 검색 -->
+		<div class="wrap">
+			<input type="text" class="searchTerm" placeholder="검색할 제목을 입력하세요">
+			<button type="button" class="searchButton" id="searchButton">
+				<i class="fa fa-search"></i>
+			</button>
+		</div>
+
+
+		<!-- 버튼 -->
+		<div id="bt">
+			<button class="snip0059 yellow" id="questionButton">문의하기</button>
+			<button class="snip0059 yellow" id="myQuestionButton">내 문의보기</button>
+			<button class="snip0059 yellow" id="allQuestionButton">전체 문의보기</button>
+		</div>
+
+		<br>
+		<br>
+
+		<!-- 뿌려지는 영역 -->
 		<ul class="fnq" id="qlist">
- 	
+
 		</ul>
-	<hr>
+		<hr>
 
 
 
@@ -335,16 +392,16 @@ function qnalist() {
 
 
 
-<%@ include file="/include/footer.jsp" %>
+	<%@ include file="/include/footer.jsp"%>
 
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
+		<span class="symbol-btn-back-to-top"> <i
+			class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
 
-<%@ include file="/include/script.jsp" %>
+	<%@ include file="/include/script.jsp"%>
 </body>
 </html>
