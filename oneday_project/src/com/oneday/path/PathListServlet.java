@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.oneday.member.MemberDAO;
+import com.oneday.member.MemberVO;
 
 /**
  * Servlet implementation class PathListServlet
@@ -24,11 +26,18 @@ public class PathListServlet extends HttpServlet {
 		response.setContentType("application/json;");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("servlet iiiiiiiiiiiiiin");
 		ArrayList<OnePathVO> list = new ArrayList<>();
+		ArrayList<MemberVO> mlist = new ArrayList<>();
+		MemberVO mvo = new MemberVO();
 		OnePathDAO dao = new OnePathDAO();
+		MemberDAO mdao = new MemberDAO();
 		list = dao.pathListSelect();
+		for(int i=0;i<list.size();i++) {
+			mvo = mdao.selectNick(list.get(i).getmSeq());
+			mlist.add(mvo);
+		}
 		request.setAttribute("KEY_LIST", list);
+		request.setAttribute("KEY_MLIST", mlist);
 		request.getRequestDispatcher("/pathlist.jsp").forward(request, response);
 	}
 
@@ -43,16 +52,14 @@ public class PathListServlet extends HttpServlet {
 		OnePathVO ovo = new OnePathVO();
 		OnePathDAO dao = new OnePathDAO();
 		Gson gson = new Gson();
-		System.out.println(request.getParameter("area"));
 		ovo.setoTheme(request.getParameter("theme"));
 		ovo.setoArea(request.getParameter("area"));
 		ovo.setoTitle(request.getParameter("title"));
-		System.out.println(ovo.getoTheme());
 		ArrayList<OnePathVO> list = dao.pathSelect(ovo);
 		String restr = gson.toJson(list);
+		System.out.println(restr);
 		PrintWriter out = response.getWriter();
 		out.println(restr);
-		
 	}
 
 }

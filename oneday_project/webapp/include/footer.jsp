@@ -18,7 +18,7 @@
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/pathlist" class="stext-107 cl7 hov-cl1 trans-04">
 								경로
 							</a>
 						</li>

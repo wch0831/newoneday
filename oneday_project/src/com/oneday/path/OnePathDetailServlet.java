@@ -24,28 +24,20 @@ public class OnePathDetailServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
-		
-		System.out.println("getㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
 		ReviewDAO rdao = new ReviewDAO();
 		ArrayList<ReviewVO> rlist = new ArrayList<ReviewVO>();
-		
 		ReviewVO rvo = new ReviewVO();		
 		rvo.setoSeq(Integer.parseInt(request.getParameter("oseq")));
-		
 		rlist = rdao.mainReviewList(rvo);
-		
-		
 		request.setAttribute("KEY_LIST", rlist);
 		
-		System.out.println("servlet iiiiiiiiiiiiiin");
 		OnePathVO ovo = new OnePathVO();
 		OnePathDAO dao = new OnePathDAO();
 		ovo.setoSeq(Integer.parseInt(request.getParameter("oseq")));
-		System.out.println(ovo.getoSeq());
 		ovo = dao.pathDetailSelect(ovo);
-		System.out.println(ovo.getoSeq());
 		request.setAttribute("KEY_VO", ovo);
 		request.setAttribute("KEY_LIST", rlist);
+		
 		request.getRequestDispatcher("/path-detail.jsp").forward(request, response);
 	}
 

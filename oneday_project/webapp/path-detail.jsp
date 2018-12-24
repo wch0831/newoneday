@@ -128,7 +128,7 @@ $(document).ready(function(){
      
 	
 
-		$(document).on("click",".btn",function(){	  
+		$(document).on("click","#replybtn",function(){	  
 		  		
 		  		var reply = $("#dmt").val();
 		  		var ooseq = ${KEY_VO.oSeq};
@@ -286,8 +286,8 @@ function replyEditSubmit() {
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
-			<a href="blog.html" class="stext-109 cl8 hov-cl1 trans-04">
-				Blog
+			<a href="/pathlist" class="stext-109 cl8 hov-cl1 trans-04">
+				Path
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
@@ -307,38 +307,24 @@ function replyEditSubmit() {
 						<!--  -->
 						<div class="wrap-pic-w how-pos5-parent">
 							<img src='${KEY_VO.oTmapImg}' alt="IMG-BLOG">
-
-							<div class="flex-col-c-m size-123 bg9 how-pos5">
-								<span class="ltext-107 cl2 txt-center">
-									22
-								</span>
-
-								<span class="stext-109 cl3 txt-center">
-									Jan 2018
-								</span>
-							</div>
 						</div>
 
 						<div class="p-t-32">
 							<span class="flex-w flex-m stext-111 cl2 p-b-19">
 								<span>
-									<span class="cl4">By</span> Admin  
+									<span class="cl4">By</span> ${KEY_VO.mNick}  
+									<span class="cl12 m-l-4 m-r-6">|</span>
+								</span>
+								
+								<span>
+									조회수 : ${KEY_VO.oSee}  
 									<span class="cl12 m-l-4 m-r-6">|</span>
 								</span>
 
 								<span>
-									22 Jan, 2018
-									<span class="cl12 m-l-4 m-r-6">|</span>
+									${KEY_VO.oRegdate}
 								</span>
-
-								<span>
-									StreetStyle, Fashion, Couple  
-									<span class="cl12 m-l-4 m-r-6">|</span>
-								</span>
-
-								<span>
-									8 Comments
-								</span>
+								
 							</span>
 
 							<h4 class="ltext-109 cl2 p-b-28">
@@ -424,7 +410,7 @@ function replyEditSubmit() {
 								</div>
 
 								<input type="button" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" name="replybtn" id="replybtn" value="작성" >
-								<input type="button" class="btn" value="작성2">
+								<!-- <input type="button" class="btn" value="작성2"> -->
 									
 								
 							

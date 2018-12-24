@@ -67,10 +67,20 @@ $(document).ready(function(){
 	$(document).on("click",".dis-block.stext-115.cl6.hov-cl1.trans-04.p-tb-8.p-lr-4.t",function(){
 		aa=$(this).attr("value");
 		console.log(aa);
+		$("#aa").html(aa);
 	});
 	$(document).on("click",".dis-block.stext-115.cl6.hov-cl1.trans-04.p-tb-8.p-lr-4.a",function(){
 		bb=$(this).attr("value");
 		console.log(bb);
+		$("#bb").html(bb);
+	});
+	$("#aa").click(function () {
+		$("#aa").empty();
+		aa="";
+	});
+	$("#bb").click(function () {
+		$("#bb").empty();
+		bb="";
 	});
 	
 	$("#searchBtn").click(function () {
@@ -101,7 +111,7 @@ $(document).ready(function(){
 					htmlStr += vv.oContent+"</p>";
 					htmlStr += "<div class='flex-w flex-sb-m p-t-18'>";
 					htmlStr += "<span class='flex-w flex-m stext-111 cl2 p-r-30 m-tb-10'>";																
-					htmlStr += "<span><span class='cl4'>By</span> Admin<span class='cl12 m-l-4 m-r-6'>|</span></span>";
+					htmlStr += "<span><span class='cl4'>By</span> "+vv.mNick+"<span class='cl12 m-l-4 m-r-6'>|</span></span>";
 					htmlStr += "<span>조회수 : "+vv.oSee+"<span class='cl12 m-l-4 m-r-6'>|</span></span>";
 					htmlStr += "<span>"+vv.oRegdate+"</span>";
 					htmlStr += "</span></div></div></div>";
@@ -156,7 +166,7 @@ $(document).ready(function(){
 								<div class="flex-w flex-sb-m p-t-18">
 									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
 										<span>
-											<span class="cl4">By</span> Admin  
+											<span class="cl4">By</span> ${vo.mNick}  
 											<span class="cl12 m-l-4 m-r-6">|</span>
 										</span>
 
@@ -201,7 +211,13 @@ $(document).ready(function(){
 							<h4 class="mtext-112 cl2 p-b-33">
 								Categories
 							</h4>
-							
+							<table>
+							<tr>
+							<td id="aa"></td>
+							<td>&nbsp|&nbsp</td>
+							<td id="bb"></td>
+							</tr>
+							</table>
 							<ul>
 								<li class="bor18">
 									<button  class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4" id="categoryt">
