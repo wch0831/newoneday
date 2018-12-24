@@ -198,9 +198,21 @@ $(document).ready(function(){
 		 				listStr += "</ul>";
 		 				listStr += "</li>";
 		 				listStr += "<hr>";
-		 					
-			 			$.map(resObject, function(vv, idx){			
-			 				
+		 				var sessId = '<%=session.getAttribute("SESS_ID") %>';
+			 			$.map(resObject, function(vv, idx){		
+			 				if(sessId != vv.mEmail && vv.qSecret == 'y'){
+				 				listStr += "<li class='f_question1' onClick=alertMessage()>";
+				 				listStr += "<ul class='clearfix'>";
+				 				listStr += "<li>" + vv.qSeq + "</li>";
+				 				listStr += "<li>" + vv.qGubun + "</li>";
+				 				listStr += "<li>" + vv.qTitle + "&nbsp;&nbsp;<i class='fa fa-lock'></i></li>";
+				 				listStr += "<li>" + vv.mNick + "</li>";
+				 				listStr += "<li>" + vv.qRegdate + "</li>";
+				 				listStr += "<li><i class='fa fa-angle-double-down'></i></li>";
+				 				listStr += "</ul><a class='f_q_link'></a>";
+				 				listStr += "</li>";
+			 				}
+			 				else{
 			 				listStr += "<li class='f_question1'>";
 			 				listStr += "<ul class='clearfix'>";
 			 				listStr += "<li>" + vv.qSeq + "</li>";
@@ -220,7 +232,7 @@ $(document).ready(function(){
 			 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
 			 				listStr += "</ul>";
 			 				listStr += "</li>";
-
+			 				}
 			 			});
 			 			$("#qlist").empty();
 			 			$("#qlist").html(listStr);
@@ -251,9 +263,21 @@ $(document).ready(function(){
 		 				listStr += "</ul>";
 		 				listStr += "</li>";
 		 				listStr += "<hr>";
-		 					
-			 			$.map(resObject, function(vv, idx){			
-			 				
+		 				var sessId = '<%=session.getAttribute("SESS_ID") %>';
+			 			$.map(resObject, function(vv, idx){		
+			 				if(sessId != vv.mEmail && vv.qSecret == 'y'){
+				 				listStr += "<li class='f_question1' onClick=alertMessage()>";
+				 				listStr += "<ul class='clearfix'>";
+				 				listStr += "<li>" + vv.qSeq + "</li>";
+				 				listStr += "<li>" + vv.qGubun + "</li>";
+				 				listStr += "<li>" + vv.qTitle + "&nbsp;&nbsp;<i class='fa fa-lock'></i></li>";
+				 				listStr += "<li>" + vv.mNick + "</li>";
+				 				listStr += "<li>" + vv.qRegdate + "</li>";
+				 				listStr += "<li><i class='fa fa-angle-double-down'></i></li>";
+				 				listStr += "</ul><a class='f_q_link'></a>";
+				 				listStr += "</li>";
+			 				}
+			 				else{
 			 				listStr += "<li class='f_question1'>";
 			 				listStr += "<ul class='clearfix'>";
 			 				listStr += "<li>" + vv.qSeq + "</li>";
@@ -273,7 +297,7 @@ $(document).ready(function(){
 			 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
 			 				listStr += "</ul>";
 			 				listStr += "</li>";
-
+			 				}
 			 			});
 			 			$("#qlist").empty();
 			 			$("#qlist").html(listStr);
@@ -325,9 +349,21 @@ $(document).ready(function(){
 	 				listStr += "</ul>";
 	 				listStr += "</li>";
 	 				listStr += "<hr>";
-	 					
-		 			$.map(resObject, function(vv, idx){			
-		 				
+	 				var sessId = '<%=session.getAttribute("SESS_ID") %>';
+		 			$.map(resObject, function(vv, idx){		
+		 				if(sessId != vv.mEmail && vv.qSecret == 'y'){
+			 				listStr += "<li class='f_question1' onClick=alertMessage()>";
+			 				listStr += "<ul class='clearfix'>";
+			 				listStr += "<li>" + vv.qSeq + "</li>";
+			 				listStr += "<li>" + vv.qGubun + "</li>";
+			 				listStr += "<li>" + vv.qTitle + "&nbsp;&nbsp;<i class='fa fa-lock'></i></li>";
+			 				listStr += "<li>" + vv.mNick + "</li>";
+			 				listStr += "<li>" + vv.qRegdate + "</li>";
+			 				listStr += "<li><i class='fa fa-angle-double-down'></i></li>";
+			 				listStr += "</ul><a class='f_q_link'></a>";
+			 				listStr += "</li>";
+		 				}
+		 				else{
 		 				listStr += "<li class='f_question1'>";
 		 				listStr += "<ul class='clearfix'>";
 		 				listStr += "<li>" + vv.qSeq + "</li>";
@@ -347,7 +383,7 @@ $(document).ready(function(){
 		 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
 		 				listStr += "</ul>";
 		 				listStr += "</li>";
-
+		 				}
 		 			});
 		 			$("#qlist").empty();
 		 			$("#qlist").html(listStr);
@@ -381,9 +417,21 @@ function qnalist() {
  				listStr += "</ul>";
  				listStr += "</li>";
  				listStr += "<hr>";
- 					
-	 			$.map(resObject, function(vv, idx){			
-	 				
+ 				var sessId = '<%=session.getAttribute("SESS_ID") %>';
+	 			$.map(resObject, function(vv, idx){		
+	 				if(sessId != vv.mEmail && vv.qSecret == 'y'){
+		 				listStr += "<li class='f_question1' onClick=alertMessage()>";
+		 				listStr += "<ul class='clearfix'>";
+		 				listStr += "<li>" + vv.qSeq + "</li>";
+		 				listStr += "<li>" + vv.qGubun + "</li>";
+		 				listStr += "<li>" + vv.qTitle + "&nbsp;&nbsp;<i class='fa fa-lock'></i></li>";
+		 				listStr += "<li>" + vv.mNick + "</li>";
+		 				listStr += "<li>" + vv.qRegdate + "</li>";
+		 				listStr += "<li><i class='fa fa-angle-double-down'></i></li>";
+		 				listStr += "</ul><a class='f_q_link'></a>";
+		 				listStr += "</li>";
+	 				}
+	 				else{
 	 				listStr += "<li class='f_question1'>";
 	 				listStr += "<ul class='clearfix'>";
 	 				listStr += "<li>" + vv.qSeq + "</li>";
@@ -403,7 +451,7 @@ function qnalist() {
 	 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
 	 				listStr += "</ul>";
 	 				listStr += "</li>";
-
+	 				}
 	 			});
 	 			$("#qlist").empty();
 	 			$("#qlist").html(listStr);
@@ -451,7 +499,11 @@ function qnalist() {
 			}
 
 		});
-
+	}
+	
+	
+	function alertMessage() {
+		alert('비밀글은 본인만 볼 수 있습니다.');
 	}
 </script>
 </head>

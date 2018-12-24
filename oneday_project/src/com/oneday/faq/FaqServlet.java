@@ -34,7 +34,9 @@ public class FaqServlet extends HttpServlet {
 			
 		String sess_id = "kimtaku@naver.com"; //session.getAttribute("SESS_ID").toString();
 										  //request.getSession().getAttribute("SESS_ID").toString();
-			
+		
+		session.setAttribute("SESS_ID", sess_id); //테스트용
+		
 	  	FaqDAO dao = new FaqDAO();
     	ArrayList<FaqVO> list = new ArrayList<FaqVO>();
     	
@@ -52,7 +54,18 @@ public class FaqServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		
+		//세션 값 체크
+/*		if(session.getAttribute("SESS_ID") == null) {
+			response.sendRedirect("/user/login.jsp");
+		} else {*/
+			
+		String sess_id = "kimtaku@naver.com"; //session.getAttribute("SESS_ID").toString();
+										  //request.getSession().getAttribute("SESS_ID").toString();
+		
+		session.setAttribute("SESS_ID", sess_id); //테스트용
+		
 	  	FaqDAO dao = new FaqDAO();
     	ArrayList<FaqVO> list = new ArrayList<FaqVO>();
     	
