@@ -20,6 +20,7 @@ public class PlaceMainServlet extends HttpServlet {
 		PlaceMainDAO dao = new PlaceMainDAO();
 		ArrayList<PlaceVO> mainList = new ArrayList<PlaceVO>();
 		mainList = dao.mainSelect();
+		System.out.println(mainList.get(1).getpPname());
 		
 		request.setAttribute("MAIN_SELECT", mainList);
 		request.getRequestDispatcher("/placelist.jsp").forward(request, response);
