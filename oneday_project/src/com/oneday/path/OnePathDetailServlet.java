@@ -24,6 +24,7 @@ public class OnePathDetailServlet extends HttpServlet {
 		ovo.setoSeq(Integer.parseInt(request.getParameter("oseq")));
 		System.out.println(ovo.getoSeq());
 		ovo = dao.pathDetailSelect(ovo);
+		System.out.println(ovo.getoSeq());
 		request.setAttribute("KEY_VO", ovo);
 		request.getRequestDispatcher("/path-detail.jsp").forward(request, response);
 	}
