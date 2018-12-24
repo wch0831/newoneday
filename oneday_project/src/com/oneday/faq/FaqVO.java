@@ -17,8 +17,15 @@ public class FaqVO {
 	private String Check;
 	private String conCheck;
 	private String dateCheck;
+	private String searchCheck;
 	
 	
+	public String getSearchCheck() {
+		return searchCheck;
+	}
+	public void setSearchCheck(String searchCheck) {
+		this.searchCheck = searchCheck;
+	}
 	public String getConCheck() {
 		return conCheck;
 	}
