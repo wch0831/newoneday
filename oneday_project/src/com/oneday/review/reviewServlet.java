@@ -52,6 +52,7 @@ public class reviewServlet extends HttpServlet {
 	      ReviewVO rvo = gson.fromJson(jsonStr, ReviewVO.class);
 		  ReviewDAO dao = new ReviewDAO();
 	     
+		  System.out.println("post");
 		
 		
 		//String session_id = request.getSession().getAttribute("SESS_ID").toString();
