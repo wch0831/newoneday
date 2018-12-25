@@ -127,23 +127,28 @@ button.snip0059.yellow {
   
 </style>
     
-<title>비밀번호 찾기</title>
+<title>비밀번호 변경</title>
   	
     <script>
    
     $(document).ready(function(){
     	$('#enter').click(function(){
     		var email = $('#mEmail').val();
-    		var resnum = $('#mResnum').val();
+    		var oldPw = $('#odlPw').val();
+    		var newPw = $('#newPw').val();
+    		var nwePw2 = $('#newPw2').val();
+    		
     		if(email == ""){ //email이 입력되지 않았거나, db에 없을경우
     			alert("존재하지 않는 이메일 입니다.");
-    		} else if(resnum == ""){ //email과 일치하는 resnum이 없을 경우
-    			alert("주민등록번호를 잘못 입력했습니다.")
+    		} else if(oldPw == ""){ //email과 pw가 일치하지 않는 경우
+    			alert("비밀번호를 잘 못 입력하셨습니다.")
+    		} else if(newPw == ""){
+    			alert("새로운 비밀번호를 입력해 주세요.");
+    		} else if(newPw2 == ""){
+    			alert("비밀번호 확인란을 입력해 주세요.");
     		} else {
-    			alert("등록하신 이메일로 임시 비밀번호가 발급되었습니다.")
     			$('#regForm').submit;
     		}
-    		
     	});
     	
     });
@@ -156,7 +161,7 @@ button.snip0059.yellow {
 	<%@ include file="/include/top.jsp" %>
 
 	<%@ include file="/include/left.jsp" %>
-	<form id="regForm" name="regForm" method="post" action="/randonPwServlet">
+	<form id="regForm" name="regForm" method="post" action="/changePwServlet">
 
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
@@ -186,19 +191,42 @@ button.snip0059.yellow {
 					<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
 							type="text" id="mEmail" name="mEmail" placeholder="Your Email Address">
 					</div></p>
-				
 			</div>
 	
 			<div style="width:600px;" >
 				<div align="left">
-					<span class="mtext-110 cl2">▷주민등록번호</span>
+					<span class="mtext-110 cl2">▷기존비밀번호</span>
 				</div>
 					<p class="stext-115 cl6 size-213 p-t-18">
 					<div class="bor8 m-b-20 how-pos4-parent"> 
 					<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text"
-							id="mEmail" name="mEmail" placeholder="주민등록번호 뒤 1자리까지입력">
+							id="oldPw" name="oldPw" placeholder="기존비밀번호를 입력해 주세요.">
 					</div></p>
 			</div>
+			
+			
+			<div style="width:600px;" >
+				<div align="left">
+					<span class="mtext-110 cl2">▷변경비밀번호</span>
+				</div>
+					<p class="stext-115 cl6 size-213 p-t-18">
+					<div class="bor8 m-b-20 how-pos4-parent"> 
+					<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text"
+							id="newPw" name="newPw" placeholder="변경 할 비밀번호를 입력해 주세요.">
+					</div></p>
+			</div>
+			
+			<div style="width:600px;" >
+				<div align="left">
+					<span class="mtext-110 cl2">▷비밀번호확인</span>
+				</div>
+					<p class="stext-115 cl6 size-213 p-t-18">
+					<div class="bor8 m-b-20 how-pos4-parent"> 
+					<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text"
+							id="newPw2" name="newPw2" placeholder="변경 할 비밀번호를 다시 한 번 입력해 주세요.">
+					</div></p>
+			</div>
+			
 			
 		</div>
 	

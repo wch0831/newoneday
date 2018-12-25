@@ -107,13 +107,27 @@
 	 <select id="mainReplySelect"
     	parameterType="com.oneday.review.ReviewVO"
     	resultMap="reviewMap">
-    		select o.o_seq, r.r_seq, o.o_title, m.m_nick, r.r_content, r.r_regdate 
+    		select o.o_seq, r.r_seq, r.m_seq, o.o_title, m.m_nick, r.r_content, r.r_regdate 
     		from member m, reply r, onepath o
 			where r.m_seq = m.m_seq and o.o_seq = r.o_seq 
-			and o.o_seq = 4
+			and o.o_seq = #{oSeq}
     </select>
+    
+    
 	
+	
+	 <update id="mainReplyUpdate"
+    	parameterType="com.oneday.review.ReviewVO">
+    		update reply 
+    		set r_content = #{rContent} where r_seq = #{rSeq} and o_seq = #{oSeq}
+    </update>
 	 
+	 
+	 <delete id="mainReviewDel"
+    	parameterType="com.oneday.review.ReviewVO">   	
+    		delete from reply
+			where r_seq = #{rSeq} and o_seq= #{oSeq}
+   	</delete>
 	 
 	   
 </mapper>   

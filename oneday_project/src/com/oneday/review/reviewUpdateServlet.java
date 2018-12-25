@@ -27,8 +27,8 @@ public class reviewUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class reviewUpdateServlet extends HttpServlet {
 		Gson gson = new Gson();
 		HttpSession session = request.getSession();
 				
-		String sess_email = session.getAttribute("SESS_EMAIL").toString();
+	/*	String sess_email = session.getAttribute("SESS_EMAIL").toString();*/
 		
 		  String jsonStr = request.getReader().lines().collect(Collectors.joining());   //전달된  Json데이터
 	      System.out.println(jsonStr);
@@ -49,9 +49,10 @@ public class reviewUpdateServlet extends HttpServlet {
 	      ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
 	      
 	      System.out.println("post");
-	      int res = dao.admin_reviewDel(rvo);
-	      rvo.setmEmail(sess_email);
-	      list = dao.my_reviewList(rvo);
+	      int res = dao.mainReviewUpdate(rvo);
+	      System.out.println(res+"건 수정");
+	      /*rvo.setmEmail(sess_email);*/
+	      list = dao.mainReviewList(rvo);
 	        String gsonStr = gson.toJson(list);
 	         System.out.println(gsonStr);
 	         

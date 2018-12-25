@@ -94,9 +94,18 @@
 						<div class="filter-col1 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">Sort By</div>
 
+<<<<<<< HEAD
 							<ul>
 								<li class="p-b-6"><a href="#"
 									class="filter-link stext-106 trans-04"> Default </a></li>
+=======
+			<div class="row isotope-grid">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
+					<!-- Block2 -->
+					<div class="block2">
+						<div class="block2-pic hov-img0">
+							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
+>>>>>>> branch 'master' of https://github.com/wch0831/newoneday
 
 								<li class="p-b-6"><a href="#"
 									class="filter-link stext-106 trans-04"> Popularity </a></li>
