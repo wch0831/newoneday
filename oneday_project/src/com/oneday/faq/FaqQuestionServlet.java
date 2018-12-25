@@ -23,21 +23,17 @@ public class FaqQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		/* 용도 */
 		HttpSession session = request.getSession();
 		FaqDAO dao = new FaqDAO();
 		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
 
 
-		/*		if(session.getAttribute("SESS_ID") == null) {
-		response.sendRedirect("/user/login.jsp");
-		} else {*/
+		if(session.getAttribute("SESS_EMAIL") == null) {
+			response.sendRedirect("/user/login.jsp");
+		} else {
 
-		String sess_id = "kimtaku@naver.com"; //session.getAttribute("SESS_ID").toString();
-		//request.getSession().getAttribute("SESS_ID").toString();
-
-		/*session.setAttribute("SESS_ID", sess_id); //test용 */	    	
-
+		String sess_id = session.getAttribute("SESS_EMAIL").toString();
 
 		list = dao.myInfoSelect(sess_id);
 
@@ -47,6 +43,7 @@ public class FaqQuestionServlet extends HttpServlet {
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out  = response.getWriter();
 		out.println(jsonStr);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
