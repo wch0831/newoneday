@@ -259,5 +259,25 @@ public class MemberDAO {
 		return res;
 	}
 	
+	//비밀번호 변경 > MYPAGE --------------------------------------------------
+		public int changePw2(MemberVO mvo) {
+			SqlSession conn = null;
+			int res = 0;
+			
+			System.out.println(mvo.getmSeq()+","+mvo.getmPw()+"/////");
+			
+			try {
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.update("memberNameSpace.changePassword2", mvo);
+			conn.commit();
+			System.out.println(res+"건 업데이트");
+			} catch(Exception e){
+				e.getStackTrace();
+			}finally {
+				conn.close();
+			}
+			return res;
+		}
+	
 	
 }

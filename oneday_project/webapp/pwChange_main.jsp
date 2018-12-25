@@ -139,7 +139,7 @@ button.snip0059.yellow {
     		var nwePw2 = $('#newPw2').val();
     		
     		if(email == ""){ //email이 입력되지 않았거나, db에 없을경우
-    			alert("존재하지 않는 이메일 입니다.");
+    			alert("이메일을 입력해 주세요.");
     		} else if(oldPw == ""){ //email과 pw가 일치하지 않는 경우
     			alert("비밀번호를 잘 못 입력하셨습니다.")
     		} else if(newPw == ""){

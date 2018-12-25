@@ -107,10 +107,10 @@
     </update>
     
       <!-- 비밀번호 변경 > MYPAGE에서 -->
-    <update id="MLchangePassword" parameterType="int">
+    <update id="changePassword2" parameterType="com.oneday.member.MemberVO">
     	update member
     	set m_pw=#{mPw}
-    	where m_seq=#{value}
+    	where m_seq=#{mSeq}
     </update>
     
     <!-- Email중복확인 -->
