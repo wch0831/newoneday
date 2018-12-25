@@ -6,10 +6,20 @@
 <html>
 <head>
 
+<style>
+	textarea.autosize { min-height: 50px; }
+</style>
+
 	<title>하루이야기</title>
 <%@ include file="/include/header.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+function resize(obj) {
+  obj.style.height = "1px";
+  obj.style.height = (12+obj.scrollHeight)+"px";
+}
+</script>
 <script>
 
 
@@ -31,7 +41,7 @@ $(document).ready(function(){
            //
 
            var htmlStr = "<input type='hidden' id='updateReplySeq' value='"+arr[0]+"'>";
-               htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";  
+               htmlStr += "<input type='text' name='' id='updateReplyContent' size='50px' style='background-color: #e2e2e2;' value='"+arr[1]+"'>";               
                htmlStr += "<span onClick='replyEditSubmit()' class='replyEditButton' id='replyEditButton' name=''>글쓰기</span>";   
            		
            $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
@@ -76,7 +86,7 @@ $(document).ready(function(){
 	
     $(document).on("click",".reDel",function(){
 
-      
+    	var sessmSeq = ${sessionScope.SESS_SEQ};
        
        var names = $(this).attr("name");
        var ooseq = ${KEY_VO.oSeq};
@@ -108,7 +118,7 @@ $(document).ready(function(){
 					
 					htmlStr += "</div>";
 					htmlStr += "<div id='readContent"+vv.rSeq+"'>";
-					htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
+					htmlStr += "<input type='textarea' border='0'  id='reply' size='110px' value='"+vv.rContent+"' readonly>";
 					htmlStr += "<br>";
 					htmlStr += "</div>";
 					htmlStr += "</div>";
@@ -164,7 +174,7 @@ $(document).ready(function(){
 									
 									htmlStr += "</div>";
 									htmlStr += "<div id='readContent"+vv.rSeq+"'>";
-									htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
+									htmlStr += "<input type='textarea' border='0'  id='reply' size='110px'  value='"+vv.rContent+"' readonly>";
 									htmlStr += "<br>";
 									htmlStr += "</div>";
 									htmlStr += "</div>";
@@ -253,7 +263,7 @@ function replyEditSubmit() {
 					
 					htmlStr += "</div>";
 					htmlStr += "<div id='readContent"+vv.rSeq+"'>";
-					htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
+					htmlStr += "<input type='textarea' border='0'  id='reply' size='50px'  value='"+vv.rContent+"' readonly>";
 					htmlStr += "<br>";
 					htmlStr += "</div>";
 					htmlStr += "</div>";
@@ -268,6 +278,7 @@ function replyEditSubmit() {
 }); //end of ajax   
 	   	
 };
+
 
 	
 </script>
@@ -286,9 +297,8 @@ function replyEditSubmit() {
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
-			<a href="blog.html" class="stext-109 cl8 hov-cl1 trans-04">
-				Blog
-				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			<a href="path-detail.jsp" class="stext-109 cl8 hov-cl1 trans-04">
+				ONEPATH				
 			</a>
 
 			<span class="stext-109 cl4">	
@@ -366,6 +376,8 @@ function replyEditSubmit() {
 							</div>
 							
 						</div>
+						
+					
 					
 					<!-- 댓글폼  -->
 					<div class="replyform" id="replyformid">	
@@ -393,7 +405,8 @@ function replyEditSubmit() {
 												</div>
 
 												<div id="readContent${vo.rSeq}"> 
-													<input type="text" border="0" id="reply"  value="${vo.rContent}" readonly></span>
+													<input type="textarea" class="autosize"  size="50px" value="${vo.rContent}" readonly></span>
+													
 													<br>
 												</div> 			
 										
@@ -435,6 +448,9 @@ function replyEditSubmit() {
 		</div>
 	</section>	
 	
+	
+	
+	
 		
 <%@ include file="/include/footer.jsp" %>
 	
@@ -447,6 +463,7 @@ function replyEditSubmit() {
 	</div>
 
 <%@ include file="/include/script.jsp" %>
+
 
 
 </body>

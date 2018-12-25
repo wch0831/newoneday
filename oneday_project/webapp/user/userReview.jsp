@@ -70,23 +70,13 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
+          <li class="breadcrumb-item">MYPAGE</li>
           <li class="breadcrumb-item">
-            <a href="#">Admin</a>
+            <a href="/userReview">내가 작성한 댓글</a>
           </li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          
           <!-- Breadcrumb Menu-->
-          <li class="breadcrumb-menu d-md-down-none">
-            <div class="btn-group" role="group" aria-label="Button group">
-              <a class="btn" href="#">
-                <i class="icon-speech"></i>
-              </a>
-              <a class="btn" href="./">
-                <i class="icon-graph"></i> Â Dashboard</a>
-              <a class="btn" href="#">
-                <i class="icon-settings"></i> Â Settings</a>
-            </div>
-          </li>
+         
         </ol>
         <div class="container-fluid">
           <table class="table table-responsive-sm table-hover table-outline mb-0">
