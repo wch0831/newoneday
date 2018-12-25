@@ -66,7 +66,6 @@ $(document).ready(function(){
 				});
 				$("#qnaTable").empty();
 				qnalist();
-				document.location.reload(true);
 		 }else{   
 		     return false;
 		 }
