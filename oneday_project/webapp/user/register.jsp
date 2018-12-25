@@ -26,7 +26,7 @@
 			data: "EMAIL="+email,
 			success:function(res){		
 					if(res == 0){
-						alert("사용가능한 이메일이주소 입니다.");
+						alert("사용가능한 이메일주소 입니다.");
 						check = 1;
 						return false;
 					} else {

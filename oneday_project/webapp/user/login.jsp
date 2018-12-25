@@ -8,39 +8,52 @@
   <head>
   <!-- header -->
   	<%@ include file="./include/header.jsp" %>
+  	
   	<script>
   	$(document).ready(function(){
-  		 
+  	
 		//로그인-----------------------------------------.
-  		$("#loginButton").click(function(){
+  		$('#loginButton').click(function(){
+  			
   			var memail = $('#mEmail').val();
   			var mpw = $('#mPw').val();
+  			
   			if(memail == ""){
-					alert("이메일을 입력해주세요");
-					return false;
-				} else if(mpw == "") {
-	  	   			alert("비밀번호를 입력해 주세요.");
-	  	   			return false;
-				} else{
-					$.ajax({
-		  				url:"/CheckServlet",
-		  				type:"POST",
-		  				data: "MAIL="+memail+"&MPW="+mpw,
-		  				success:function(res){
-		  							if(res != 0){
-		  	  							alert("이메일 또는 비밀번호가 일치하지 않습니다.");
-		  	  							return false;
-		  	  						} else {
-		  	  							alert("로그인 되었습니다.");
-		  	  	  	   					$('#regForm').submit();
-		  	  	  	   					
-		  	  						}
-		  	  					}
-		  			});
-				}
-  			   
-  		   });
-  		
+  				alert("이메일을 입력해 주세요.");	
+  				return false;
+  			} else if(mpw == "") {
+  				alert("비밀번호를 입력해 주세요.");
+  				return false;
+  			} else {
+  				$.ajax({
+	  				url:"/CheckServlet",
+	  				type:"GET",
+	  				data: "MAIL="+memail,
+	  				success:function(res){  
+	  					alert(res); 
+	  					if(res > 0){
+							alert("이메일이 존재하지 않습니다.");
+	  						return false;
+  						} else {	
+  							$.ajax({
+  	  							url:"/CheckServlet",
+  	  		  					type:"POST",
+  	  		  					data: "MAIL="+memail+"&MPW="+mpw,
+  	  							success:function(respw){
+  	  								if(respw > 0){
+  	  									alert("패스워드가 일치하지 않습니다.");
+  	  									return false;
+  	  								} else {
+	  	  								alert("로그인 되었습니다.");
+  	  	  	   							$('#regForm').submit();
+  	  								}
+  	  							}
+  							});
+  						}
+	  				}
+  			});
+  			}
+  		});
   	});
   	</script>
   </head>
@@ -73,7 +86,8 @@
                     <button class="btn btn-primary px-4" type="button" id="loginButton">Login</button>
                   </div>
                   <div class="col-6 text-right">
-                    <button class="btn btn-link px-0" type="submit">PW찾기</button>
+                    <button class="btn btn-link px-0" type="submit">
+                    <span><a href="/pwSerch.jsp"> PW찾기 </a></span></button>
                   </div>
                 </div>
               </div>

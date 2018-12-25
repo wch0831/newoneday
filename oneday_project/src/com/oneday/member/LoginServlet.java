@@ -31,11 +31,10 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session =request.getSession();
 		session.removeAttribute("SESS_EMAIL");
 		session.removeAttribute("SESS_GUBUN");
-		session.removeAttribute("SESS_NICK");
-		
-		
+		session.removeAttribute("SESS_NICK");	
 		
 		System.out.println("로그인");
+		
 		String memail = request.getParameter("mEmail");
 		String mpw = request.getParameter("mPw");
 		System.out.println(memail+mpw);
@@ -49,14 +48,19 @@ public class LoginServlet extends HttpServlet {
 		
 		System.out.println(mvo.getmEmail());
 		
-		//여기까지찍힘 //
+		//입력된 email을 이용하여 pw를 select한다. select하기 위한 dao가 필요
+		//select 된 pw가 입력된 pw와 일치하는 지 확인한다. 일치하지 않으면 PrintWriter사용하여 alert 띄우기
 		
-		mvo=dao.loginselect(mvo);
+		
+		
+		
+		mvo = dao.loginselect(mvo);
 		
 		//System.out.println(mvo.getmEmail());
 		
+
 		if(mvo.getmGubun() == null){
-			response.sendRedirect("error404.jsp");
+			response.sendRedirect("/user/error404.jsp");
 			
 		}else {
 			session.setAttribute("SESS_EMAIL", mvo.getmEmail());

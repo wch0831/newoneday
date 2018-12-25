@@ -69,7 +69,7 @@
 							<p class="text-muted">변경 할 비밀번호를 입력해주세요.</p>
 
 							<form id="regForm" name="regForm" method="post"
-								action="/changePwServlet_MP">
+								action="/changePwServlet">
 
 
 								<!-- 회원정보 받기 -->

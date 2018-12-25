@@ -65,6 +65,9 @@
 			} else if(pw1 != pw2){
 				alert("입력된 비밀번호와 확인 비밀번호가 일치하지 않습니다.");
 				return false;
+			} else if(checke == 0){
+				alert("닉네임 중복체크를 해주세요.");
+				return false;
 			} else {
 				$('#regForm').submit();
 			}
@@ -117,7 +120,7 @@
 							<p class="text-muted">수정 또는 탈퇴가 가능합니다.</p>
 
 							<form id="regForm" name="regForm" method="post"
-								action="/updateServlet">
+								action="/updatePwServlet">
 
 
 								<!-- 회원정보 받기 -->
