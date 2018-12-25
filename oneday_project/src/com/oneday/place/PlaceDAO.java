@@ -8,7 +8,7 @@ import com.oneday.common.MyBatisFactory;
 
 public class PlaceDAO {
 	
-	// 목적만
+	/* 목적만
 	public ArrayList<PlaceVO> selectPlacep(String pp) {
 		ArrayList<PlaceVO> list = null;
 		SqlSession conn =null;
@@ -22,7 +22,7 @@ public class PlaceDAO {
 		}
 		return list;
 	}
-	
+	*/
 	//목적과 지역만
 	/*public ArrayList<PlaceVO> selectPlacepa(String pp, String pa) {
 		ArrayList<PlaceVO> list = null;
@@ -38,5 +38,16 @@ public class PlaceDAO {
 		return list;
 	}*/
 	
-	
+	//경로의 위경도 조회
+	public ArrayList<PlaceVO> selectlonlat(int oseq) {
+		ArrayList<PlaceVO> list = null;
+		SqlSession conn =null;
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("placeNameSpace.selectLonLat", oseq);
+		} finally {
+			conn.close();
+		}
+		return list;
+	}
 }

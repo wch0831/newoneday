@@ -14,7 +14,6 @@ public class OnePathDAO {
 		OnePathVO ovo = new OnePathVO();
 		ArrayList<OnePathVO> list = new ArrayList<OnePathVO>();
 		try {
-			System.out.println("연결");
 			conn = MyBatisFactory.getFactory().openSession();
 			list = (ArrayList)conn.selectList("pathNameSpace.popThemeSelect");
 			conn.commit();
@@ -30,7 +29,6 @@ public class OnePathDAO {
 		OnePathVO ovo = new OnePathVO();
 		ArrayList<OnePathVO> list = new ArrayList<OnePathVO>();
 		try {
-			System.out.println("연결");
 			conn = MyBatisFactory.getFactory().openSession();
 			list = (ArrayList)conn.selectList("pathNameSpace.popAreaSelect");
 			conn.commit();
@@ -45,7 +43,6 @@ public class OnePathDAO {
 		SqlSession conn = null;
 		OnePathVO ovo = new OnePathVO();
 		try {
-			System.out.println("연결");
 			conn = MyBatisFactory.getFactory().openSession();
 			ovo = conn.selectOne("pathNameSpace.pathDetailSelect", vo.getoSeq());
 		} catch(Exception e) {
@@ -59,9 +56,22 @@ public class OnePathDAO {
 		SqlSession conn = null;
 		ArrayList<OnePathVO> list = null;
 		try {
-			System.out.println("연결");
 			conn = MyBatisFactory.getFactory().openSession();
 			list = (ArrayList)conn.selectList("pathNameSpace.SelectList");
+		} catch(Exception e) {
+			e.printStackTrace();	
+		} finally {
+			conn.close();
+		}
+		return list;
+	}
+	
+	public ArrayList<OnePathVO> pathSelect(OnePathVO ovo) {
+		SqlSession conn = null;
+		ArrayList<OnePathVO> list = null;
+		try {
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("pathNameSpace.pathSelect", ovo);
 		} catch(Exception e) {
 			e.printStackTrace();	
 		} finally {

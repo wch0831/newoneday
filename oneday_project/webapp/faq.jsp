@@ -175,14 +175,12 @@ $(document).ready(function(){
 	/* 검색 */
 	$("#searchButton").click(function name() {	
 			var sendData = $("#searchForm").serialize();
-			
 			if(checkswitch == 0) {
-				console.log('all');
 			  	$.ajax({ 
 					url:"/faqsearch",
 					type:"post",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-					data:sendData,  //"searchColumn="+gubun+"&searchStr="+str,
+					data:sendData,
 					resultType:"json",
 					success:function(resObject){
 						var listStr = "";
@@ -198,9 +196,9 @@ $(document).ready(function(){
 		 				listStr += "</ul>";
 		 				listStr += "</li>";
 		 				listStr += "<hr>";
-		 				var sessId = '<%=session.getAttribute("SESS_ID") %>';
+		 				var sessEmail = '<%=session.getAttribute("SESS_EMAIL") %>';
 			 			$.map(resObject, function(vv, idx){		
-			 				if(sessId != vv.mEmail && vv.qSecret == 'y'){
+			 				if(sessEmail != vv.mEmail && vv.qSecret == 'y'){
 				 				listStr += "<li class='f_question1' onClick=alertMessage()>";
 				 				listStr += "<ul class='clearfix'>";
 				 				listStr += "<li>" + vv.qSeq + "</li>";
@@ -242,12 +240,11 @@ $(document).ready(function(){
 			});
 				
 			} else if(checkswitch == 1) {
-				console.log('my');
 				$.ajax({ 
 					url:"/faqsearch",
 					type:"get",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-					data:sendData,  //"searchColumn="+gubun+"&searchStr="+str,
+					data:sendData,
 					resultType:"json",
 					success:function(resObject){
 						var listStr = "";
@@ -263,9 +260,9 @@ $(document).ready(function(){
 		 				listStr += "</ul>";
 		 				listStr += "</li>";
 		 				listStr += "<hr>";
-		 				var sessId = '<%=session.getAttribute("SESS_ID") %>';
+		 				var sessEmail = '<%=session.getAttribute("SESS_EMAIL") %>';
 			 			$.map(resObject, function(vv, idx){		
-			 				if(sessId != vv.mEmail && vv.qSecret == 'y'){
+			 				if(sessEmail != vv.mEmail && vv.qSecret == 'y'){
 				 				listStr += "<li class='f_question1' onClick=alertMessage()>";
 				 				listStr += "<ul class='clearfix'>";
 				 				listStr += "<li>" + vv.qSeq + "</li>";
@@ -315,82 +312,95 @@ $(document).ready(function(){
 	
 	/* 문의하기 */
 	$("#questionButton").click(function name() {	
-		window.open('/contact/index.jsp','문의하기','width=800,height=700,location=no,status=no');
+		var sessCheck = '<%=session.getAttribute("SESS_EMAIL") %>';
+		
+		if(sessCheck == 'null'){
+			needLogin();
+		}
+		else{
+			window.open('/contact/index.jsp','문의하기','width=800,height=700,location=no,status=no');
+		}
 	});
 	
 	/* 전체 문의보기 */
 	$("#allQuestionButton").click(function name() {
 		checkswitch = 0;
-		console.log(checkswitch);
 		qnalist();		
 	});
 	
 	/* 내 문의보기 */
 	$("#myQuestionButton").click(function name() {
-		checkswitch = 1;
-		console.log(checkswitch);
-		$.ajax({ 	
-			url:"/faq",   
-			type:"get",
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			data: "nothing", 
-			resultType:"json",
-			success:function(resObject){
-					var listStr = "";
-					listStr += "<hr>";
-	 				listStr += "<li class='f_question1'>";
-	 				listStr += "<ul class='clearfix'>";
-	 				listStr += "<li>번호</li>";
-	 				listStr += "<li>구분</li>";
-	 				listStr += "<li align='center'>제목</li>";
-	 				listStr += "<li>닉네임</li>";
-	 				listStr += "<li align='center'>등록일</li>";
-	 				listStr += "<li><i></i></li>";
-	 				listStr += "</ul>";
-	 				listStr += "</li>";
-	 				listStr += "<hr>";
-	 				var sessId = '<%=session.getAttribute("SESS_ID") %>';
-		 			$.map(resObject, function(vv, idx){		
-		 				if(sessId != vv.mEmail && vv.qSecret == 'y'){
-			 				listStr += "<li class='f_question1' onClick=alertMessage()>";
+		var sessCheck = '<%=session.getAttribute("SESS_EMAIL") %>';
+		
+		if(sessCheck == 'null'){
+			needLogin();
+		}
+		else{
+			checkswitch = 1;
+			$.ajax({ 	
+				url:"/faq",   
+				type:"post",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data: "nothing", 
+				resultType:"json",
+				success:function(resObject){
+						var listStr = "";
+						listStr += "<hr>";
+		 				listStr += "<li class='f_question1'>";
+		 				listStr += "<ul class='clearfix'>";
+		 				listStr += "<li>번호</li>";
+		 				listStr += "<li>구분</li>";
+		 				listStr += "<li align='center'>제목</li>";
+		 				listStr += "<li>닉네임</li>";
+		 				listStr += "<li align='center'>등록일</li>";
+		 				listStr += "<li><i></i></li>";
+		 				listStr += "</ul>";
+		 				listStr += "</li>";
+		 				listStr += "<hr>";
+		 		
+		 				var sessEmail = '<%=session.getAttribute("SESS_EMAIL") %>';
+			 			$.map(resObject, function(vv, idx){		
+			 				if(sessEmail != vv.mEmail && vv.qSecret == 'y'){
+				 				listStr += "<li class='f_question1' onClick=alertMessage()>";
+				 				listStr += "<ul class='clearfix'>";
+				 				listStr += "<li>" + vv.qSeq + "</li>";
+				 				listStr += "<li>" + vv.qGubun + "</li>";
+				 				listStr += "<li>" + vv.qTitle + "&nbsp;&nbsp;<i class='fa fa-lock'></i></li>";
+				 				listStr += "<li>" + vv.mNick + "</li>";
+				 				listStr += "<li>" + vv.qRegdate + "</li>";
+				 				listStr += "<li><i class='fa fa-angle-double-down'></i></li>";
+				 				listStr += "</ul><a class='f_q_link'></a>";
+				 				listStr += "</li>";
+			 				}
+			 				else{
+			 				listStr += "<li class='f_question1'>";
 			 				listStr += "<ul class='clearfix'>";
 			 				listStr += "<li>" + vv.qSeq + "</li>";
 			 				listStr += "<li>" + vv.qGubun + "</li>";
-			 				listStr += "<li>" + vv.qTitle + "&nbsp;&nbsp;<i class='fa fa-lock'></i></li>";
+			 				listStr += "<li>" + vv.qTitle + "</li>";
 			 				listStr += "<li>" + vv.mNick + "</li>";
 			 				listStr += "<li>" + vv.qRegdate + "</li>";
 			 				listStr += "<li><i class='fa fa-angle-double-down'></i></li>";
 			 				listStr += "</ul><a class='f_q_link'></a>";
 			 				listStr += "</li>";
-		 				}
-		 				else{
-		 				listStr += "<li class='f_question1'>";
-		 				listStr += "<ul class='clearfix'>";
-		 				listStr += "<li>" + vv.qSeq + "</li>";
-		 				listStr += "<li>" + vv.qGubun + "</li>";
-		 				listStr += "<li>" + vv.qTitle + "</li>";
-		 				listStr += "<li>" + vv.mNick + "</li>";
-		 				listStr += "<li>" + vv.qRegdate + "</li>";
-		 				listStr += "<li><i class='fa fa-angle-double-down'></i></li>";
-		 				listStr += "</ul><a class='f_q_link'></a>";
-		 				listStr += "</li>";
-		 				listStr += "<li class='f_answer1'>";
-		 				listStr += "<ul class='clearfix'>";
-		 				listStr += "<li>Q</li>";
-		 				listStr += "<li>" + vv.qContent + "</li>";
-		 				listStr += "<li><font color='#00FF00'>A</font></li>";
-		 				listStr += "<li>" + vv.conCheck + "</li>";
-		 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
-		 				listStr += "</ul>";
-		 				listStr += "</li>";
-		 				}
-		 			});
-		 			$("#qlist").empty();
-		 			$("#qlist").html(listStr);
-		 			/* <!-- 아코디언 --> */
-		 			accordion();
-				}
-			});
+			 				listStr += "<li class='f_answer1'>";
+			 				listStr += "<ul class='clearfix'>";
+			 				listStr += "<li>Q</li>";
+			 				listStr += "<li>" + vv.qContent + "</li>";
+			 				listStr += "<li><font color='#00FF00'>A</font></li>";
+			 				listStr += "<li>" + vv.conCheck + "</li>";
+			 				listStr += "<li><font color='#00FF00'>(등록일 : " + vv.dateCheck + ")</font></li>";
+			 				listStr += "</ul>";
+			 				listStr += "</li>";
+			 				}
+			 			});
+			 			$("#qlist").empty();
+			 			$("#qlist").html(listStr);
+			 			/* <!-- 아코디언 --> */
+			 			accordion();
+					}
+				});
+		}
 	});
 
 });
@@ -399,7 +409,7 @@ $(document).ready(function(){
 function qnalist() {
 	$.ajax({ 	
 		url:"/faq",   
-		type:"post",
+		type:"get",
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		data: "nothing", 
 		resultType:"json",
@@ -417,9 +427,9 @@ function qnalist() {
  				listStr += "</ul>";
  				listStr += "</li>";
  				listStr += "<hr>";
- 				var sessId = '<%=session.getAttribute("SESS_ID") %>';
+ 				var sessEmail = '<%=session.getAttribute("SESS_EMAIL") %>';
 	 			$.map(resObject, function(vv, idx){		
-	 				if(sessId != vv.mEmail && vv.qSecret == 'y'){
+	 				if(sessEmail != vv.mEmail && vv.qSecret == 'y'){
 		 				listStr += "<li class='f_question1' onClick=alertMessage()>";
 		 				listStr += "<ul class='clearfix'>";
 		 				listStr += "<li>" + vv.qSeq + "</li>";
@@ -504,6 +514,11 @@ function qnalist() {
 	
 	function alertMessage() {
 		alert('비밀글은 본인만 볼 수 있습니다.');
+	}
+	
+	function needLogin() {
+		alert('로그인이 필요합니다.');
+		return false;
 	}
 </script>
 </head>
