@@ -101,6 +101,16 @@
 	<delete id="adminQuestionDelete" parameterType="com.oneday.faq.FaqVO">			
 	  delete from question where q_seq = #{qSeq}
  	</delete>
+ 	
+ 	<!-- 셀렉트 박스용 답변 조회 -->
+    <select id="selectBoxAnswer" parameterType="com.oneday.faq.FaqVO" resultMap="qnaMap">
+	  select a_seq, a_content from answer
+	</select>
+	
+	<!-- 관리자 문의 답변 삭제  -->
+	<update id="adminQuestionUpdate" parameterType="com.oneday.faq.FaqVO">			
+	  update question set a_seq=null, am_seq=null, a_regdate=null where q_seq = #{qSeq}
+ 	</update>
 	
    
 </mapper>   

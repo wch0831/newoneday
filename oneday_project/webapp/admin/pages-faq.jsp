@@ -13,12 +13,14 @@
 $(document).ready(function(){
 
 	qnalist();
+	answerlist();
 	
+	/* 문의 삭제 */
 	$(document).on("click",".delBtn",function(){	
 		var qSeq = $(this).attr("name");
 		var sendData = {"qSeq":qSeq};
 		
-		if (confirm("정말 삭제하시겠습니까?") == true){  
+		if (confirm("정말 문의를 삭제하시겠습니까?") == true){  
 				$.ajax({ 
 					url:"/adminfaqdelete",
 					type:"post",
@@ -27,6 +29,44 @@ $(document).ready(function(){
 				});
 				$("#qnaTable").empty();
 				qnalist();
+		 }else{   
+		     return false;
+		 }
+		
+	});
+	
+	/* 답변 작성 */
+	$(document).on("click",".answerBtn",function(){	
+/* 		var qSeq = $(this).attr("name");
+		var sendData = {"qSeq":qSeq};
+		
+		$.ajax({ 
+			url:"/adminfaqinsert",
+			type:"post",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			data:"MYKEY="+JSON.stringify(sendData)
+		});
+		alert("답변 완료");
+		$("#qnaTable").empty();
+		qnalist(); */
+		 
+	});
+	
+	/* 답변 삭제 */
+	$(document).on("click",".updateBtn",function(){	
+		var qSeq = $(this).attr("name");
+		var sendData = {"qSeq":qSeq};
+		
+		if (confirm("정말 답변을 삭제하시겠습니까?") == true){  
+				$.ajax({ 
+					url:"/adminfaqupdate",
+					type:"post",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					data:"MYKEY="+JSON.stringify(sendData)
+				});
+				$("#qnaTable").empty();
+				qnalist();
+				document.location.reload(true);
 		 }else{   
 		     return false;
 		 }
@@ -56,7 +96,7 @@ function qnalist() {
 				listStr += "<th>관리</th>";
 				listStr += "</tr>";
 				listStr += "</thead>";
-	 			$.map(resObject, function(vv, idx){			
+	 			$.map(resObject, function(vv, idx){
 	 				listStr += "<tbody>";
 	 				/* 첫째 줄 */
  	            	listStr += "<tr>";
@@ -71,7 +111,7 @@ function qnalist() {
  	            	else{
  	            		listStr += "<td align='center'><i class='mdi mdi-checkbox-blank-circle-outline'></i></td>";
  	            	}
- 	            	listStr += "<td><input type='button' value='삭제' class='delBtn' name='" + vv.qSeq + "'></td>";
+ 	            	listStr += "<td><input type='button' value='문의삭제' class='delBtn' name='" + vv.qSeq + "'></td>";
  	            	listStr += "</tr>";
  	            	
  	            	/* 둘째 줄 */
@@ -80,15 +120,20 @@ function qnalist() {
  	            	listStr += "<td colspan='3'><i class='mdi mdi-subdirectory-arrow-right'></i>&nbsp;&nbsp;<i class='mdi mdi-quicktime'></i>&nbsp;&nbsp;" + vv.qContent + "</td>";
  	            	if(vv.aRegdate == null){
 	 	            	listStr += "<td><font color='#00FF00'>답변 대기중</font></td>";
-	 	            	listStr += "<td></td>";
-	 	            	listStr += "<td><input type='button' value='답변하기'></td>";
+	 	            	listStr += "<td align='center'>";
+	 	            	listStr += "<select style='width:60px;font-size:15px;' name='" + vv.qSeq + "' class='answer'>";
+						/* SelectBox 영역 */
+						answerlist();
+	 	            	listStr += "</select>"; 
+	 	            	listStr += "</td>";
+	 	            	listStr += "<td><input type='button' value='답변하기' class='answerBtn' name='" + vv.qSeq + "'></td>";
 	 	            	listStr += "</tr>"; 
 	 	            	listStr += "</tbody>";
  	            	}
  	            	else{
  	            	listStr += "<td><font color='#00FF00'>" + vv.aRegdate + "</font></td>";
- 	            	listStr += "<td></td>";
- 	            	listStr += "<td><input type='button' value='답변수정'></td>";
+ 	            	listStr += "<td align='center'>" + vv.aSeq + "</td>";
+ 	            	listStr += "<td><input type='button' value='답변삭제' class='updateBtn' name='" + vv.qSeq + "'></td>";
  	            	listStr += "</tr>"; 
  	            	listStr += "</tbody>";
  	            	}
@@ -97,6 +142,25 @@ function qnalist() {
 	 			$("#qnaTable").empty();
 	 			$("#qnaTable").html(listStr);
 			}
+		});
+}
+
+
+function answerlist() {
+	$.ajax({ 	
+		url:"/adminfaqanswer",   
+		type:"post",
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		data: "nothing", 
+		resultType:"json",
+		success:function(resObject){
+				var listStr1 = "";
+				listStr1 += "<option value='first' selected='selected'>선택</option>";
+	 			$.map(resObject, function(vv, idx){
+	 					listStr1 += "<option value='" + vv.aSeq + "'>" + vv.aSeq + "</option>";	 					
+	 				});
+	 			$(".answer").html(listStr1);
+	 			}
 		});
 }
 	
