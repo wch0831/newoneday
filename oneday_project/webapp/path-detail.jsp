@@ -10,6 +10,7 @@
 <%@ include file="/include/header.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=e6def2a6-fc38-4e85-bc48-e1c69869baa7"></script>
 <script>
 
 
@@ -20,7 +21,6 @@ $(document).ready(function(){
 	//"수정버튼" 클릭시 text로 활성화
     $(document).on("click",".reUpdate",function(){ //글쓰기 버튼  눌렀을 때 기존의 있는 내용을 불러오고 text로 활성화 된다.
 
-    	//if(arr==null){
     		var names = $(this).attr("name");
             arr = names.split("^^^");
             alert(arr[0] +""+arr[1]);
@@ -36,47 +36,11 @@ $(document).ready(function(){
            		
            $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
            $("#readContent"+arr[0]).html(htmlStr);
-           
-    	//}else{
-	    	/* var htmlStr = "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"' readonly>";     
-	        
-	        $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
-	        
-	         
-	        $("#readContent"+arr[0]).html(htmlStr);
-	        
-	        var names = $(this).attr("name");
-	        arr = names.split("^^^");
-	        alert(arr[0] +""+arr[1]);
-			//alert("ㅅㅂ");
-	        //alert(arr[0] +","+arr[1]);
-	       //입력된 글이 들어와야한다..!!!
-	       //일단은 근데 seq랑 content를 제대로 가져오는건 맞으니까.  reUpdate버튼은 서블릿을 타는게 아니라서. 걍 단순히 그 값 가지고 html 그려주는거니까.
-	       //
-
-	       var htmlStr = "<input type='hidden' id='updateReplySeq' value='"+arr[0]+"'>";
-	           htmlStr += "<input type='text' name='' id='updateReplyContent' value='"+arr[1]+"'>";   
-
-	           htmlStr += "<span onclick='replyEditSubmit()' class='replyEditButton' id='replyEditButton' name=''>글쓰기</span>";    */
-
-	           //htmlStr += "<span onclick='replyEditSubmit()' class='replyEditButton' id='replyEditButton' name=''>글쓰기</span>";   
-
-	      /*   htmlStr += "<input type='button' onclick=\"replyEditSubmit()\" class='replyEditButton' value='글쓰기'>"; */
-	       
-	      /*  $("#readContent"+arr[0]).empty();  //<< 여기서 해당 seq댓글을 비움.   
-	       
-	        
-	       $("#readContent"+arr[0]).html(htmlStr);
-	       
-    	} */
-    	
-       /* $("#"+arr[0]).html(htmlStr); */  //<< 여기서 다시 그려줌.   
+ 
     });
 	
 	
     $(document).on("click",".reDel",function(){
-
-      
        
        var names = $(this).attr("name");
        var ooseq = ${KEY_VO.oSeq};
@@ -120,65 +84,60 @@ $(document).ready(function(){
 			  	$(".replyform").html(htmlStr);
 			  	
 			}
-}); //end of ajax   
-});
-	
-	
+		}); //end of ajax   
+	});
+		
 	//"수정 확인 버튼 " 클릭시  rseq와 rContent를 가지고 ajax태움.
      
-	
-
-		$(document).on("click","#replybtn",function(){	  
-		  		
-		  		var reply = $("#dmt").val();
-		  		var ooseq = ${KEY_VO.oSeq};
-		  		var sessmSeq = ${sessionScope.SESS_SEQ};
-		  		
-		  		
-		  		
-		  		alert(reply+" "+ooseq);
-		  		var sendData = {"rContent":reply , "oSeq":ooseq, "mSeq":${sessionScope.SESS_SEQ}};
-				      $.ajax({ 
-							url:"/reviewServlet",
-							type:"post",
-							contentType: "application/json; charset=UTF-8", 
-							data:JSON.stringify(sendData),   
-							success:function(gsonStr){
-									console.log(gsonStr);		//[{"empno
-									var htmlStr = "";
-						 			$.map(gsonStr, function(vv, idx){
-							  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
-							  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
-								    htmlStr += "</div>";
-									htmlStr += "<div class='size-207'>";
-									htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
-									htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
-									htmlStr += "<br>";		
-									
-									if(sessmSeq == vv.mSeq){										
-									htmlStr += "<p class='reUpDel'>";	
-									htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
-									htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
-									htmlStr += "</p>";	
-									}			
-									
-									htmlStr += "</div>";
-									htmlStr += "<div id='readContent"+vv.rSeq+"'>";
-									htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
-									htmlStr += "<br>";
-									htmlStr += "</div>";
-									htmlStr += "</div>";
-									
-							  	});
-						 			
-							  	//div는 남겨두고 기존 댓글 내용만 지우기
-							  	$(".replyform").empty();
-							  	$(".replyform").html(htmlStr);
-							  	$("#dmt").val("");
-							}
-				}); //end of ajax   
-    });
-		});
+	$(document).on("click","#replybtn",function(){	  
+	  		
+	  		var reply = $("#dmt").val();
+	  		var ooseq = ${KEY_VO.oSeq};
+	  		var sessmSeq = ${sessionScope.SESS_SEQ};
+	  				  		
+	  		alert(reply+" "+ooseq);
+	  		var sendData = {"rContent":reply , "oSeq":ooseq, "mSeq":${sessionScope.SESS_SEQ}};
+			      $.ajax({ 
+						url:"/reviewServlet",
+						type:"post",
+						contentType: "application/json; charset=UTF-8", 
+						data:JSON.stringify(sendData),   
+						success:function(gsonStr){
+								console.log(gsonStr);		//[{"empno
+								var htmlStr = "";
+					 			$.map(gsonStr, function(vv, idx){
+						  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
+						  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
+							    htmlStr += "</div>";
+								htmlStr += "<div class='size-207'>";
+								htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
+								htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
+								htmlStr += "<br>";		
+								
+								if(sessmSeq == vv.mSeq){										
+								htmlStr += "<p class='reUpDel'>";	
+								htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
+								htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
+								htmlStr += "</p>";	
+								}			
+								
+								htmlStr += "</div>";
+								htmlStr += "<div id='readContent"+vv.rSeq+"'>";
+								htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
+								htmlStr += "<br>";
+								htmlStr += "</div>";
+								htmlStr += "</div>";
+								
+						  	});
+					 			
+						  	//div는 남겨두고 기존 댓글 내용만 지우기
+						  	$(".replyform").empty();
+						  	$(".replyform").html(htmlStr);
+						  	$("#dmt").val("");
+						}
+			}); //end of ajax   
+   		});
+	});
 		
 /* 	  $(document).on("click",".reUpdate",function(){
 		   var seq = $(this).attr("name");
@@ -228,49 +187,62 @@ function replyEditSubmit() {
 	alert(rseq+""+rcontent+""+ooseq);
 	
 	 $.ajax({ 
-			url:"/reviewUpdate",
-			type:"post",
-			contentType: "application/json; charset=UTF-8", 
-			data:JSON.stringify(sendData),   
-			success:function(gsonStr){
-					console.log(gsonStr);		//[{"empno
-					var htmlStr = "";
-		 			$.map(gsonStr, function(vv, idx){
-			  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
-			  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
-				    htmlStr += "</div>";
-					htmlStr += "<div class='size-207'>";
-					htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
-					htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
-					htmlStr += "<br>";		
-					
-					if(sessmSeq == vv.mSeq){										
-					htmlStr += "<p class='reUpDel'>";	
-					htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
-					htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
-					htmlStr += "</p>";	
-					}			
-					
-					htmlStr += "</div>";
-					htmlStr += "<div id='readContent"+vv.rSeq+"'>";
-					htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
-					htmlStr += "<br>";
-					htmlStr += "</div>";
-					htmlStr += "</div>";
-					
-			  	});
-		 			
-			  	//div는 남겨두고 기존 댓글 내용만 지우기
-			  	$(".replyform").empty();
-			  	$(".replyform").html(htmlStr);
-			  	$("#dmt").val("");
-			}
-}); //end of ajax   
+		url:"/reviewUpdate",
+		type:"post",
+		contentType: "application/json; charset=UTF-8", 
+		data:JSON.stringify(sendData),   
+		success:function(gsonStr){
+				console.log(gsonStr);		//[{"empno
+				var htmlStr = "";
+	 			$.map(gsonStr, function(vv, idx){
+		  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
+		  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
+			    htmlStr += "</div>";
+				htmlStr += "<div class='size-207'>";
+				htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
+				htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
+				htmlStr += "<br>";		
+				
+				if(sessmSeq == vv.mSeq){										
+				htmlStr += "<p class='reUpDel'>";	
+				htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
+				htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
+				htmlStr += "</p>";	
+				}			
+				
+				htmlStr += "</div>";
+				htmlStr += "<div id='readContent"+vv.rSeq+"'>";
+				htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
+				htmlStr += "<br>";
+				htmlStr += "</div>";
+				htmlStr += "</div>";
+				
+		  	});
+	 			
+		  	//div는 남겨두고 기존 댓글 내용만 지우기
+		  	$(".replyform").empty();
+		  	$(".replyform").html(htmlStr);
+		  	$("#dmt").val("");
+		}
+	}); //end of ajax   
 	   	
-};
-
-	
+};	
 </script>
+<script>
+// 페이지가 로딩이 된 후 호출하는 함수입니다.
+function initTmap(){
+	// map 생성
+	// Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
+	var map = new Tmap.Map({div:'map_div', // map을 표시해줄 div
+							width:'100%',  // map의 width 설정
+							height:'600px' // map의 height 설정
+	}); 
+} 
+$(document).ready(function() {
+	initTmap();
+});
+</script>
+
 </head>
 <body class="animsition">
 <%@ include file="/include/top.jsp" %>	
@@ -307,6 +279,9 @@ function replyEditSubmit() {
 						<!--  -->
 						<div class="wrap-pic-w how-pos5-parent">
 							<img src='${KEY_VO.oTmapImg}' alt="IMG-BLOG">
+							<button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+								지도 보기
+							</button>
 						</div>
 
 						<div class="p-t-32">
@@ -421,6 +396,22 @@ function replyEditSubmit() {
 		</div>
 	</section>	
 	
+	
+	<!-- Modal1 -->
+	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+		<div class="overlay-modal1 js-hide-modal1"></div>
+
+		<div class="container">
+			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
+					<img src="images/icons/icon-close.png" alt="CLOSE">
+				</button>
+				<div id="map_div">
+					
+				</div>
+			</div>
+		</div>
+	</div>
 		
 <%@ include file="/include/footer.jsp" %>
 	
@@ -433,7 +424,6 @@ function replyEditSubmit() {
 	</div>
 
 <%@ include file="/include/script.jsp" %>
-
 
 </body>
 </html>
