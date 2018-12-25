@@ -14,55 +14,91 @@ $(document).ready(function(){
 
 	qnalist();
 	
-	
-	
-	function qnalist() {
-		$.ajax({ 	
-			url:"/adminfaq",   
-			type:"post",
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			data: "nothing", 
-			resultType:"json",
-			success:function(resObject){
-					console.log(resObject);		//객체
-					var listStr = "";
-		 			$.map(resObject, function(vv, idx){			
-		 				
-	 	            	listStr += "<tr>";
-	 	            	listStr += "<td align='center'>" + vv.qSeq + "</td>";
-	 	            	listStr += "<td>" + vv.mEmail + "</td>";
+	$(document).on("click",".delBtn",function(){	
+		var qSeq = $(this).attr("name");
+		var sendData = {"qSeq":qSeq};
+		
+		if (confirm("정말 삭제하시겠습니까?") == true){  
+				$.ajax({ 
+					url:"/adminfaqdelete",
+					type:"post",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					data:"MYKEY="+JSON.stringify(sendData)
+				});
+				$("#qnaTable").empty();
+				qnalist();
+		 }else{   
+		     return false;
+		 }
+		
+	});
 
-	 	            	listStr += "<td>" + vv.qGubun + "</td>";
-	 	            	listStr += "<td width='25%'>" + vv.qTitle + "</td>";
-	 	            	listStr += "<td>" + vv.qRegdate + "</td>";
-	 	            	
-	 	            	if(vv.aSeq == 0){
-	 	            		listStr += "<td align='center'><i class='mdi mdi-close'></i></td>";
-	 	            	}
-	 	            	else{
-	 	            		listStr += "<td align='center'><i class='mdi mdi-checkbox-blank-circle-outline'></i></td>";
-	 	            	}
-	 	            	
-	 	            	listStr += "<td><input type='button' value='문의삭제'></td>";
-	 	            	listStr += "</tr>";
-	 	            	
- 	 	            	listStr += "<tr>";
- 	 	            	listStr += "<td></td>";
-	 	            	listStr += "<td colspan='3'><i class='mdi mdi-subdirectory-arrow-right'></i>&nbsp;&nbsp;" + vv.qContent + "</td>";
 
-	 	            	listStr += "<td>" + vv.qRegdate + "</td>";
-	 	            	listStr += "<td></td>";
-	 	            	listStr += "<td><input type='button' value='답변 작성 or 수정'></td>";
-	 	            	listStr += "</tr>"; 
-
-		 			});
-		 			$("#qnaTable").html(listStr);
-				}
-			});
-		}
-	
-	
 });
+
+function qnalist() {
+	$.ajax({ 	
+		url:"/adminfaq",   
+		type:"post",
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		data: "nothing", 
+		resultType:"json",
+		success:function(resObject){
+				var listStr = "";
+				listStr += "<thead>";
+				listStr += "<tr>";
+				listStr += "<th>번호</th>";
+				listStr += "<th>이메일</th>";                                                
+				listStr += "<th>구분</th>";
+				listStr += "<th>제목</th>";
+				listStr += "<th>등록일</th>";
+				listStr += "<th>답변여부</th>";
+				listStr += "<th>관리</th>";
+				listStr += "</tr>";
+				listStr += "</thead>";
+	 			$.map(resObject, function(vv, idx){			
+	 				listStr += "<tbody>";
+	 				/* 첫째 줄 */
+ 	            	listStr += "<tr>";
+ 	            	listStr += "<td align='center'>" + vv.qSeq + "</td>";
+ 	            	listStr += "<td>" + vv.mEmail + "</td>";
+ 	            	listStr += "<td>" + vv.qGubun + "</td>";
+ 	            	listStr += "<td width='30%'>" + vv.qTitle + "</td>";
+ 	            	listStr += "<td>" + vv.qRegdate + "</td>"; 	         
+ 	            	if(vv.aSeq == 0){
+ 	            		listStr += "<td align='center'><i class='mdi mdi-close'></i></td>";
+ 	            	}
+ 	            	else{
+ 	            		listStr += "<td align='center'><i class='mdi mdi-checkbox-blank-circle-outline'></i></td>";
+ 	            	}
+ 	            	listStr += "<td><input type='button' value='삭제' class='delBtn' name='" + vv.qSeq + "'></td>";
+ 	            	listStr += "</tr>";
+ 	            	
+ 	            	/* 둘째 줄 */
+	 	            	listStr += "<tr>";
+	 	            	listStr += "<td align='center'></td>";
+ 	            	listStr += "<td colspan='3'><i class='mdi mdi-subdirectory-arrow-right'></i>&nbsp;&nbsp;<i class='mdi mdi-quicktime'></i>&nbsp;&nbsp;" + vv.qContent + "</td>";
+ 	            	if(vv.aRegdate == null){
+	 	            	listStr += "<td><font color='#00FF00'>답변 대기중</font></td>";
+	 	            	listStr += "<td></td>";
+	 	            	listStr += "<td><input type='button' value='답변하기'></td>";
+	 	            	listStr += "</tr>"; 
+	 	            	listStr += "</tbody>";
+ 	            	}
+ 	            	else{
+ 	            	listStr += "<td><font color='#00FF00'>" + vv.aRegdate + "</font></td>";
+ 	            	listStr += "<td></td>";
+ 	            	listStr += "<td><input type='button' value='답변수정'></td>";
+ 	            	listStr += "</tr>"; 
+ 	            	listStr += "</tbody>";
+ 	            	}
+
+	 			});
+	 			$("#qnaTable").empty();
+	 			$("#qnaTable").html(listStr);
+			}
+		});
+}
 	
 </script>
 </head>
@@ -80,54 +116,11 @@ $(document).ready(function(){
         
         
     <!-- top side -->
-
-	<header class="topbar">
-            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-              
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            
-                            <!-- Light Logo icon -->
-                            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
-                         
-                         <!-- Light Logo text -->    
-                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
-                </div>
-                
-                <div class="navbar-collapse">
-
-                    <ul class="navbar-nav mr-auto mt-md-0">
-                       
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
-                    </ul>
-                    
-                    <ul class="navbar-nav my-lg-0">
-                        
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="profile-pic m-r-10" />Markarn Doe</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        
-        
-        
-      <!-- left side -->
-
+	<%@ include file="/admin/include/top.jsp" %>
+    
+    <!-- left side -->
 	<%@ include file="/admin/include/left.jsp" %>
 	
-	
-      
         <div class="page-wrapper">
         
             <div class="container-fluid">
@@ -144,12 +137,7 @@ $(document).ready(function(){
                     </div>
                    
                 </div>
-                
-                
-                
-             
-
-                
+                        
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
@@ -161,22 +149,10 @@ $(document).ready(function(){
                                 <h4 class="card-title">문의관리</h4>
                                 <h6 class="card-subtitle">문의글 목록 </h6>
                                 <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>번호</th>
-                                                <th>이메일</th>                                                
-                                                <th>구분</th>
-                                                <th>제목</th>
-                                                <th>등록일</th>
-                                                <th>답변여부</th>
-                                                <th>삭제</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="qnaTable">
-                                           <!-- ajax이용해서 회원테이블 출력 --> 
-                                            
-                                        </tbody>
+                                    <table class="table" id="qnaTable">
+
+										<!-- 뿌려지는 영역 -->
+										
                                     </table>
                                 </div>
                             </div>
