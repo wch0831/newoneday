@@ -138,6 +138,12 @@
 		where p_title like '%'|| #{value} || '%'
 	 </select>
 	 
+	<select id="selectLonLat" parameterType="int" resultMap="placeMap">
+	 	select p.p_lat, p.p_lng from onepath o, onepath_place op, place p
+	 	where o.o_seq=#{value} and op.o_seq = o.o_seq and p.p_seq = op.p_seq
+	 </select>
+	
+	
 
    </mapper> 
 

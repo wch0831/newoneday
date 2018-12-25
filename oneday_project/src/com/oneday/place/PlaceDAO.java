@@ -38,5 +38,16 @@ public class PlaceDAO {
 		return list;
 	}*/
 	
-	
+	//경로의 위경도 조회
+	public ArrayList<PlaceVO> selectlonlat(int oseq) {
+		ArrayList<PlaceVO> list = null;
+		SqlSession conn =null;
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("placeNameSpace.selectLonLat", oseq);
+		} finally {
+			conn.close();
+		}
+		return list;
+	}
 }

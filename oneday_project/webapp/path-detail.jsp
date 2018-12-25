@@ -1,3 +1,5 @@
+<%@page import="com.oneday.place.PlaceVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -230,17 +232,44 @@ function replyEditSubmit() {
 </script>
 <script>
 // 페이지가 로딩이 된 후 호출하는 함수입니다.
+var map,marker,markerLayer;
+// 페이지가 로딩이 된 후 호출하는 함수입니다.
 function initTmap(){
 	// map 생성
 	// Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
-	var map = new Tmap.Map({div:'map_div', // map을 표시해줄 div
-							width:'100%',  // map의 width 설정
-							height:'600px' // map의 height 설정
-	}); 
-} 
-$(document).ready(function() {
-	initTmap();
+	map = new Tmap.Map({div:'map_div', // map을 표시해줄 div
+						width:'100%',  // map의 width 설정
+						height:'400px' // map의 height 설정
+						}); 
+	markerLayer = new Tmap.Layer.Markers();//마커 레이어 생성
+	map.addLayer(markerLayer);//map에 마커 레이어 추가
+	
+	var arr = [];
+	var sizenum = $("#listsize").val();
+	console.log(sizenum);
+		for (var i = 0; i< sizenum; i++){
+			console.log($("#lng"+i).val()+ "," +$("#lat"+i).val());
+			
+			arr.push({lonlat: new Tmap.LonLat($("#lng"+i).val(), $("#lat"+i).val()).transform("EPSG:4326", "EPSG:3857")});
+		}
+	console.log(arr[0].lonlat); 
+	
+	var size = new Tmap.Size(24, 38);//아이콘 크기
+	var offset = new Tmap.Pixel(-(size.w / 2), -(size.h));//아이콘 중심점
+	 
+	for (var i = 0; i< arr.length; i++){//for문을 통하여 배열 안에 있는 값을 마커 생성
+		var icon = new Tmap.Icon('http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_m_a.png',size, offset);//아이콘 설정
+		var lonlat = arr[i].lonlat;//좌표값
+		marker = new Tmap.Marker(lonlat, icon);//마커 생성
+		markerLayer.addMarker(marker); //마커 레이어에 마커 추가
+	}
+}  
+
+// 맵 생성 실행
+$(document).ready(function(){
+initTmap();	
 });
+ 
 </script>
 
 </head>
@@ -249,7 +278,16 @@ $(document).ready(function() {
 
 	
 <%@ include file="/include/left.jsp" %>
-
+	
+	<%
+		ArrayList<PlaceVO> list = (ArrayList)request.getAttribute("KEY_PLIST");
+		out.println("<input type='hidden' id='listsize' value='"+list.size()+"'>");				
+	for (int i = 0; i < list.size(); i++) {
+			out.println("<input type='hidden' id='lng"+i+"' value='"+list.get(i).getpLng()+"'>");
+			out.println("<input type='hidden' id='lat"+i+"' value='"+list.get(i).getpLat()+"'>");
+		}
+	%>
+	<input type="hidden" id="" value="">
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
