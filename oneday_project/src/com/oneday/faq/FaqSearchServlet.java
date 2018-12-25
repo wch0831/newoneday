@@ -22,21 +22,16 @@ public class FaqSearchServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* 내 문의 검색 */
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
 		
-		//세션 값 체크
-/*		if(session.getAttribute("SESS_ID") == null) {
-			response.sendRedirect("/user/login.jsp");
-		} else {*/
-			
-		String sess_id = "kimtaku@naver.com"; //session.getAttribute("SESS_ID").toString();
-										  //request.getSession().getAttribute("SESS_ID").toString();
-		
-		String searchText = request.getParameter("searchText");	//전달된  String데이터
+		String sess_id = session.getAttribute("SESS_EMAIL").toString();
+	
+		String searchText = request.getParameter("searchText");
 		
 		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
 		FaqDAO dao = new FaqDAO();
@@ -47,20 +42,20 @@ public class FaqSearchServlet extends HttpServlet {
 		list = dao.searchMyQuestionSelect(fvo);
 		
 		Gson gson = new Gson();
-		String jsonStr = gson.toJson(list);							//String변환
-		System.out.println(jsonStr);
+		String jsonStr = gson.toJson(list);							
 		
-		response.setContentType("application/json; encoding=UTF-8"); //응답 데이터 타입:JSON
+		response.setContentType("application/json; encoding=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println(jsonStr);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* 전체 문의 검색 */
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
-		String searchText = request.getParameter("searchText");	//전달된  String데이터
+		String searchText = request.getParameter("searchText");
 		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
 		FaqDAO dao = new FaqDAO();
 		FaqVO fvo = new FaqVO();
@@ -69,10 +64,9 @@ public class FaqSearchServlet extends HttpServlet {
 		list = dao.searchQuestionSelect(fvo);
 		
 		Gson gson = new Gson();
-		String jsonStr = gson.toJson(list);							//String변환
-		System.out.println(jsonStr);
+		String jsonStr = gson.toJson(list);						
 		
-		response.setContentType("application/json; encoding=UTF-8"); //응답 데이터 타입:JSON
+		response.setContentType("application/json; encoding=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		out.println(jsonStr);
 	}
