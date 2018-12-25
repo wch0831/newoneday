@@ -2,15 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!DOCTYPE html>
-<!--
-* CoreUI - Free Bootstrap Admin Template
-* @version v2.1.10
-* @link https://coreui.io
-* Copyright (c) 2018 creativeLabs Åukasz Holeczek
-* Licensed under MIT (https://coreui.io/license)
--->
 
-<html lang="en">
+
+<html>
   <head>
   
   
@@ -70,13 +64,23 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">MYPAGE</li>
+          <li class="breadcrumb-item">Home</li>
           <li class="breadcrumb-item">
-            <a href="/userReview">내가 작성한 댓글</a>
+            <a href="#">Admin</a>
           </li>
-          
+          <li class="breadcrumb-item active">Dashboard</li>
           <!-- Breadcrumb Menu-->
-         
+          <li class="breadcrumb-menu d-md-down-none">
+            <div class="btn-group" role="group" aria-label="Button group">
+              <a class="btn" href="#">
+                <i class="icon-speech"></i>
+              </a>
+              <a class="btn" href="./">
+                <i class="icon-graph"></i> Â Dashboard</a>
+              <a class="btn" href="#">
+                <i class="icon-settings"></i> Â Settings</a>
+            </div>
+          </li>
         </ol>
         <div class="container-fluid">
           <table class="table table-responsive-sm table-hover table-outline mb-0">
@@ -102,8 +106,8 @@
                          
                         </tr> 
                         </c:forEach>
-                      </tbody>
-                    </table>
+              </tbody>
+          </table>
         </div>
         <br><br>
            		<div align="right" id=search>

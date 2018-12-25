@@ -60,6 +60,22 @@ public class MemberDAO {
 			return list;
 	}
 	
+	//닉네임뽑기
+	public MemberVO selectNick(int mseq){
+		SqlSession conn = null;
+		MemberVO mvo = new MemberVO();	
+		try {
+			conn = MyBatisFactory.getFactory().openSession();
+			String nick = conn.selectList("memberNameSpace.checkNick").toString();
+			mvo.setmNick(nick);
+			} catch(Exception e){
+				e.getStackTrace();
+			}finally {
+				conn.close();
+			}
+			return mvo;
+	}
+
 	//관리자 > 회원관리
 	public ArrayList<MemberVO> userSelect() {
 		SqlSession conn = null;

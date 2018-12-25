@@ -26,7 +26,7 @@ $(document).ready(function(){
 		$("#updateForm").submit();
 	});
 });
-		//인서트나 업데이트할때는 폼하고 버튼을 만든다음 submit 해줘야한다d
+		//인서트나 업데이트할때는 폼하고 버튼을 만든다음 submit 해줘야한다
 
 </script>
 

@@ -12,7 +12,14 @@ public class OnePathVO {
 	private String oRegdate;
 	private String oDel;
 	private String oDeldate;
+	private String mNick;
 	
+	public String getmNick() {
+		return mNick;
+	}
+	public void setmNick(String mNick) {
+		this.mNick = mNick;
+	}
 	public int getoSeq() {
 		return oSeq;
 	}

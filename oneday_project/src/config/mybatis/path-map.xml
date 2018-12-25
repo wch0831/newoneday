@@ -27,6 +27,7 @@
 		<result property="oRegdate" column="o_regdate" />
 		<result property="oDel" column="o_del" />
 		<result property="oDeldate" column="o_deldate" />
+		<result property="mNick" column="m_nick" />
 	</resultMap>
     
 
@@ -35,13 +36,17 @@
     <select id="pathSelect"
     	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
-    	    select o_title, o_content, o_see, o_tmapimg from onepath
-			where o_theme=#{oTheme} and o_area=#{oArea} and o_del='n'
+    	    select o.o_seq, o.o_title, o.o_content, o.o_tmapimg, m.m_nick, o.o_see, o.o_regdate, o.o_theme, o.o_area
+    	    from onepath o, member m
+			where o.m_seq=m.m_seq and o.o_title like '%'||#{oTitle}||'%' and o.o_del='n' 
+			<if test="!oTheme.equals('')"> and o.o_theme=#{oTheme}</if>
+			<if test="!oArea.equals('')"> and o.o_area=#{oArea}</if>
     </select>
 
 	<select id="pathDetailSelect" parameterType="int" resultMap="pathMap">
-    	    select * from onepath
-			where o_seq=#{oSeq} and o_del='n'
+    	    select  o.o_seq, o.o_title, o.o_content, o.o_tmapimg, m.m_nick, o.o_see, o.o_regdate, o.o_theme, o.o_area
+    	    from onepath o, member m
+			where o.m_seq=m.m_seq and o.o_seq=#{oSeq} and o.o_del='n'
     </select>
 <!-- 인기리스트조회/평점순 정렬  -->
 	<select id="popThemeSelect"
@@ -82,7 +87,7 @@
     	parameterType="com.oneday.path.OnePathVO"
     	resultMap="pathMap">
     	    select * from (select o_title, o_content, o_see, o_tmapimg from onepath
-			where o_theme=#{oTheme} and o_area=#{oArea}) b where b.o_title like '%#{oTitle}%'
+			where o_theme=#{oTheme} and o_area=#{oArea}) b where b.o_title like '%'||#{oTitle}||'%'
     </select>
 
 <!-- 마이페이지-경로조회  -->
@@ -102,8 +107,9 @@
     </select>
 
 	<select id="SelectList" resultMap="pathMap">
-			select o_seq, o_title, o_content, o_tmapimg, m_seq, o_see, o_regdate from onepath
-			where o_del='n'
+			select o.o_seq, o.o_title, o.o_content, o.o_tmapimg, m.m_nick, o.o_see, o.o_regdate, o.o_theme, o.o_area
+    	    from onepath o, member m
+			where o.m_seq=m.m_seq and o.o_del='n'
     </select>
 <!-- 경로상세페이지-상세 조회  -->
 	<select id="detailSelect"
