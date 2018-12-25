@@ -118,5 +118,19 @@ public class FaqDAO {
 		return list;
 	}
 	
+	public int adminQuestionDelete(FaqVO fvo) {
+		SqlSession conn =null;
+		int res = 0;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.delete("qnaNameSpace.adminQuestionDelete",fvo);
+			conn.commit();
+		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
 	
 }

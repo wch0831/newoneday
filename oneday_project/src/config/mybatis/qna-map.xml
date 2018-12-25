@@ -18,7 +18,6 @@
       <result property="aContent" column="a_content" />
       <result property="mEmail" column="m_email" />
       <result property="mNick" column="m_nick" />
-      <result property="Check" column="oxcheck" />
       <result property="conCheck" column="concheck" />
       <result property="dateCheck" column="datecheck" />
       
@@ -50,7 +49,7 @@
 	
 	<!-- 관리자 문의 조회  -->
 	<select id="adminQuestionSelect" parameterType="com.oneday.faq.FaqVO" resultMap="qnaMap">
-      select q.q_seq, m.m_email, m.m_nick, q.q_gubun, q.q_title, q.q_regdate, nvl2(q.a_seq,'O','X') as oxcheck
+      select q.q_seq, m.m_email, m.m_nick, q.q_gubun, q.q_title, q.q_content, q.q_regdate, q.a_seq, q.a_regdate
 	  from question q, member m
 	  where q.qm_seq = m.m_seq
       order by q.q_seq desc
@@ -97,6 +96,11 @@
       where q.a_seq = a.a_seq(+) and q.qm_seq = m.m_seq and m.m_email = #{mEmail} and q_title like '%'|| #{searchCheck} || '%'
       order by q.q_seq desc
 	</select>
+	
+	<!-- 관리자 문의 삭제  -->
+	<delete id="adminQuestionDelete" parameterType="com.oneday.faq.FaqVO">			
+	  delete from question where q_seq = #{qSeq}
+ 	</delete>
 	
    
 </mapper>   

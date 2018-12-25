@@ -14,7 +14,6 @@ public class FaqVO {
 	private String aContent;
 	private String mEmail;
 	private String mNick;
-	private String Check;
 	private String conCheck;
 	private String dateCheck;
 	private String searchCheck;
@@ -37,12 +36,6 @@ public class FaqVO {
 	}
 	public void setDateCheck(String dateCheck) {
 		this.dateCheck = dateCheck;
-	}
-	public String getCheck() {
-		return Check;
-	}
-	public void setCheck(String check) {
-		Check = check;
 	}
 	public String getmEmail() {
 		return mEmail;

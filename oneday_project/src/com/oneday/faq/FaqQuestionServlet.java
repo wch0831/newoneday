@@ -73,7 +73,8 @@ public class FaqQuestionServlet extends HttpServlet {
 		if(res > 0) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('문의글 작성완료'); self.close();</script>");	 
+			out.println("<script>alert('문의글 작성완료'); opener.parent.location.href = 'faq.jsp'; self.close();</script>");	 
+
 			out.flush();
 		} else {
 			response.setContentType("text/html; charset=UTF-8");

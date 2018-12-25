@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 
-@WebServlet("/adminqna")
-public class Admin_qnaServlet extends HttpServlet {
+@WebServlet("/adminfaq")
+public class Admin_FaqServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
@@ -23,16 +23,14 @@ public class Admin_qnaServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("하이염");
+		/* 관리자 문의글 조회 */
 	  	FaqDAO dao = new FaqDAO();
     	ArrayList<FaqVO> list = new ArrayList<FaqVO>();
     	
     	list = dao.adminQuestionSelect();
     	
-    	
 		Gson gson = new Gson();
 		String jsonStr = gson.toJson(list);
-		System.out.println(jsonStr);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out  = response.getWriter();

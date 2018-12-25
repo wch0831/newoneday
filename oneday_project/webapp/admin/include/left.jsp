@@ -23,7 +23,9 @@
                         
                         <li> <a class="waves-effect waves-dark" href="/adplace" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">장소관리</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="/admin/pages-qna.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">문의관리</span></a>
+                        <li> <a class="waves-effect waves-dark" href="/admin/pages-faq.jsp" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">문의관리</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="/admin/pages-answer.jsp" aria-expanded="false"><i class="mdi mdi-checkbox-marked-outline"></i><span class="hide-menu">답변관리</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="pages-error-404.jsp" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">에러페이지</span></a>
                         </li>
