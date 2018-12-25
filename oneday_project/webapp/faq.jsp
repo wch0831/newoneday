@@ -331,7 +331,7 @@ $(document).ready(function(){
 		console.log(checkswitch);
 		$.ajax({ 	
 			url:"/faq",   
-			type:"get",
+			type:"post",
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 			data: "nothing", 
 			resultType:"json",
@@ -349,9 +349,9 @@ $(document).ready(function(){
 	 				listStr += "</ul>";
 	 				listStr += "</li>";
 	 				listStr += "<hr>";
-	 				var sessId = '<%=session.getAttribute("SESS_ID") %>';
+	 				var sessEmail = '<%=session.getAttribute("SESS_EMAIL") %>';
 		 			$.map(resObject, function(vv, idx){		
-		 				if(sessId != vv.mEmail && vv.qSecret == 'y'){
+		 				if(sessEmail != vv.mEmail && vv.qSecret == 'y'){
 			 				listStr += "<li class='f_question1' onClick=alertMessage()>";
 			 				listStr += "<ul class='clearfix'>";
 			 				listStr += "<li>" + vv.qSeq + "</li>";
@@ -399,7 +399,7 @@ $(document).ready(function(){
 function qnalist() {
 	$.ajax({ 	
 		url:"/faq",   
-		type:"post",
+		type:"get",
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		data: "nothing", 
 		resultType:"json",
@@ -417,9 +417,11 @@ function qnalist() {
  				listStr += "</ul>";
  				listStr += "</li>";
  				listStr += "<hr>";
- 				var sessId = '<%=session.getAttribute("SESS_ID") %>';
+ 				var sessEmail = '<%=session.getAttribute("SESS_EMAIL") %>';
+ 				console.log(sessEmail);
 	 			$.map(resObject, function(vv, idx){		
-	 				if(sessId != vv.mEmail && vv.qSecret == 'y'){
+	 				if(sessEmail != vv.mEmail && vv.qSecret == 'y'){
+	 					console.log('헤이');
 		 				listStr += "<li class='f_question1' onClick=alertMessage()>";
 		 				listStr += "<ul class='clearfix'>";
 		 				listStr += "<li>" + vv.qSeq + "</li>";
@@ -432,6 +434,7 @@ function qnalist() {
 		 				listStr += "</li>";
 	 				}
 	 				else{
+	 					console.log('홧');
 	 				listStr += "<li class='f_question1'>";
 	 				listStr += "<ul class='clearfix'>";
 	 				listStr += "<li>" + vv.qSeq + "</li>";
