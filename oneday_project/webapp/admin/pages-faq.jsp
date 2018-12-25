@@ -75,8 +75,8 @@ function qnalist() {
  	            	listStr += "</tr>";
  	            	
  	            	/* 둘째 줄 */
-	 	            	listStr += "<tr>";
-	 	            	listStr += "<td align='center'></td>";
+	 	            listStr += "<tr>";
+	 	            listStr += "<td align='center'></td>";
  	            	listStr += "<td colspan='3'><i class='mdi mdi-subdirectory-arrow-right'></i>&nbsp;&nbsp;<i class='mdi mdi-quicktime'></i>&nbsp;&nbsp;" + vv.qContent + "</td>";
  	            	if(vv.aRegdate == null){
 	 	            	listStr += "<td><font color='#00FF00'>답변 대기중</font></td>";

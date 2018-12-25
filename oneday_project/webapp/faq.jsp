@@ -318,7 +318,7 @@ $(document).ready(function(){
 			needLogin();
 		}
 		else{
-			window.open('/contact/index.jsp','문의하기','width=800,height=700,location=no,status=no');
+			window.open('/contact/index.jsp','문의하기','width=800,height=700,location=no,status=no');			
 		}
 	});
 	
