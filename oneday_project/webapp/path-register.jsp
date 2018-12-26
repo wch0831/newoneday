@@ -155,9 +155,8 @@ $(document).ready(function(){
 	initTmap();	
 });
 </script>
-<link href="/editor/css/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/editor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 var oEditors = [];
 
@@ -173,7 +172,7 @@ nhn.husky.EZCreator.createInIFrame({
 
 });
 
-</script>
+</script> -->
 </head>
 <body class="animsition">
 	
@@ -205,12 +204,10 @@ nhn.husky.EZCreator.createInIFrame({
 
 						<div class="bor8 m-b-20 how-pos4-parent">
 							<input width="3000" type="text" name="email" placeholder="Your Email Address">
-							<img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="ICON">
 						</div>
 
 						<div>
-							 <form name="nse" action="add_db_nse.php" method="post">
-						        <div id="ir1">
+					        <div id="ir1">
 						        <script type="text/javascript">
 						        var oEditors = [];
 						        nhn.husky.EZCreator.createInIFrame({
@@ -229,13 +226,11 @@ nhn.husky.EZCreator.createInIFrame({
 						            } catch(e) {}
 						            }
 						        </script>
-						        </div>
-						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-							Submit
-						</button>
-    						</form>
+					        </div>
+							<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+								Submit
+							</button>
 						</div>
-
 					</form>
 				</div>
 			</div>
