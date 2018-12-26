@@ -43,7 +43,7 @@ $(document).ready(function(){
        
        var names = $(this).attr("name");
        var ooseq = ${KEY_VO.oSeq};
- 		alert(names);
+ 		
  		var sendData = {"rSeq":names, "oSeq":ooseq};
  		$.ajax({ 
 			url:"/reviewDel",
