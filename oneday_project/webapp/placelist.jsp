@@ -9,8 +9,9 @@
 <%@ include file="/include/header.jsp"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-/* $(document).ready(function(){
+ $(document).ready(function(){
 	$(".stext-106.cl6.hov1.bor3.trans-04.m-r-32.m-tb-5").click(function () {
+		
 				var purpose = $(this).val();
 				$.ajax({ 
 				url:"/PlaceMain",
@@ -41,7 +42,7 @@
 				}
 			});
 		});
-}); */
+}); 
 </script>
 </head>
 <body class="animsition">
@@ -61,7 +62,7 @@
 						id="all" data-filter="*">All Place</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-						id="restaurant" value="맛집" data-filter=".맛집">맛집</button>
+						id="restaurant" value="맛집" data-filter=".맛집">맛집</button>	
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 						id="view" value="경치" data-filter=".경치">경치</button>
@@ -114,7 +115,7 @@
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="#" class="filter-link stext-106 trans-04 ">
 										경상도
 									</a>
 								</li>
@@ -126,7 +127,7 @@
 								</li>
 								
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="#" class="filter-link stext-106 trans-04">
 										전라도
 									</a>
 								</li>
@@ -147,7 +148,7 @@
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="#" class="filter-link stext-106 trans-04">
 										All
 									</a>
 								</li>
@@ -172,7 +173,7 @@
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										UP 200,000
+										Up To 200,000
 									</a>
 								</li>
 	

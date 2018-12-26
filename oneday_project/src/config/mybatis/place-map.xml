@@ -70,7 +70,7 @@
      <select id="selectPlacepai" parameterType="com.oneday.place.PlaceVO" resultMap="placeMap">
 	    select * from place
 		where p_purpose=#{pPurpose} and p_area = #{pArea} and p_inout = #{pInout}
-    </select>
+    </select> 
     
     
    <!--  메인페이지 select -->
