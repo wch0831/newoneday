@@ -19,13 +19,19 @@ public class PlaceMainServlet extends HttpServlet {
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("mainservlet 이 들어왔는데?>");
-		PlaceMainDAO dao = new PlaceMainDAO();
-		ArrayList<PlaceVO> mainList = new ArrayList<PlaceVO>();
-		mainList = dao.mainSelect();
+		response.setContentType("text/html; charset=UTF-8");
 		
-		request.setAttribute("MAIN_SELECT", mainList);
-		request.getRequestDispatcher("/placelist.jsp").forward(request, response);
+		PlaceMainDAO dao = new PlaceMainDAO();
+		ArrayList<PlaceVO> mainList = dao.mainSelect();
+		
+		Gson gson = new Gson();
+		String jsonStr = gson.toJson(mainList);
+
+		System.out.println(jsonStr);
+		
+//		response.setContentType("application/json; encoding=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println(jsonStr);
 		
 		
 	}

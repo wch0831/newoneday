@@ -80,7 +80,7 @@
 	 	
 	<!--  메인페이지 purpose select -->
     <select id="mainPurpose" parameterType="String" resultMap="placeMap">
-		select p_title, p_content, p_area, p_cost, p_ppath, p_pname from place
+		select p_title, p_content, p_area, p_cost, p_ppath, p_pname, p_purpose from place
 		where p_purpose = #{value}
 	</select>
 
