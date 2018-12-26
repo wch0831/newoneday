@@ -23,7 +23,7 @@ public class PlaceDAO {
 		return list;
 	}
 	*/
-	//목적과 지역만
+	 //목적과 지역만
 	/*public ArrayList<PlaceVO> selectPlacepa(String pp, String pa) {
 		ArrayList<PlaceVO> list = null;
 		SqlSession conn =null;
