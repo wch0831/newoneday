@@ -41,21 +41,11 @@ $(document).ready(function(){
 	
     $(document).on("click",".reDel",function(){
        
-<<<<<<< HEAD
-		var names = $(this).attr("name");
-		var ooseq = ${KEY_VO.oSeq};
-		
-		var sessmSeq = ${sessionScope.SESS_SEQ};
-		
-		var sendData = {"rSeq":names, "oSeq":ooseq};
-=======
+
        var names = $(this).attr("name");
        var ooseq = ${KEY_VO.oSeq};
        var sessmSeq = ${sessionScope.SESS_SEQ};
-
- 		
  		var sendData = {"rSeq":names, "oSeq":ooseq};
->>>>>>> branch 'master' of https://github.com/wch0831/newoneday
  		$.ajax({ 
 			url:"/reviewDel",
 			type:"post",
@@ -284,7 +274,7 @@ function initTmap(){
 		for(var i=1;i<sizenum-1;i++){
 			point.push({
 				 "viaPointId" : "test0"+i,//경유지 id
-				 "viaPointName" : "nmae0"+i,//경유지 명칭
+				 "viaPointName" : "name0"+i,//경유지 명칭
 				  //경유지의 위경도 좌표입니다.
 				 "viaX" : $("#lng"+i).val() ,
 				 "viaY" : $("#lat"+i).val() 
@@ -394,7 +384,6 @@ $(document).ready(function(){
 			out.println("<input type='hidden' id='lat"+i+"' value='"+list.get(i).getpLat()+"'>");
 		}
 	%>
-	<input type="hidden" id="" value="">
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
