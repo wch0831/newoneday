@@ -223,7 +223,7 @@ public class MemberDAO {
 		return vo;
 	}
 	
-	//아이디,비번체크
+	//아이디체크
 	public ArrayList<MemberVO> loginCheck() {
 		SqlSession conn = null;
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
@@ -237,6 +237,26 @@ public class MemberDAO {
 			conn.close();
 		}
 		return list;
+	}
+	
+	//로그인 > 비밀번호비교
+	public String pwChack(String email) {
+		SqlSession conn = null;
+		String pw = "";
+
+		try {
+		conn = MyBatisFactory.getFactory().openSession();
+		pw = conn.selectOne("memberNameSpace.email_check", email);
+		
+		System.out.println(pw);
+		
+		} catch(Exception e){
+			e.getStackTrace();
+		}finally {
+			conn.close();
+		}
+		return pw;
+		
 	}
 	
 	//비밀번호 변경 > 분실 시 --------------------------------------------------
@@ -258,6 +278,26 @@ public class MemberDAO {
 		}
 		return res;
 	}
+	
+	//비밀번호 변경 > MYPAGE --------------------------------------------------
+		public int changePw2(MemberVO mvo) {
+			SqlSession conn = null;
+			int res = 0;
+			
+			System.out.println(mvo.getmSeq()+","+mvo.getmPw()+"/////");
+			
+			try {
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.update("memberNameSpace.changePassword2", mvo);
+			conn.commit();
+			System.out.println(res+"건 업데이트");
+			} catch(Exception e){
+				e.getStackTrace();
+			}finally {
+				conn.close();
+			}
+			return res;
+		}
 	
 	
 }

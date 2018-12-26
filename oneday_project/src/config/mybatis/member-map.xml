@@ -45,10 +45,16 @@
       where m_email=#{mEmail} and m_pw=#{mPw} and m_del='n'
     </select>
     
-    <!-- 아이디 비밀번호 체크 -->
+    <!-- 로그인 > 아이디 체크 -->
     <select id="member_check" resultMap="memberMap">
-      select nvl(m_email, "null"), nvl(m_pw, "null") from member
+      select m_email from member
     </select>
+    
+    <!-- 로그인 > 비밀번호 체크 -->
+    <select id="email_check" parameterType="String" resultType="String">
+      select nvl(m_pw,0) from member
+      where m_email=#{value}   
+     </select>
     
     <!-- 회원가입 -->
     <insert id="member_register" parameterType="com.oneday.member.MemberVO">
@@ -107,10 +113,10 @@
     </update>
     
       <!-- 비밀번호 변경 > MYPAGE에서 -->
-    <update id="MLchangePassword" parameterType="int">
+    <update id="changePassword2" parameterType="com.oneday.member.MemberVO">
     	update member
     	set m_pw=#{mPw}
-    	where m_seq=#{value}
+    	where m_seq=#{mSeq}
     </update>
     
     <!-- Email중복확인 -->

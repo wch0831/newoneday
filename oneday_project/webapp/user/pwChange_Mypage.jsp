@@ -12,19 +12,26 @@
   	
     <script>
    	
+  //session에 있는 seq값으로 oldpw를 조회
     $(document).ready(function(){
+    	$('#updateButton').click(function(){
     		var oldPw = $("#oldPw").val();
     		var newPw = $("#newPw").val();
     		var newPw2 = $("#newPw2").val();    		
-    	$("#updateButton").cilck(function(){
-    		if(oldPw == ""){ //session에 있는 seq값으로 oldpw를 조회
+    	
+    		if(oldPw == ""){
     			alert("기존 비밀번호를 입력해 주세요.");
+    			return false;
     		} else if (newPw == ""){
-    			alert("변경 할 비밀번호를 입력해 주세요.")
+    			alert("변경 할 비밀번호를 입력해 주세요.");
+    			return false;
     		} else if (newPw2 == ""){
-    			alert("비밀번호 확인란을 입력해 주세요.")
+    			alert("비밀번호 확인란을 입력해 주세요.");
+    			return false;
+    		} else if(newPw != newPw2){
+    			alert("변경 비밀번호가 일치하지 않습니다.");
+    			return false;
     		} else {
-    			alert("비밀번호가 변경되었습니다. 재 로그인 해주시기 바랍니다.");
     			$('#regForm').submit();
     		}
     	});
@@ -62,7 +69,7 @@
 							<p class="text-muted">변경 할 비밀번호를 입력해주세요.</p>
 
 							<form id="regForm" name="regForm" method="post"
-								action="/registerServlet">
+								action="/changePwServlet">
 
 
 								<!-- 회원정보 받기 -->

@@ -43,6 +43,10 @@ $(document).ready(function(){
        
        var names = $(this).attr("name");
        var ooseq = ${KEY_VO.oSeq};
+<<<<<<< HEAD
+=======
+       var sessmSeq = ${sessionScope.SESS_SEQ};
+>>>>>>> branch 'master' of https://github.com/wch0831/newoneday
  		
  		var sendData = {"rSeq":names, "oSeq":ooseq};
  		$.ajax({ 
@@ -54,27 +58,25 @@ $(document).ready(function(){
 					console.log(gsonStr);		//[{"empno
 					var htmlStr = "";
 		 			$.map(gsonStr, function(vv, idx){
-			  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
-			  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
-				    htmlStr += "</div>";
-					htmlStr += "<div class='size-207'>";
-					htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
-					htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
-					htmlStr += "<br>";		
-					
-					if(sessmSeq == vv.mSeq){										
-					htmlStr += "<p class='reUpDel'>";	
-					htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
-					htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
-					htmlStr += "</p>";	
-					}			
-					
-					htmlStr += "</div>";
-					htmlStr += "<div id='readContent"+vv.rSeq+"'>";
-					htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
-					htmlStr += "<br>";
-					htmlStr += "</div>";
-					htmlStr += "</div>";
+		 				htmlStr += "<div class='d' align='right'>"+vv.rRegdate+"</div>";
+						htmlStr += "<div class='size-207'>";
+						htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
+						htmlStr += "<span class='mtext-107 cl2 p-r-20'><b><u>"+vv.mNick+"</u></b></span>";	
+						htmlStr += "<br>";		
+						
+						if(sessmSeq == vv.mSeq){										
+						htmlStr += "<p class='reUpDel'>";	
+						htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
+						htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
+						htmlStr += "</p>";	
+						}			
+						
+						htmlStr += "</div>";
+						htmlStr += "<div id='readContent"+vv.rSeq+"'>";
+						htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
+						htmlStr += "<br>";
+						htmlStr += "</div>";
+						htmlStr += "</div>";
 					
 			  	});
 		 			
@@ -105,27 +107,25 @@ $(document).ready(function(){
 								console.log(gsonStr);		//[{"empno
 								var htmlStr = "";
 					 			$.map(gsonStr, function(vv, idx){
-						  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
-						  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
-							    htmlStr += "</div>";
-								htmlStr += "<div class='size-207'>";
-								htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
-								htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
-								htmlStr += "<br>";		
-								
-								if(sessmSeq == vv.mSeq){										
-								htmlStr += "<p class='reUpDel'>";	
-								htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
-								htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
-								htmlStr += "</p>";	
-								}			
-								
-								htmlStr += "</div>";
-								htmlStr += "<div id='readContent"+vv.rSeq+"'>";
-								htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
-								htmlStr += "<br>";
-								htmlStr += "</div>";
-								htmlStr += "</div>";
+					 				htmlStr += "<div class='d' align='right'>"+vv.rRegdate+"</div>";
+									htmlStr += "<div class='size-207'>";
+									htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
+									htmlStr += "<span class='mtext-107 cl2 p-r-20'><b><u>"+vv.mNick+"</u></b></span>";	
+									htmlStr += "<br>";		
+									
+									if(sessmSeq == vv.mSeq){										
+									htmlStr += "<p class='reUpDel'>";	
+									htmlStr += "<span class='replyUp_span'><img src='/images/reviewUp.png'  name='"+vv.rSeq+"^^^"+vv.rContent+"'class='reUpdate' width='20' height='20'></span>";
+									htmlStr += "<span class='replyDel_span'><img src='/images/reviewDel.png'  name='"+vv.rSeq+"' class='reDel' id='reDel' width='20' height='20'></span>";
+									htmlStr += "</p>";	
+									}			
+									
+									htmlStr += "</div>";
+									htmlStr += "<div id='readContent"+vv.rSeq+"'>";
+									htmlStr += "<input type='textarea' border='0'  id='reply'  value='"+vv.rContent+"' readonly>";
+									htmlStr += "<br>";
+									htmlStr += "</div>";
+									htmlStr += "</div>";
 								
 						  	});
 					 			
@@ -193,13 +193,11 @@ function replyEditSubmit() {
 		success:function(gsonStr){
 				console.log(gsonStr);		//[{"empno
 				var htmlStr = "";
-	 			$.map(gsonStr, function(vv, idx){
-		  		htmlStr += "<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6'>";
-		  		htmlStr += "<img src='images/avatar-01.jpg' alt='AVATAR'>";
-			    htmlStr += "</div>";
+	 			$.map(gsonStr, function(vv, idx){		 				
+	 			htmlStr += "<div class='d' align='right'>"+vv.rRegdate+"</div>";
 				htmlStr += "<div class='size-207'>";
 				htmlStr += "<div class='flex-w flex-sb-m p-b-17'>";
-				htmlStr += "<span class='mtext-107 cl2 p-r-20'><b>"+vv.mNick+"</b></span>";	
+				htmlStr += "<span class='mtext-107 cl2 p-r-20'><b><u>"+vv.mNick+"</u></b></span>";	
 				htmlStr += "<br>";		
 				
 				if(sessmSeq == vv.mSeq){										
@@ -655,29 +653,33 @@ $.ajax({
 					<!-- 댓글폼  -->
 					<div class="replyform" id="replyformid">	
 						<c:forEach var="vo" items="${KEY_LIST}">
-						<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+							<div class="d" align="right">${vo.rRegdate}</div>
+						<!-- <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
 												<img src="images/avatar-01.jpg" alt="AVATAR">
-						</div>
+						</div> -->
 						<div class="size-207">
 											
 												<div class="flex-w flex-sb-m p-b-17">
 													
 													<span class="mtext-107 cl2 p-r-20">														
-														<b>${vo.mNick}<b>
+														<b><u>${vo.mNick}</u></b>
+														
 													</span>
-													
+  																										
 												 	<c:if test="${sessionScope.SESS_SEQ eq vo.mSeq}">
-  														 <%-- 적용 스타일 --%>
-  														<p class="reUpDel">
+  														 <%-- 적용 스타일 --%> 	
+  														<p class="reUpDel" align="right"> 
+  														 				
 														<span class="replyUp_span"><img src="/images/reviewUp.png"  name="${vo.rSeq}^^^${vo.rContent}"  class="reUpdate" width="20" height="20"></span>
 														<span class="replyDel_span"><img src="/images/reviewDel.png"  name="${vo.rSeq}" class="reDel" id="reDel" width="20" height="20"></span>
 													   </p>
 													</c:if>	
-													  
+													 </span> 
 																					
 												</div>
-
+												
 												<div id="readContent${vo.rSeq}"> 
+													
 													<input type="text" border="0" id="reply"  value="${vo.rContent}" readonly></span>
 													<br>
 												</div> 			

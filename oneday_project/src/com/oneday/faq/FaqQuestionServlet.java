@@ -23,15 +23,10 @@ public class FaqQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* 용도 */
+		/* 문의하기 창 내 정보 자동출력 */
 		HttpSession session = request.getSession();
 		FaqDAO dao = new FaqDAO();
 		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
-
-
-		if(session.getAttribute("SESS_EMAIL") == null) {
-			response.sendRedirect("/user/login.jsp");
-		} else {
 
 		String sess_id = session.getAttribute("SESS_EMAIL").toString();
 
@@ -43,10 +38,11 @@ public class FaqQuestionServlet extends HttpServlet {
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out  = response.getWriter();
 		out.println(jsonStr);
-		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* 문의하기 작성 Insert */
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
@@ -77,7 +73,8 @@ public class FaqQuestionServlet extends HttpServlet {
 		if(res > 0) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('문의글 작성완료'); self.close();</script>");	 
+			out.println("<script>alert('문의글 작성완료'); opener.parent.location.href = 'faq.jsp'; self.close();</script>");	 
+
 			out.flush();
 		} else {
 			response.setContentType("text/html; charset=UTF-8");

@@ -102,19 +102,20 @@
     
     <!--관리자 리스트뽑기 -->
     <select id="selectPlaceAll" parameterType="com.oneday.place.PlaceVO" resultMap="placeMap">
-    select p_seq,p_title,p_content,p_lat,p_lng,p_area,p_cost,p_inout,p_purpose,p_regdate from place
+    select p_seq,p_title,p_content,p_lat,p_lng,p_area,p_cost,p_inout,p_purpose,p_regdate from place order by p_seq asc
 	</select>
+    
     
     <!--관리자 장소 입력  -->
     <insert id="adminInsert" parameterType="com.oneday.place.PlaceVO">
-		 insert into place(p_seq, p_title, p_content, p_lat, p_lng, p_area, p_cost,p_inout,p_purpose,p_ppath,p_pname,p_sysname) 
-		 values(pl_seq.nextval, #{pTitle}, #{pContent}, #{pLat}, #{pLng},#{pArea},#{pCost},#{pInout},#{pPurpose},#{pPpath},#{pPname},#{pSysname})
+		 insert into place(p_seq, p_title, p_content, p_lat, p_lng, p_area, p_cost,p_inout,p_purpose,p_ppath,p_pname) 
+		 values(place_seq.nextval, #{pTitle}, #{pContent}, #{pLat}, #{pLng},#{pArea},#{pCost},#{pInout},#{pPurpose},#{pPpath},#{pPname})
 	 </insert>
 	 
 	 
 	 <!--관리자 수정 select -->
 	 <select id="adminSelectUpdate" parameterType="int" resultMap="placeMap">
-	 	select p_title, p_content, p_lat, p_lng, p_area, p_cost, p_inout, p_purpose, p_ppath, p_pname, p_sysname from place
+	 	select p_title, p_content, p_lat, p_lng, p_area, p_cost, p_inout, p_purpose, p_ppath, p_pname from place
 	 	where p_seq = #{value}
 	 </select>
 	 
@@ -123,7 +124,7 @@
 	 <update id="adminUpdate" parameterType="com.oneday.place.PlaceVO">   
     	update place set p_title=#{pTitle}, p_content=#{pContent}
 		,p_lat=#{pLat} ,p_lng=#{pLng} , p_area=#{pArea} , p_cost=#{pCost}
-		,p_inout = #{pInout} , p_purpose = #{pPurpose} , p_ppath = #{pPpath}, p_pname=#{pPname}, p_sysname=#{pSysname} 
+		,p_inout = #{pInout} , p_purpose = #{pPurpose} , p_ppath = #{pPpath}, p_pname=#{pPname}
 		 where p_seq=#{pSeq} 
     </update>
     
