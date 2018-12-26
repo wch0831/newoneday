@@ -87,7 +87,7 @@ $(document).ready(function(){
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button
 						class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-						id="all" data-filter="*">All Place</button>
+						id="all" value="all" data-filter="*">All Place</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 						id="restaurant" value="맛집" data-filter=".맛집">맛집</button>	

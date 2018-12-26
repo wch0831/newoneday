@@ -33,10 +33,17 @@ public class PlaceMainServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		
-		String purpose = request.getParameter("purpose");
 		PlaceMainDAO dao = new PlaceMainDAO();
-		ArrayList<PlaceVO> mainList = dao.mainpurpose(purpose);
+		ArrayList<PlaceVO> mainList = new ArrayList<PlaceVO>();
+
+		String purpose = request.getParameter("purpose");
+		if(purpose.equals("all")) {
+			mainList = dao.mainSelect();
+
+		}else {
+			
+			mainList = dao.mainpurpose(purpose);
+		}
 		
 		Gson gson = new Gson();
 		String jsonStr = gson.toJson(mainList);
