@@ -116,6 +116,22 @@
 	<update id="adminQuestionInsert" parameterType="com.oneday.faq.FaqVO">			
 	  update question set a_seq = #{aSeq}, am_seq = 1, a_regdate = sysdate where q_seq = #{qSeq}
  	</update>
+ 	
+ 	<!-- 관리자 답변목록 조회  -->
+ 	<select id="adminAnswerSelect" resultType="com.oneday.faq.FaqVO" resultMap="qnaMap">
+	  select a_seq, a_content from answer	
+	</select>
+	
+	<!-- 관리자 답변목록 삭제  -->
+	<delete id="adminAnswerDelete" parameterType="com.oneday.faq.FaqVO">			
+	  delete from answer where a_seq = #{aSeq}
+ 	</delete>
+ 	
+ 	<!-- 답변 추가  -->
+	<insert id="adminAnswerAdd" parameterType="com.oneday.faq.FaqVO">			
+	  insert into answer (a_seq, a_content)
+	  values (answer_seq.nextval, #{aContent})
+ 	</insert>
 	
    
 </mapper>   
