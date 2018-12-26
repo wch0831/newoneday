@@ -43,10 +43,8 @@ $(document).ready(function(){
        
        var names = $(this).attr("name");
        var ooseq = ${KEY_VO.oSeq};
-<<<<<<< HEAD
-=======
        var sessmSeq = ${sessionScope.SESS_SEQ};
->>>>>>> branch 'master' of https://github.com/wch0831/newoneday
+
  		
  		var sendData = {"rSeq":names, "oSeq":ooseq};
  		$.ajax({ 
