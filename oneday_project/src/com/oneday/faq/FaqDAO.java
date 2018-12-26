@@ -159,5 +159,19 @@ public class FaqDAO {
 		return res;
 	}
 	
+	public int adminQuestionInsert(FaqVO fvo) {
+		SqlSession conn =null;
+		int res = 0;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.update("qnaNameSpace.adminQuestionInsert",fvo);
+			conn.commit();
+		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
 	
 }

@@ -13,7 +13,6 @@
 $(document).ready(function(){
 
 	qnalist();
-	answerlist();
 	
 	/* 문의 삭제 */
 	$(document).on("click",".delBtn",function(){	
@@ -37,19 +36,23 @@ $(document).ready(function(){
 	
 	/* 답변 작성 */
 	$(document).on("click",".answerBtn",function(){	
-/* 		var qSeq = $(this).attr("name");
-		var sendData = {"qSeq":qSeq};
-		
-		$.ajax({ 
-			url:"/adminfaqinsert",
-			type:"post",
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			data:"MYKEY="+JSON.stringify(sendData)
-		});
-		alert("답변 완료");
-		$("#qnaTable").empty();
-		qnalist(); */
-		 
+ 		var qSeq = $(this).attr("name");
+		var aSeq = $("select[name=" + qSeq + "]").val();
+		var sendData = {"qSeq":qSeq, "aSeq":aSeq};
+		if(aSeq == 'first'){
+			alert("답변을 선택해주세요.");
+		}
+		else{
+			$.ajax({ 
+				url:"/adminfaqinsert",
+				type:"post",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data:"MYKEY="+JSON.stringify(sendData)
+			});
+			alert("답변 완료");
+			$("#qnaTable").empty();
+			qnalist(); 
+		}	 
 	});
 	
 	/* 답변 삭제 */
@@ -131,7 +134,7 @@ function qnalist() {
  	            	}
  	            	else{
  	            	listStr += "<td><font color='#00FF00'>" + vv.aRegdate + "</font></td>";
- 	            	listStr += "<td align='center'>" + vv.aSeq + "</td>";
+ 	            	listStr += "<td align='center'>답변 " + vv.aSeq + "</td>";
  	            	listStr += "<td><input type='button' value='답변삭제' class='updateBtn' name='" + vv.qSeq + "'></td>";
  	            	listStr += "</tr>"; 
  	            	listStr += "</tbody>";

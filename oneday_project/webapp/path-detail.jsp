@@ -41,12 +41,21 @@ $(document).ready(function(){
 	
     $(document).on("click",".reDel",function(){
        
+<<<<<<< HEAD
 		var names = $(this).attr("name");
 		var ooseq = ${KEY_VO.oSeq};
 		
 		var sessmSeq = ${sessionScope.SESS_SEQ};
 		
 		var sendData = {"rSeq":names, "oSeq":ooseq};
+=======
+       var names = $(this).attr("name");
+       var ooseq = ${KEY_VO.oSeq};
+       var sessmSeq = ${sessionScope.SESS_SEQ};
+
+ 		
+ 		var sendData = {"rSeq":names, "oSeq":ooseq};
+>>>>>>> branch 'master' of https://github.com/wch0831/newoneday
  		$.ajax({ 
 			url:"/reviewDel",
 			type:"post",
