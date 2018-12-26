@@ -10,46 +10,86 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
  $(document).ready(function(){
+	 placelist(); 
+	 
 	$(".stext-106.cl6.hov1.bor3.trans-04.m-r-32.m-tb-5").click(function () {
-		
 				var purpose = $(this).val();
-				console.log(purpose);
-				$.ajax({ 
-				url:"/PlaceMain",
-				type:"POST",
-				data:"purpose="+purpose,
-				success:function(jsonObj){
-						
-						var json = JSON.parse(jsonObj);
-						
-						var htmlStr="";
-						
-			 			 $.map(json, function(vv, index){
-			 					htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item" + vv.pPurpose + "'>";
-								htmlStr +="<div class='block2'>";
-								htmlStr +="<div class='block2-pic hov-img0'>";
-								htmlStr +="<img src='/cdir2/"+vv.pPname+"' alt='IMG-PRODUCT' style= width='250px' height='200px'>";
-								htmlStr +="</div>";
-								htmlStr +="<div class='block2-txt flex-w flex-t p-t-14'>";
-								htmlStr +="<div class='block2-txt-child1 flex-col-l'>";
-								htmlStr +="<span class='stext-105 cl3'> "+vv.pTitle+" </span>";
-								htmlStr +="<span class='stext-105 cl3'> "+vv.pArea+" </span>";
-								htmlStr +="<span class='stext-105 cl3'> "+vv.pContent+" </span>";
-								htmlStr +="<span class='stext-105 cl3'> "+vv.pCost+" </span> <br> <br>";
-								htmlStr +="</div>";
-								htmlStr +="</div>";
-								htmlStr +="</div>";
-								htmlStr +="</div>";
-				  		});
-			 			$("#plist").empty();
-			 		  	$("#plist").html(htmlStr);
-			
-								
-						
+				if(purpose=='All Place'){
+					placelist();
 				}
-			});
+				else{
+					$.ajax({ 
+					url:"/PlaceMain",
+					type:"post",
+					data:"purpose="+purpose,
+					success:function(jsonObj){
+							
+							var json = JSON.parse(jsonObj);
+							
+							var htmlStr="";
+							
+				 			 $.map(json, function(vv, index){
+				 					htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item" + vv.pPurpose + "'>";
+									htmlStr +="<div class='block2'>";
+									htmlStr +="<div class='block2-pic hov-img0'>";
+									htmlStr +="<img src='/cdir2/"+vv.pPname+"' alt='IMG-PRODUCT' style= width='250px' height='200px'>";
+									htmlStr +="</div>";
+									htmlStr +="<div class='block2-txt flex-w flex-t p-t-14'>";
+									htmlStr +="<div class='block2-txt-child1 flex-col-l'>";
+									htmlStr +="<span class='stext-105 cl3'> "+vv.pTitle+" </span>";
+									htmlStr +="<span class='stext-105 cl3'> "+vv.pArea+" </span>";
+									htmlStr +="<span class='stext-105 cl3'> "+vv.pContent+" </span>";
+									htmlStr +="<span class='stext-105 cl3'> "+vv.pCost+" </span> <br> <br>";
+									htmlStr +="</div>";
+									htmlStr +="</div>";
+									htmlStr +="</div>";
+									htmlStr +="</div>";
+					  		});
+				 			$("#plist").empty();
+				 		  	$("#plist").html(htmlStr);					
+							
+					}
+				});
+	}
+
 		});
-}); 
+});
+ 
+ function placelist() {
+	 	
+		$.ajax({ 
+			url:"/PlaceMain",
+			type:"get",
+			data:"Unknown",             // data:"purpose="+purpose,
+			success:function(jsonObj){
+					
+					var json = JSON.parse(jsonObj);
+					
+					var htmlStr="";
+					
+		 			 $.map(json, function(vv, index){
+		 					htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item" + vv.pPurpose + "'>";
+							htmlStr +="<div class='block2'>";
+							htmlStr +="<div class='block2-pic hov-img0'>";
+							htmlStr +="<img src='/cdir2/"+vv.pPname+"' alt='IMG-PRODUCT' style= width='250px' height='200px'>";
+							htmlStr +="</div>";
+							htmlStr +="<div class='block2-txt flex-w flex-t p-t-14'>";
+							htmlStr +="<div class='block2-txt-child1 flex-col-l'>";
+							htmlStr +="<span class='stext-105 cl3'> "+vv.pTitle+" </span>";
+							htmlStr +="<span class='stext-105 cl3'> "+vv.pArea+" </span>";
+							htmlStr +="<span class='stext-105 cl3'> "+vv.pContent+" </span>";
+							htmlStr +="<span class='stext-105 cl3'> "+vv.pCost+" </span> <br> <br>";
+							htmlStr +="</div>";
+							htmlStr +="</div>";
+							htmlStr +="</div>";
+							htmlStr +="</div>";
+			  		});
+		 			$("#plist").empty();
+		 		  	$("#plist").html(htmlStr);					
+					
+			}
+		});
+ }
 </script>
 <script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=e6def2a6-fc38-4e85-bc48-e1c69869baa7"></script>
 <script>
@@ -85,9 +125,14 @@ $(document).ready(function(){
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+<<<<<<< HEAD
 					<button
 						class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 						id="all" value="all" data-filter="*">All Place</button>
+=======
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+						id="all" value="All Place" data-filter="*">All Place</button>
+>>>>>>> branch 'master' of https://github.com/wch0831/newoneday
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 						id="restaurant" value="맛집" data-filter=".맛집">맛집</button>	
@@ -244,26 +289,7 @@ $(document).ready(function(){
 
 			</div>
 			<div class="row" id="plist">
-				<c:forEach var="vo" items="${MAIN_SELECT}">
-					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${vo.pPurpose}">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-pic hov-img0">
-								<img src="/cdir2/${vo.pPname}" alt="IMG-PRODUCT" style= width="250px" height="200px">
-	
-							</div>
-	
-							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
-										<span class="stext-105 cl3"> ${vo.pTitle} </span> 
-										<span class="stext-105 cl3"> ${vo.pArea} </span>
-										<span class="stext-105 cl3"> ${vo.pContent} </span>
-										<span class="stext-105 cl3"> ${vo.pCost} </span> <br> <br>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
+			<!-- 출력되는 영역 -->
 			</div>
 		</div>
 	</div>
