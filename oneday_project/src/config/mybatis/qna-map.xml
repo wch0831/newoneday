@@ -109,7 +109,12 @@
 	
 	<!-- 관리자 문의 답변 삭제  -->
 	<update id="adminQuestionUpdate" parameterType="com.oneday.faq.FaqVO">			
-	  update question set a_seq=null, am_seq=null, a_regdate=null where q_seq = #{qSeq}
+	  update question set a_seq = null, am_seq = null, a_regdate = null where q_seq = #{qSeq}
+ 	</update>
+ 	
+ 	<!-- 관리자 문의 답변 작성  -->
+	<update id="adminQuestionInsert" parameterType="com.oneday.faq.FaqVO">			
+	  update question set a_seq = #{aSeq}, am_seq = 1, a_regdate = sysdate where q_seq = #{qSeq}
  	</update>
 	
    
