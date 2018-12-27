@@ -9,59 +9,133 @@
 <%@ include file="/include/header.jsp"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-/* $(document).ready(function(){
+ $(document).ready(function(){
+	 placelist(); 
+	 
 	$(".stext-106.cl6.hov1.bor3.trans-04.m-r-32.m-tb-5").click(function () {
 				var purpose = $(this).val();
-				$.ajax({ 
-				url:"/PlaceMain",
-				type:"POST",
-				data:"purpose="+purpose,
-				success:function(jsonObj){
-						console.log(jsonObj);
-						var json = JSON.parse(jsonObj);
-						console.log(json);
-						var htmlStr="";
-						
-			 			 $.each(res, function(index, vv){
-			 				htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-40 isotope-item women'>";
-				 			htmlStr += "<div class='block2'>";
-			 				htmlStr += "<div class='block2-pic hov-img0'>";
-			 				htmlStr += "<img src=" +vv.oTmapImg+ " alt='IMG-PRODUCT'></div>";
-			 				htmlStr += "<div class='block2-txt flex-w flex-t p-t-14'>";
-			 				htmlStr += "<div class='block2-txt-child1 flex-col-l '>";
-			 				htmlStr += "<a href='/pathdetail?oseq="+vv.oSeq+"' class='stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6'>"+vv.oTitle+"</a>";
-			 				htmlStr += "</div>";
-			 				htmlStr += "<div class='block2-txt-child2 flex-r p-t-3'>";
-			 				htmlStr += "<a href='#' class='btn-addwish-b2 dis-block pos-relative js-addwish-b2'>";
-			 				htmlStr += "<img class='icon-heart1 dis-block trans-04' src='images/icons/icon-heart-01.png' alt='ICON'>";
-			 				htmlStr += "<img class='icon-heart2 dis-block trans-04 ab-t-l' src='images/icons/icon-heart-02.png' alt='ICON'>";
-			 				htmlStr += "</a></div></div></div></div>";
-				  		});
-						$("#poppath").html(htmlStr); 
+				if(purpose=='All Place'){
+					placelist();
 				}
-			});
+				else{
+					$.ajax({ 
+					url:"/PlaceMain",
+					type:"post",
+					data:"purpose="+purpose,
+					success:function(jsonObj){
+							
+							var json = JSON.parse(jsonObj);
+							
+							var htmlStr="";
+							
+				 			 $.map(json, function(vv, index){
+				 					htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item" + vv.pPurpose + "'>";
+									htmlStr +="<div class='block2'>";
+									htmlStr +="<div class='block2-pic hov-img0'>";
+									htmlStr +="<img src='/cdir2/"+vv.pPname+"' alt='IMG-PRODUCT' style= width='250px' height='200px'>";
+									htmlStr +="</div>";
+									htmlStr +="<div class='block2-txt flex-w flex-t p-t-14'>";
+									htmlStr +="<div class='block2-txt-child1 flex-col-l'>";
+									htmlStr +="<span class='stext-105 cl3'> "+vv.pTitle+" </span>";
+									htmlStr +="<span class='stext-105 cl3'> "+vv.pArea+" </span>";
+									htmlStr +="<span class='stext-105 cl3'> "+vv.pContent+" </span>";
+									htmlStr +="<span class='stext-105 cl3'> "+vv.pCost+" </span> <br> <br>";
+									htmlStr +="</div>";
+									htmlStr +="</div>";
+									htmlStr +="</div>";
+									htmlStr +="</div>";
+					  		});
+				 			$("#plist").empty();
+				 		  	$("#plist").html(htmlStr);					
+							
+					}
+				});
+	}
+
 		});
-}); */
+});
+ 
+ function placelist() {
+	 	
+		$.ajax({ 
+			url:"/PlaceMain",
+			type:"get",
+			data:"Unknown",             // data:"purpose="+purpose,
+			success:function(jsonObj){
+					
+					var json = JSON.parse(jsonObj);
+					
+					var htmlStr="";
+					
+		 			 $.map(json, function(vv, index){
+		 					htmlStr += "<div class='col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item" + vv.pPurpose + "'>";
+							htmlStr +="<div class='block2'>";
+							htmlStr +="<div class='block2-pic hov-img0'>";
+							htmlStr +="<img src='/cdir2/"+vv.pPname+"' alt='IMG-PRODUCT' style= width='250px' height='200px'>";
+							htmlStr +="</div>";
+							htmlStr +="<div class='block2-txt flex-w flex-t p-t-14'>";
+							htmlStr +="<div class='block2-txt-child1 flex-col-l'>";
+							htmlStr +="<span class='stext-105 cl3'> "+vv.pTitle+" </span>";
+							htmlStr +="<span class='stext-105 cl3'> "+vv.pArea+" </span>";
+							htmlStr +="<span class='stext-105 cl3'> "+vv.pContent+" </span>";
+							htmlStr +="<span class='stext-105 cl3'> "+vv.pCost+" </span> <br> <br>";
+							htmlStr +="</div>";
+							htmlStr +="</div>";
+							htmlStr +="</div>";
+							htmlStr +="</div>";
+			  		});
+		 			$("#plist").empty();
+		 		  	$("#plist").html(htmlStr);					
+					
+			}
+		});
+ }
 </script>
+<script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=e6def2a6-fc38-4e85-bc48-e1c69869baa7"></script>
+<script>
+// 페이지가 로딩이 된 후 호출하는 함수입니다.
+function initTmap(){
+   // map 생성
+   // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
+   var map = new Tmap.Map({div:'map_div', // map을 표시해줄 div
+                     width:'100%',  // map의 width 설정
+                     height:'400px' // map의 height 설정
+   }); 
+} 
+// 맵 생성 실행
+$(document).ready(function(){
+   initTmap();   
+});;
+</script>
+
 </head>
 <body class="animsition">
 
 	<%@ include file="/include/top.jsp"%>
 
 	<%@ include file="/include/left.jsp"%>
+<div id="map_div">
 
+
+
+</div>
 
 	<!-- Product -->
 	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+<<<<<<< HEAD
 					<button
-						class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1"
-						id="all" data-filter="*">All Place</button>
+						class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+						id="all" value="all" data-filter="*">All Place</button>
+=======
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+						id="all" value="All Place" data-filter="*">All Place</button>
+>>>>>>> branch 'master' of https://github.com/wch0831/newoneday
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-						id="restaurant" value="맛집" data-filter=".맛집">맛집</button>
+						id="restaurant" value="맛집" data-filter=".맛집">맛집</button>	
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 						id="view" value="경치" data-filter=".경치">경치</button>
@@ -114,7 +188,7 @@
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="#" class="filter-link stext-106 trans-04 ">
 										경상도
 									</a>
 								</li>
@@ -126,7 +200,7 @@
 								</li>
 								
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="#" class="filter-link stext-106 trans-04">
 										전라도
 									</a>
 								</li>
@@ -147,7 +221,7 @@
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="#" class="filter-link stext-106 trans-04">
 										All
 									</a>
 								</li>
@@ -172,7 +246,7 @@
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										UP 200,000
+										Up To 200,000
 									</a>
 								</li>
 	
@@ -214,27 +288,8 @@
 
 
 			</div>
-			<div class="row">
-				<c:forEach var="vo" items="${MAIN_SELECT}">
-					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${vo.pPurpose}">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-pic hov-img0">
-								<img src="/cdir2/${vo.pPname}" alt="IMG-PRODUCT" style= width="250px" height="200px">
-	
-							</div>
-	
-							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
-										<span class="stext-105 cl3"> ${vo.pTitle} </span> 
-										<span class="stext-105 cl3"> ${vo.pArea} </span>
-										<span class="stext-105 cl3"> ${vo.pContent} </span>
-										<span class="stext-105 cl3"> ${vo.pCost} </span> <br> <br>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
+			<div class="row" id="plist">
+			<!-- 출력되는 영역 -->
 			</div>
 		</div>
 	</div>

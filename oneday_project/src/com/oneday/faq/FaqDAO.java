@@ -132,5 +132,87 @@ public class FaqDAO {
 		return res;
 	}
 	
+	public ArrayList<FaqVO> selectBoxAnswer() {
+		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
+		SqlSession conn =null;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("qnaNameSpace.selectBoxAnswer");
+		} finally {
+			conn.close();
+		}
+		return list;
+	}
+	
+	public int adminQuestionUpdate(FaqVO fvo) {
+		SqlSession conn =null;
+		int res = 0;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.update("qnaNameSpace.adminQuestionUpdate",fvo);
+			conn.commit();
+		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
+	public int adminQuestionInsert(FaqVO fvo) {
+		SqlSession conn =null;
+		int res = 0;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.update("qnaNameSpace.adminQuestionInsert",fvo);
+			conn.commit();
+		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
+	public ArrayList<FaqVO> adminAnswerSelect() {
+		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
+		SqlSession conn =null;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			list = (ArrayList)conn.selectList("qnaNameSpace.adminAnswerSelect");
+		} finally {
+			conn.close();
+		}
+		return list;
+	}
+	
+	public int adminAnswerDelete(FaqVO fvo) {
+		SqlSession conn =null;
+		int res = 0;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.delete("qnaNameSpace.adminAnswerDelete",fvo);
+			conn.commit();
+		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
+	public int adminAnswerAdd(FaqVO fvo) {
+		SqlSession conn =null;
+		int res = 0;
+		
+		try { 
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.update("qnaNameSpace.adminAnswerAdd",fvo);
+			conn.commit();
+		} finally {
+			conn.close();
+		}
+		return res;
+	}
+	
 	
 }

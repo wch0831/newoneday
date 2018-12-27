@@ -27,10 +27,10 @@ public class SearchServlet extends HttpServlet {
 		ArrayList<PlaceVO> plist = dao.selectSearch(str); 
 		
 		Gson gson = new Gson();
-		String gsonStr = gson.toJson(plist);							//String변환
+		String gsonStr = gson.toJson(plist);							//String변환 이건 불변의조건
 		System.out.println(gsonStr);
 		
-		response.setContentType("application/json; charset=UTF-8"); //응답 데이터 타입:JSON
+		response.setContentType("application/json; charset=UTF-8"); //응답 데이터 타입:JSON  JSON으로보냈으니 jsp에서 바꿀필요가없다.
 		PrintWriter out = response.getWriter();
 		out.println(gsonStr);
 	}

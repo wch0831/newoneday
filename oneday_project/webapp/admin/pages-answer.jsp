@@ -9,44 +9,68 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 
-
 $(document).ready(function(){
-
+	
 	qnalist();
 	
+	/* 답변 삭제 */
+	$(document).on("click",".deleteBtn",function(){	
+		var aSeq = $(this).attr("name");
+		var sendData = {"aSeq":aSeq};
+		
+		if (confirm("정말 답변을 삭제하시겠습니까?") == true){  
+				$.ajax({ 
+					url:"/adminanswerdelete",
+					type:"post",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					data:"MYKEY="+JSON.stringify(sendData)
+				});
+				$("#answerTable").empty();
+				qnalist();
+		 }else{   
+		     return false;
+		 }
+		
+	});
 	
-	
-	function qnalist() {
-		$.ajax({ 	
-			url:"/adminfaq",   
-			type:"post",
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			data: "nothing", 
-			resultType:"json",
-			success:function(resObject){
-					console.log(resObject);		//객체
-					var listStr = "";
-		 			$.map(resObject, function(vv, idx){			
-		 				
-	 	            	listStr += "<tr>";
-	 	            	listStr += "<td align='center'>" + vv.qSeq + "</td>";
-	 	            	listStr += "<td>" + vv.mEmail + "</td>";
-	 	            	listStr += "<td>" + vv.mNick + "</td>";
-	 	            	listStr += "<td>" + vv.qGubun + "</td>";
-	 	            	listStr += "<td width='25%'>" + vv.qTitle + "</td>";
-	 	            	listStr += "<td>" + vv.qRegdate + "</td>";
-	 	            	listStr += "<td align='center'>" + vv.Check + "</td>";
-	 	            	listStr += "<td><input type='button' value='삭제'></td>";
-	 	            	listStr += "</tr>";
-
-		 			});
-		 			$("#answerTable").html(listStr);
-				}
-			});
-		}
-	
-	
+	/* 답변 추가 */
+	$("#CreateBtn").click(function name() {
+		window.open('/contact/answeradd.jsp','답변추가','width=800,height=500,location=no,status=no');
+	});
 });
+
+
+function qnalist() {
+	$.ajax({ 	
+		url:"/adminfaqanswerlist",   
+		type:"post",
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		data: "nothing", 
+		resultType:"json",
+		success:function(resObject){
+				console.log(resObject);		//객체
+				var listStr = "";
+				listStr += "<thead>";
+				listStr += "<tr>";
+				listStr += "<th style='text-align:center;'>번호</th>";
+				listStr += "<th>내용</th>";                                                
+				listStr += "<th style='text-align:center;'>삭제</th>";
+				listStr += "</tr>";
+				listStr += "</thead>";
+	 			$.map(resObject, function(vv, idx){			
+	 				listStr += "<tbody>";
+ 	            	listStr += "<tr>";
+ 	            	listStr += "<td align='center'>" + vv.aSeq + "</td>";
+ 	            	listStr += "<td width='70%'>" + vv.aContent + "</td>";
+ 	            	listStr += "<td align='center'><input type='button' value='삭제' class='deleteBtn' name='" + vv.aSeq + "'></td>";
+ 	            	listStr += "</tr>";
+ 	            	listStr += "</tbody>";
+	 			});
+	 			$("#answerTable").empty();
+	 			$("#answerTable").html(listStr);
+			}
+		});
+}
 	
 </script>
 </head>
@@ -61,53 +85,11 @@ $(document).ready(function(){
     
     <!-- Main wrapper - style you can find in pages.scss -->
     <div id="main-wrapper">
-        
-        
+          
     <!-- top side -->
-
-	<header class="topbar">
-            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-              
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            
-                            <!-- Light Logo icon -->
-                            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
-                         
-                         <!-- Light Logo text -->    
-                         <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
-                </div>
-                
-                <div class="navbar-collapse">
-
-                    <ul class="navbar-nav mr-auto mt-md-0">
-                       
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
-                    </ul>
-                    
-                    <ul class="navbar-nav my-lg-0">
-                        
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="profile-pic m-r-10" />Markarn Doe</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+	<%@ include file="/admin/include/top.jsp" %>
         
-        
-        
-      <!-- left side -->
-
+    <!-- left side -->
 	<%@ include file="/admin/include/left.jsp" %>
 	
 	
@@ -127,6 +109,7 @@ $(document).ready(function(){
                         </ol>
                     </div>
                    
+                <input type="button" value="답변추가" id="CreateBtn" name="CreateBtn" style="position:absolute; right:30px; width:100px; height:60px">
                 </div>
                 
                 
@@ -145,23 +128,17 @@ $(document).ready(function(){
                                 <h4 class="card-title">답변관리</h4>
                                 <h6 class="card-subtitle">답변 목록 </h6>
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table" id="answerTable">
                                         <thead>
                                             <tr>
-                                                <th>문의번호</th>
-                                                <th>이메일</th>
-                                                <th>닉네임</th>
-                                                <th>구분</th>
-                                                <th>제목</th>
-                                                <th>등록일</th>
-                                                <th>답변여부</th>
-                                                <th>삭제</th>
+                                                <th style="text-align:center;">번호</th>
+                                                <th>내용</th>
+                                                <th style="text-align:center;">삭제</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="answerTable">
-                                           <!-- ajax이용해서 답변 테이블 출력 --> 
-                                            
-                                        </tbody>
+                                       
+                                        <!-- ajax이용해서 답변 테이블 출력 --> 
+                                                                         
                                     </table>
                                 </div>
                             </div>
