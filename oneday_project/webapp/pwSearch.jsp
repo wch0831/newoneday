@@ -138,9 +138,9 @@ button.snip0059.yellow {
     		if(email == ""){ //email이 입력되지 않았거나, db에 없을경우
     			alert("존재하지 않는 이메일 입니다.");
     		} else if(resnum == ""){ //email과 일치하는 resnum이 없을 경우
-    			alert("주민등록번호를 잘못 입력했습니다.")
+    			alert("주민등록번호를 잘못 입력했습니다.");
     		} else {
-    			alert("등록하신 이메일로 임시 비밀번호가 발급되었습니다.")
+    			alert("등록하신 이메일로 임시 비밀번호가 발급되었습니다.");
     			$('#regForm').submit;
     		}
     		
@@ -196,7 +196,7 @@ button.snip0059.yellow {
 					<p class="stext-115 cl6 size-213 p-t-18">
 					<div class="bor8 m-b-20 how-pos4-parent"> 
 					<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text"
-							id="mEmail" name="mEmail" placeholder="주민등록번호 뒤 1자리까지입력">
+							id="mResnum" name="mResnum" placeholder="주민등록번호 뒤 1자리까지입력">
 					</div></p>
 			</div>
 			

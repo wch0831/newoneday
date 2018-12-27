@@ -46,12 +46,7 @@ public class LoginServlet extends HttpServlet {
 		mvo.setmEmail(memail);
 		mvo.setmPw(mpw);
 		
-		System.out.println(mvo.getmEmail());
-		
-		//입력된 email을 이용하여 pw를 select한다. select하기 위한 dao가 필요
-		//select 된 pw가 입력된 pw와 일치하는 지 확인한다. 일치하지 않으면 PrintWriter사용하여 alert 띄우기
-		
-		
+		System.out.println(mvo.getmEmail());	
 		
 		
 		mvo = dao.loginselect(mvo);

@@ -66,6 +66,35 @@ $(document).ready(function(){
 			});
 	 });
 	
+	 
+	 $(document).on("click","#searchbtn",function(){
+		 var seq = $(this).attr("searchbtn");
+		 var sendData = {"mSeq":seq};
+		   $.ajax({
+				url:"/memberSearchServlet",
+				type:"POST",
+				data:JSON.stringify(sendData),
+				success:function(gsonStr){
+					console.log(gsonStr);
+					var html = "";
+					$.map(gsonStr, function(vv, idx){
+						html += "<tr><td>" + vv.mSeq + "</td>";
+						html += "<td>"+ vv.mEmail +"</td>";
+						html += "<td>"+ vv.mName +"</td>";
+						html += "<td>"+ vv.mNick +"</td>";
+						html += "<td>"+ vv.mResnum +"</td>";
+						html += "<td>"+ vv.mGubun +"</td>";
+						html += "<td>"+ vv.mRegdate +"</td>";
+						html += "<td>"+ vv.mDel +"</td>";
+						html += "<td>"+ vv.mDeldate +"</td>";
+						html += "<td><img src='/admin/img/del.jpg' name='"+ vv.mSeq +"' class='mSeq' width='35' height='35'></td></tr>";
+					});
+					
+					$(".memberTable").empty();
+					$(".memberTable").html(html);
+				}
+			});
+	 });
 });
 	
 </script>
@@ -115,12 +144,12 @@ $(document).ready(function(){
 						
 						<div  class="col col-xs-6 text-right">
 						<select id="search" name="search">
-    					<option value="nick">닉네임</option>
+    					<option value="닉네임">닉네임</option>
     				
 						</select>
 						
-						<input type = "text" id="keyword" name="keyword" placeholder="검색어">
-						<input type="submit" id="search">검색</button>
+						<input type = "text" id="search" name="search" placeholder="검색어">
+						<input type="button" id="searchbtn">검색</button>
 						</div>
 					</div>
                    </form>

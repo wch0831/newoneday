@@ -91,12 +91,19 @@
     </select>
     
     
-    <!-- 회원탈퇴 -->
+    <!-- 회원탈퇴 > MYPAGE -->
     <update id="member_del" parameterType="int">
     	update member
     	set m_del='y', m_deldate=sysdate
     	where m_seq=#{value}
     </update> 
+    
+    <!-- 회원탈퇴 > 관리자-->
+    <update id="member_delate" parameterType="com.oneday.member.MemberVO">
+    	update member
+    	set m_del='y', m_deldate=sysdate
+    	where m_seq=#{mSeq} and m_gubun='u'
+    </update>
     
     <!-- 임시비밀번호 발급 -->
     <update id="randomPassword" parameterType="com.oneday.member.MemberVO" >
@@ -129,6 +136,12 @@
     <select id="checkNick" resultMap="memberMap">
     	select m_nick
     	from member
+    </select>
+    
+    <!-- 닉네임검색 -->
+    <select id="search_nick" parameterType="com.oneday.member.MemberVO" resultMap="memberMap">
+    	select * from member
+    	where m_nick like '%' || #{mNick} || '%'
     </select>
     
    
