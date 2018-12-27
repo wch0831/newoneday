@@ -199,7 +199,7 @@ nhn.husky.EZCreator.createInIFrame({
 				<div class="col-md-12">
 					<form>
 						<h4 class="mtext-105 cl2 txt-center p-b-30">
-							Send Us A Message
+							경로 글쓰기
 						</h4>
 
 						<div class="bor8 m-b-20 how-pos4-parent">
