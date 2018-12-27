@@ -125,15 +125,8 @@ $(document).ready(function(){
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-<<<<<<< HEAD
-					<button
-						class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-						id="all" value="all" data-filter="*">All Place</button>
-=======
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 						id="all" value="All Place" data-filter="*">All Place</button>
->>>>>>> branch 'master' of https://github.com/wch0831/newoneday
-
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 						id="restaurant" value="맛집" data-filter=".맛집">맛집</button>	
 

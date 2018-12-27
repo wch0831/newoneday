@@ -7,8 +7,10 @@
 </head>
 <body>
 <form action="sample/viewer/index.php" method="post">
-	<textarea name="ir1" id="ir1" rows="10" cols="100" style="width:766px; height:412px; display:none;"></textarea>
+	<textarea name="ir1" id="ir1" rows="10" cols="100" style="width:900px; height:412px; display:none;"></textarea>
+	<!--textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
 </form>
+
 <script type="text/javascript">
 var oEditors = [];
 
@@ -40,7 +42,7 @@ nhn.husky.EZCreator.createInIFrame({
 });
 
 function pasteHTML() {
-	var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.</span>";
+	var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
 	oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]);
 }
 
@@ -65,5 +67,6 @@ function setDefaultFont() {
 	oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
 }
 </script>
+
 </body>
 </html>
