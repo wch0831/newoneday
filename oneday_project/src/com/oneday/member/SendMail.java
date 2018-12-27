@@ -27,8 +27,8 @@ import javax.mail.internet.*;
 public class SendMail
 {
 	public final String HOST = "smtp.naver.com";
-	public final String HOST_ID = "xxxxxx"; //보내는사람 메일주소
-	public final String HOST_PW = "xxxxxx"; //보내는 사람 메일 패스워드
+	public final String HOST_ID = "haoxyoh_@naver.com"; //보내는사람 메일주소
+	public final String HOST_PW = "eldps1004!@"; //보내는 사람 메일 패스워드
 	public final String HOST_PORT = "587";
 	public final String HOST_AUTH = "true";
 	public final String HOST_STARTTLS = "true";
@@ -78,7 +78,7 @@ public class SendMail
          
 
          String htmlStr = "<font color='blue'> 비밀번호가 변경되었습니다. </font>"; //내용
-         message.setContent(htmlStr, "text/html"); //html 형식으로 보내기
+         message.setContent(body, "text/html; charset=UTF-8"); //html 형식으로 보내기
          //message.setText(htmlStr); //일반 문장으로 보내기
          
          // Send message

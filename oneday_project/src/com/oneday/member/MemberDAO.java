@@ -76,6 +76,25 @@ public class MemberDAO {
 			return mvo;
 	}
 
+	
+	//
+		public ArrayList<MemberVO> searchNick(){
+			SqlSession conn = null;
+			MemberVO mvo = new MemberVO();
+			ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+			
+			try {
+				conn = MyBatisFactory.getFactory().openSession();
+				list = (ArrayList)conn.selectList("memberNameSpace.checkNick");
+				
+				} catch(Exception e){
+					e.getStackTrace();
+				}finally {
+					conn.close();
+				}
+				return list;
+		}
+	
 	//관리자 > 회원관리
 	public ArrayList<MemberVO> userSelect() {
 		SqlSession conn = null;
@@ -93,6 +112,27 @@ public class MemberDAO {
 		}
 		
 		return list;
+	}
+	
+	
+	//관리자 > 강퇴
+	public int memberDelate(MemberVO mvo) {
+		SqlSession conn = null;
+		int res = 0;
+		System.out.println(mvo+"------");
+		
+		try {
+		conn = MyBatisFactory.getFactory().openSession();
+		res = conn.update("memberNameSpace.member_delate", mvo);
+		conn.commit();
+		System.out.println(res+"//////");
+		} catch(Exception e) {
+			e.printStackTrace();	
+		} finally {
+			conn.close();
+		}
+		
+		return res;
 	}
 	
 	//마이페이지 > 내정보

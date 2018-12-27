@@ -166,7 +166,7 @@ button.snip0059.yellow {
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
-			비밀번호 찾기
+			비밀번호 변경하기
 		</h2>
 	</section>	
 
@@ -179,7 +179,7 @@ button.snip0059.yellow {
 	<section class="bg0 p-t-104 p-b-116">
 			
 	
-	<h1>비밀번호 찾기 </h1>
+	<h1>비밀번호 변경하기 </h1>
 			
 			<div align="center">
 			<div style="width:600px;">
