@@ -76,12 +76,13 @@
    <!--  메인페이지 select -->
     <select id="mainSelect" resultMap="placeMap">
 		select p_seq, p_title, p_content, p_area, p_cost, p_ppath, p_pname, p_purpose, p_lat, p_lng from place
+		order by p_area, p_title
 	 	</select>
 	 	
 	<!--  메인페이지 purpose select -->
     <select id="mainPurpose" parameterType="String" resultMap="placeMap">
-		select p_seq, p_title, p_content, p_area, p_cost, p_ppath, p_pname, p_purpose from place
-		where p_purpose = #{value}
+		select p_seq, p_title, p_content, p_area, p_cost, p_ppath, p_pname, p_purpose, p_lat, p_lng from place
+		where p_purpose = #{value} order by p_area, p_title
 	</select>
 
 
