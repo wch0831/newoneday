@@ -27,8 +27,8 @@ import javax.mail.internet.*;
 public class SendMail
 {
 	public final String HOST = "smtp.naver.com";
-	public final String HOST_ID = "haoxyoh_@naver.com"; //보내는사람 메일주소
-	public final String HOST_PW = "eldps1004!@"; //보내는 사람 메일 패스워드
+	public final String HOST_ID = ""; //보내는사람 메일주소
+	public final String HOST_PW = ""; //보내는 사람 메일 패스워드
 	public final String HOST_PORT = "587";
 	public final String HOST_AUTH = "true";
 	public final String HOST_STARTTLS = "true";
