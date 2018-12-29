@@ -79,4 +79,19 @@ public class OnePathDAO {
 		}
 		return list;
 	}
+	public void seeAdd(OnePathVO ovo) {
+		SqlSession conn = null;
+		ArrayList<OnePathVO> list = null;
+		int res=0;
+		try {
+			conn = MyBatisFactory.getFactory().openSession();
+			res = conn.update("pathNameSpace.seeAdd", ovo);
+		} catch(Exception e) {
+			conn.rollback();
+			e.printStackTrace();	
+		} finally {
+			conn.commit();
+			conn.close();
+		}
+	}
 }

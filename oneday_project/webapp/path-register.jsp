@@ -188,10 +188,6 @@ nhn.husky.EZCreator.createInIFrame({
 		</h2>
 	</section>	
 
-
-
-
-
 	<!-- Content page -->
 	<section class="bg0 p-t-104 p-b-116">
 		<div class="container">
@@ -203,7 +199,7 @@ nhn.husky.EZCreator.createInIFrame({
 						</h4>
 
 						<div class="bor8 m-b-20 how-pos4-parent">
-							<input width="3000" type="text" name="email" placeholder="Your Email Address">
+							<input width="500" height="40" type="text" name="email" placeholder="Title을 입력하세요">
 						</div>
 
 						<div>

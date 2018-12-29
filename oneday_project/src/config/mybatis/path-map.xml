@@ -124,7 +124,11 @@
 	<insert id="pathReport" parameterType="com.oneday.path.OnePathVO">
 		insert into onepath_report(m_seq, o_seq) values (#{mSeq},#{oSeq})
 	</insert>
-
+<!-- 경로상세페이지-조회수증가  -->
+	<update id="seeAdd" parameterType="int">
+		update onepath set o_see=#{oSee}
+		where o_seq=#{oSeq}
+	</update>
 
 <!-- 마이페이지-경로삭제  -->
 	<update id="pathDelete" parameterType="com.oneday.path.OnePathVO">

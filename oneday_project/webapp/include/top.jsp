@@ -10,7 +10,7 @@
 					
 					<!-- Logo desktop -->		
 					<a href="index.jsp" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
+						<img src="images/icons/logo-01.jpg" alt="IMG-LOGO">
 					</a>
 
 					<!-- Icon header -->

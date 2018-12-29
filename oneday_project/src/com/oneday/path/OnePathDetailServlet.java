@@ -37,6 +37,8 @@ public class OnePathDetailServlet extends HttpServlet {
 		OnePathDAO dao = new OnePathDAO();
 		ovo.setoSeq(Integer.parseInt(request.getParameter("oseq")));
 		ovo = dao.pathDetailSelect(ovo);
+		ovo.setoSee(ovo.getoSee()+1);
+		dao.seeAdd(ovo);
 		
 		PlaceDAO pdao = new PlaceDAO();
 		ArrayList<PlaceVO> plist = pdao.selectlonlat(ovo.getoSeq());

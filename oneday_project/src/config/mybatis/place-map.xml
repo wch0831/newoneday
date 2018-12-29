@@ -75,13 +75,14 @@
     
    <!--  메인페이지 select -->
     <select id="mainSelect" resultMap="placeMap">
-		select p_title, p_content, p_area, p_cost, p_ppath, p_pname, p_purpose from place
+		select p_seq, p_title, p_content, p_area, p_cost, p_ppath, p_pname, p_purpose, p_lat, p_lng from place
+		order by p_area, p_title
 	 	</select>
 	 	
 	<!--  메인페이지 purpose select -->
     <select id="mainPurpose" parameterType="String" resultMap="placeMap">
-		select p_title, p_content, p_area, p_cost, p_ppath, p_pname, p_purpose from place
-		where p_purpose = #{value}
+		select p_seq, p_title, p_content, p_area, p_cost, p_ppath, p_pname, p_purpose, p_lat, p_lng from place
+		where p_purpose = #{value} order by p_area, p_title
 	</select>
 
 
@@ -147,6 +148,7 @@
 	 	select p.p_lat, p.p_lng from onepath o, onepath_place op, place p
 	 	where o.o_seq=#{value} and op.o_seq = o.o_seq and p.p_seq = op.p_seq
 	 </select>
+	 
 	
 	
 
